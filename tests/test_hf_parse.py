@@ -7,8 +7,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from hf_parse import (  # noqa: E402
     aggregate_quant_files,
+    dedupe_catalog,
     estimated_quants,
+    family_key,
     guess_active_params,
+    keep_model,
     parse_architecture,
     quant_id_from_path,
     should_skip_repo,
@@ -124,7 +127,23 @@ class ParseTests(unittest.TestCase):
     def test_skip_noise(self):
         self.assertTrue(should_skip_repo("foo/whisper-large-gguf", "automatic-speech-recognition"))
         self.assertTrue(should_skip_repo("foo/bge-m3-gguf", "feature-extraction"))
+        self.assertTrue(should_skip_repo("mradermacher/MemDuet-S1-Qwen2.5-0.5B", "text-generation"))
         self.assertFalse(should_skip_repo("unsloth/Qwen3.8-27B-GGUF", "text-generation"))
+
+    def test_catalog_keeps_one_variant_of_a_base_model(self):
+        self.assertFalse(keep_model({"name": "MemDuet S1 Qwen2.5 0.5B", "id": "mradermacher/MemDuet", "author": "mradermacher", "downloads": 0, "likes": 0}))
+        self.assertTrue(keep_model({"name": "Qwen3.8 27B", "id": "unsloth/Qwen3.8-27B-GGUF", "author": "unsloth", "downloads": 1000, "likes": 10}))
+        self.assertTrue(keep_model({"name": "LFM2.5 2.6B", "id": "LiquidAI/LFM2.5-2.6B-GGUF", "author": "liquidai", "downloads": 1000, "likes": 10}))
+        self.assertEqual(family_key("gemma 4 12b it", 11.9), family_key("gemma 4 12B it qat", 11.9))
+        self.assertEqual(family_key("Mistral Small 3.2 24B Instruct 2506", 23.6), family_key("Mistral Small 24B Instruct 2501", 23.6))
+        self.assertEqual(family_key("Devstral Small 2 24B Instruct 2512", 23.6), family_key("Devstral Small 2507", 23.6))
+        self.assertNotEqual(family_key("Qwen3.8 27B", 27.3), family_key("Qwen3.5 27B", 26.9))
+        rows = dedupe_catalog([
+            {"name": "gemma 4 12b it", "id": "unsloth/gemma-4-12b-it-GGUF", "author": "unsloth", "downloads": 1_600_000, "likes": 900},
+            {"name": "gemma 4 12B it qat", "id": "unsloth/gemma-4-12b-it-qat-GGUF", "author": "unsloth", "downloads": 300_000, "likes": 100},
+            {"name": "Ornith 1.0 9B", "id": "unsloth/Ornith-1.0-9B-GGUF", "author": "unsloth", "downloads": 300_000, "likes": 60},
+        ])
+        self.assertEqual([row["name"] for row in rows], ["gemma 4 12b it"])
 
 
 if __name__ == "__main__":

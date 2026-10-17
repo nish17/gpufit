@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
-import { compareFits, formatContext, formatParams, formatTokRange } from "../lib/estimator";
+import { formatContext, formatParams, formatTokRange } from "../lib/estimator";
+import { compareForMachine } from "../lib/ranking";
 import { devicePath, fitDevice, isSeoPair, models, pairPath, updatedLabel } from "../lib/catalog";
 import type { DeviceSpec } from "../lib/estimator/types";
 
@@ -8,7 +9,7 @@ interface Props { device: DeviceSpec }
 const { device } = Astro.props;
 const rows = models
   .map((model) => ({ model, fit: fitDevice(model, device) }))
-  .sort((a, b) => compareFits(a.fit, b.fit));
+  .sort(compareForMachine);
 const shown = rows.filter((row) => row.fit.bucket !== "no").slice(0, 40);
 const hidden = rows.length - shown.length;
 const memory = device.kind === "gpu" ? `${device.vramGb} GB ${device.memoryType}` : `${device.memoryOptionsGb?.join(" / ")} GB ${device.memoryType}`;

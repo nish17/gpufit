@@ -310,4 +310,18 @@ describe("verdicts", () => {
     expect(fit.summary).toContain("CPU only");
     expect(fit.tokPerSec![1]).toBeLessThan(80);
   });
+
+  it("ignores a quant file that is far too small for the parameter count", () => {
+    const huge = model({
+      name: "Huge 284B",
+      paramsB: 284,
+      quants: [
+        { id: "Q8_0", bytes: 11e9, quality: 84, estimated: false, bpw: 8.5 },
+        { id: "Q4_K_M", bytes: 150e9, quality: 52, estimated: false, bpw: 4.85 },
+      ],
+    });
+    const card = device({ vramGb: 16, defaultMemoryGb: 16, bandwidthGBps: 288, slug: "rtx-4060-ti-16gb" });
+    const fit = estimate(huge, card, options({ memoryGb: 16 }));
+    expect(fit.quant?.id).not.toBe("Q8_0");
+  });
 });

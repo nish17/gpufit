@@ -31,6 +31,7 @@ from hf_parse import (  # noqa: E402
     estimated_quants,
     guess_active_params,
     parse_architecture,
+    dedupe_catalog,
     pretty_name,
     should_skip_repo,
     slugify,
@@ -427,6 +428,7 @@ def main() -> int:
         print(f"only kept {len(accepted)} models; refusing to overwrite a good catalog", file=sys.stderr)
         return 1
 
+    accepted = dedupe_catalog(accepted)
     accepted.sort(key=lambda item: item["downloads"], reverse=True)
     unique_slugs(accepted)
     for index, row in enumerate(accepted, start=1):

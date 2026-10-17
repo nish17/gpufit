@@ -322,7 +322,18 @@ function q4ish(quants: QuantSpec[]): QuantSpec[] {
   return sorted;
 }
 
-export function estimate(model: ModelSpec, device: DeviceSpec, options: RuntimeOptions): FitResult {
+/** Drop GGUF rows that are far too small to be a full quant of this checkpoint. */
+export function plausibleQuants(model: ModelSpec): QuantSpec[] {
+  const kept = model.quants.filter((quant) => {
+    if (quant.estimated || !quant.bpw || model.paramsB <= 0) return true;
+    const expected = (model.paramsB * 1e9 * quant.bpw) / 8;
+    return quant.bytes >= expected * 0.4;
+  });
+  return kept.length ? kept : model.quants;
+}
+
+export function estimate(input: ModelSpec, device: DeviceSpec, options: RuntimeOptions): FitResult {
+  const model = { ...input, quants: plausibleQuants(input) };
   if (!model.quants.length || !model.arch?.layers) {
     return emptyResult(model, `${model.name} is missing architecture or quant data, so GPUfit will not guess a verdict.`);
   }

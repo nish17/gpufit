@@ -4,15 +4,17 @@ import reportJson from "../data/fetch-report.json";
 import { estimate } from "./estimator";
 import type { DeviceSpec, FitResult, ModelSpec } from "./estimator/types";
 import { defaultProfile, toOptions } from "./profile";
+import { selectCatalog } from "./select-models";
 
 const BLOCK = /diffusion|whisper|embed|flux|stable-diffusion|rerank|tts|musicgen|controlnet|ocr|locate-anything|ace-step/i;
 const BLOCK_ARCH = new Set(["clip", "diffusion-gemma", "locateanything", "acestep-lm"]);
 
 export const devices = hardwareJson as DeviceSpec[];
-export const models = (modelsJson as ModelSpec[])
-  .filter((model) => !BLOCK.test(`${model.name} ${model.architecture} ${model.id}`))
-  .filter((model) => !BLOCK_ARCH.has(String(model.architecture).toLowerCase()))
-  .sort((a, b) => (a.downloadRank ?? 9999) - (b.downloadRank ?? 9999));
+export const models = selectCatalog(
+  (modelsJson as ModelSpec[])
+    .filter((model) => !BLOCK.test(`${model.name} ${model.architecture} ${model.id}`))
+    .filter((model) => !BLOCK_ARCH.has(String(model.architecture).toLowerCase())),
+);
 
 export const report = reportJson as {
   generatedAt: string;

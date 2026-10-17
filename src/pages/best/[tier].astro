@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { compareFits, formatParams, formatTokRange } from "../../lib/estimator";
+import { formatParams, formatTokRange } from "../../lib/estimator";
+import { compareForMachine } from "../../lib/ranking";
 import { BEST_TIERS, fitDevice, getDevice, isSeoPair, pairPath, updatedLabel } from "../../lib/catalog";
 import { models } from "../../lib/catalog";
 
@@ -13,7 +14,7 @@ if (!device) throw new Error(`Missing device ${tier.device}`);
 const rows = models
   .map((model) => ({ model, fit: fitDevice(model, device) }))
   .filter((row) => row.fit.bucket === "full")
-  .sort((a, b) => compareFits(a.fit, b.fit) || b.model.paramsB - a.model.paramsB);
+  .sort(compareForMachine);
 const description = `${tier.blurb} Ranked for ${device.name} at ${device.defaultMemoryGb} GB. Updated ${updatedLabel()}.`;
 ---
 

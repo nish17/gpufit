@@ -12,7 +12,7 @@ const description = "How GPUfit estimates whether an open model fits in GPU, App
     <h2>Memory</h2>
     <p>A model fits when this total stays inside the usable pool:</p>
     <pre class="cmd">total = weights + KV cache + engine overhead</pre>
-    <p><strong>Weights.</strong> When Hugging Face lists a GGUF file, we use that file’s byte size (split shards are summed once). The catalog prefers Unsloth, then bartowski, then LM Studio community builds. If no file exists yet, the size is <code>parameters × bits-per-weight / 8</code> and the row is marked estimated. The bits-per-weight table is approximate llama.cpp behavior: Q4_K_M is 4.85, Q5_K_M is 5.7, Q6_K is 6.56, Q8_0 is 8.5, F16 is 16. Those constants live in <code>src/data/quant-meta.json</code> and are shared by the fetcher and the estimator.</p>
+    <p><strong>Weights.</strong> When Hugging Face lists a GGUF file, we use that file’s byte size (split shards are summed once). A file smaller than about 40% of <code>parameters × bits-per-weight / 8</code> is treated as incomplete and ignored, so a stray shard cannot make a huge model look like it fits. The catalog prefers Unsloth, then bartowski, then LM Studio community builds. If no file exists yet, the size is <code>parameters × bits-per-weight / 8</code> and the row is marked estimated. The bits-per-weight table is approximate llama.cpp behavior: Q4_K_M is 4.85, Q5_K_M is 5.7, Q6_K is 6.56, Q8_0 is 8.5, F16 is 16. Those constants live in <code>src/data/quant-meta.json</code> and are shared by the fetcher and the estimator.</p>
     <p><strong>KV cache.</strong> For ordinary grouped-query attention the cache is FP16:</p>
     <pre class="cmd">bytes = 2 × layers × KV heads × head dim × 2 × context</pre>
     <p>The layer count, KV heads, and head dimension come from the model’s <code>config.json</code> (the text config, when a vision model wraps one). Three cases change the formula:</p>
@@ -42,6 +42,7 @@ const description = "How GPUfit estimates whether an open model fits in GPU, App
       <li><strong>Won’t fit</strong> — even the smallest sensible quant does not fit in GPU memory plus system RAM.</li>
     </ul>
     <p>The recommended quant is the highest-quality published file that still leaves at least 4K of context (or the model’s whole context, if that is shorter). Speed is quoted at 8K context when that fits, because quoting the maximum context makes the tokens/sec number look worse than a normal chat.</p>
+    <p>The default list is not “fastest first.” Models that fit fully at about 10 tok/s or faster are ranked by size, with a discount when the only quant that fits is well below Q4. A larger checkpoint outranks a tiny one. Slower full fits come next, then partial offload, then models that will not fit. The three picks at the top are the best general-chat, coding, and reasoning matches in that order.</p>
 
     <h2>Speed</h2>
     <p>Decode reads the active weights and the KV cache for the current context on every token:</p>
@@ -56,7 +57,7 @@ const description = "How GPUfit estimates whether an open model fits in GPU, App
       <li>Ollama names: one gentle fetch of the public library HTML, used only to print <code>ollama run &lt;name&gt;</code>. If the page shape changes, the command is omitted.</li>
       <li>Hardware: a hand-checked table in <code>src/data/hardware.json</code>, generated from <code>scripts/hardware_catalog.py</code>. Each row has a source URL. NVIDIA 50-series bandwidths are from NVIDIA’s compare table. Apple M4 and M5 figures are from Apple’s newsroom and MacBook Pro specs. CPU bandwidths are computed from the transfer rate. We do not scrape TechPowerUp.</li>
     </ul>
-    <p>The scheduled job is <code>.github/workflows/model-watcher.yml</code>. It reruns the fetch every six hours and commits <code>models.json</code> when the catalog changes. A model is “new” when its repo was not in the previous file. Junk uploads are dropped unless they come from a trusted quantizer or clear a download bar, and the page filter also drops diffusion, embedding, and speech repos.</p>
+    <p>The scheduled job is <code>.github/workflows/model-watcher.yml</code>. It reruns the fetch every six hours and commits <code>models.json</code> when the catalog changes. A model is “new” when its repo was not in the previous file. The published list keeps known model families from trusted quantizers and labs, plus community uploads with enough downloads and likes. Uncensored and other fine-tune names are dropped, and QAT or dated copies of the same checkpoint collapse to one row. Diffusion, embedding, and speech repos are dropped as well.</p>
 
     <h2>What is not calibrated yet</h2>
     <p>There is no fitted correction from llama-bench. The home page can remember a speed you type, in this browser only. Publishing those measurements, and comparing them with the LocalLLaMA explorer dataset (CC-BY-4.0), is future work. Until then, treat a “20–30 tok/s” line as a bandwidth ceiling, not a promise.</p>

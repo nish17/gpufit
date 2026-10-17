@@ -91,7 +91,7 @@ D1 binding shape in `wrangler.jsonc` once the database exists:
 Real in this repo:
 
 - Curated hardware list (NVIDIA, AMD, Intel, Apple M1–M5, a Ryzen AI Max part, and CPU bandwidth classes) with a source note on each row.
-- About 190 open models with GGUF sizes and `config.json` fields fetched from the public Hugging Face API.
+- About 130 open models with GGUF sizes and `config.json` fields fetched from the public Hugging Face API. Fine-tunes and duplicate quants of the same checkpoint are left out.
 - Unit-tested fit math: weights, GQA / sliding-window / MLA / linear-attention KV cache, llama.cpp overhead, the 75% unified-memory default, partial offload, and a tok/s range.
 - Static pages: home with a saved picker, per-model, per-device, “Can I run X on Y” for popular pairs, VRAM guides, “New this week”, RSS, and Atom.
 - Run commands for llama.cpp, plus Ollama when the library name matched, and an LM Studio `lms get` hint.

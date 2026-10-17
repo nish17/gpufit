@@ -60,13 +60,121 @@ SKIP_PIPELINES = {
 }
 
 
+# Keep in sync with src/lib/select-models.ts.
+SPAM_NAME = re.compile(
+    r"uncensor|abliterat|obliterat|heretic|darkidol|dolphin|memduet|hemming|thedrummer|"
+    r"cydonia|ornith|laguna|bonsai|inkling|muse glimmer|yue\s?2|jirack|occamy|\bgrug\b|"
+    r"frog\s?nano|\bclef\b|altworld|agentworld|north mini|endless frontier|bigbang|"
+    r"aquila|thomson|hyperclova|cold fusion|defiant|mai gym|jan nano|swift 1\.5",
+    re.IGNORECASE,
+)
+FAMILY_NAME = re.compile(
+    r"qwen|llama|gemma|mistral|ministral|devstral|magistral|mixtral|\bphi\b|deepseek|"
+    r"\bglm\b|gpt[ -]?oss|nemotron|lfm|smollm|olmo|granite|apertus|minimax|\bstep\b|"
+    r"mimo|medgemma|hermes|codestral",
+    re.IGNORECASE,
+)
+TRUSTED_AUTHORS = {
+    "unsloth",
+    "bartowski",
+    "lmstudio-community",
+    "ggml-org",
+    "liquidai",
+    "qwen",
+    "meta-llama",
+    "mistralai",
+    "google",
+    "microsoft",
+    "deepseek-ai",
+    "nvidia",
+    "huggingface",
+    "allenai",
+    "ibm-granite",
+    "stepfun",
+    "zai-org",
+}
+_NOISE = re.compile(r"\b(qat|mobile|imatrix|mtp|gguf|hf|i1|reap|exp)\b", re.IGNORECASE)
+_ROLE_WORDS = re.compile(r"\b(instruct|instruction|chat|base|it)\b", re.IGNORECASE)
+_DATES = re.compile(r"\b(20\d{2}|2501|2503|2505|2506|2507|2509|2512|2603|0414|0528|0731|128k)\b", re.IGNORECASE)
+
+
 def should_skip_repo(repo_id: str, pipeline: str | None) -> bool:
     name = repo_id.lower().split("/")[-1]
     if any(bit in name for bit in SKIP_NAME_BITS):
         return True
+    if SPAM_NAME.search(name):
+        return True
     if pipeline in SKIP_PIPELINES:
         return True
     return False
+
+
+def keep_model(record: dict) -> bool:
+    """True for official-family checkpoints and notable community uploads."""
+    blob = f"{record.get('name', '')} {record.get('id', '')}"
+    if SPAM_NAME.search(blob):
+        return False
+    author = str(record.get("author") or str(record.get("id") or "").split("/")[0]).lower()
+    downloads = int(record.get("downloads") or 0)
+    likes = int(record.get("likes") or 0)
+    family = FAMILY_NAME.search(blob) is not None
+    if family and (author in TRUSTED_AUTHORS or (downloads >= 100_000 and likes >= 40)):
+        return True
+    return downloads >= 200_000 and likes >= 100
+
+
+def family_key(name: str, params_b: float | None = None) -> str:
+    cleaned = _NOISE.sub(" ", name.lower())
+    cleaned = _ROLE_WORDS.sub(" ", cleaned)
+    cleaned = _DATES.sub(" ", cleaned)
+    # "Mistral Small 3.2 24B" matches "Mistral Small 24B". "Qwen3.8" stays intact.
+    cleaned = re.sub(r"\b\d+\.\d+\b", " ", cleaned)
+    cleaned = re.sub(r"\b\d+(?:\.\d+)?b\b", " ", cleaned)
+    cleaned = re.sub(r"(?<![\w.])\d+(?![\w.])", " ", cleaned)
+    cleaned = re.sub(r"[^a-z0-9.]+", " ", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    raw = name.lower()
+    if re.search(r"coder|\bcode\b|devstral|codestral", raw):
+        role = "coding"
+    elif re.search(r"vision|\bvl\b|omni", raw):
+        role = "vision"
+    elif re.search(r"reason|thinking|\br1\b|qwq", raw):
+        role = "reasoning"
+    else:
+        role = "chat"
+    size = int(round(params_b)) if params_b else 0
+    return f"{cleaned}|{size}|{role}"
+
+
+def _variant_penalty(name: str) -> int:
+    return 1 if re.search(r"\bqat\b|\bmobile\b", name, re.IGNORECASE) else 0
+
+
+def _prefer_record(current: dict, candidate: dict) -> dict:
+    current_penalty = _variant_penalty(str(current.get("name") or ""))
+    candidate_penalty = _variant_penalty(str(candidate.get("name") or ""))
+    if current_penalty != candidate_penalty:
+        plain, variant = (current, candidate) if current_penalty < candidate_penalty else (candidate, current)
+        if int(plain.get("downloads") or 0) >= int(variant.get("downloads") or 0) * 0.5:
+            return plain
+    if int(candidate.get("downloads") or 0) != int(current.get("downloads") or 0):
+        return candidate if int(candidate.get("downloads") or 0) > int(current.get("downloads") or 0) else current
+    if int(candidate.get("likes") or 0) > int(current.get("likes") or 0):
+        return candidate
+    return current
+
+
+def dedupe_catalog(rows: list[dict]) -> list[dict]:
+    best: dict[str, dict] = {}
+    for row in rows:
+        if not keep_model(row):
+            continue
+        key = family_key(str(row.get("name") or ""), float(row.get("paramsB") or 0) or None)
+        current = best.get(key)
+        best[key] = row if current is None else _prefer_record(current, row)
+    chosen = list(best.values())
+    chosen.sort(key=lambda item: (int(item.get("downloads") or 0), int(item.get("likes") or 0)), reverse=True)
+    return chosen
 
 
 def unwrap_config(cfg: object) -> dict | None:

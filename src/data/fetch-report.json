@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-10-17T17:47:45.185746+00:00",
-  "modelCount": 192,
-  "withRealQuants": 189,
+  "modelCount": 130,
+  "withRealQuants": 129,
   "attempts": 380,
   "candidateCount": 625,
   "newRepoIds": [
@@ -62,5 +62,6 @@
     "datalab-to/surya-ocr-2-gguf",
     "unsloth/diffusiongemma-26B-A4B-it-GGUF",
     "unsloth/Nanonets-OCR-s-GGUF"
-  ]
+  ],
+  "curated": true
 }

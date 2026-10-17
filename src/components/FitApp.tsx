@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { devices, isSeoPair, models } from "../lib/catalog";
-import { compareFits, estimate, formatContext, formatParams, formatTokRange } from "../lib/estimator";
+import { estimate, formatContext, formatParams, formatTokRange } from "../lib/estimator";
+import { bestPicks, compareForMachine } from "../lib/ranking";
 import type { DeviceSpec, FitResult, ModelSpec, VerdictId } from "../lib/estimator/types";
 import {
   RAM_PRESETS,
@@ -71,15 +72,16 @@ export default function FitApp() {
   const device = findDevice(profile.deviceId);
   const options = toOptions(profile);
 
+  const scored = useMemo(
+    () => models.map((model) => ({ model, fit: estimate(model, device, options) })),
+    [device, profile.memoryGb, profile.systemRamGb, profile.ramBandwidthGBps, profile.drivesDisplay],
+  );
+  const picks = useMemo(() => bestPicks(scored), [scored]);
+
   const ranked = useMemo(() => {
     const query = modelQuery.trim().toLowerCase();
-    const rows = models
-      .filter((model) => {
-        if (!query) return true;
-        return `${model.name} ${model.architecture} ${model.useCases.join(" ")}`.toLowerCase().includes(query);
-      })
-      .map((model) => ({ model, fit: estimate(model, device, options) }));
-    const filtered = rows.filter(({ fit, model }) => {
+    const filtered = scored.filter(({ fit, model }) => {
+      if (query && !`${model.name} ${model.architecture} ${model.useCases.join(" ")}`.toLowerCase().includes(query)) return false;
       if (filter === "full") return fit.bucket === "full";
       if (filter === "offload") return fit.bucket === "offload" || fit.bucket === "limit";
       if (filter === "no") return fit.bucket === "no";
@@ -90,10 +92,10 @@ export default function FitApp() {
       if (sort === "speed") return (b.fit.tokPerSec?.[1] ?? -1) - (a.fit.tokPerSec?.[1] ?? -1);
       if (sort === "newest") return Date.parse(b.model.createdAt || "") - Date.parse(a.model.createdAt || "");
       if (sort === "downloads") return (b.model.downloads ?? 0) - (a.model.downloads ?? 0);
-      return compareFits(a.fit, b.fit);
+      return compareForMachine(a, b);
     });
     return filtered;
-  }, [device, profile.memoryGb, profile.systemRamGb, profile.ramBandwidthGBps, profile.drivesDisplay, modelQuery, filter, sort]);
+  }, [scored, modelQuery, filter, sort]);
 
   const fullCount = ranked.filter((row) => row.fit.bucket === "full").length;
 
@@ -247,10 +249,36 @@ export default function FitApp() {
           </div>
         </div>
 
+        {picks.length > 0 ? (
+          <div className="grid gap-3">
+            <div>
+              <h2 className="m-0 text-2xl">Best models for your {device.name}</h2>
+              <p className="m-0 mt-1 text-sm text-[var(--muted)]">
+                The largest checkpoints that still fit fully at about 10 tok/s or faster. Open the Small filter for the tiny ones.
+              </p>
+            </div>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {picks.map((pick) => (
+                <a key={pick.role} href={`/models/${pick.model.slug}`} className="card grid gap-1 p-3 no-underline">
+                  <span className="kicker">{pick.roleLabel}</span>
+                  <span className="text-lg font-semibold leading-tight">{pick.model.name}</span>
+                  <span className="flex flex-wrap items-center gap-2 text-sm text-[var(--muted)]">
+                    <span className={`pill ${TONE[pick.fit.verdict]}`}>{pick.fit.label}</span>
+                    <span>
+                      {pick.fit.quant?.id ?? "—"}
+                      {pick.fit.tokPerSec ? ` · ${formatTokRange(pick.fit.tokPerSec)} tok/s` : ""}
+                    </span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
         <div className="flex flex-col gap-2 sm:flex-row">
           <Input value={modelQuery} onChange={(event) => setModelQuery(event.target.value)} placeholder="Filter models" aria-label="Filter models" />
-          <select className="select sm:w-44" value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort models">
-            <option value="fit">Best fit</option>
+          <select className="select sm:w-56" value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sort models">
+            <option value="fit">Best for this machine</option>
             <option value="speed">Fastest</option>
             <option value="newest">Newest</option>
             <option value="downloads">Most downloaded</option>
