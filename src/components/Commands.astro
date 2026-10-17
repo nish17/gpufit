@@ -1,0 +1,34 @@
+---
+interface Props {
+  llamaCpp: string;
+  ollama: string | null;
+  lmStudio: string;
+}
+const { llamaCpp, ollama, lmStudio } = Astro.props;
+---
+
+<div class="grid" style="gap:0.7rem;">
+  <div>
+    <div style="display:flex; justify-content:space-between; align-items:center;" class="muted">
+      <span>llama.cpp</span>
+      <button class="btn btn-ghost" type="button" data-copy={llamaCpp}>Copy</button>
+    </div>
+    <pre class="cmd">{llamaCpp}</pre>
+  </div>
+  {ollama ? (
+    <div>
+      <div style="display:flex; justify-content:space-between;" class="muted">
+        <span>Ollama</span>
+        <button class="btn btn-ghost" type="button" data-copy={ollama}>Copy</button>
+      </div>
+      <pre class="cmd">{ollama}</pre>
+    </div>
+  ) : <p class="muted" style="margin:0;">No matching name in the Ollama library snapshot.</p>}
+  <div>
+    <div style="display:flex; justify-content:space-between;" class="muted">
+      <span>LM Studio</span>
+      <button class="btn btn-ghost" type="button" data-copy={lmStudio}>Copy</button>
+    </div>
+    <pre class="cmd">{lmStudio}</pre>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+const description = "What GPUfit stores: a hardware profile in your browser, and an email only if you ask for alerts.";
+---
+
+<Base title="Privacy · GPUfit" description={description} path="/privacy">
+  <article class="wrap prose" style="padding:2rem 0 1rem; max-width:46rem;">
+    <h1>Privacy</h1>
+    <p>The hardware picker writes one JSON record to <code>localStorage</code> on this device. Choosing a GPU does not create an account and does not send that choice anywhere.</p>
+    <p>The optional browser hint reads the WebGPU adapter name, if the browser exposes it, and only uses it to pre-select a row. It does not include VRAM, and it is not stored on a server.</p>
+    <p>Alert signup is separate. If you submit the form on a configured deployment, we store the email, the hardware profile, and whether you want a weekly digest. A confirmation link has to be clicked before mail is sent. Every future message needs its own unsubscribe link. There is no password.</p>
+    <p>Until Resend and Cloudflare D1 are configured, the dev server writes signups to a local <code>data/subscribers.json</code> file, and a production build without those secrets refuses to store the address. The form then keeps the signup in this browser so you can see the flow.</p>
+    <p>Measured tok/s notes stay in <code>localStorage</code> too. They are not uploaded.</p>
+  </article>
+</Base>

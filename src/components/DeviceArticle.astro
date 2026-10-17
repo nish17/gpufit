@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+import { compareFits, formatContext, formatParams, formatTokRange } from "../lib/estimator";
+import { devicePath, fitDevice, isSeoPair, models, pairPath, updatedLabel } from "../lib/catalog";
+import type { DeviceSpec } from "../lib/estimator/types";
+
+interface Props { device: DeviceSpec }
+const { device } = Astro.props;
+const rows = models
+  .map((model) => ({ model, fit: fitDevice(model, device) }))
+  .sort((a, b) => compareFits(a.fit, b.fit));
+const shown = rows.filter((row) => row.fit.bucket !== "no").slice(0, 40);
+const hidden = rows.length - shown.length;
+const memory = device.kind === "gpu" ? `${device.vramGb} GB ${device.memoryType}` : `${device.memoryOptionsGb?.join(" / ")} GB ${device.memoryType}`;
+const title = `Best local LLMs for ${device.name}`;
+const description = `${device.name} has ${memory} and ${device.bandwidthGBps} GB/s. See which open models fit, at which quant, and roughly how fast.`;
+---
+
+<Base title={`${title} · GPUfit`} description={description} path={devicePath(device)}>
+  <article class="wrap prose" style="padding:2rem 0 1rem;">
+    <p class="kicker">Hardware</p>
+    <h1 style="font-size:clamp(2.2rem, 5vw, 3.6rem); margin-bottom:0.4rem;">{device.name}</h1>
+    <p>{description} Figures below use the default memory ({device.defaultMemoryGb} GB){device.kind === "gpu" ? ", 32 GB system RAM, and DDR5-5600 for anything that spills" : ""}. Updated {updatedLabel()}.</p>
+    <div class="grid-stats">
+      <div class="stat"><span class="muted">Memory</span><b>{memory}</b></div>
+      <div class="stat"><span class="muted">Bandwidth</span><b>{device.bandwidthGBps} GB/s</b></div>
+      <div class="stat"><span class="muted">Kind</span><b>{device.kind}</b></div>
+      <div class="stat"><span class="muted">Year</span><b>{device.year}</b></div>
+    </div>
+    <p class="muted">{device.sourceNote} <a href={device.sourceUrl}>Source</a>.</p>
+    <p><a href={`/feeds/${device.kind === "mac" ? "mac" : device.kind === "gpu" ? "gpu" : "cpu"}/${device.slug}.xml`}>RSS for new models on this device</a></p>
+    <h2>Models that fit</h2>
+    <table class="data">
+      <thead>
+        <tr><th>Model</th><th>Verdict</th><th>Quant</th><th>Context</th><th>tok/s</th></tr>
+      </thead>
+      <tbody>
+        {shown.map(({ model, fit }) => (
+          <tr>
+            <td>
+              <a href={`/models/${model.slug}`}>{model.name}</a>
+              <div class="muted">{formatParams(model.paramsB)}</div>
+            </td>
+            <td>
+              {isSeoPair(model.slug, device.slug) ? (
+                <a href={pairPath(model, device)}>{fit.label}</a>
+              ) : fit.label}
+            </td>
+            <td>{fit.quant?.id ?? "—"}{fit.quant?.estimated ? " (est.)" : ""}</td>
+            <td>{fit.context ? formatContext(fit.context) : "—"}</td>
+            <td>{fit.tokPerSec ? formatTokRange(fit.tokPerSec) : "—"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    {hidden > 0 ? <p class="muted">{hidden} more models in the catalog do not fit this default profile, or ranked below the first 40 that do.</p> : null}
+    {shown[0] ? <p class="muted">Example: {shown[0].fit.summary} Weights shown in the verdict use GiB (the same 1024³ counting as GPU memory).</p> : null}
+  </article>
+</Base>

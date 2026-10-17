@@ -1,0 +1,8 @@
+{
+  "name": "gpufit",
+  "compatibility_date": "2026-10-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": false
+  }
+}

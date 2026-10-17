@@ -1,0 +1,30 @@
+---
+import FitApp from "../components/FitApp";
+import Base from "../layouts/Base.astro";
+import { devices, models, pairPath, seoPairs, updatedLabel } from "../lib/catalog";
+
+const examples = seoPairs().filter((_, index) => index % 37 === 0).slice(0, 6);
+const description = "See which open-source LLMs fit on your GPU, Mac, or CPU, at which quant, and roughly how fast. Save the machine and get an email when a new model fits.";
+---
+
+<Base title="GPUfit — which open models fit your machine" description={description}>
+  <div class="wrap" style="padding: 2.2rem 0 3rem;">
+    <p class="kicker">Local LLMs, without the spreadsheet</p>
+    <h1 style="font-size:clamp(2.6rem, 6vw, 4.4rem); line-height:0.95; margin:0.3rem 0 0.8rem; max-width:16ch;">
+      Which open models actually fit?
+    </h1>
+    <p class="muted" style="max-width:46rem; font-size:1.05rem;">
+      Pick a GPU, an Apple chip, or a CPU. GPUfit ranks {models.length} open models with a plain-English verdict, the best quant that fits, a practical context length, and a tokens-per-second range. The profile stays in this browser. Catalog updated {updatedLabel()}. {devices.length} devices, sourced specs.
+    </p>
+    <FitApp client:load />
+    <section style="margin-top:2.5rem;">
+      <h2>Start from a specific question</h2>
+      <ul>
+        {examples.map(({ model, device }) => (
+          <li><a href={pairPath(model, device)}>Can I run {model.name} on {device.name}?</a></li>
+        ))}
+      </ul>
+      <p class="muted">Or browse <a href="/best/16gb">16 GB</a>, <a href="/best/24gb">24 GB</a>, <a href="/best/mac">Apple silicon</a>, and <a href="/new">what arrived recently</a>.</p>
+    </section>
+  </div>
+</Base>

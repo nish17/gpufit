@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import { formatParams } from "../lib/estimator";
+import { freshModels, isRecentCatalog, updatedLabel } from "../lib/catalog";
+
+const recent = freshModels(14);
+const live = isRecentCatalog(14);
+const description = live
+  ? "Open models added to the GPUfit catalog in the last two weeks."
+  : "The newest open models currently tracked by GPUfit.";
+---
+
+<Base title="New models this week · GPUfit" description={description} path="/new">
+  <article class="wrap prose" style="padding:2rem 0 1rem;">
+    <p class="kicker">Fresh weights</p>
+    <h1>New this week</h1>
+    <p>
+      {live
+        ? "These repos were created in the last 14 days and passed the catalog filter."
+        : "Nothing in the current snapshot was created in the last 14 days. Showing the newest tracked models instead."}
+      {" "}Updated {updatedLabel()}. <a href="/feed.xml">RSS</a> · <a href="/atom.xml">Atom</a>.
+    </p>
+    <ul>
+      {recent.map((model) => (
+        <li>
+          <a href={`/models/${model.slug}`}>{model.name}</a>
+          <span class="muted"> — {formatParams(model.paramsB)}, {model.author}, {(model.createdAt || "").slice(0, 10)}. {model.description}</span>
+        </li>
+      ))}
+    </ul>
+  </article>
+</Base>

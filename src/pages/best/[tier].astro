@@ -1,0 +1,41 @@
+---
+import Base from "../../layouts/Base.astro";
+import { compareFits, formatParams, formatTokRange } from "../../lib/estimator";
+import { BEST_TIERS, fitDevice, getDevice, isSeoPair, pairPath, updatedLabel } from "../../lib/catalog";
+import { models } from "../../lib/catalog";
+
+export function getStaticPaths() {
+  return BEST_TIERS.map((tier) => ({ params: { tier: tier.slug }, props: { tier } }));
+}
+const { tier } = Astro.props;
+const device = getDevice(tier.device);
+if (!device) throw new Error(`Missing device ${tier.device}`);
+const rows = models
+  .map((model) => ({ model, fit: fitDevice(model, device) }))
+  .filter((row) => row.fit.bucket === "full")
+  .sort((a, b) => compareFits(a.fit, b.fit) || b.model.paramsB - a.model.paramsB);
+const description = `${tier.blurb} Ranked for ${device.name} at ${device.defaultMemoryGb} GB. Updated ${updatedLabel()}.`;
+---
+
+<Base title={`${tier.title} · GPUfit`} description={description} path={`/best/${tier.slug}`}>
+  <article class="wrap prose" style="padding:2rem 0 1rem;">
+    <p class="kicker">VRAM guide</p>
+    <h1>{tier.title}</h1>
+    <p>{description} These are estimates for llama.cpp with FP16 KV cache, not measured benchmarks. <a href="/how-it-works">Method</a>.</p>
+    <table class="data">
+      <thead><tr><th>Model</th><th>Size</th><th>Verdict</th><th>Quant</th><th>tok/s</th></tr></thead>
+      <tbody>
+        {rows.slice(0, 30).map(({ model, fit }) => (
+          <tr>
+            <td>{isSeoPair(model.slug, device.slug) ? <a href={pairPath(model, device)}>{model.name}</a> : <a href={`/models/${model.slug}`}>{model.name}</a>}</td>
+            <td>{formatParams(model.paramsB)}</td>
+            <td>{fit.label}</td>
+            <td>{fit.quant?.id}</td>
+            <td>{fit.tokPerSec ? formatTokRange(fit.tokPerSec) : "—"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="muted">{rows.length} models fit fully on this reference profile. {device.sourceNote}</p>
+  </article>
+</Base>

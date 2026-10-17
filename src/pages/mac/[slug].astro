@@ -1,0 +1,11 @@
+---
+import DeviceArticle from "../../components/DeviceArticle.astro";
+import { devices } from "../../lib/catalog";
+
+export function getStaticPaths() {
+  return devices.filter((device) => device.kind === "mac").map((device) => ({ params: { slug: device.slug }, props: { device } }));
+}
+const { device } = Astro.props;
+---
+
+<DeviceArticle device={device} />
