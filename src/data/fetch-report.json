@@ -1,19 +1,15 @@
 {
-  "generatedAt": "2026-10-18T11:20:16.336981+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-10-18T16:08:16.160294+00:00",
+  "modelCount": 143,
+  "withRealQuants": 141,
   "attempts": 380,
   "candidateCount": 520,
   "newRepoIds": [
-    "peculiar-ragdoll/Cyber-Tiel-Coder-35B-A3B-GGUF-MTP",
-    "peculiar-ragdoll/Sharp-Spark-X2.5-4B-GGUF",
-    "empero-ai/Qwen3.8-4B-Distill-GGUF",
-    "empero-ai/Qwen3.8-9B-Distill-GGUF",
-    "empero-ai/Qwen3.8-2B-Distill-GGUF",
-    "ukisai/Swift-Qwen3.8-27B-GGUF",
-    "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
-    "empero-ai/Qwythos-9B-v2-GGUF",
-    "unsloth/Qwen3-VL-235B-A22B-Instruct-GGUF"
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF",
+    "ibm-granite/granite-4.2-8b-GGUF",
+    "ibm-granite/granite-4.2-3b-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
