@@ -6,9 +6,11 @@ The estimator is an estimate for llama.cpp, not a benchmark. The method is writt
 
 ## Local development
 
-Requires Node.js 22.22 or newer.
+Clone the repo, then install and start it. Requires Node.js 22.22 or newer.
 
 ```bash
+git clone https://github.com/nish17/gpufit.git
+cd gpufit
 npm install
 npm run dev
 ```
