@@ -1,12 +1,10 @@
 {
-  "generatedAt": "2026-10-18T21:00:39.009358+00:00",
-  "modelCount": 144,
-  "withRealQuants": 142,
+  "generatedAt": "2026-10-19T04:53:53.865312+00:00",
+  "modelCount": 143,
+  "withRealQuants": 141,
   "attempts": 380,
-  "candidateCount": 523,
-  "newRepoIds": [
-    "ibm-granite/granite-4.2-30b-GGUF"
-  ],
+  "candidateCount": 530,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
