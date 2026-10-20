@@ -1,11 +1,12 @@
 {
-  "generatedAt": "2026-10-20T11:54:22.551102+00:00",
-  "modelCount": 137,
-  "withRealQuants": 135,
+  "generatedAt": "2026-10-20T17:24:07.751411+00:00",
+  "modelCount": 139,
+  "withRealQuants": 137,
   "attempts": 380,
-  "candidateCount": 514,
+  "candidateCount": 520,
   "newRepoIds": [
-    "unsloth/DeepSeek-V4.1-Flash-1017-GGUF"
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
