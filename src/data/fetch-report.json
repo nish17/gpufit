@@ -1,12 +1,11 @@
 {
-  "generatedAt": "2026-10-20T21:50:46.783745+00:00",
-  "modelCount": 141,
-  "withRealQuants": 139,
+  "generatedAt": "2026-10-21T05:04:14.406442+00:00",
+  "modelCount": 142,
+  "withRealQuants": 140,
   "attempts": 380,
-  "candidateCount": 516,
+  "candidateCount": 513,
   "newRepoIds": [
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "ibm-granite/granite-4.2-3b-GGUF"
+    "ibm-granite/granite-4.2-8b-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
