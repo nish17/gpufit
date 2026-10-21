@@ -1,11 +1,12 @@
 {
-  "generatedAt": "2026-10-21T05:04:14.406442+00:00",
-  "modelCount": 142,
-  "withRealQuants": 140,
+  "generatedAt": "2026-10-21T12:02:33.403638+00:00",
+  "modelCount": 137,
+  "withRealQuants": 135,
   "attempts": 380,
-  "candidateCount": 513,
+  "candidateCount": 511,
   "newRepoIds": [
-    "ibm-granite/granite-4.2-8b-GGUF"
+    "unsloth/Ministral-3-3B-Instruct-2512-GGUF",
+    "unsloth/granite-4.0-h-small-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
