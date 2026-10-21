@@ -1,17 +1,18 @@
 {
-  "generatedAt": "2026-10-21T12:02:33.403638+00:00",
-  "modelCount": 137,
-  "withRealQuants": 135,
+  "generatedAt": "2026-10-21T17:28:30.231138+00:00",
+  "modelCount": 140,
+  "withRealQuants": 138,
   "attempts": 380,
-  "candidateCount": 511,
+  "candidateCount": 508,
   "newRepoIds": [
-    "unsloth/Ministral-3-3B-Instruct-2512-GGUF",
-    "unsloth/granite-4.0-h-small-GGUF"
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 257,
+  "ollamaLibraryCount": 258,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
