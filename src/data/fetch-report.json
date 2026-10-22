@@ -1,10 +1,13 @@
 {
-  "generatedAt": "2026-10-22T05:03:49.050663+00:00",
-  "modelCount": 142,
-  "withRealQuants": 140,
+  "generatedAt": "2026-10-22T12:06:38.110747+00:00",
+  "modelCount": 136,
+  "withRealQuants": 134,
   "attempts": 380,
-  "candidateCount": 513,
-  "newRepoIds": [],
+  "candidateCount": 521,
+  "newRepoIds": [
+    "lmstudio-community/Ministral-3-3B-Instruct-2512-GGUF",
+    "unsloth/Qwen3-VL-235B-A22B-Instruct-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
