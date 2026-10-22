@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-22T12:06:38.110747+00:00",
-  "modelCount": 136,
-  "withRealQuants": 134,
+  "generatedAt": "2026-10-22T17:24:30.021508+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 521,
+  "candidateCount": 524,
   "newRepoIds": [
-    "lmstudio-community/Ministral-3-3B-Instruct-2512-GGUF",
-    "unsloth/Qwen3-VL-235B-A22B-Instruct-GGUF"
+    "empero-ai/Qwythos-9B-v2-GGUF",
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
