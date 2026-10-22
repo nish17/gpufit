@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 6291461,
-    "likes": 5248,
+    "likes": 5259,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -245,7 +245,7 @@
     "createdAt": "2026-05-29T11:25:59.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1568868,
-    "likes": 923,
+    "likes": 924,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -434,7 +434,7 @@
     "createdAt": "2026-09-11T23:43:12.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1420082,
-    "likes": 75,
+    "likes": 77,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -525,7 +525,7 @@
     "createdAt": "2026-02-28T14:04:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1350472,
-    "likes": 1016,
+    "likes": 1018,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -721,7 +721,7 @@
     "createdAt": "2026-03-02T05:46:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1251895,
-    "likes": 501,
+    "likes": 502,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -917,7 +917,7 @@
     "createdAt": "2026-04-16T04:31:31.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1248051,
-    "likes": 1708,
+    "likes": 1709,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1113,7 +1113,7 @@
     "createdAt": "2026-09-16T18:58:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1165566,
-    "likes": 229,
+    "likes": 233,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1225,7 +1225,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1080159,
-    "likes": 1245,
+    "likes": 1247,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -1350,7 +1350,7 @@
     "createdAt": "2024-09-17T16:03:26.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 993540,
-    "likes": 87,
+    "likes": 89,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -1511,7 +1511,7 @@
     "createdAt": "2026-02-24T14:48:31.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 963141,
-    "likes": 875,
+    "likes": 877,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1707,7 +1707,7 @@
     "createdAt": "2026-04-01T14:42:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 933850,
-    "likes": 1234,
+    "likes": 1237,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -1889,7 +1889,7 @@
     "createdAt": "2026-08-26T14:21:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 925968,
-    "likes": 492,
+    "likes": 495,
     "weightsEstimated": false,
     "arch": {
       "layers": 45,
@@ -2022,7 +2022,7 @@
     "createdAt": "2026-09-21T22:09:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 914001,
-    "likes": 160,
+    "likes": 161,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -2189,7 +2189,7 @@
     "createdAt": "2025-07-31T10:27:38.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 745022,
-    "likes": 1165,
+    "likes": 1166,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -2594,7 +2594,7 @@
     "createdAt": "2026-09-03T23:54:02.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 654463,
-    "likes": 138,
+    "likes": 141,
     "weightsEstimated": false,
     "arch": {
       "layers": 36,
@@ -2922,7 +2922,7 @@
     "createdAt": "2025-08-05T17:12:17.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 539615,
-    "likes": 885,
+    "likes": 886,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -3076,7 +3076,7 @@
     "createdAt": "2026-08-15T18:08:44.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 537084,
-    "likes": 315,
+    "likes": 316,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -3559,7 +3559,7 @@
     "createdAt": "2026-08-15T18:08:46.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 479617,
-    "likes": 167,
+    "likes": 168,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -3832,7 +3832,7 @@
     "createdAt": "2026-04-22T05:43:37.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 418005,
-    "likes": 968,
+    "likes": 969,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -4153,7 +4153,7 @@
     "createdAt": "2026-06-19T14:32:14.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 403346,
-    "likes": 2880,
+    "likes": 2882,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -7397,7 +7397,7 @@
     "createdAt": "2026-02-03T13:10:01.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 143778,
-    "likes": 890,
+    "likes": 892,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -14045,7 +14045,7 @@
     "createdAt": "2025-01-20T14:59:13.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 32249,
-    "likes": 121,
+    "likes": 122,
     "weightsEstimated": false,
     "arch": {
       "layers": 80,
@@ -14702,7 +14702,7 @@
     "createdAt": "2025-01-20T14:39:44.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 28476,
-    "likes": 141,
+    "likes": 142,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -14799,7 +14799,7 @@
     "createdAt": "2025-01-20T13:09:42.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 27017,
-    "likes": 1120,
+    "likes": 1121,
     "weightsEstimated": false,
     "arch": {
       "layers": 61,
@@ -17549,7 +17549,7 @@
     "createdAt": "2026-10-17T20:36:06.000Z",
     "firstSeen": "2026-10-20",
     "downloads": 18769,
-    "likes": 116,
+    "likes": 120,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
