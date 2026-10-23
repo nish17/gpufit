@@ -1,19 +1,14 @@
 {
-  "generatedAt": "2026-10-22T21:48:25.771215+00:00",
+  "generatedAt": "2026-10-23T05:04:42.010946+00:00",
   "modelCount": 142,
   "withRealQuants": 140,
   "attempts": 380,
-  "candidateCount": 529,
-  "newRepoIds": [
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "ibm-granite/granite-4.2-3b-GGUF",
-    "ibm-granite/granite-4.2-8b-GGUF"
-  ],
+  "candidateCount": 532,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 259,
+  "ollamaLibraryCount": 260,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
