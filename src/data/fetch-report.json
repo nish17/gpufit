@@ -1,10 +1,13 @@
 {
-  "generatedAt": "2026-10-23T05:04:42.010946+00:00",
-  "modelCount": 142,
-  "withRealQuants": 140,
+  "generatedAt": "2026-10-23T11:55:57.690861+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 532,
-  "newRepoIds": [],
+  "candidateCount": 531,
+  "newRepoIds": [
+    "unsloth/Ministral-3-3B-Instruct-2512-GGUF",
+    "unsloth/GLM-4.7-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
