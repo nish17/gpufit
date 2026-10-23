@@ -1,12 +1,16 @@
 {
-  "generatedAt": "2026-10-23T11:55:57.690861+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-10-23T17:24:22.517424+00:00",
+  "modelCount": 144,
+  "withRealQuants": 142,
   "attempts": 380,
-  "candidateCount": 531,
+  "candidateCount": 530,
   "newRepoIds": [
-    "unsloth/Ministral-3-3B-Instruct-2512-GGUF",
-    "unsloth/GLM-4.7-GGUF"
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF",
+    "ibm-granite/granite-4.2-3b-GGUF",
+    "ibm-granite/granite-4.2-8b-GGUF",
+    "unsloth/NVIDIA-Nemotron-3.5-Bolt-E4B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
