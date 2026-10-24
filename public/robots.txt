@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gpufit.dev/sitemap-index.xml
+Sitemap: https://gpufit.tech/sitemap-index.xml

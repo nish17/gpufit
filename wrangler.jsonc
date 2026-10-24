@@ -1,8 +1,23 @@
 {
-  "name": "gpufit",
-  "compatibility_date": "2026-10-17",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": false
-  }
+	"name": "gpufit",
+	"compatibility_date": "2026-10-17",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"enabled": false
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "gpufit",
+			"database_id": "609cd8a1-b59e-4ea5-8c39-41d9395984e8"
+		}
+	],
+	"routes": [
+		{
+			"pattern": "gpufit.tech",
+			"custom_domain": true
+		}
+	]
 }

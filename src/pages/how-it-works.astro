@@ -1,65 +1,108 @@
 ---
 import Base from "../layouts/Base.astro";
-const description = "How GPUfit estimates whether an open model fits in GPU, Apple unified memory, or system RAM, and how fast it will decode.";
+const description = "A short picture of how GPUfit decides whether a model fits, and how fast it might run.";
 ---
 
 <Base title="How GPUfit estimates fit and speed" description={description} path="/how-it-works">
-  <article class="wrap prose" style="padding:2rem 0 1rem; max-width:46rem;">
+  <article class="wrap" style="padding:2rem 0 1rem; max-width:52rem;">
     <p class="kicker">Method</p>
-    <h1>How it works</h1>
-    <p>Every number on GPUfit is an <strong>estimate for llama.cpp-style inference</strong>. It is not a benchmark. The speed line is a range on purpose. If your measured tokens per second disagree, the row on the home page can store that note locally.</p>
+    <h1 class="serif" style="font-size:clamp(2.4rem, 5vw, 3.6rem); margin-bottom:0.4rem;">How it works</h1>
+    <p class="muted" style="max-width:40rem;">Every number is an estimate for llama.cpp, not a benchmark. Open a section to see the picture, then the short explanation.</p>
 
-    <h2>Memory</h2>
-    <p>A model fits when this total stays inside the usable pool:</p>
-    <pre class="cmd">total = weights + KV cache + engine overhead</pre>
-    <p><strong>Weights.</strong> When Hugging Face lists a GGUF file, we use that file’s byte size (split shards are summed once). A file smaller than about 40% of <code>parameters × bits-per-weight / 8</code> is treated as incomplete and ignored, so a stray shard cannot make a huge model look like it fits. The catalog prefers Unsloth, then bartowski, then LM Studio community builds. If no file exists yet, the size is <code>parameters × bits-per-weight / 8</code> and the row is marked estimated. The bits-per-weight table is approximate llama.cpp behavior: Q4_K_M is 4.85, Q5_K_M is 5.7, Q6_K is 6.56, Q8_0 is 8.5, F16 is 16. Those constants live in <code>src/data/quant-meta.json</code> and are shared by the fetcher and the estimator.</p>
-    <p><strong>KV cache.</strong> For ordinary grouped-query attention the cache is FP16:</p>
-    <pre class="cmd">bytes = 2 × layers × KV heads × head dim × 2 × context</pre>
-    <p>The layer count, KV heads, and head dimension come from the model’s <code>config.json</code> (the text config, when a vision model wraps one). Three cases change the formula:</p>
-    <ul>
-      <li><strong>Sliding window and hybrid attention</strong> (Gemma, some Qwen). Only full-attention layers keep the whole context. Sliding layers keep <code>min(context, window)</code>.</li>
-      <li><strong>MLA</strong> (DeepSeek and similar). The cache stores the compressed latent, <code>(kv_lora_rank + qk_rope_head_dim) × 2</code> bytes per layer per token, which is several times smaller than a wide GQA cache.</li>
-      <li><strong>Linear attention / Mamba layers.</strong> Their state does not grow with context. When the config publishes the linear head sizes, state is <code>layers × value heads × value dim × key dim × 2</code> bytes. Otherwise we use a flat 2 MB per linear layer and say so.</li>
-    </ul>
-    <p><strong>Engine overhead.</strong> The verdict uses llama.cpp’s published starting point from VRAM Calculator: 0.3 GB plus 1% of the weights. Ollama is closer to 0.9 GB + 3%, and LM Studio closer to 1 GB + 3%. Those larger engines can push a “tight” fit over the edge. We do not currently switch the verdict per engine.</p>
-    <p><strong>Usable memory.</strong> Device capacity is binary: a “16 GB” GPU is 16 × 1024³ bytes, which is what the driver reports. File sizes are exact bytes and are displayed in that same GiB scale, labeled GB.</p>
-    <ul>
-      <li>Discrete GPU that drives a monitor: subtract 0.5 GB, then leave 5% free.</li>
-      <li>Datacenter and headless cards skip the display reserve. Turn the display checkbox off on the home page if the card is not driving a screen.</li>
-      <li>Apple unified memory, and other unified parts such as Ryzen AI Max: the GPU budget is 75% of RAM, also capped by RAM minus about 5 GB for the OS. The 75% figure is the default documented by soverignplan, not a firmware limit. If the model fits only after that cap is lifted, the verdict is “Raise memory limit”.</li>
-      <li>CPU-only: keep 4 GB plus another 10% for the OS. Bandwidth is the theoretical dual-channel rate, for example DDR5-5600 = 89.6 GB/s.</li>
-    </ul>
+    <div class="method-details">
+      <details open>
+        <summary>Memory: weights, conversation, and a little spare room</summary>
+        <div class="method-grid three" style="margin-top:1rem;">
+          <section class="figure-card">
+            <svg viewBox="0 0 280 150" role="img" aria-label="A large weights block beside a thinner KV block">
+              <rect x="16" y="18" width="248" height="114" rx="16" fill="none" stroke="var(--line)" stroke-width="2" />
+              <rect x="32" y="36" width="168" height="78" rx="8" fill="var(--accent)" opacity="0.9" />
+              <rect x="206" y="36" width="42" height="78" rx="8" fill="var(--tight)" opacity="0.85" />
+              <text x="116" y="80" text-anchor="middle" fill="var(--accent-ink)" font-size="14" font-family="Outfit, sans-serif">Weights</text>
+              <text x="227" y="80" text-anchor="middle" fill="var(--bg)" font-size="11" font-family="Outfit, sans-serif">KV</text>
+            </svg>
+            <h2 class="serif">Weights</h2>
+            <p class="muted">The GGUF file. A smaller quant is a smaller file, and a slightly less faithful model.</p>
+          </section>
+          <section class="figure-card">
+            <svg viewBox="0 0 280 150" role="img" aria-label="Bars growing from 2K to 128K of context">
+              <rect x="24" y="108" width="36" height="18" rx="4" fill="var(--tight)" />
+              <rect x="70" y="86" width="36" height="40" rx="4" fill="var(--tight)" />
+              <rect x="116" y="58" width="36" height="68" rx="4" fill="var(--tight)" />
+              <rect x="162" y="30" width="36" height="96" rx="4" fill="var(--off)" />
+              <text x="42" y="140" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">2K</text>
+              <text x="88" y="140" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">8K</text>
+              <text x="134" y="140" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">32K</text>
+              <text x="180" y="140" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">128K</text>
+            </svg>
+            <h2 class="serif">KV cache</h2>
+            <p class="muted">The conversation’s memory. A model that fits at 8K can miss at 128K.</p>
+          </section>
+          <section class="figure-card">
+            <svg viewBox="0 0 280 150" role="img" aria-label="A memory bar with a small reserved end">
+              <rect x="20" y="48" width="240" height="36" rx="18" fill="var(--bg)" stroke="var(--line)" />
+              <rect x="24" y="52" width="176" height="28" rx="14" fill="var(--accent)" />
+              <rect x="204" y="52" width="28" height="28" rx="8" fill="var(--tight)" />
+              <rect x="236" y="52" width="20" height="28" rx="8" fill="var(--line)" />
+              <text x="112" y="71" text-anchor="middle" fill="var(--accent-ink)" font-size="12" font-family="Outfit, sans-serif">usable</text>
+              <text x="20" y="112" fill="var(--muted)" font-size="12" font-family="Outfit, sans-serif">Display and a little headroom stay free.</text>
+            </svg>
+            <h2 class="serif">Overhead</h2>
+            <p class="muted">llama.cpp needs a little extra. A card driving a monitor cannot give you every byte.</p>
+          </section>
+        </div>
+        <div class="prose">
+          <p>Total memory is weights + KV cache + engine overhead. Real GGUF file sizes win. A file smaller than about 40% of parameters × bits-per-weight / 8 is treated as a stray shard and ignored. Q4_K_M is about 4.85 bits per weight.</p>
+          <p>Ordinary KV cache, in FP16, is <code>2 × layers × KV heads × head dim × 2 × context</code>. Sliding-window layers only keep the window. DeepSeek-style MLA stores a short latent. Linear and Mamba layers keep a fixed state.</p>
+          <p>llama.cpp overhead is 0.3 GB plus 1% of the weights. A discrete GPU that drives a monitor loses 0.5 GB, then 5% more. Apple unified memory, and parts like Ryzen AI Max, budget 75% of RAM for the GPU and always leave about 5 GB for the OS. CPU-only runs keep 4 GB plus 10%.</p>
+        </div>
+      </details>
 
-    <h2>Verdicts</h2>
-    <p>Bands follow llmfit’s documented pool usage, applied to the usable memory above. llmfit is MIT licensed; we use the thresholds, not their code.</p>
-    <ul>
-      <li><strong>Runs great</strong> — at or under 60% of the usable pool.</li>
-      <li><strong>Runs</strong> — at or under 85%.</li>
-      <li><strong>Tight fit</strong> — at or under 98%.</li>
-      <li><strong>Expert offload</strong> — a mixture-of-experts file does not fit, but a rough shared-layer slice does, and system RAM can hold the experts. The split is approximate.</li>
-      <li><strong>Partial offload</strong> — some transformer layers stay on the GPU and the rest sit in system RAM.</li>
-      <li><strong>Runs on CPU</strong> — the device has no discrete GPU.</li>
-      <li><strong>Won’t fit</strong> — even the smallest sensible quant does not fit in GPU memory plus system RAM.</li>
-    </ul>
-    <p>The recommended quant is the highest-quality published file that still leaves at least 4K of context (or the model’s whole context, if that is shorter). Speed is quoted at 8K context when that fits, because quoting the maximum context makes the tokens/sec number look worse than a normal chat.</p>
-    <p>The default list is not “fastest first.” Models that fit fully at about 10 tok/s or faster are ranked by size, with a discount when the only quant that fits is well below Q4. A larger checkpoint outranks a tiny one. Slower full fits come next, then partial offload, then models that will not fit. The three picks at the top are the best general-chat, coding, and reasoning matches in that order.</p>
+      <details open>
+        <summary>The verdict</summary>
+        <section class="figure-card" style="margin-top:1rem;">
+          <svg viewBox="0 0 520 90" role="img" aria-label="A meter marked runs great, runs, tight fit, and won't fit">
+            <rect x="16" y="16" width="488" height="28" rx="14" fill="var(--bg)" stroke="var(--line)" />
+            <rect x="18" y="18" width="280" height="24" rx="12" fill="var(--great)" />
+            <rect x="298" y="18" width="110" height="24" fill="var(--runs)" />
+            <rect x="408" y="18" width="60" height="24" fill="var(--tight)" />
+            <rect x="468" y="18" width="34" height="24" rx="12" fill="var(--bad)" />
+            <text x="150" y="35" text-anchor="middle" fill="var(--accent-ink)" font-size="12" font-family="Outfit, sans-serif">Runs great</text>
+            <text x="350" y="35" text-anchor="middle" fill="var(--bg)" font-size="12" font-family="Outfit, sans-serif">Runs</text>
+            <text x="438" y="35" text-anchor="middle" fill="var(--bg)" font-size="11" font-family="Outfit, sans-serif">Tight</text>
+            <text x="16" y="72" fill="var(--muted)" font-size="13" font-family="Outfit, sans-serif">Under 60% feels comfortable. Past 98%, it does not fit.</text>
+          </svg>
+        </section>
+        <div class="prose">
+          <p>We pick the best quant that still leaves room for a normal chat. Runs great is at or under 60% of the usable pool, Runs is 85%, and Tight fit is 98%. If the whole file will not fit, some layers can sit in system RAM. That is slower, and the page says so.</p>
+          <p>The home page leads with models that fit fully at about 10 tokens per second or faster, largest first, with a discount when the only quant that fits is well below Q4. The three cards are the best general-chat, coding, and reasoning matches.</p>
+        </div>
+      </details>
 
-    <h2>Speed</h2>
-    <p>Decode reads the active weights and the KV cache for the current context on every token:</p>
-    <pre class="cmd">tok/s ≈ utilization × bandwidth / (active weights + KV at that context)</pre>
-    <p>Utilization is shown from 0.55 to 0.75 of the vendor’s peak bandwidth. Ridgepoint measured about 0.61 on vLLM; 0.65 is the middle of our range. Mixture-of-experts models use <code>active / total</code> of the file for the bandwidth read, while <em>memory</em> still counts the whole file, because every expert has to be stored. If layers spill to RAM, time is GPU bytes over GPU bandwidth plus CPU bytes over RAM bandwidth.</p>
-    <p>Prefill, speculative decoding, concurrent requests, and KV-cache quantization are not in this version. Multi-GPU is not modeled; pick one card.</p>
+      <details open>
+        <summary>The speed</summary>
+        <section class="figure-card" style="margin-top:1rem; max-width:24rem;">
+          <svg viewBox="0 0 280 110" role="img" aria-label="Memory bandwidth pouring into a token">
+            <rect x="16" y="28" width="90" height="48" rx="10" fill="var(--accent)" />
+            <text x="61" y="57" text-anchor="middle" fill="var(--accent-ink)" font-size="13" font-family="Outfit, sans-serif">RAM</text>
+            <path d="M112 52h70" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" />
+            <path d="M170 44l16 8-16 8" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" />
+            <circle cx="220" cy="52" r="28" fill="none" stroke="var(--tight)" stroke-width="3" />
+            <text x="220" y="57" text-anchor="middle" fill="var(--ink)" font-size="13" font-family="Outfit, sans-serif">tok</text>
+          </svg>
+        </section>
+        <div class="prose">
+          <p>Each token rereads the weights. A wider memory bus finishes that read sooner. The range is 55–75% of the card’s peak, not a benchmark. Treat “20–30 tok/s” as a ceiling, not a promise. Prefill, speculative decoding, KV-cache quantization, and multi-GPU are not modeled.</p>
+        </div>
+      </details>
 
-    <h2>Where the data comes from</h2>
-    <ul>
-      <li>Model list, parameter counts, and GGUF sizes: the public Hugging Face API. A token is optional and only raises rate limits. See <code>scripts/fetch_models.py</code>.</li>
-      <li>Architecture: each base model’s <code>config.json</code>.</li>
-      <li>Ollama names: one gentle fetch of the public library HTML, used only to print <code>ollama run &lt;name&gt;</code>. If the page shape changes, the command is omitted.</li>
-      <li>Hardware: a hand-checked table in <code>src/data/hardware.json</code>, generated from <code>scripts/hardware_catalog.py</code>. Each row has a source URL. NVIDIA 50-series bandwidths are from NVIDIA’s compare table. Apple M4 and M5 figures are from Apple’s newsroom and MacBook Pro specs. CPU bandwidths are computed from the transfer rate. We do not scrape TechPowerUp.</li>
-    </ul>
-    <p>The scheduled job is <code>.github/workflows/model-watcher.yml</code>. It reruns the fetch every six hours and commits <code>models.json</code> when the catalog changes. A model is “new” when its repo was not in the previous file. The published list keeps known model families from trusted quantizers and labs, plus community uploads with enough downloads and likes. Uncensored and other fine-tune names are dropped, and QAT or dated copies of the same checkpoint collapse to one row. Diffusion, embedding, and speech repos are dropped as well.</p>
-
-    <h2>What is not calibrated yet</h2>
-    <p>There is no fitted correction from llama-bench. The home page can remember a speed you type, in this browser only. Publishing those measurements, and comparing them with the LocalLLaMA explorer dataset (CC-BY-4.0), is future work. Until then, treat a “20–30 tok/s” line as a bandwidth ceiling, not a promise.</p>
+      <details>
+        <summary>Where the numbers come from</summary>
+        <div class="prose">
+          <p>Model sizes and configs come from the public Hugging Face API. Hardware is a hand-checked table, one source link per row, including NVIDIA’s compare page and Apple’s specs. Ollama commands use the public library name when it matches. A job refreshes the catalog every six hours and drops fine-tunes and duplicate variants.</p>
+          <p>Nothing here is fitted to llama-bench yet. A speed you type on the home page stays in this browser.</p>
+        </div>
+      </details>
+    </div>
   </article>
 </Base>

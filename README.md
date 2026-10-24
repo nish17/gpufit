@@ -49,34 +49,37 @@ npx wrangler deploy
 
 `npm run build` prerenders the HTML with Node (so the build does not need a live D1 database). The worker only has to serve those assets and the `/api/alerts` routes.
 
-Set the public origin at build time if it is not `https://gpufit.dev`:
+The public site is `https://gpufit.tech`. `npm run build` uses that origin unless `SITE_URL` is set:
 
 ```bash
-SITE_URL=https://your-domain.example npm run build
+SITE_URL=https://gpufit.tech npm run build
 ```
 
-Canonical URLs, the sitemap, and `public/robots.txt` assume `https://gpufit.dev` until you change them. That domain was a candidate when this was written; confirm it is available before buying it.
+`wrangler.jsonc` attaches `gpufit.tech` as a Worker custom domain on deploy. The domain has to be on the same Cloudflare account or that step fails.
 
 ### Scheduled catalog refresh
 
-`.github/workflows/model-watcher.yml` runs `scripts/fetch_models.py` every six hours and pushes `src/data/models.json` when it changes. Give the workflow a `HF_TOKEN` secret if you start hitting Hub rate limits. The default `GITHUB_TOKEN` needs permission to push to the default branch; branch protection that blocks bot pushes should be switched to a pull-request step instead.
+`.github/workflows/model-watcher.yml` runs `scripts/fetch_models.py` every six hours and pushes `src/data/models.json` when it changes. It then mails confirmed subscribers about newly tracked models that fit, and deploys the site when the catalog changed. Both of those steps do nothing until the GitHub Actions secrets below are set. Give the workflow a `HF_TOKEN` secret if you start hitting Hub rate limits. The default `GITHUB_TOKEN` needs permission to push to the default branch; branch protection that blocks bot pushes should be switched to a pull-request step instead.
 
-Cloudflare cron is a poor fit for this job: the fetch has to commit JSON back to the repo so the static pages rebuild. Keep the scheduler on GitHub Actions.
+Runs of that workflow are serialized. A new schedule waits for the previous run instead of canceling it, so a catalog push or a fit email is not cut off halfway.
+
+Cloudflare cron is a poor fit for the fetch: it has to commit JSON back to the repo so the static pages rebuild. Keep the scheduler on GitHub Actions.
 
 ## Accounts and secrets
 
-Nothing below is created for you. The site builds and the estimator runs with no accounts. Real alert email needs the first three.
+The site builds and the estimator runs with no accounts. Real alert email needs Resend, D1, and the secrets below on both the Worker and the GitHub Action.
 
 | Secret or account | Required for | Notes |
 | --- | --- | --- |
-| Cloudflare account | Hosting | Workers + static assets. Free tier holds the first few thousand pages; the Workers Paid plan ($5/month) raises the file cap. |
-| Domain | Public URL | Register it yourself (Cloudflare Registrar is fine). Point it at the worker. |
-| `HF_TOKEN` | Optional | Hugging Face read token. The fetcher works anonymously. |
-| `RESEND_API_KEY` | Alert email | [Resend](https://resend.com). Free tier is 100 emails/day. |
-| `ALERT_FROM` | Alert email | A sender on a domain you have verified in Resend, for example `GPUfit <alerts@gpufit.dev>`. |
-| `ALERT_TOKEN_SECRET` | Alert links | Long random string. Signs confirm and unsubscribe links. The dev default `dev-only-change-me` must not be used in production. |
-| Cloudflare D1 database | Alert storage | Create a database named `gpufit`, add a `DB` binding in `wrangler.jsonc`, then `npx wrangler d1 execute gpufit --file=schema/subscribers.sql`. |
-| `SITE_URL` | Canonical links | Build-time origin. Defaults to `https://gpufit.dev`. |
+| Cloudflare account | Hosting and D1 | Workers + static assets. Free tier holds the first few thousand pages; the Workers Paid plan ($5/month) raises the file cap. |
+| `gpufit.tech` | Public URL | Attach it to the Worker. `wrangler.jsonc` already has the custom domain route. |
+| `HF_TOKEN` | Optional | Hugging Face read token. The fetcher works anonymously. GitHub Actions secret for the catalog job. |
+| `RESEND_API_KEY` | Alert email | [Resend](https://resend.com). Worker secret for confirmations, and a GitHub Actions secret for new-model mail. Verify `gpufit.tech` (DKIM, SPF, and a DMARC record) before sending from it. |
+| `ALERT_FROM` | Alert email | `GPUfit <alerts@gpufit.tech>`, after that domain is verified in Resend. Set it on the Worker and on the GitHub Action. |
+| `ALERT_TOKEN_SECRET` | Alert links | Long random string. Signs confirm and unsubscribe links. The same value has to be on the Worker and the GitHub Action. The dev default `dev-only-change-me` must not be used in production. |
+| `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` | Fit mail and deploy | GitHub Actions only. The token needs D1 edit and Workers deploy. |
+| Cloudflare D1 database | Alert storage | Binding `DB` is already in `wrangler.jsonc`. Apply `schema/subscribers.sql` (subscribers and `alert_sends`) with `npx wrangler d1 execute gpufit --remote --file=schema/subscribers.sql`. |
+| `SITE_URL` | Canonical links | Build-time origin. Defaults to `https://gpufit.tech`. |
 
 Copy `.env.example` to `.env` for local overrides. `.env` is gitignored.
 
@@ -100,8 +103,7 @@ Real in this repo:
 
 Stubbed or local-only:
 
-- Alert email. The Resend + D1 code path is implemented and unused until the env vars and binding exist. Bindings are read from `cloudflare:workers` `env` (`DB`), not `Astro.locals.runtime`. `astro dev` runs the route inside workerd, which does not keep a file store between requests, so the form saves the signup in `localStorage` and shows a signed confirmation link. A Node process (the dry-run matcher) still reads `data/subscribers.json`. A deployment without those secrets does not store the address on the server.
-- No double-opt-in email is actually delivered here, because no Resend account was created.
+- Alert email is implemented and waits on the secrets above. Confirmations go out from the Worker. New-model notes go out from `npm run alerts:match -- --send` (the GitHub Action runs that against D1). `npm run alerts:match` with no flag only prints who would be mailed, using `data/subscribers.json`. `astro dev` runs the signup route inside workerd, which does not keep a file store between requests, so the form saves the signup in `localStorage` and shows a signed confirmation link. The “also send a weekly digest” checkbox is stored and does not send a second email.
 - Speed calibration. A “my measured tok/s” box stores the number in `localStorage` only.
 - No accounts, no multi-GPU, no KV-cache quantization, no prefill / time-to-first-token, no affiliate or “rent a GPU” box.
 - Ollama tags are the library name (`ollama run qwen3`), not a pinned quant tag. The library page is HTML and the parser fails soft.
@@ -114,5 +116,5 @@ Stubbed or local-only:
 - `src/data/hardware.json`, `src/data/models.json` — catalogs the site builds from
 - `scripts/fetch_models.py` — Hugging Face pull
 - `scripts/hardware_catalog.py` — device table
-- `scripts/match-alerts.ts` — dry-run alert matcher
-- `schema/subscribers.sql` — D1 schema
+- `scripts/match-alerts.ts` — new-model alert mailer (dry run unless `--send`)
+- `schema/subscribers.sql` — D1 schema, including `alert_sends`

@@ -1,9 +1,10 @@
 import { freshModels, modelPath, updatedLabel } from "../lib/catalog";
 import { formatParams } from "../lib/estimator";
 import { rssDocument } from "../lib/rss";
+import { DEFAULT_SITE } from "../lib/site";
 
 export function GET({ site }) {
-  const origin = site?.toString().replace(/\/$/, "") || "https://gpufit.dev";
+  const origin = site?.toString().replace(/\/$/, "") || DEFAULT_SITE;
   const items = freshModels(21).slice(0, 30).map((model) => ({
     title: model.name,
     link: `${origin}${modelPath(model)}`,

@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { deviceKindPath, devices, fitDevice, freshModels, getDevice } from "../../../lib/catalog";
 import { formatTokRange } from "../../../lib/estimator";
 import { rssDocument } from "../../../lib/rss";
+import { DEFAULT_SITE } from "../../../lib/site";
 
 export function getStaticPaths() {
   return devices.map((device) => ({
@@ -14,7 +15,7 @@ export const GET: APIRoute = ({ site, params }) => {
   if (!device || deviceKindPath(device) !== params.kind) {
     return new Response("Not found", { status: 404 });
   }
-  const origin = site?.toString().replace(/\/$/, "") || "https://gpufit.dev";
+  const origin = site?.toString().replace(/\/$/, "") || DEFAULT_SITE;
   const items = freshModels(30).slice(0, 15).map((model) => {
     const fit = fitDevice(model, device);
     return {

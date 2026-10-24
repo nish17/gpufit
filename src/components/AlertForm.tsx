@@ -28,7 +28,7 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
       }
       if (body.provider === "unconfigured") {
         setStatus("done");
-        setMessage("This deployment has no Resend key, so the signup stayed in this browser. The production path sends a confirmation email and stores the profile in D1.");
+        setMessage("Saved in this browser. Email alerts are not switched on for this site yet, so nothing will be sent.");
         return;
       }
       if (!response.ok || body.ok === false) {

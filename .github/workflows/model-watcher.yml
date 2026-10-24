@@ -9,6 +9,12 @@ on:
 permissions:
   contents: write
 
+# One run at a time. Canceling a run that has already accepted mail, or that is
+# mid-push, can send the same alert twice or drop a catalog commit.
+concurrency:
+  group: model-watcher
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -23,8 +29,10 @@ jobs:
           HF_REFRESH: "1"
         run: python3 scripts/fetch_models.py
       - name: Commit catalog changes
+        id: catalog
         run: |
           if git diff --quiet -- src/data/models.json src/data/fetch-report.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No catalog changes"
             exit 0
           fi
@@ -33,3 +41,37 @@ jobs:
           git add src/data/models.json src/data/fetch-report.json
           git commit -m "data: refresh model catalog"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.3"
+          cache: npm
+      - run: npm ci
+      - name: Mail subscribers about new fits
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_FROM: ${{ secrets.ALERT_FROM }}
+          ALERT_TOKEN_SECRET: ${{ secrets.ALERT_TOKEN_SECRET }}
+          SITE_URL: https://gpufit.tech
+          ALERTS_SOURCE: d1
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$RESEND_API_KEY" ] || [ -z "$ALERT_FROM" ] || [ -z "$ALERT_TOKEN_SECRET" ] || [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "Fit mail skipped. Add RESEND_API_KEY, ALERT_FROM, ALERT_TOKEN_SECRET, CLOUDFLARE_API_TOKEN, and CLOUDFLARE_ACCOUNT_ID."
+            exit 0
+          fi
+          npx tsx scripts/match-alerts.ts --send
+      - name: Deploy when the catalog changed
+        if: always() && steps.catalog.outputs.changed == 'true' && steps.catalog.conclusion == 'success'
+        env:
+          SITE_URL: https://gpufit.tech
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "Deploy skipped. Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID."
+            exit 0
+          fi
+          npm run build
+          npx wrangler deploy

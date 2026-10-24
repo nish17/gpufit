@@ -12,16 +12,15 @@ const description = "Get an email when a newly tracked open model fits the machi
   <article class="wrap" style="padding:2rem 0 1rem; max-width:40rem;">
     <p class="kicker">Alerts</p>
     <h1 class="serif" style="font-size:clamp(2.2rem, 5vw, 3.4rem);">Email me when a new model fits.</h1>
-    <p class="muted">The form uses whatever machine is saved in this browser. If you have not picked one, it starts from an RTX 4060 Ti 16GB — change that on the <a href="/">home page</a> first. Nothing is mailed until you confirm.</p>
+    <p class="muted">The form uses whatever machine is saved in this browser. If you have not picked one, it starts from an RTX 4060 Ti 16GB. Change that on the <a href="/">home page</a> first.</p>
     <div class="card" style="padding:1rem 1.1rem;">
       <SavedAlertForm client:load fallback={defaultProfile(device)} fallbackName={device.name} />
     </div>
-    <h2 class="serif">What has to exist before this sends real mail</h2>
+    <h2 class="serif">What you get</h2>
     <ul class="muted">
-      <li><code>RESEND_API_KEY</code> and <code>ALERT_FROM</code> (a verified Resend sender).</li>
-      <li><code>ALERT_TOKEN_SECRET</code> for the confirmation links.</li>
-      <li>A Cloudflare D1 database bound as <code>DB</code>. Schema: <code>schema/subscribers.sql</code>.</li>
+      <li>One confirmation email before anything else is sent.</li>
+      <li>A note when a newly tracked model fits that machine.</li>
+      <li>An unsubscribe link in every message. No account and no password.</li>
     </ul>
-    <p class="muted">Without those, local dev writes <code>data/subscribers.json</code> and shows the confirmation link on the page. See the README.</p>
   </article>
 </Base>

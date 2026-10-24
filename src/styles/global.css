@@ -147,6 +147,49 @@ a { color: inherit; }
   background: transparent;
   cursor: pointer;
   font: inherit;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.theme-btn svg { width: 1.15rem; height: 1.15rem; }
+.icon-sun, .icon-moon { display: none; }
+html:not(.dark) .icon-moon { display: block; }
+html.dark .icon-sun { display: block; }
+
+.method-grid {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.2rem 0 0.4rem;
+}
+@media (min-width: 800px) {
+  .method-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .method-grid.two { grid-template-columns: 1.3fr 0.7fr; }
+}
+.figure-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  padding: 0.85rem 0.95rem 1rem;
+}
+.figure-card svg { width: 100%; height: auto; display: block; }
+.figure-card h2 { margin: 0.55rem 0 0.2rem; font-size: 1.25rem; }
+.figure-card p { margin: 0; }
+.method-details {
+  margin-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.2rem;
+}
+.method-details details {
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem 0;
+}
+.method-details summary {
+  cursor: pointer;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--ink);
 }
 
 .card {
@@ -297,3 +340,37 @@ table.data th { color: var(--muted); font-weight: 500; font-size: 0.78rem; lette
   .nav-links a:not(.keep) { display: none; }
   .hide-sm { display: none !important; }
 }
+
+/* Safari hides children of display:contents custom elements, which blanks the app. */
+astro-island {
+  display: block;
+}
+
+.vendor-mark {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.7rem;
+  display: grid;
+  place-items: center;
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 600;
+  color: white;
+  flex: none;
+}
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 0.55rem;
+  margin: 0.8rem 0 0;
+}
+.device-card {
+  display: block;
+  text-decoration: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  padding: 0.7rem 0.8rem;
+}
+.device-card:hover { border-color: var(--accent); }
+.device-card b { display: block; color: var(--ink); font-weight: 600; }
+.device-card span { color: var(--muted); font-size: 0.85rem; }

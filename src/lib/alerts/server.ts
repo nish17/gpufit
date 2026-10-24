@@ -108,7 +108,7 @@ export function validateSignup(input: {
 }
 
 async function confirmationEmail(env: AlertEnv, signup: AlertSignup, confirmUrl: string, unsubUrl: string) {
-  const from = env.ALERT_FROM || "GPUfit <alerts@example.com>";
+  const from = env.ALERT_FROM || "GPUfit <alerts@gpufit.tech>";
   const apiKey = env.RESEND_API_KEY;
   if (!apiKey) return;
   const response = await fetch("https://api.resend.com/emails", {
@@ -184,7 +184,7 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
       return {
         ok: true as const,
         provider: "browser" as const,
-        message: "Saved in this browser. No email was sent — local dev has no Resend key, and the worker sandbox does not keep a file store.",
+        message: "Saved in this browser. Email is not switched on for this site yet, so nothing was sent.",
         devConfirmUrl: confirmUrl,
       };
     }
@@ -197,8 +197,8 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
       provider: backend,
       message:
         backend === "file"
-          ? "Saved locally. No email was sent — this dev server is using the file store instead of Resend."
-          : "Saved in this dev server's memory. No email was sent. A restart clears it.",
+          ? "Saved on this computer. No email was sent."
+          : "Saved for this session. No email was sent, and a restart clears it.",
       devConfirmUrl: confirmUrl,
     };
   }
@@ -206,7 +206,7 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
   return {
     ok: false as const,
     provider: "unconfigured" as const,
-    message: "Alerts are not configured on this deployment yet. Set RESEND_API_KEY and the D1 binding DB.",
+    message: "Email alerts are not switched on for this site yet. The signup stayed in this browser.",
   };
 }
 
@@ -219,7 +219,7 @@ export async function confirmAlert(token: string, env: AlertEnv) {
     return { ok: true as const, message: `Alerts confirmed for ${payload.email}.` };
   }
   if (!import.meta.env.DEV) {
-    return { ok: false as const, message: "Alerts are not configured on this deployment yet." };
+    return { ok: false as const, message: "Email alerts are not switched on for this site yet." };
   }
   const { rows } = await readDevStore();
   const row = rows.find((item) => item.id === idFor(payload.email, payload.deviceId));
@@ -242,7 +242,7 @@ export async function unsubscribeAlert(token: string, env: AlertEnv) {
     return { ok: true as const, message: `${payload.email} will not get further alerts for that machine.` };
   }
   if (!import.meta.env.DEV) {
-    return { ok: false as const, message: "Alerts are not configured on this deployment yet." };
+    return { ok: false as const, message: "Email alerts are not switched on for this site yet." };
   }
   const { rows } = await readDevStore();
   await writeDevStore(rows.filter((item) => item.id !== idFor(payload.email, payload.deviceId)));

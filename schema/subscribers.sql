@@ -15,3 +15,12 @@ CREATE TABLE IF NOT EXISTS subscribers (
 );
 
 CREATE INDEX IF NOT EXISTS subscribers_confirmed ON subscribers (confirmed);
+
+-- One row per subscriber and model after a fit email is accepted.
+-- The matcher uses this to avoid sending the same model twice.
+CREATE TABLE IF NOT EXISTS alert_sends (
+  subscriber_id TEXT NOT NULL,
+  model_id TEXT NOT NULL,
+  sent_at TEXT NOT NULL,
+  PRIMARY KEY (subscriber_id, model_id)
+);

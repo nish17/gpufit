@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { DEFAULT_SITE } from "../lib/site";
 
 interface Props {
   title: string;
@@ -7,7 +8,7 @@ interface Props {
   path?: string;
 }
 const { title, description, path = Astro.url.pathname } = Astro.props;
-const site = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.dev";
+const site = Astro.site?.toString().replace(/\/$/, "") || DEFAULT_SITE;
 const canonical = new URL(path, site).toString();
 ---
 
@@ -50,7 +51,15 @@ const canonical = new URL(path, site).toString();
           <a href="/devices">Devices</a>
           <a href="/how-it-works">How it works</a>
           <a class="keep" href="/alerts">Alerts</a>
-          <button class="theme-btn" type="button" id="theme-toggle" aria-label="Toggle color theme">Theme</button>
+          <button class="theme-btn" type="button" id="theme-toggle" aria-label="Switch to dark mode">
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            </svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5 4.9 19.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+          </button>
         </nav>
       </div>
     </header>
@@ -68,11 +77,19 @@ const canonical = new URL(path, site).toString();
       </div>
     </footer>
     <script is:inline>
+      function syncThemeButton() {
+        var button = document.getElementById("theme-toggle");
+        if (!button) return;
+        var dark = document.documentElement.classList.contains("dark");
+        button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+      syncThemeButton();
       document.getElementById("theme-toggle")?.addEventListener("click", function () {
         var root = document.documentElement;
         var next = root.classList.contains("dark") ? "light" : "dark";
         root.classList.toggle("dark", next === "dark");
         try { localStorage.setItem("gpufit.theme", next); } catch (e) {}
+        syncThemeButton();
       });
       document.addEventListener("click", function (event) {
         var button = event.target.closest("[data-copy]");

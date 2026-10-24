@@ -46,7 +46,7 @@ REPORT_PATH = DATA / "fetch-report.json"
 
 TARGET = int(os.environ.get("MAX_MODELS", "210"))
 MAX_ATTEMPTS = int(os.environ.get("MAX_ATTEMPTS", "380"))
-UA = "GPUfit/1.0 (catalog builder; +https://gpufit.dev)"
+UA = "GPUfit/1.0 (catalog builder; +https://gpufit.tech)"
 _CACHE_LOCK = threading.Lock()
 
 AUTHOR_PRIORITY = {

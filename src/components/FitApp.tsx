@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { devices, isSeoPair, models } from "../lib/catalog";
+import { hintSlug, webglRenderer } from "../lib/gpu-hint";
 import { estimate, formatContext, formatParams, formatTokRange } from "../lib/estimator";
 import { bestPicks, compareForMachine } from "../lib/ranking";
 import type { DeviceSpec, FitResult, ModelSpec, VerdictId } from "../lib/estimator/types";
@@ -34,6 +35,10 @@ function findDevice(id: string): DeviceSpec {
 }
 
 export default function FitApp() {
+  return <FitAppInner />;
+}
+
+function FitAppInner() {
   const [profile, setProfile] = useState<Profile>(() => defaultProfile(findDevice("rtx-4060-ti-16gb")));
   const [saved, setSaved] = useState(false);
   const [hint, setHint] = useState("");
@@ -101,25 +106,31 @@ export default function FitApp() {
 
   async function detect() {
     setHint("");
-    const gpu = (navigator as Navigator & { gpu?: { requestAdapter: () => Promise<{ info?: { vendor?: string; architecture?: string; device?: string; description?: string }; requestAdapterInfo?: () => Promise<{ description?: string; vendor?: string; device?: string }> } | null> } }).gpu;
-    if (!gpu) {
-      setHint("This browser did not expose WebGPU. Pick the card yourself — VRAM is never reported here.");
+    const parts: string[] = [];
+    try {
+      const gpu = (navigator as Navigator & { gpu?: { requestAdapter: (options?: { powerPreference?: string }) => Promise<{ info?: { vendor?: string; architecture?: string; device?: string; description?: string }; requestAdapterInfo?: () => Promise<{ description?: string; vendor?: string; device?: string }> } | null> } }).gpu;
+      if (gpu) {
+        const adapter = await gpu.requestAdapter({ powerPreference: "high-performance" });
+        const info = adapter?.info ?? (await adapter?.requestAdapterInfo?.());
+        parts.push(info?.vendor ?? "", info?.device ?? "", info?.description ?? "", info?.architecture ?? "");
+      }
+    } catch {
+      // WebGPU can refuse the name. WebGL below is the useful fallback.
+    }
+    parts.push(webglRenderer());
+    const slug = hintSlug(parts.join(" "));
+    const match = slug ? devices.find((item) => item.slug === slug) : undefined;
+    if (!match) {
+      const mac = /mac os|macintosh/i.test(navigator.userAgent);
+      setHint(
+        mac
+          ? "This looks like a Mac, but the chip name was hidden. Pick an M-series chip from the list. Browsers never report memory size."
+          : "This browser hid the graphics chip name, so nothing was selected. Pick the card from the list. VRAM is never included.",
+      );
       return;
     }
-    try {
-      const adapter = await gpu.requestAdapter();
-      const info = adapter?.info ?? (await adapter?.requestAdapterInfo?.());
-      const text = `${info?.vendor ?? ""} ${info?.device ?? ""} ${info?.description ?? ""} ${info?.architecture ?? ""}`.toLowerCase();
-      const match = hintMatch(text);
-      if (!match) {
-        setHint(`Saw “${text.trim() || "an unknown adapter"}”, but it did not match the list. VRAM is not included in that string.`);
-        return;
-      }
-      selectDevice(match);
-      setHint(`Pre-selected ${match.name}. Browsers do not report VRAM, so confirm the memory size.`);
-    } catch {
-      setHint("GPU detection was blocked. Pick the card from the list.");
-    }
+    selectDevice(match);
+    setHint(`Pre-selected ${match.name}. Browsers do not report memory size, so confirm it.`);
   }
 
   const picker = (
@@ -414,47 +425,3 @@ function inGroup(device: DeviceSpec, vendor: string): boolean {
   return device.vendor === vendor && device.kind === "gpu";
 }
 
-function hintMatch(text: string): DeviceSpec | null {
-  const rules: [RegExp, string][] = [
-    [/5090/, "rtx-5090"],
-    [/5080/, "rtx-5080"],
-    [/5070\s*ti/, "rtx-5070-ti"],
-    [/5070/, "rtx-5070"],
-    [/5060\s*ti/, "rtx-5060-ti-16gb"],
-    [/5060/, "rtx-5060"],
-    [/4090/, "rtx-4090"],
-    [/4080\s*super/, "rtx-4080-super"],
-    [/4080/, "rtx-4080"],
-    [/4070\s*ti\s*super/, "rtx-4070-ti-super"],
-    [/4070\s*ti/, "rtx-4070-ti"],
-    [/4070\s*super/, "rtx-4070-super"],
-    [/4070/, "rtx-4070"],
-    [/4060\s*ti/, "rtx-4060-ti-16gb"],
-    [/4060/, "rtx-4060"],
-    [/3090\s*ti/, "rtx-3090-ti"],
-    [/3090/, "rtx-3090"],
-    [/3080\s*ti/, "rtx-3080-ti"],
-    [/3080/, "rtx-3080-10gb"],
-    [/3070\s*ti/, "rtx-3070-ti"],
-    [/3070/, "rtx-3070"],
-    [/3060\s*ti/, "rtx-3060-ti"],
-    [/3060/, "rtx-3060-12gb"],
-    [/7900\s*xtx/, "rx-7900-xtx"],
-    [/7800\s*xt/, "rx-7800-xt"],
-    [/9070\s*xt/, "rx-9070-xt"],
-    [/b580/, "arc-b580"],
-    [/a770/, "arc-a770-16gb"],
-    [/m5 max/, "m5-max-40gpu"],
-    [/m5 pro/, "m5-pro"],
-    [/m4 max/, "m4-max-40gpu"],
-    [/m4 pro/, "m4-pro"],
-    [/m3 max/, "m3-max-40gpu"],
-    [/m3 pro/, "m3-pro"],
-    [/m2 max/, "m2-max"],
-    [/m1 max/, "m1-max"],
-  ];
-  for (const [pattern, slug] of rules) {
-    if (pattern.test(text)) return devices.find((device) => device.slug === slug) ?? null;
-  }
-  return null;
-}
