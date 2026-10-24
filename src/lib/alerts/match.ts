@@ -1,5 +1,6 @@
 import { estimate } from "../estimator/estimate";
-import type { DeviceSpec, ModelSpec } from "../estimator/types";
+import type { DeviceSpec, ModelSpec, VerdictId } from "../estimator/types";
+import { emailShell, fitRowsHtml } from "./email";
 
 const DAY_MS = 86_400_000;
 
@@ -23,6 +24,7 @@ export interface SentAlert {
 export interface PlannedHit {
   model: ModelSpec;
   label: string;
+  verdict: VerdictId;
   quantId: string | null;
   tokPerSec: [number, number] | null;
 }
@@ -74,6 +76,7 @@ export function planAlertMails(input: {
       hits.push({
         model,
         label: fit.label,
+        verdict: fit.verdict,
         quantId: fit.quant?.id ?? null,
         tokPerSec: fit.tokPerSec,
         bucket: fit.bucket,
@@ -89,19 +92,27 @@ export function planAlertMails(input: {
     mails.push({
       subscriber,
       deviceName: device.name,
-      hits: kept.map(({ model, label, quantId, tokPerSec }) => ({ model, label, quantId, tokPerSec })),
+      hits: kept.map(({ model, label, verdict, quantId, tokPerSec }) => ({ model, label, verdict, quantId, tokPerSec })),
     });
   }
   return mails;
 }
 
-export function renderFitMail(mail: PlannedMail, origin: string, unsubscribeUrl: string): { subject: string; text: string } {
+function hitDetail(hit: PlannedHit): string {
+  const parts = [hit.quantId, hit.tokPerSec ? `about ${Math.round(hit.tokPerSec[0])}–${Math.round(hit.tokPerSec[1])} tok/s` : null].filter(
+    (part): part is string => Boolean(part),
+  );
+  return parts.join(" · ");
+}
+
+export function renderFitMail(mail: PlannedMail, origin: string, unsubscribeUrl: string): { subject: string; text: string; html: string } {
   const count = mail.hits.length;
+  const site = origin.replace(/\/$/, "");
   const subject = count === 1 ? `A new model fits your ${mail.deviceName}` : `${count} new models fit your ${mail.deviceName}`;
   const lines = mail.hits.map((hit) => {
     const quant = hit.quantId ? `, ${hit.quantId}` : "";
     const speed = hit.tokPerSec ? `, about ${Math.round(hit.tokPerSec[0])}–${Math.round(hit.tokPerSec[1])} tok/s` : "";
-    return `${hit.model.name} — ${hit.label}${quant}${speed}\n${origin}/models/${hit.model.slug}`;
+    return `${hit.model.name} — ${hit.label}${quant}${speed}\n${site}/models/${hit.model.slug}`;
   });
   const text = [
     `Newly tracked models that fit a ${mail.deviceName}:`,
@@ -113,5 +124,22 @@ export function renderFitMail(mail: PlannedMail, origin: string, unsubscribeUrl:
     `Unsubscribe:\n${unsubscribeUrl}`,
     "",
   ].join("\n");
-  return { subject, text };
+  const headline = count === 1 ? `A new model fits your ${mail.deviceName}` : `${count} new models fit your ${mail.deviceName}`;
+  const html = emailShell({
+    origin: site,
+    preheader: headline,
+    headline,
+    intro: `Newly tracked models that fit a ${mail.deviceName}. This is an estimate for llama.cpp, not a benchmark.`,
+    bodyHtml: fitRowsHtml(
+      mail.hits.map((hit) => ({
+        name: hit.model.name,
+        href: `${site}/models/${encodeURIComponent(hit.model.slug)}`,
+        label: hit.label,
+        verdict: hit.verdict,
+        detail: hitDetail(hit) || "Open the page for the quant and speed.",
+      })),
+    ),
+    unsubscribeUrl,
+  });
+  return { subject, text, html };
 }

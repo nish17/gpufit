@@ -140,5 +140,27 @@ describe("renderFitMail", () => {
     expect(rendered.text).toContain("Model 7B");
     expect(rendered.text).toContain("https://gpufit.tech/models/model-7b");
     expect(rendered.text).toContain("https://gpufit.tech/alerts/unsubscribe?token=abc");
+    expect(rendered.html).toContain("#f4f1ea");
+    expect(rendered.html).toContain("#0d6b4c");
+    expect(rendered.html).toContain("Model 7B");
+    expect(rendered.html).toContain("https://gpufit.tech/models/model-7b");
+    expect(rendered.html).toContain("https://gpufit.tech/alerts/unsubscribe?token=abc");
+    expect(rendered.html).not.toContain("display:flex");
+  });
+
+  it("escapes model and device names in the html", () => {
+    const [mail] = planAlertMails({
+      subscribers: [subscriber()],
+      models: [model({ name: `Model <7B> & "Q"` })],
+      devices: [{ ...device(), name: `RTX <script>` }],
+      alreadySent: [],
+      now,
+    });
+    const rendered = renderFitMail(mail!, "https://gpufit.tech", "https://gpufit.tech/alerts/unsubscribe?token=a&b");
+    expect(rendered.html).toContain("Model &lt;7B&gt; &amp; &quot;Q&quot;");
+    expect(rendered.html).toContain("RTX &lt;script&gt;");
+    expect(rendered.html).toContain("token=a&amp;b");
+    expect(rendered.html).not.toContain("<script>");
+    expect(rendered.text).toContain(`Model <7B> & "Q"`);
   });
 });

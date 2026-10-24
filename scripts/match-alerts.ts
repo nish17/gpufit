@@ -119,6 +119,7 @@ async function postResend(input: {
   to: string;
   subject: string;
   text: string;
+  html: string;
   unsubscribeUrl: string;
   idempotencyKey: string;
 }) {
@@ -135,6 +136,7 @@ async function postResend(input: {
       subject: input.subject,
       headers: { "List-Unsubscribe": `<${input.unsubscribeUrl}>` },
       text: input.text,
+      html: input.html,
     }),
   });
   if (!response.ok) {
@@ -210,6 +212,7 @@ for (const mail of mails) {
       to: mail.subscriber.email,
       subject: rendered.subject,
       text: rendered.text,
+      html: rendered.html,
       unsubscribeUrl,
       idempotencyKey,
     });

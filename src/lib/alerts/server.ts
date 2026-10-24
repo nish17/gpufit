@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { renderConfirmMail } from "./email";
 import { readAlert, signAlert, type AlertPayload } from "./token";
 
 export interface AlertSignup {
@@ -107,10 +108,11 @@ export function validateSignup(input: {
   };
 }
 
-async function confirmationEmail(env: AlertEnv, signup: AlertSignup, confirmUrl: string, unsubUrl: string) {
+async function confirmationEmail(env: AlertEnv, signup: AlertSignup, confirmUrl: string, unsubUrl: string, origin: string) {
   const from = env.ALERT_FROM || "GPUfit <alerts@gpufit.tech>";
   const apiKey = env.RESEND_API_KEY;
   if (!apiKey) return;
+  const rendered = renderConfirmMail({ origin, confirmUrl, unsubscribeUrl: unsubUrl });
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -120,9 +122,10 @@ async function confirmationEmail(env: AlertEnv, signup: AlertSignup, confirmUrl:
     body: JSON.stringify({
       from,
       to: [signup.email],
-      subject: "Confirm GPUfit alerts",
+      subject: rendered.subject,
       headers: { "List-Unsubscribe": `<${unsubUrl}>` },
-      text: `Confirm alerts for this machine:\n${confirmUrl}\n\nUnsubscribe:\n${unsubUrl}\n`,
+      text: rendered.text,
+      html: rendered.html,
     }),
   });
   if (!response.ok) {
@@ -169,7 +172,7 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
         row.createdAt,
       )
       .run();
-    await confirmationEmail(env, signup, confirmUrl, unsubUrl);
+    await confirmationEmail(env, signup, confirmUrl, unsubUrl, origin);
     return {
       ok: true as const,
       provider: "resend" as const,
