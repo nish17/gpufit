@@ -1,13 +1,15 @@
 ---
 import FitApp from "../components/FitApp";
 import Base from "../layouts/Base.astro";
-import { devices, models, pairPath, seoPairs, updatedLabel } from "../lib/catalog";
+import { BEST_TIERS, devices, models, pairPath, seoPairs, updatedLabel } from "../lib/catalog";
+import { websiteJsonLd } from "../lib/seo";
 
 const examples = seoPairs().filter((_, index) => index % 37 === 0).slice(0, 6);
 const description = "See which open-source LLMs fit on your GPU, Mac, or CPU, at which quant, and roughly how fast. Save the machine and get an email when a new model fits.";
+const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech";
 ---
 
-<Base title="GPUfit — which open models fit your machine" description={description}>
+<Base title="GPUfit — which open models fit your machine" description={description} image="/og/default.png" imageAlt="GPUfit — which open models fit your machine" jsonLd={websiteJsonLd(origin)}>
   <div class="wrap" style="padding: 2.2rem 0 3rem;">
     <p class="kicker">Local LLMs, without the spreadsheet</p>
     <h1 style="font-size:clamp(2.6rem, 6vw, 4.4rem); line-height:0.95; margin:0.3rem 0 0.8rem; max-width:16ch;">
@@ -24,7 +26,13 @@ const description = "See which open-source LLMs fit on your GPU, Mac, or CPU, at
           <li><a href={pairPath(model, device)}>Can I run {model.name} on {device.name}?</a></li>
         ))}
       </ul>
-      <p class="muted">Or browse <a href="/best/16gb">16 GB</a>, <a href="/best/24gb">24 GB</a>, <a href="/best/mac">Apple silicon</a>, and <a href="/new">what arrived recently</a>.</p>
+      <p class="muted">
+        Best fits:
+        {BEST_TIERS.map((tier) => (
+          <a href={`/best/${tier.slug}/`} style="margin-right:0.75rem;">{tier.label}</a>
+        ))}
+        <a href="/new/">New models</a>
+      </p>
     </section>
   </div>
 </Base>

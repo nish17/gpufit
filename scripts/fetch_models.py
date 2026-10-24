@@ -282,7 +282,7 @@ def enrich(row: dict, libraries: set[str], previous: dict[str, dict]) -> dict | 
     bases = base_model_ids(card, repo_id)
     dedupe_key = (bases[0] if bases else repo_id).lower()
     files = collect_files(repo_id)
-    quants = aggregate_quant_files(files)
+    quants = aggregate_quant_files(files, params_b)
     weights_estimated = False
     if not quants:
         quants = estimated_quants(params_b)

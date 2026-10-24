@@ -824,13 +824,6 @@
         "bpw": 4.25
       },
       {
-        "id": "IQ4_NL",
-        "bytes": 37541394368,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
         "id": "UD-Q3_K_XL",
         "bytes": 16845511648,
         "estimated": false,
@@ -1761,13 +1754,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 54149428992,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 23262157696,
         "estimated": false,
@@ -1803,13 +1789,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 74631704064,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 17247079296,
         "estimated": false,
@@ -1836,13 +1815,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 25386518272,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       },
       {
         "id": "IQ2_S",
@@ -1920,13 +1892,6 @@
         "estimated": false,
         "quality": 84,
         "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 23409574496,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
       },
       {
         "id": "Q5_K_M",
@@ -2395,13 +2360,6 @@
         "estimated": false,
         "quality": 52,
         "bpw": 4.85
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 3187789856,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
       }
     ],
     "ollama": "lfm2.5",
@@ -2725,41 +2683,6 @@
     },
     "quants": [
       {
-        "id": "F16",
-        "bytes": 13792639168,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 13195442368,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 12109567168,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "UD-Q6_K_XL",
-        "bytes": 12041000128,
-        "estimated": false,
-        "quality": 77,
-        "bpw": 6.8
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 12041000128,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 11717357248,
         "estimated": false,
@@ -2821,13 +2744,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 23226202496,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": null,
@@ -2975,13 +2891,6 @@
         "estimated": false,
         "quality": 84,
         "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 71125444960,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
       },
       {
         "id": "Q5_K_M",
@@ -3284,13 +3193,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 3339000384,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1255345952,
         "estimated": false,
@@ -3582,13 +3484,6 @@
         "bytes": 11788590240,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 22590155072,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -4465,13 +4360,6 @@
         "bytes": 1695725856,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 3339002432,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -5740,13 +5628,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 60353164096,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 25017457056,
         "estimated": false,
@@ -5836,13 +5717,6 @@
         "estimated": false,
         "quality": 24,
         "bpw": 3.3
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 25730798400,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       },
       {
         "id": "IQ2_S",
@@ -6044,13 +5918,6 @@
         "bytes": 11888759136,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 22763782848,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -6260,13 +6127,6 @@
         "bytes": 11787538848,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 22590149440,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -6480,13 +6340,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6159611648,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2398444416,
         "estimated": false,
@@ -6697,13 +6550,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 1555592320,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 605790784,
         "estimated": false,
@@ -6787,13 +6633,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 12772382080,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 5444831936,
         "estimated": false,
@@ -6829,13 +6668,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 17738296064,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 4088459968,
         "estimated": false,
@@ -6862,13 +6694,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 6564105600,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "qwen2.5",
@@ -7060,13 +6885,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6709327552,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2608761696,
         "estimated": false,
@@ -7150,13 +6968,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 24626487552,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 10508873856,
         "estimated": false,
@@ -7192,13 +7003,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 34097447424,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 7924768896,
         "estimated": false,
@@ -7225,13 +7029,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 12301316352,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "qwen2.5",
@@ -7486,13 +7283,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 592477568,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 234074816,
         "estimated": false,
@@ -7681,13 +7471,6 @@
         "bpw": 4.25
       },
       {
-        "id": "IQ4_NL",
-        "bytes": 84365070368,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
         "id": "IQ4_XS",
         "bytes": 42676135968,
         "estimated": false,
@@ -7716,24 +7499,10 @@
         "bpw": 3.9
       },
       {
-        "id": "Q3_K_M",
-        "bytes": 74260000800,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
         "id": "UD-IQ3_S",
         "bytes": 29690687488,
         "estimated": false,
         "quality": 32,
-        "bpw": 3.5
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 67923357728,
-        "estimated": false,
-        "quality": 28,
         "bpw": 3.5
       },
       {
@@ -7748,13 +7517,6 @@
         "bytes": 26760515584,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 58521829440,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -7964,13 +7726,6 @@
         "bytes": 3501976064,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 6709326848,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -8188,13 +7943,6 @@
         "bytes": 1403380160,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 2727871360,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -8463,20 +8211,6 @@
     },
     "quants": [
       {
-        "id": "UD-Q8_K_XL",
-        "bytes": 161869615520,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 10896057440,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
         "id": "UD-Q4_K_XL",
         "bytes": 155095241120,
         "estimated": false,
@@ -8735,13 +8469,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6709325440,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2605221696,
         "estimated": false,
@@ -8826,13 +8553,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 1011473536,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 420086336,
         "estimated": false,
@@ -8868,13 +8588,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 1409437952,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 369358400,
         "estimated": false,
@@ -8901,13 +8614,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 677215040,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "qwen2.5",
@@ -8999,13 +8705,6 @@
         "estimated": false,
         "quality": 34,
         "bpw": 3.9
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 3365271488,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "phi",
@@ -9198,13 +8897,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 3458328832,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1342275456,
         "estimated": false,
@@ -9352,13 +9044,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 1560458432,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 774946912,
         "estimated": false,
@@ -9443,13 +9128,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 2602000384,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 1125050624,
         "estimated": false,
@@ -9485,13 +9163,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 3742401536,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 880163072,
         "estimated": false,
@@ -9518,13 +9189,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 1409130176,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "qwen2.5",
@@ -9574,48 +9238,6 @@
       "expertsPerTok": 4
     },
     "quants": [
-      {
-        "id": "F16",
-        "bytes": 65369017728,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 64473222720,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 63387347520,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "UD-Q6_K_XL",
-        "bytes": 63284496960,
-        "estimated": false,
-        "quality": 77,
-        "bpw": 6.8
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 63284496960,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 62889522272,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
       {
         "id": "Q5_K_S",
         "bytes": 62881227872,
@@ -9671,13 +9293,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 125430080704,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": null,
@@ -9743,13 +9358,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 5151678784,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 2224815264,
         "estimated": false,
@@ -9785,13 +9393,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 7297036928,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 1707392160,
         "estimated": false,
@@ -9818,13 +9419,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 2624872768,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "qwen2.5",
@@ -10015,13 +9609,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 11690291968,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 4470113664,
         "estimated": false,
@@ -10103,13 +9690,6 @@
         "estimated": false,
         "quality": 84,
         "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 24620676992,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
       },
       {
         "id": "Q5_K_M",
@@ -10201,13 +9781,6 @@
         "estimated": false,
         "quality": 24,
         "bpw": 3.3
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 12267647872,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       },
       {
         "id": "IQ2_S",
@@ -10407,13 +9980,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 1555594624,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 605791936,
         "estimated": false,
@@ -10523,13 +10089,6 @@
         "estimated": false,
         "quality": 34,
         "bpw": 3.9
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 6159613376,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": null,
@@ -11021,13 +10580,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 17939011904,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 6751440032,
         "estimated": false,
@@ -11234,13 +10786,6 @@
         "bytes": 30126545696,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 58415261248,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -11454,13 +10999,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 17937964096,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 6750916128,
         "estimated": false,
@@ -11667,13 +11205,6 @@
         "bytes": 12797352608,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 24871628096,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -11887,13 +11418,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 1379629120,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 564479264,
         "estimated": false,
@@ -11978,13 +11502,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 2602000448,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 1125050656,
         "estimated": false,
@@ -12020,13 +11537,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 3742401664,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 880163104,
         "estimated": false,
@@ -12053,13 +11563,6 @@
         "estimated": false,
         "quality": 28,
         "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 1409130560,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "qwen2.5",
@@ -12185,13 +11688,6 @@
         "estimated": false,
         "quality": 24,
         "bpw": 3.3
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 60840037696,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       },
       {
         "id": "IQ2_XXS",
@@ -12564,13 +12060,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 1161748544,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 464330784,
         "estimated": false,
@@ -12787,13 +12276,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6481394560,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2504867264,
         "estimated": false,
@@ -13004,13 +12486,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 21007441344,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 7850253408,
         "estimated": false,
@@ -13218,13 +12693,6 @@
         "bytes": 42376957440,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 79369093120,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -13617,13 +13085,6 @@
         "estimated": false,
         "quality": 22,
         "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 966797760,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "lfm2.5",
@@ -13681,13 +13142,6 @@
         "bpw": 8.5
       },
       {
-        "id": "Q6_K",
-        "bytes": 54149429184,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "Q5_K_M",
         "bytes": 23262157792,
         "estimated": false,
@@ -13730,13 +13184,6 @@
         "bpw": 4.25
       },
       {
-        "id": "Q4_0",
-        "bytes": 74631704448,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
         "id": "Q3_K_L",
         "bytes": 17247079392,
         "estimated": false,
@@ -13770,13 +13217,6 @@
         "estimated": false,
         "quality": 24,
         "bpw": 3.3
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 25386518464,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       },
       {
         "id": "IQ2_S",
@@ -13874,13 +13314,6 @@
         "estimated": false,
         "quality": 77,
         "bpw": 6.8
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 115776292384,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
       },
       {
         "id": "UD-Q5_K_XL",
@@ -13985,13 +13418,6 @@
         "bytes": 26966737568,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 52996474176,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -14205,13 +13631,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 8158186688,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 3511158368,
         "estimated": false,
@@ -14421,13 +13840,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 17610223040,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 8238016224,
         "estimated": false,
@@ -14497,20 +13909,6 @@
       "expertsPerTok": 6
     },
     "quants": [
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 508376763197,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 7976914240,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
       {
         "id": "UD-Q4_K_XL",
         "bytes": 500707576573,
@@ -14758,13 +14156,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 3458330240,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1344119360,
         "estimated": false,
@@ -14874,13 +14265,6 @@
         "estimated": false,
         "quality": 34,
         "bpw": 3.9
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 11723471168,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": null,
@@ -14977,13 +14361,6 @@
         "bytes": 226601595040,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 709527565216,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -15197,13 +14574,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 24871630400,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 9277097760,
         "estimated": false,
@@ -15411,13 +14781,6 @@
         "bytes": 11787540192,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 22590152128,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -15820,13 +15183,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 90789697664,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 42682240064,
         "estimated": false,
@@ -15936,13 +15292,6 @@
         "estimated": false,
         "quality": 34,
         "bpw": 3.9
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 24808673088,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": null,
@@ -16135,13 +15484,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 2917919296,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1108948256,
         "estimated": false,
@@ -16246,13 +15588,6 @@
         "bpw": 6.8
       },
       {
-        "id": "Q6_K",
-        "bytes": 115776296160,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
         "id": "UD-Q5_K_XL",
         "bytes": 49859709536,
         "estimated": false,
@@ -16355,13 +15690,6 @@
         "bytes": 26966739552,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 52996478144,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -16576,13 +15904,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 2549508800,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 970685792,
         "estimated": false,
@@ -16792,13 +16113,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 224702727328,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 101554291296,
         "estimated": false,
@@ -17002,24 +16316,10 @@
         "bpw": 3.9
       },
       {
-        "id": "Q3_K_M",
-        "bytes": 354819044032,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
         "id": "UD-IQ3_S",
         "bytes": 146373474496,
         "estimated": false,
         "quality": 32,
-        "bpw": 3.5
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 328646587008,
-        "estimated": false,
-        "quality": 28,
         "bpw": 3.5
       },
       {
@@ -17230,13 +16530,6 @@
         "bytes": 30126547104,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 58415264064,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -17638,13 +16931,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6831680576,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2637010464,
         "estimated": false,
@@ -17855,13 +17141,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 87855568320,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 41197513440,
         "estimated": false,
@@ -18054,13 +17333,6 @@
         "bytes": 88767695488,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 171527861504,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       }
     ],
@@ -18449,13 +17721,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 2506605632,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 955159072,
         "estimated": false,
@@ -18644,13 +17909,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6481398528,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2504869248,
         "estimated": false,
@@ -18797,13 +18055,6 @@
         "estimated": false,
         "quality": 46,
         "bpw": 4.25
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 39073356672,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
       },
       {
         "id": "UD-Q3_K_XL",
@@ -19037,13 +18288,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 3339000064,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1255345792,
         "estimated": false,
@@ -19251,13 +18495,6 @@
         "bytes": 11787538848,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 22590149440,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -19471,13 +18708,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 291532698688,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 135196116992,
         "estimated": false,
@@ -19685,13 +18915,6 @@
         "bytes": 5527106240,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 10650346880,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -20093,13 +19316,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 262501160704,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 115912821664,
         "estimated": false,
@@ -20310,13 +19526,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 93558884544,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 34937742432,
         "estimated": false,
@@ -20511,13 +19720,6 @@
         "bytes": 5527104704,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 10650343808,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -20733,13 +19935,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 2917916160,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1108946688,
         "estimated": false,
@@ -20949,13 +20144,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 491610354688,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 225879130592,
         "estimated": false,
@@ -21162,13 +20350,6 @@
         "bytes": 180294643936,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 349531500960,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -21564,13 +20745,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6831677504,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2632880160,
         "estimated": false,
@@ -21680,13 +20854,6 @@
         "estimated": false,
         "quality": 34,
         "bpw": 3.9
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 11338013824,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
       }
     ],
     "ollama": "phi4",
@@ -21974,13 +21141,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 24802747008,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 9264431424,
         "estimated": false,
@@ -22180,13 +21340,6 @@
         "bytes": 10680415232,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 21006874624,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -22396,13 +21549,6 @@
         "bytes": 134690196352,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 261482731264,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -22618,13 +21764,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 1555595584,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 605792416,
         "estimated": false,
@@ -22694,13 +21833,6 @@
       "expertsPerTok": 6
     },
     "quants": [
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 161869663072,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
       {
         "id": "UD-Q4_K_XL",
         "bytes": 155095288672,
@@ -22950,13 +22082,6 @@
         "bytes": 4211062912,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 8158179584,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -23254,13 +22379,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 3365273408,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1293319072,
         "estimated": false,
@@ -23470,13 +22588,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 166749410048,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 74000401792,
         "estimated": false,
@@ -23683,13 +22794,6 @@
         "bytes": 3501372672,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 6701607424,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -23904,13 +23008,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 3339003392,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 1255347456,
         "estimated": false,
@@ -24117,13 +23214,6 @@
         "bytes": 246610259712,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 490945187072,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -24338,13 +23428,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 6709328448,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2605223200,
         "estimated": false,
@@ -24554,13 +23637,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 8158179008,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 3511154528,
         "estimated": false,
@@ -24767,13 +23843,6 @@
         "bytes": 26966740128,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 52996479296,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -24987,13 +24056,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 171527864128,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ1_M",
         "bytes": 69608509344,
         "estimated": false,
@@ -25194,13 +24256,6 @@
         "bytes": 1250496448,
         "estimated": false,
         "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 2452496256,
-        "estimated": false,
-        "quality": 20,
         "bpw": 3.35
       },
       {
@@ -25610,13 +24665,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 17937944960,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 6750906560,
         "estimated": false,
@@ -25812,13 +24860,6 @@
         "bpw": 3.35
       },
       {
-        "id": "Q2_K",
-        "bytes": 5812096128,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
         "id": "UD-IQ2_XXS",
         "bytes": 2254091776,
         "estimated": false,
@@ -25900,13 +24941,6 @@
         "bytes": 8192955584,
         "estimated": false,
         "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 398892256,
-        "estimated": false,
-        "quality": 84,
         "bpw": 8.5
       },
       {
@@ -26014,13 +25048,6 @@
         "estimated": false,
         "quality": 84,
         "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 71447724736,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
       },
       {
         "id": "Q5_K_M",

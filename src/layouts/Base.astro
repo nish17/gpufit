@@ -6,10 +6,17 @@ interface Props {
   title: string;
   description: string;
   path?: string;
+  robots?: string;
+  image?: string;
+  imageAlt?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
-const { title, description, path = Astro.url.pathname } = Astro.props;
+const { title, description, path = Astro.url.pathname, robots, image = "/og/default.png", imageAlt, jsonLd } = Astro.props;
 const site = Astro.site?.toString().replace(/\/$/, "") || DEFAULT_SITE;
 const canonical = new URL(path, site).toString();
+const imageUrl = new URL(image, site).toString();
+const alt = imageAlt || title;
+const json = jsonLd ? JSON.stringify(jsonLd).replace(/</g, "\\u003c") : "";
 ---
 
 <!doctype html>
@@ -20,12 +27,24 @@ const canonical = new URL(path, site).toString();
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {robots ? <meta name="robots" content={robots} /> : null}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={alt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={alt} />
+    <link rel="alternate" type="application/rss+xml" title="GPUfit — new models" href={`${site}/feed.xml`} />
+    <link rel="alternate" type="application/atom+xml" title="GPUfit — new models" href={`${site}/atom.xml`} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {json ? <script type="application/ld+json" set:html={json} /> : null}
     <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#121410" media="(prefers-color-scheme: dark)" />
     <script is:inline>
@@ -47,10 +66,10 @@ const canonical = new URL(path, site).toString();
           <span>GPUfit</span>
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="/new">New</a>
-          <a href="/devices">Devices</a>
-          <a href="/how-it-works">How it works</a>
-          <a class="keep" href="/alerts">Alerts</a>
+          <a href="/new/">New</a>
+          <a href="/devices/">Devices</a>
+          <a href="/how-it-works/">How it works</a>
+          <a class="keep" href="/alerts/">Alerts</a>
           <button class="theme-btn" type="button" id="theme-toggle" aria-label="Switch to dark mode">
             <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
@@ -70,8 +89,8 @@ const canonical = new URL(path, site).toString();
       <div class="wrap" style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:space-between;">
         <span>GPUfit estimates local LLM fit. It is not a benchmark.</span>
         <span style="display:flex; gap:0.9rem;">
-          <a href="/privacy">Privacy</a>
-          <a href="/how-it-works">Method</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/how-it-works/">Method</a>
           <a href="/feed.xml">RSS</a>
         </span>
       </div>

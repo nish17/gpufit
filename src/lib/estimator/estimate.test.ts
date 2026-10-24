@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { GiB, UTIL_GREAT, UTIL_RUNS, UTIL_TIGHT } from "./constants";
 import { estimate, verdictFromUtilization } from "./estimate";
+import { sanitizeQuants } from "./quants";
 import { kvBytes, memoryPool, weightBytesFor } from "./memory";
 import type { ArchSpec, DeviceSpec, ModelSpec, QuantSpec, RuntimeOptions } from "./types";
 
@@ -323,5 +324,86 @@ describe("verdicts", () => {
     const card = device({ vramGb: 16, defaultMemoryGb: 16, bandwidthGBps: 288, slug: "rtx-4060-ti-16gb" });
     const fit = estimate(huge, card, options({ memoryGb: 16 }));
     expect(fit.quant?.id).not.toBe("Q8_0");
+  });
+
+  it("drops the three published bad GGUF sizes", () => {
+    const flash = sanitizeQuants({
+      paramsB: (473.5 * 8) / 8.5,
+      quants: [
+        { id: "Q8_0", bytes: 7.43e9, quality: 84, estimated: false, bpw: 8.5 },
+        { id: "UD-Q8_K_XL", bytes: 473.5e9, quality: 86, estimated: false, bpw: 8.5 },
+      ],
+    }).map((quant) => quant.id);
+    expect(flash).not.toContain("Q8_0");
+    expect(flash).toContain("UD-Q8_K_XL");
+
+    const flashFlat = sanitizeQuants({
+      paramsB: 748.495,
+      quants: [
+        { id: "UD-Q8_K_XL", bytes: 508.38e9, quality: 86, estimated: false, bpw: 8.5 },
+        { id: "UD-Q4_K_XL", bytes: 500.71e9, quality: 55, estimated: false, bpw: 4.95 },
+        { id: "UD-Q2_K_XL", bytes: 334.79e9, quality: 22, estimated: false, bpw: 3.35 },
+      ],
+    }).map((quant) => quant.id);
+    expect(flashFlat).not.toContain("UD-Q8_K_XL");
+    expect(flashFlat).toContain("UD-Q4_K_XL");
+    expect(flashFlat).toContain("UD-Q2_K_XL");
+
+    const bolt = sanitizeQuants({
+      paramsB: 4,
+      quants: [
+        { id: "Q8_0", bytes: 0.37e9, quality: 84, estimated: false, bpw: 8.5 },
+        { id: "Q4_K_M", bytes: 2.5e9, quality: 52, estimated: false, bpw: 4.85 },
+      ],
+    }).map((quant) => quant.id);
+    expect(bolt).toEqual(["Q4_K_M"]);
+
+    const thinking = sanitizeQuants({
+      paramsB: 26,
+      quants: [
+        { id: "Q6_K", bytes: 66.5e9, quality: 72, estimated: false, bpw: 6.56 },
+        { id: "BF16", bytes: 47e9, quality: 98, estimated: false, bpw: 16 },
+        { id: "Q4_K_M", bytes: 15.5e9, quality: 52, estimated: false, bpw: 4.85 },
+      ],
+    }).map((quant) => quant.id);
+    expect(thinking).not.toContain("Q6_K");
+    expect(thinking).toContain("BF16");
+    expect(thinking).toContain("Q4_K_M");
+  });
+
+  it("does not price a 24B-A2B like a 2B model, and labels IQ1 as degraded", () => {
+    const moe = model({
+      name: "LFM2.5 24B A2B",
+      paramsB: 24,
+      activeParamsB: 2,
+      moe: true,
+      quants: [{ id: "UD-IQ2_XXS", bytes: 7.47 * GiB, quality: 13, estimated: false, bpw: 2.2 }],
+      arch: arch({ layers: 40, kvHeads: 8, headDim: 64 }),
+    });
+    const card = device({
+      slug: "rtx-3080-10gb",
+      name: "GeForce RTX 3080 10GB",
+      vramGb: 10,
+      defaultMemoryGb: 10,
+      bandwidthGBps: 760,
+    });
+    const fit = estimate(moe, card, options({ memoryGb: 10 }));
+    expect(fit.tokPerSec).not.toBeNull();
+    expect(fit.tokPerSec![1]).toBeLessThanOrEqual(160);
+    expect(fit.tokPerSec![0]).toBeGreaterThan(15);
+    expect(fit.label).toBe("Heavily degraded");
+
+    const qwen = model({
+      name: "Qwen3.5 35B A3B",
+      paramsB: 35,
+      activeParamsB: 3,
+      moe: true,
+      quants: [{ id: "Q4_K_M", bytes: 20 * GiB, quality: 52, estimated: false, bpw: 4.85 }],
+      arch: arch({ layers: 40, kvHeads: 2, headDim: 256, fullAttentionLayers: 10, linearLayers: 30, linearStateBytes: 30_000_000, attention: "hybrid" }),
+    });
+    const rtx = device({ slug: "rtx-4090", name: "GeForce RTX 4090", vramGb: 24, defaultMemoryGb: 24, bandwidthGBps: 1008 });
+    const fast = estimate(qwen, rtx, options({ memoryGb: 24 }));
+    expect(fast.tokPerSec![1]).toBeLessThanOrEqual(160);
+    expect(fast.label).not.toBe("Heavily degraded");
   });
 });

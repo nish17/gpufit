@@ -270,7 +270,7 @@ function FitAppInner() {
             </div>
             <div className="grid gap-2 sm:grid-cols-3">
               {picks.map((pick) => (
-                <a key={pick.role} href={`/models/${pick.model.slug}`} className="card grid gap-1 p-3 no-underline">
+                <a key={pick.role} href={`/models/${pick.model.slug}/`} className="card grid gap-1 p-3 no-underline">
                   <span className="kicker">{pick.roleLabel}</span>
                   <span className="text-lg font-semibold leading-tight">{pick.model.name}</span>
                   <span className="flex flex-wrap items-center gap-2 text-sm text-[var(--muted)]">
@@ -313,7 +313,8 @@ function FitAppInner() {
           ))}
         </div>
         <p className="m-0 text-sm text-[var(--muted)]">
-          {ranked.length} models · {fullCount} fit fully on this profile. Estimates assume llama.cpp, FP16 KV cache, and a bandwidth range.
+          {ranked.length} models · {fullCount} fit fully on this profile. Estimate from memory bandwidth, not a benchmark.{" "}
+          <a href="/how-it-works/">How it works</a>.
         </p>
         <div className="grid gap-2">
           {ranked.length === 0 ? (
@@ -347,7 +348,7 @@ function ModelRow({ model, fit, device }: { model: ModelSpec; fit: FitResult; de
             ))}
           </div>
           <h3 className="m-0 mt-2 text-2xl">
-            <a href={`/models/${model.slug}`}>{model.name}</a>
+            <a href={`/models/${model.slug}/`}>{model.name}</a>
           </h3>
           <p className="m-0 text-sm text-[var(--muted)]">
             {formatParams(model.paramsB)}
@@ -361,6 +362,7 @@ function ModelRow({ model, fit, device }: { model: ModelSpec; fit: FitResult; de
             {fit.context ? `${formatContext(fit.context)} context` : "no context"}
             {fit.tokPerSec ? ` · ${formatTokRange(fit.tokPerSec)} tok/s` : ""}
           </div>
+          {fit.tokPerSec ? <div className="text-xs text-[var(--muted)]">Estimate from memory bandwidth, not a benchmark</div> : null}
         </div>
       </div>
       <p className="mb-0 mt-3 text-sm">{fit.summary}</p>
@@ -371,7 +373,7 @@ function ModelRow({ model, fit, device }: { model: ModelSpec; fit: FitResult; de
           {fit.commands.ollama ? <Command label="Ollama" text={fit.commands.ollama} /> : <p className="m-0 text-xs text-[var(--muted)]">No Ollama library match for this repo.</p>}
           <Command label="LM Studio" text={fit.commands.lmStudio} />
           {isSeoPair(model.slug, device.slug) ? (
-            <a className="text-sm" href={`/can-i-run/${model.slug}/on/${device.slug}`}>Open the full “can I run” page</a>
+            <a className="text-sm" href={`/can-i-run/${model.slug}/on/${device.slug}/`}>Open the full “can I run” page</a>
           ) : null}
           <form
             className="flex flex-wrap items-center gap-2"

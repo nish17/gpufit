@@ -330,15 +330,197 @@ def quant_id_from_path(path: str) -> str | None:
     return None
 
 
-_SHARD = re.compile(r"of[-_]0*\d+", re.IGNORECASE)
+# `model-00001-of-00005.gguf`. Incomplete sets are dropped, not summed.
+_SHARD_PART = re.compile(r"(?P<index>\d+)\s*[-_ ]of[-_ ]\s*(?P<count>\d+)", re.IGNORECASE)
+_PARTIAL_PATH = re.compile(r"partial|incomplete|\.tmp|/\.cache", re.IGNORECASE)
+
+# Keep in sync with src/lib/estimator/quants.ts.
+MIN_SIZE_RATIO = 0.45
+# Backstop when a file is many times the parameter estimate. Real Q2/Q3
+# files run large because the table ignores vocab bytes; 3.5× is not that.
+MAX_SIZE_RATIO = 3.5
+BF16_SLACK = 1.05
+# A higher-bpw file this much smaller than a lower-bpw file needs a second look.
+MONO_SMALL = 0.72
+# The lower-bpw file is the bad one when it is this far above its own estimate.
+MONO_INFLATED = 1.45
 
 
-def aggregate_quant_files(files: list[dict]) -> list[dict]:
+def _expected_bytes(params_b: float, bpw: float) -> float:
+    return params_b * 1_000_000_000 * bpw / 8
+
+
+def _shard_family(path: str) -> tuple[str, int, int] | None:
+    match = _SHARD_PART.search(path)
+    if not match:
+        return None
+    index, count = int(match.group("index")), int(match.group("count"))
+    if count < 2 or not 1 <= index <= count:
+        return None
+    base = _SHARD_PART.sub("SHARD", path, count=1)
+    return base, index, count
+
+
+def _candidate_sizes(group: list[dict]) -> list[int]:
+    """One size per complete file. Shards count only when every part is present.
+
+    Unrelated files that share a quant name are not added together. That sum
+    is how a Q6_K row grew larger than the model's own BF16.
+    """
+    loose: list[int] = []
+    families: dict[str, dict] = {}
+    for item in group:
+        path = str(item.get("path") or "")
+        info = _shard_family(path)
+        if info is None:
+            loose.append(int(item["size"]))
+            continue
+        base, index, count = info
+        family = families.setdefault(base, {"count": count, "parts": {}})
+        if family["count"] != count:
+            continue
+        family["parts"][index] = int(item["size"])
+    sizes = list(loose)
+    for family in families.values():
+        count = family["count"]
+        parts: dict[int, int] = family["parts"]
+        if len(parts) == count and set(parts) == set(range(1, count + 1)):
+            sizes.append(sum(parts.values()))
+    return sizes
+
+
+def _pick_size(sizes: list[int], qid: str, params_b: float | None) -> int | None:
+    if not sizes:
+        return None
+    if not params_b or params_b <= 0:
+        return max(sizes)
+    expected = _expected_bytes(params_b, QUANT_META[qid]["bpw"])
+    plausible = [size for size in sizes if expected * MIN_SIZE_RATIO <= size <= expected * MAX_SIZE_RATIO]
+    if not plausible:
+        return None
+    return min(plausible, key=lambda size: abs(size - expected))
+
+
+def _bf16_ceiling(quants: list[dict], params_b: float) -> float:
+    expected = _expected_bytes(params_b, 16.0)
+    real = [
+        int(quant["bytes"])
+        for quant in quants
+        if quant.get("id") in ("BF16", "F16") and not quant.get("estimated") and int(quant.get("bytes") or 0) >= expected * MIN_SIZE_RATIO
+    ]
+    if real:
+        return float(min(real))
+    return expected * BF16_SLACK
+
+
+def _measured(quants: list[dict]) -> list[dict]:
+    return [quant for quant in quants if not quant.get("estimated") and quant.get("id") in QUANT_META]
+
+
+def bad_quant_ids(quants: list[dict], params_b: float) -> dict[str, str]:
+    """Map quant id → why it cannot ship. Estimated rows are never included."""
+    reasons: dict[str, str] = {}
+    if params_b <= 0:
+        return reasons
+    ceiling = _bf16_ceiling(quants, params_b)
+    kept: list[dict] = []
+    for quant in _measured(quants):
+        qid = str(quant["id"])
+        bpw = float(quant.get("bpw") or QUANT_META[qid]["bpw"])
+        size = int(quant.get("bytes") or 0)
+        expected = _expected_bytes(params_b, bpw)
+        if size < expected * MIN_SIZE_RATIO:
+            reasons[qid] = "partial"
+            continue
+        if qid not in ("BF16", "F16") and size > ceiling * BF16_SLACK:
+            reasons[qid] = "larger_than_bf16"
+            continue
+        if size > expected * MAX_SIZE_RATIO:
+            reasons[qid] = "too_large"
+            continue
+        kept.append(quant)
+    # An inflated low-bit file (a summed Q2) makes every better quant look
+    # "smaller". Drop the row that disagrees with params×bpw, then look again.
+    pending = list(kept)
+    while True:
+        ordered = sorted(
+            [quant for quant in pending if str(quant["id"]) not in reasons],
+            key=lambda quant: (float(quant.get("bpw") or QUANT_META[quant["id"]]["bpw"]), int(quant["bytes"])),
+        )
+        found = False
+        for index, cur in enumerate(ordered):
+            cur_id = str(cur["id"])
+            cur_bpw = float(cur.get("bpw") or QUANT_META[cur_id]["bpw"])
+            cur_size = int(cur["bytes"])
+            cur_ratio = cur_size / _expected_bytes(params_b, cur_bpw)
+            for prev in ordered[:index]:
+                prev_id = str(prev["id"])
+                prev_bpw = float(prev.get("bpw") or QUANT_META[prev_id]["bpw"])
+                if cur_bpw <= prev_bpw:
+                    continue
+                prev_size = int(prev["bytes"])
+                if prev_size <= 0:
+                    continue
+                bpw_ratio = cur_bpw / prev_bpw
+                size_ratio = cur_size / prev_size
+                prev_ratio = prev_size / _expected_bytes(params_b, prev_bpw)
+                # A much higher-bit file that barely grows past a plausible lower
+                # one is partial or mislabeled (a Q8 sitting on a Q4). Vocab-heavy
+                # small models stay: their low quants run large, and real Q8s grow.
+                flat = (
+                    bpw_ratio >= 1.5
+                    and size_ratio < 1.22
+                    and cur_ratio < 0.78
+                    and 0.80 <= prev_ratio <= 1.35
+                )
+                if flat:
+                    reasons[cur_id] = "not_monotonic"
+                    found = True
+                    break
+                shrunk = cur_size < prev_size * MONO_SMALL
+                if not shrunk:
+                    continue
+                if prev_ratio >= MONO_INFLATED and prev_ratio > cur_ratio * 1.25:
+                    reasons[prev_id] = "not_monotonic"
+                elif cur_ratio <= 0.8:
+                    reasons[cur_id] = "not_monotonic"
+                else:
+                    break
+                found = True
+                break
+            if found:
+                break
+        if not found:
+            break
+    return reasons
+
+
+def quant_issues(record: dict) -> list[str]:
+    """Reasons a catalog row violates the GGUF size rules. Empty means it can ship."""
+    params_b = float(record.get("paramsB") or 0)
+    name = str(record.get("name") or record.get("id") or "model")
+    quants = [quant for quant in record.get("quants") or [] if isinstance(quant, dict)]
+    if params_b <= 0:
+        return [f"{name}: missing parameter count"]
+    return [f"{name} {qid}: {reason}" for qid, reason in bad_quant_ids(quants, params_b).items()]
+
+
+def sanitize_quants(quants: list[dict], params_b: float) -> list[dict]:
+    """Drop partial, summed, and over-BF16 rows. Estimated sizes are kept."""
+    if params_b <= 0:
+        return quants
+    blocked = bad_quant_ids(quants, params_b)
+    kept = [quant for quant in quants if quant.get("estimated") or quant.get("id") not in blocked]
+    kept.sort(key=lambda quant: (-float(quant.get("quality") or 0), int(quant.get("bytes") or 0)))
+    return kept
+
+
+def aggregate_quant_files(files: list[dict], params_b: float | None = None) -> list[dict]:
     groups: dict[str, list[dict]] = {}
     for item in files:
         path = str(item.get("path") or "")
         size = int(item.get("size") or 0)
-        if size < 100_000:
+        if size < 100_000 or _PARTIAL_PATH.search(path):
             continue
         qid = quant_id_from_path(path)
         if not qid:
@@ -347,20 +529,23 @@ def aggregate_quant_files(files: list[dict]) -> list[dict]:
 
     quants = []
     for qid, group in groups.items():
-        shards = [item for item in group if _SHARD.search(str(item.get("path")))]
-        chosen = shards or group
-        total = sum(int(item["size"]) for item in chosen)
+        chosen = _pick_size(_candidate_sizes(group), qid, params_b)
+        if chosen is None:
+            continue
         meta = QUANT_META[qid]
         quants.append(
             {
                 "id": qid,
-                "bytes": total,
+                "bytes": chosen,
                 "estimated": False,
                 "quality": meta["quality"],
                 "bpw": meta["bpw"],
             }
         )
-    quants.sort(key=lambda q: (-q["quality"], q["bytes"]))
+    if params_b and params_b > 0:
+        quants = sanitize_quants(quants, params_b)
+    else:
+        quants.sort(key=lambda quant: (-quant["quality"], quant["bytes"]))
     return quants
 
 

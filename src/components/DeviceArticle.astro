@@ -2,8 +2,9 @@
 import Base from "../layouts/Base.astro";
 import { formatContext, formatParams, formatTokRange } from "../lib/estimator";
 import { compareForMachine } from "../lib/ranking";
-import { devicePath, fitDevice, isSeoPair, models, pairPath, updatedLabel } from "../lib/catalog";
+import { devicePath, deviceRunLinks, fitDevice, modelPath, models, pairLink, updatedLabel } from "../lib/catalog";
 import type { DeviceSpec } from "../lib/estimator/types";
+import { ESTIMATE_NOTE, breadcrumbJsonLd } from "../lib/seo";
 
 interface Props { device: DeviceSpec }
 const { device } = Astro.props;
@@ -15,13 +16,21 @@ const hidden = rows.length - shown.length;
 const memory = device.kind === "gpu" ? `${device.vramGb} GB ${device.memoryType}` : `${device.memoryOptionsGb?.join(" / ")} GB ${device.memoryType}`;
 const title = `Best local LLMs for ${device.name}`;
 const description = `${device.name} has ${memory} and ${device.bandwidthGBps} GB/s. See which open models fit, at which quant, and roughly how fast.`;
+const checked = deviceRunLinks(device);
+const kindLabel = device.kind === "mac" ? "Macs" : device.kind === "gpu" ? "GPUs" : "CPUs";
+const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech";
+const jsonLd = breadcrumbJsonLd(origin, [
+  { name: "GPUfit", path: "/" },
+  { name: kindLabel, path: "/devices/" },
+  { name: device.name, path: devicePath(device) },
+]);
 ---
 
-<Base title={`${title} · GPUfit`} description={description} path={devicePath(device)}>
+<Base title={`${title} · GPUfit`} description={description} path={devicePath(device)} image={`/og/devices/${device.slug}.png`} imageAlt={device.name} jsonLd={jsonLd}>
   <article class="wrap prose" style="padding:2rem 0 1rem;">
     <p class="kicker">Hardware</p>
     <h1 style="font-size:clamp(2.2rem, 5vw, 3.6rem); margin-bottom:0.4rem;">{device.name}</h1>
-    <p>{description} Figures below use the default memory ({device.defaultMemoryGb} GB){device.kind === "gpu" ? ", 32 GB system RAM, and DDR5-5600 for anything that spills" : ""}. Updated {updatedLabel()}.</p>
+    <p>{description} Figures below use the default memory ({device.defaultMemoryGb} GB){device.kind === "gpu" ? ", 32 GB system RAM, and DDR5-5600 for anything that spills" : ""}. Updated {updatedLabel()}. {ESTIMATE_NOTE}</p>
     <div class="grid-stats">
       <div class="stat"><span class="muted">Memory</span><b>{memory}</b></div>
       <div class="stat"><span class="muted">Bandwidth</span><b>{device.bandwidthGBps} GB/s</b></div>
@@ -39,22 +48,33 @@ const description = `${device.name} has ${memory} and ${device.bandwidthGBps} GB
         {shown.map(({ model, fit }) => (
           <tr>
             <td>
-              <a href={`/models/${model.slug}`}>{model.name}</a>
+              <a href={modelPath(model)}>{model.name}</a>
               <div class="muted">{formatParams(model.paramsB)}</div>
             </td>
             <td>
-              {isSeoPair(model.slug, device.slug) ? (
-                <a href={pairPath(model, device)}>{fit.label}</a>
+              {pairLink(model, device) ? (
+                <a href={pairLink(model, device)}>{fit.label}</a>
               ) : fit.label}
             </td>
             <td>{fit.quant?.id ?? "—"}{fit.quant?.estimated ? " (est.)" : ""}</td>
             <td>{fit.context ? formatContext(fit.context) : "—"}</td>
-            <td>{fit.tokPerSec ? formatTokRange(fit.tokPerSec) : "—"}</td>
+            <td>{fit.tokPerSec ? `${formatTokRange(fit.tokPerSec)} est.` : "—"}</td>
           </tr>
         ))}
       </tbody>
     </table>
     {hidden > 0 ? <p class="muted">{hidden} more models in the catalog do not fit this default profile, or ranked below the first 40 that do.</p> : null}
+    <p class="muted">{ESTIMATE_NOTE} <a href="/how-it-works/">Method</a>.</p>
     {shown[0] ? <p class="muted">Example: {shown[0].fit.summary} Weights shown in the verdict use GiB (the same 1024³ counting as GPU memory).</p> : null}
+    {checked.length > 0 ? (
+      <>
+        <h2>Every generated check</h2>
+        <ul>
+          {checked.map((model) => (
+            <li><a href={pairLink(model, device)}>{model.name} on {device.name}</a></li>
+          ))}
+        </ul>
+      </>
+    ) : null}
   </article>
 </Base>

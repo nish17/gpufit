@@ -1,4 +1,5 @@
-import type { FitResult, ModelSpec } from "./estimator/types";
+import { isLowBitQuant } from "./estimator/quants";
+import type { FitResult, ModelSpec, QuantSpec } from "./estimator/types";
 
 /** Lower bound of the tok/s range that still counts as a practical chat speed. */
 export const USABLE_TOK_PER_SEC = 9.5;
@@ -31,10 +32,20 @@ export function capability(model: ModelSpec): number {
 
 export function fitTier(fit: FitResult): number {
   const low = fit.tokPerSec?.[0] ?? 0;
+  if (isLowBitQuant(fit.quant)) return 2;
   if (fit.bucket === "full" && low >= USABLE_TOK_PER_SEC) return 0;
   if (fit.bucket === "full") return 1;
   if (fit.bucket === "offload" || fit.bucket === "limit") return 2;
   return 3;
+}
+
+/** Full fits at a quant we are willing to recommend. IQ1 and IQ2 stay off this list. */
+export function bestList(rows: RankedRow[]): RankedRow[] {
+  return rows.filter((row) => row.fit.bucket === "full" && !isLowBitQuant(row.fit.quant)).sort(compareForMachine);
+}
+
+export function isRecommendableQuant(quant: Pick<QuantSpec, "id" | "quality"> | null | undefined): boolean {
+  return !isLowBitQuant(quant);
 }
 
 /** Size, discounted when the quant that fits is well below Q4 quality. */
@@ -71,7 +82,7 @@ function findRole(pools: RankedRow[][], role: PickRole, used: Set<string>): Rank
   const passes = role === "chat" ? [false, true] : [true];
   for (const allowReasoningChat of passes) {
     for (const pool of pools) {
-      const found = pool.find((row) => !used.has(row.model.slug) && matchesRole(row.model, role, allowReasoningChat));
+      const found = pool.find((row) => !used.has(row.model.slug) && !isLowBitQuant(row.fit.quant) && matchesRole(row.model, role, allowReasoningChat));
       if (found) return found;
     }
   }
