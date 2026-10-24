@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 5751118,
-    "likes": 5297,
+    "likes": 5299,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -245,7 +245,7 @@
     "createdAt": "2026-05-29T11:25:59.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1499393,
-    "likes": 928,
+    "likes": 929,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -917,7 +917,7 @@
     "createdAt": "2026-03-02T05:46:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1232630,
-    "likes": 505,
+    "likes": 507,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -1113,7 +1113,7 @@
     "createdAt": "2026-09-16T18:58:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1180846,
-    "likes": 237,
+    "likes": 239,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1225,7 +1225,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1010834,
-    "likes": 1256,
+    "likes": 1257,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -1889,7 +1889,7 @@
     "createdAt": "2026-09-21T22:09:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 920152,
-    "likes": 163,
+    "likes": 164,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -2057,7 +2057,7 @@
     "createdAt": "2026-08-26T14:21:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 857059,
-    "likes": 499,
+    "likes": 500,
     "weightsEstimated": false,
     "arch": {
       "layers": 45,
@@ -2190,7 +2190,7 @@
     "createdAt": "2026-08-31T23:57:36.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 764432,
-    "likes": 262,
+    "likes": 266,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -2336,7 +2336,7 @@
     "createdAt": "2026-08-01T22:42:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 651509,
-    "likes": 390,
+    "likes": 391,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -2860,7 +2860,7 @@
     "createdAt": "2026-08-15T18:08:44.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 515318,
-    "likes": 318,
+    "likes": 319,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -3125,7 +3125,7 @@
     "createdAt": "2025-04-28T07:55:09.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 494953,
-    "likes": 251,
+    "likes": 252,
     "weightsEstimated": false,
     "arch": {
       "layers": 36,
@@ -5314,7 +5314,7 @@
     "createdAt": "2026-04-01T14:40:18.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 250389,
-    "likes": 650,
+    "likes": 651,
     "weightsEstimated": false,
     "arch": {
       "layers": 60,
@@ -6321,7 +6321,7 @@
     "createdAt": "2025-05-11T13:03:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 223571,
-    "likes": 239,
+    "likes": 240,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -7264,7 +7264,7 @@
     "createdAt": "2026-06-05T10:35:41.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 142395,
-    "likes": 226,
+    "likes": 227,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -7327,7 +7327,7 @@
     "createdAt": "2025-04-28T10:24:13.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 141975,
-    "likes": 141,
+    "likes": 142,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -8025,7 +8025,7 @@
     "createdAt": "2024-09-25T19:47:33.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 124307,
-    "likes": 88,
+    "likes": 89,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -14479,7 +14479,7 @@
     "createdAt": "2026-10-17T20:36:06.000Z",
     "firstSeen": "2026-10-20",
     "downloads": 29212,
-    "likes": 133,
+    "likes": 134,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -14815,7 +14815,7 @@
     "createdAt": "2025-01-20T14:39:44.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 28243,
-    "likes": 142,
+    "likes": 143,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -16192,7 +16192,7 @@
     "createdAt": "2024-12-06T21:10:26.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 22872,
-    "likes": 128,
+    "likes": 129,
     "weightsEstimated": false,
     "arch": {
       "layers": 80,
@@ -21621,7 +21621,7 @@
     "createdAt": "2025-01-08T22:57:04.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 9540,
-    "likes": 193,
+    "likes": 194,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -25870,7 +25870,7 @@
     "createdAt": "2026-10-23T09:47:55.000Z",
     "firstSeen": "2026-10-23",
     "downloads": 0,
-    "likes": 31,
+    "likes": 57,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -25911,21 +25911,21 @@
       },
       {
         "id": "UD-Q6_K_XL",
-        "bytes": 7106860224,
+        "bytes": 7258879168,
         "estimated": false,
         "quality": 77,
         "bpw": 6.8
       },
       {
         "id": "UD-Q5_K_XL",
-        "bytes": 5869905088,
+        "bytes": 5832930496,
         "estimated": false,
         "quality": 67,
         "bpw": 5.8
       },
       {
         "id": "UD-Q4_K_XL",
-        "bytes": 4758125760,
+        "bytes": 5060482240,
         "estimated": false,
         "quality": 55,
         "bpw": 4.95
@@ -25959,5 +25959,174 @@
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16"
     },
     "downloadRank": 144
+  },
+  {
+    "id": "bartowski/bottlecapai_ThinkingCap-gemma-4-26B-A4B-it-GGUF",
+    "slug": "bottlecapai-thinkingcap-gemma-4-26b-a4b-it",
+    "name": "bottlecapai ThinkingCap gemma 4 26B A4B it",
+    "author": "bartowski",
+    "baseModel": "bottlecapai/ThinkingCap-gemma-4-26B-A4B-it",
+    "dedupeKey": "bottlecapai/thinkingcap-gemma-4-26b-a4b-it",
+    "paramsB": 25.233,
+    "activeParamsB": 4.0,
+    "activeParamsEstimated": false,
+    "moe": true,
+    "architecture": "gemma4",
+    "license": "apache-2.0",
+    "contextLength": 262144,
+    "vision": true,
+    "useCases": [
+      "reasoning",
+      "vision",
+      "chat"
+    ],
+    "createdAt": "2026-10-23T21:26:38.000Z",
+    "firstSeen": "2026-10-24",
+    "downloads": 0,
+    "likes": 0,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 30,
+      "kvHeads": 8,
+      "headDim": 256,
+      "fullAttentionLayers": 5,
+      "slidingLayers": 25,
+      "slidingWindow": 1024,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "hybrid",
+      "mlaBytesPerLayer": null,
+      "experts": 128,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "BF16",
+        "bytes": 50505137344,
+        "estimated": false,
+        "quality": 98,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 26859861568,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 71447724736,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 20010088000,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 18400890432,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 17966167616,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 16054720320,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_NL",
+        "bytes": 15628842560,
+        "estimated": false,
+        "quality": 46,
+        "bpw": 4.5
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 14278611392,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_1",
+        "bytes": 16144846400,
+        "estimated": false,
+        "quality": 42,
+        "bpw": 5.0
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 14759385664,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "Q3_K_L",
+        "bytes": 14802988608,
+        "estimated": false,
+        "quality": 38,
+        "bpw": 4.27
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 13785117248,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 12374810944,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "IQ3_XXS",
+        "bytes": 12611732288,
+        "estimated": false,
+        "quality": 24,
+        "bpw": 3.3
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 11611604544,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      },
+      {
+        "id": "IQ2_S",
+        "bytes": 10311503808,
+        "estimated": false,
+        "quality": 14,
+        "bpw": 2.6
+      }
+    ],
+    "ollama": null,
+    "description": "bottlecapai ThinkingCap gemma 4 26B A4B it is a 25.2B mixture-of-experts gemma4 model from bartowski, with about 4.0B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/bartowski/bottlecapai_ThinkingCap-gemma-4-26B-A4B-it-GGUF",
+      "config": "https://huggingface.co/bottlecapai/ThinkingCap-gemma-4-26B-A4B-it"
+    },
+    "downloadRank": 145
   }
 ]
