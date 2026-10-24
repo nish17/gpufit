@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#1c1915"/>
-  <text x="7" y="23" font-family="Georgia, serif" font-size="18" fill="#f4f1ea">G</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" role="img" aria-label="GPUfit"><title>GPUfit</title><style>.i{fill:#14213D}.a{fill:#0EA472}@media (prefers-color-scheme:dark){.i{fill:#F1F5F9}.a{fill:#34D399}}</style><rect x="0" y="0" width="9" height="7" rx="2" class="i"/><rect x="11" y="0" width="5" height="7" rx="2" class="a"/><rect x="0" y="9" width="5" height="7" rx="2" class="i"/><rect x="7" y="9" width="9" height="7" rx="2" class="a"/></svg>

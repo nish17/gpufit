@@ -13,7 +13,8 @@ describe("renderConfirmMail", () => {
     expect(mail.html).toContain("#f4f1ea");
     expect(mail.html).toContain("#fffcf7");
     expect(mail.html).toContain("#0d6b4c");
-    expect(mail.html).toContain(">G<");
+    expect(mail.html).toContain("https://gpufit.tech/logo-small-24@2x.png");
+    expect(mail.html).toContain('alt="GPUfit"');
     expect(mail.html).toContain("Confirm alerts");
     expect(mail.html).toContain("<table");
     expect(mail.html).not.toContain("display:flex");

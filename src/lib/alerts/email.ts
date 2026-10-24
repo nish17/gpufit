@@ -92,12 +92,7 @@ export function emailShell(input: {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%;">
 <tr>
 <td style="padding:0 4px 18px;">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0">
-<tr>
-<td width="28" height="28" align="center" valign="middle" bgcolor="${INK}" style="width:28px;height:28px;background:${INK};color:${PAPER};border-radius:7px;font-family:${SERIF};font-size:16px;line-height:28px;font-weight:600;">G</td>
-<td style="padding-left:10px;font-family:${SANS};font-size:16px;line-height:20px;font-weight:600;color:${INK};"><a href="${home}" style="color:${INK};text-decoration:none;">GPUfit</a></td>
-</tr>
-</table>
+<a href="${home}" style="text-decoration:none;"><img src="${home}/logo-small-24@2x.png" width="86" height="24" alt="GPUfit" style="display:block;border:0;height:24px;width:86px;"></a>
 </td>
 </tr>
 <tr>

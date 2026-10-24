@@ -108,22 +108,18 @@ a { color: inherit; }
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
   text-decoration: none;
-  font-weight: 600;
 }
 
-.mark {
-  width: 1.7rem;
-  height: 1.7rem;
-  border-radius: 0.45rem;
-  background: var(--ink);
-  color: var(--bg);
-  display: grid;
-  place-items: center;
-  font-family: Fraunces, serif;
-  font-size: 1rem;
+.brand .logo {
+  height: 28px;
+  width: auto;
 }
+
+.brand .logo-light { display: block; }
+.brand .logo-dark { display: none; }
+html.dark .brand .logo-light { display: none; }
+html.dark .brand .logo-dark { display: block; }
 
 .nav-links {
   display: flex;

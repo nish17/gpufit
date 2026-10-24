@@ -10,6 +10,7 @@ interface Props {
 const { title, description, path = Astro.url.pathname } = Astro.props;
 const site = Astro.site?.toString().replace(/\/$/, "") || DEFAULT_SITE;
 const canonical = new URL(path, site).toString();
+const image = new URL("/og-image.png", site).toString();
 ---
 
 <!doctype html>
@@ -24,8 +25,16 @@ const canonical = new URL(path, site).toString();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GPUfit — which open models actually fit" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={image} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#121410" media="(prefers-color-scheme: dark)" />
     <script is:inline>
@@ -42,9 +51,9 @@ const canonical = new URL(path, site).toString();
     <a href="#content" class="skip">Skip to content</a>
     <header class="site-header">
       <div class="wrap nav">
-        <a class="brand" href="/">
-          <span class="mark">G</span>
-          <span>GPUfit</span>
+        <a class="brand" href="/" aria-label="GPUfit">
+          <img class="logo logo-light" src="/logo-small.svg" width="101" height="28" alt="" />
+          <img class="logo logo-dark" src="/logo-small-dark.svg" width="101" height="28" alt="" />
         </a>
         <nav class="nav-links" aria-label="Primary">
           <a href="/new">New</a>
