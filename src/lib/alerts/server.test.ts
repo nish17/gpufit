@@ -154,6 +154,40 @@ describe("alert signup mail", () => {
     expect(fetchImpl).toHaveBeenCalledTimes(2);
   });
 
+  it("confirms a local link without touching an unconfigured D1 binding", async () => {
+    const db = {
+      prepare() {
+        return {
+          bind() {
+            return {
+              async run() {
+                throw new Error("D1_ERROR: no such table: subscribers: SQLITE_ERROR");
+              },
+              async first() {
+                return null;
+              },
+              async all() {
+                return { results: [] };
+              },
+            };
+          },
+        };
+      },
+    };
+    const issued = await requestAlert(signup, { ALERT_TOKEN_SECRET: "production-secret" }, { dev: true, now: Date.now() });
+    const token = issued.devConfirmUrl?.split("token=")[1] || "";
+    const confirmed = await confirmAlert(token, { DB: db, ALERT_TOKEN_SECRET: "production-secret" }, { dev: true });
+    expect(confirmed.ok).toBe(true);
+    expect(confirmed.message).not.toContain(signup.email);
+    expect(confirmed.message).not.toContain("D1_ERROR");
+    expect(confirmed.message).not.toContain("subscribers");
+
+    const broken = await confirmAlert(token, { DB: db, RESEND_API_KEY: "re_test", ALERT_TOKEN_SECRET: "production-secret" }, { dev: false });
+    expect(broken.ok).toBe(false);
+    expect(broken.message).not.toContain("D1_ERROR");
+    expect(broken.message).not.toContain(signup.email);
+  });
+
   it("drops a filled honeypot and requires Turnstile only when the secret is set", async () => {
     const fetchImpl = vi.fn(async (url: string) => {
       if (String(url).includes("siteverify")) return jsonResponse({ success: true });

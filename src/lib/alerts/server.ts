@@ -365,24 +365,33 @@ async function payloadFor(
   return payload;
 }
 
+const LOCAL_CONFIRM_MESSAGE = "You're confirmed. This local session does not keep the signup on the server.";
+const STORE_UNAVAILABLE = "Email alerts are not switched on for this site yet.";
+
+function mailConfigured(env: AlertEnv): env is AlertEnv & { DB: NonNullable<AlertEnv["DB"]> } {
+  return Boolean(env.DB && env.RESEND_API_KEY);
+}
+
 export async function confirmAlert(token: string, env: AlertEnv, options: AlertCallOptions = {}) {
   const dev = options.dev ?? import.meta.env.DEV;
   const payload = await payloadFor(token, env, "confirm", dev);
   if (!payload) return { ok: false as const, message: "This confirmation link is invalid or expired." };
-  if (env.DB) {
-    await env.DB.prepare(`UPDATE subscribers SET confirmed = 1 WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
-    return { ok: true as const, message: CONFIRMED_MESSAGE };
+  if (mailConfigured(env)) {
+    try {
+      await env.DB.prepare(`UPDATE subscribers SET confirmed = 1 WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
+      return { ok: true as const, message: CONFIRMED_MESSAGE };
+    } catch (error) {
+      console.error("Alert confirm failed.", error);
+      if (!dev) return { ok: false as const, message: STORE_UNAVAILABLE };
+    }
   }
   if (!dev) {
-    return { ok: false as const, message: "Email alerts are not switched on for this site yet." };
+    return { ok: false as const, message: STORE_UNAVAILABLE };
   }
   const { rows } = await readDevStore();
   const row = rows.find((item) => item.id === idFor(payload.email, payload.deviceId));
   if (!row) {
-    return {
-      ok: true as const,
-      message: "You're confirmed. This local session does not keep the signup on the server.",
-    };
+    return { ok: true as const, message: LOCAL_CONFIRM_MESSAGE };
   }
   row.confirmed = true;
   await writeDevStore(rows);
@@ -393,12 +402,17 @@ export async function unsubscribeAlert(token: string, env: AlertEnv, options: Al
   const dev = options.dev ?? import.meta.env.DEV;
   const payload = await payloadFor(token, env, "unsubscribe", dev);
   if (!payload) return { ok: false as const, message: "This unsubscribe link is invalid or expired." };
-  if (env.DB) {
-    await env.DB.prepare(`DELETE FROM subscribers WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
-    return { ok: true as const, message: UNSUBSCRIBED_MESSAGE };
+  if (mailConfigured(env)) {
+    try {
+      await env.DB.prepare(`DELETE FROM subscribers WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
+      return { ok: true as const, message: UNSUBSCRIBED_MESSAGE };
+    } catch (error) {
+      console.error("Alert unsubscribe failed.", error);
+      if (!dev) return { ok: false as const, message: STORE_UNAVAILABLE };
+    }
   }
   if (!dev) {
-    return { ok: false as const, message: "Email alerts are not switched on for this site yet." };
+    return { ok: false as const, message: STORE_UNAVAILABLE };
   }
   const { rows } = await readDevStore();
   await writeDevStore(rows.filter((item) => item.id !== idFor(payload.email, payload.deviceId)));
