@@ -4,12 +4,87 @@ const description = "What GPUfit stores: a hardware profile in your browser, and
 ---
 
 <Base title="Privacy · GPUfit" description={description} path="/privacy/">
-  <article class="wrap prose" style="padding:2rem 0 1rem; max-width:46rem;">
-    <h1>Privacy</h1>
-    <p>The hardware picker writes one JSON record to <code>localStorage</code> on this device. Choosing a GPU does not create an account and does not send that choice anywhere.</p>
-    <p>The optional browser hint reads the WebGPU adapter name, if the browser exposes it, and only uses it to pre-select a row. It does not include VRAM, and it is not stored on a server.</p>
-    <p>Alert signup is separate. If you submit the form on a configured deployment, we store the email, the hardware profile, and whether you want a weekly digest. A confirmation link has to be clicked before mail is sent. Every future message needs its own unsubscribe link. There is no password.</p>
-    <p>Until Resend and Cloudflare D1 are configured, the dev server writes signups to a local <code>data/subscribers.json</code> file, and a production build without those secrets refuses to store the address. The form then keeps the signup in this browser so you can see the flow.</p>
-    <p>Measured tok/s notes stay in <code>localStorage</code> too. They are not uploaded.</p>
+  <article class="wrap page-intro">
+    <p class="kicker">Privacy</p>
+    <h1 class="serif">What stays on this machine</h1>
+    <p class="lede">Choosing a GPU does not create an account. An email is stored only if you ask for alerts.</p>
+
+    <div class="method-details">
+      <details open>
+        <summary>On this device</summary>
+        <div class="method-grid two" style="margin-top:1rem;">
+          <section class="figure-card">
+            <svg viewBox="0 0 280 130" role="img" aria-label="A browser window holding a small local record">
+              <rect x="24" y="16" width="232" height="98" rx="14" fill="none" stroke="var(--line)" stroke-width="2" />
+              <circle cx="46" cy="36" r="4" fill="var(--line)" />
+              <circle cx="62" cy="36" r="4" fill="var(--line)" />
+              <rect x="48" y="56" width="120" height="36" rx="8" fill="var(--accent)" />
+              <text x="108" y="78" text-anchor="middle" fill="var(--accent-ink)" font-size="13" font-family="Outfit, sans-serif">local</text>
+            </svg>
+            <h2 class="serif">Hardware profile</h2>
+            <p class="muted">The hardware picker writes one JSON record to <code>localStorage</code> on this device. Choosing a GPU does not create an account and does not send that choice anywhere.</p>
+          </section>
+          <section class="figure-card">
+            <svg viewBox="0 0 280 130" role="img" aria-label="A speed note written into a local box">
+              <rect x="36" y="28" width="208" height="74" rx="14" fill="var(--bg)" stroke="var(--line)" stroke-width="2" />
+              <text x="140" y="62" text-anchor="middle" fill="var(--ink)" font-size="18" font-family="Fraunces, Georgia, serif">24 tok/s</text>
+              <text x="140" y="84" text-anchor="middle" fill="var(--muted)" font-size="12" font-family="Outfit, sans-serif">kept here</text>
+            </svg>
+            <h2 class="serif">Speed notes</h2>
+            <p class="muted">Measured tok/s notes stay in <code>localStorage</code> too. They are not uploaded.</p>
+          </section>
+        </div>
+      </details>
+
+      <details open>
+        <summary>The browser hint</summary>
+        <section class="figure-card" style="margin-top:1rem; max-width:24rem;">
+          <svg viewBox="0 0 280 110" role="img" aria-label="A chip name pointing at one row, with no arrow leaving the page">
+            <rect x="20" y="28" width="110" height="48" rx="10" fill="var(--accent)" />
+            <text x="75" y="56" text-anchor="middle" fill="var(--accent-ink)" font-size="13" font-family="Outfit, sans-serif">GPU name</text>
+            <path d="M140 52h28" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" />
+            <path d="M160 44l12 8-12 8" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round" />
+            <rect x="180" y="24" width="80" height="22" rx="6" fill="none" stroke="var(--line)" />
+            <rect x="180" y="52" width="80" height="22" rx="6" fill="var(--bg)" stroke="var(--accent)" stroke-width="2" />
+          </svg>
+          <h2 class="serif">Pre-select only</h2>
+          <p class="muted">The optional browser hint reads the WebGPU adapter name, if the browser exposes it, and only uses it to pre-select a row. It does not include VRAM, and it is not stored on a server.</p>
+        </section>
+      </details>
+
+      <details open>
+        <summary>Alerts</summary>
+        <div class="method-grid two" style="margin-top:1rem;">
+          <section class="figure-card">
+            <svg viewBox="0 0 280 120" role="img" aria-label="An email address beside a hardware profile">
+              <rect x="20" y="28" width="110" height="64" rx="12" fill="none" stroke="var(--line)" stroke-width="2" />
+              <text x="75" y="64" text-anchor="middle" fill="var(--ink)" font-size="13" font-family="Outfit, sans-serif">email</text>
+              <rect x="150" y="28" width="110" height="64" rx="12" fill="var(--accent)" />
+              <text x="205" y="64" text-anchor="middle" fill="var(--accent-ink)" font-size="13" font-family="Outfit, sans-serif">machine</text>
+            </svg>
+            <h2 class="serif">What we store</h2>
+            <p class="muted">The address, the hardware profile, and whether you want a weekly digest. Only after you confirm.</p>
+          </section>
+          <section class="figure-card">
+            <svg viewBox="0 0 280 120" role="img" aria-label="A link labeled unsubscribe">
+              <rect x="48" y="40" width="184" height="40" rx="20" fill="var(--bg)" stroke="var(--line)" stroke-width="2" />
+              <text x="140" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-family="Outfit, sans-serif">Unsubscribe</text>
+            </svg>
+            <h2 class="serif">How you leave</h2>
+            <p class="muted">Every message has its own unsubscribe link. There is no password.</p>
+          </section>
+        </div>
+        <div class="prose">
+          <p>Alert signup is separate. If you submit the form on a configured deployment, we store the email, the hardware profile, and whether you want a weekly digest. A confirmation link has to be clicked before mail is sent. Every future message needs its own unsubscribe link. There is no password.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Before email is configured</summary>
+        <div class="prose">
+          <p>Until Resend and Cloudflare D1 are configured, the dev server writes signups to a local <code>data/subscribers.json</code> file, and a production build without those secrets refuses to store the address. The form then keeps the signup in this browser so you can see the flow.</p>
+        </div>
+      </details>
+    </div>
   </article>
 </Base>

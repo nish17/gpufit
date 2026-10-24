@@ -1,29 +1,30 @@
 ---
+import VendorMark from "../components/VendorMark.astro";
 import Base from "../layouts/Base.astro";
 import { devices, devicePath } from "../lib/catalog";
 
 const groups = [
-  { label: "NVIDIA", mark: "N", color: "#5c8f12", list: devices.filter((device) => device.vendor === "nvidia" && device.kind === "gpu") },
-  { label: "AMD", mark: "A", color: "#c0392b", list: devices.filter((device) => device.vendor === "amd" && device.kind === "gpu") },
-  { label: "Intel", mark: "I", color: "#1a6fb5", list: devices.filter((device) => device.vendor === "intel") },
-  { label: "Apple", mark: "M", color: "#1c1915", list: devices.filter((device) => device.vendor === "apple") },
-  { label: "Unified memory and CPU", mark: "C", color: "#5f594f", list: devices.filter((device) => device.kind === "cpu" || device.kind === "unified") },
+  { id: "nvidia" as const, label: "NVIDIA", list: devices.filter((device) => device.vendor === "nvidia" && device.kind === "gpu") },
+  { id: "amd" as const, label: "AMD", list: devices.filter((device) => device.vendor === "amd" && device.kind === "gpu") },
+  { id: "intel" as const, label: "Intel", list: devices.filter((device) => device.vendor === "intel") },
+  { id: "apple" as const, label: "Apple", list: devices.filter((device) => device.vendor === "apple") },
+  { id: "chip" as const, label: "Unified memory and CPU", list: devices.filter((device) => device.kind === "cpu" || device.kind === "unified") },
 ];
 const description = "GPUs, Apple silicon, and CPU profiles GPUfit can score. Each card links to the spec and the vendor page it came from.";
 ---
 
 <Base title="Supported hardware · GPUfit" description={description} path="/devices/">
-  <article class="wrap" style="padding:2rem 0 1rem;">
+  <article class="wrap page-intro" style="max-width:none;">
     <p class="kicker">Hardware</p>
-    <h1 class="serif" style="font-size:clamp(2.2rem, 5vw, 3.4rem); margin-bottom:0.4rem;">Devices in the catalog</h1>
-    <p class="muted" style="max-width:40rem;">{devices.length} machines. Pick one to see which models fit. Specs are hand-checked, with a source link on each device page.</p>
+    <h1 class="serif">Devices in the catalog</h1>
+    <p class="lede">{devices.length} machines. Pick one to see which models fit. Specs are hand-checked, with a source link on each device page.</p>
     {groups.map((group) => (
-      <section style="margin-top:1.8rem;">
-        <div style="display:flex; align-items:center; gap:0.75rem;">
-          <span class="vendor-mark" style={`background:${group.color}`}>{group.mark}</span>
+      <section>
+        <div class="vendor-lockup">
+          <VendorMark id={group.id} />
           <div>
-            <h2 class="serif" style="margin:0; font-size:1.6rem;">{group.label}</h2>
-            <p class="muted" style="margin:0;">{group.list.length} profiles</p>
+            <h2 class:list={[{ "vendor-name": group.id === "apple" || group.id === "chip" }]}>{group.label}</h2>
+            <p class="muted">{group.list.length} profiles</p>
           </div>
         </div>
         <div class="device-grid">

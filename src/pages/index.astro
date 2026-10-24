@@ -10,26 +10,27 @@ const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech
 ---
 
 <Base title="GPUfit — which open models fit your machine" description={description} image="/og/default.png" imageAlt="GPUfit — which open models fit your machine" jsonLd={websiteJsonLd(origin)}>
-  <div class="wrap" style="padding: 2.2rem 0 3rem;">
-    <p class="kicker">Local LLMs, without the spreadsheet</p>
-    <h1 style="font-size:clamp(2.6rem, 6vw, 4.4rem); line-height:0.95; margin:0.3rem 0 0.8rem; max-width:16ch;">
-      Which open models actually fit?
-    </h1>
-    <p class="muted" style="max-width:46rem; font-size:1.05rem;">
-      Pick a GPU, an Apple chip, or a CPU. GPUfit ranks {models.length} open models with a plain-English verdict, the best quant that fits, a practical context length, and a tokens-per-second range. The profile stays in this browser. Catalog updated {updatedLabel()}. {devices.length} devices, sourced specs.
-    </p>
+  <div class="wrap page-pad">
+    <header class="hero">
+      <p class="kicker">Local LLMs, without the spreadsheet</p>
+      <h1>Which open models actually fit?</h1>
+      <p class="lede">Pick a GPU, a Mac, or a CPU. GPUfit ranks {models.length} open models: the quant that fits, a practical context length, and a speed range.</p>
+      <p class="meta-line">Updated {updatedLabel()} · {devices.length} devices · saved in this browser.</p>
+    </header>
     <FitApp client:load />
-    <section style="margin-top:2.5rem;">
+    <section class="question-block">
       <h2>Start from a specific question</h2>
-      <ul>
+      <div class="question-grid">
         {examples.map(({ model, device }) => (
-          <li><a href={pairPath(model, device)}>Can I run {model.name} on {device.name}?</a></li>
+          <a class="device-card" href={pairPath(model, device)}>
+            <b>Can I run {model.name} on {device.name}?</b>
+          </a>
         ))}
-      </ul>
-      <p class="muted">
-        Best fits:
+      </div>
+      <p class="muted browse-line">
+        Best fits
         {BEST_TIERS.map((tier) => (
-          <a href={`/best/${tier.slug}/`} style="margin-right:0.75rem;">{tier.label}</a>
+          <a href={`/best/${tier.slug}/`}>{tier.label}</a>
         ))}
         <a href="/new/">New models</a>
       </p>

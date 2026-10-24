@@ -19,6 +19,8 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Input } from "./ui/input";
 
 const QUICK = ["rtx-4060-ti-16gb", "rtx-3060-12gb", "rtx-4090", "rtx-5090", "m5", "m4-pro", "cpu-ddr5-5600"];
+const INITIAL_ROWS = 15;
+const MORE_ROWS = 20;
 const TONE: Record<VerdictId, string> = {
   great: "tone-great",
   runs: "tone-runs",
@@ -48,6 +50,11 @@ function FitAppInner() {
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("fit");
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_ROWS);
+
+  useEffect(() => {
+    setVisibleCount(INITIAL_ROWS);
+  }, [modelQuery, filter, sort, profile.deviceId, profile.memoryGb, profile.systemRamGb, profile.ramBandwidthGBps, profile.drivesDisplay]);
 
   useEffect(() => {
     const stored = readProfile();
@@ -133,8 +140,16 @@ function FitAppInner() {
     setHint(`Pre-selected ${match.name}. Browsers do not report memory size, so confirm it.`);
   }
 
+  const shown = ranked.slice(0, visibleCount);
+  const remaining = ranked.length - shown.length;
+  const countLabel = ranked.length === 0
+    ? "0 models"
+    : shown.length === ranked.length
+      ? `Showing all ${ranked.length} ${ranked.length === 1 ? "model" : "models"}`
+      : `Showing ${shown.length} of ${ranked.length} models`;
+
   const picker = (
-    <div className="grid gap-3">
+    <div className="flex min-h-0 flex-1 flex-col gap-3">
       <Input value={deviceQuery} onChange={(event) => setDeviceQuery(event.target.value)} placeholder="Search GPUs, Macs, CPUs" aria-label="Search hardware" />
       <div className="flex flex-wrap gap-1.5">
         {[
@@ -150,7 +165,7 @@ function FitAppInner() {
           </button>
         ))}
       </div>
-      <div className="grid max-h-72 gap-1 overflow-auto pr-1">
+      <div className="device-list grid min-h-0 gap-1 overflow-auto pr-1">
         {devices
           .filter((item) => inGroup(item, vendor))
           .filter((item) => item.name.toLowerCase().includes(deviceQuery.trim().toLowerCase()))
@@ -224,7 +239,7 @@ function FitAppInner() {
 
   return (
     <div className="grid items-start gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
-      <aside className="card hidden p-4 lg:sticky lg:top-20 lg:block">{picker}</aside>
+      <aside className="picker-panel card hidden p-4 lg:sticky lg:top-20 lg:flex lg:max-h-[calc(100dvh-6.5rem)] lg:flex-col">{picker}</aside>
       <section className="grid gap-4">
         <div className="card grid gap-3 p-4 sm:p-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
@@ -313,16 +328,23 @@ function FitAppInner() {
           ))}
         </div>
         <p className="m-0 text-sm text-[var(--muted)]">
-          {ranked.length} models · {fullCount} fit fully on this profile. Estimate from memory bandwidth, not a benchmark.{" "}
+          {countLabel} · {fullCount} fit fully on this profile. Estimate from memory bandwidth, not a benchmark.{" "}
           <a href="/how-it-works/">How it works</a>.
         </p>
         <div className="grid gap-2">
           {ranked.length === 0 ? (
             <div className="card p-6 text-sm text-[var(--muted)]">Nothing in the catalog matches that filter.</div>
           ) : (
-            ranked.map(({ model, fit }) => <ModelRow key={model.slug} model={model} fit={fit} device={device} />)
+            shown.map(({ model, fit }) => <ModelRow key={model.slug} model={model} fit={fit} device={device} />)
           )}
         </div>
+        {remaining > 0 ? (
+          <div>
+            <Button type="button" variant="outline" onClick={() => setVisibleCount((count) => count + MORE_ROWS)}>
+              Show {Math.min(MORE_ROWS, remaining)} more
+            </Button>
+          </div>
+        ) : null}
         <div className="card p-4 sm:p-5">
           <h2 className="m-0 text-2xl">Alerts for this machine</h2>
           <div className="mt-3">

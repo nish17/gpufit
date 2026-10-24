@@ -9,18 +9,44 @@ const description = "Get an email when a newly tracked open model fits the machi
 ---
 
 <Base title="Model alerts · GPUfit" description={description} path="/alerts/">
-  <article class="wrap" style="padding:2rem 0 1rem; max-width:40rem;">
+  <article class="wrap page-intro" style="max-width:68rem;">
     <p class="kicker">Alerts</p>
-    <h1 class="serif" style="font-size:clamp(2.2rem, 5vw, 3.4rem);">Email me when a new model fits.</h1>
-    <p class="muted">The form uses whatever machine is saved in this browser. If you have not picked one, it starts from an RTX 4060 Ti 16GB. Change that on the <a href="/">home page</a> first.</p>
-    <div class="card" style="padding:1rem 1.1rem;">
+    <h1 class="serif">Email me when a new model fits.</h1>
+    <p class="lede">The form uses whatever machine is saved in this browser. If you have not picked one, it starts from an RTX 4060 Ti 16GB. Change that on the <a href="/">home page</a> first.</p>
+    <div class="card" style="padding:1rem 1.1rem; margin-top:1.4rem;">
       <SavedAlertForm client:load fallback={defaultProfile(device)} fallbackName={device.name} />
     </div>
-    <h2 class="serif">What you get</h2>
-    <ul class="muted">
-      <li>One confirmation email before anything else is sent.</li>
-      <li>A note when a newly tracked model fits that machine.</li>
-      <li>An unsubscribe link in every message. No account and no password.</li>
-    </ul>
+    <div class="method-grid three">
+      <section class="figure-card">
+        <svg viewBox="0 0 280 120" role="img" aria-label="An envelope with a check mark">
+          <rect x="36" y="28" width="208" height="68" rx="12" fill="none" stroke="var(--line)" stroke-width="2" />
+          <path d="M36 40l104 42L244 40" fill="none" stroke="var(--accent)" stroke-width="2" />
+          <circle cx="214" cy="78" r="14" fill="var(--accent)" />
+          <path d="M207 78l5 5 10-11" fill="none" stroke="var(--accent-ink)" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <h2 class="serif">Confirmation</h2>
+        <p class="muted">One email before anything else is sent. Nothing goes out until you click it.</p>
+      </section>
+      <section class="figure-card">
+        <svg viewBox="0 0 280 120" role="img" aria-label="A new model card landing on a machine">
+          <rect x="28" y="36" width="92" height="56" rx="10" fill="var(--accent)" />
+          <text x="74" y="68" text-anchor="middle" fill="var(--accent-ink)" font-size="13" font-family="Outfit, sans-serif">New</text>
+          <path d="M132 64h36" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" />
+          <path d="M160 56l10 8-10 8" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round" />
+          <rect x="178" y="32" width="74" height="64" rx="10" fill="none" stroke="var(--line)" stroke-width="2" />
+          <text x="215" y="68" text-anchor="middle" fill="var(--muted)" font-size="12" font-family="Outfit, sans-serif">Fits</text>
+        </svg>
+        <h2 class="serif">A fitting model</h2>
+        <p class="muted">A note when a newly tracked model fits that machine.</p>
+      </section>
+      <section class="figure-card">
+        <svg viewBox="0 0 280 120" role="img" aria-label="A link labeled unsubscribe">
+          <rect x="48" y="40" width="184" height="40" rx="20" fill="var(--bg)" stroke="var(--line)" stroke-width="2" />
+          <text x="140" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-family="Outfit, sans-serif">Unsubscribe</text>
+        </svg>
+        <h2 class="serif">No account</h2>
+        <p class="muted">An unsubscribe link in every message. No password.</p>
+      </section>
+    </div>
   </article>
 </Base>

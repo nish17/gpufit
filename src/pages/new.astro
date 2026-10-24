@@ -11,22 +11,24 @@ const description = live
 ---
 
 <Base title="New models · GPUfit" description={description} path="/new/">
-  <article class="wrap prose" style="padding:2rem 0 1rem;">
+  <article class="wrap page-intro" style="max-width:none;">
     <p class="kicker">Fresh weights</p>
-    <h1>New models</h1>
-    <p>
+    <h1 class="serif">New models</h1>
+    <p class="lede">
       {live
         ? "These repos were created in the last 14 days and passed the catalog filter."
         : "Nothing in the current snapshot was created in the last 14 days. Showing the newest tracked models instead."}
       {" "}Updated {updatedLabel()}. <a href="/feed.xml">RSS</a> · <a href="/atom.xml">Atom</a>.
     </p>
-    <ul>
+    <div class="fresh-grid">
       {recent.map((model) => (
-        <li>
-          <a href={`/models/${model.slug}/`}>{model.name}</a>
-          <span class="muted"> — {formatParams(model.paramsB)}, {model.author}, {(model.createdAt || "").slice(0, 10)}. {model.description}</span>
-        </li>
+        <a class="fresh-card" href={`/models/${model.slug}/`}>
+          <span class="kicker">{(model.createdAt || "").slice(0, 10)}</span>
+          <h2>{model.name}</h2>
+          <p class="muted">{formatParams(model.paramsB)}{model.author ? ` · ${model.author}` : ""}</p>
+          {model.description ? <p class="desc">{model.description}</p> : null}
+        </a>
       ))}
-    </ul>
+    </div>
   </article>
 </Base>
