@@ -1,11 +1,13 @@
 {
-  "generatedAt": "2026-10-24T16:10:42.163522+00:00",
-  "modelCount": 134,
-  "withRealQuants": 132,
+  "generatedAt": "2026-10-24T21:06:33.243495+00:00",
+  "modelCount": 137,
+  "withRealQuants": 135,
   "attempts": 380,
-  "candidateCount": 528,
+  "candidateCount": 523,
   "newRepoIds": [
-    "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF"
+    "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
+    "empero-ai/Qwythos-9B-v2-GGUF",
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
