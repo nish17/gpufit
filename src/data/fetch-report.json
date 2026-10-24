@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-24T04:53:32.331812+00:00",
-  "modelCount": 145,
-  "withRealQuants": 143,
+  "generatedAt": "2026-10-24T16:10:42.163522+00:00",
+  "modelCount": 134,
+  "withRealQuants": 132,
   "attempts": 380,
-  "candidateCount": 520,
+  "candidateCount": 528,
   "newRepoIds": [
-    "bartowski/bottlecapai_ThinkingCap-gemma-4-26B-A4B-it-GGUF"
+    "lmstudio-community/NVIDIA-Nemotron-3-Nano-4B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
