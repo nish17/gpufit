@@ -1,7 +1,7 @@
 ---
 import FitApp from "../components/FitApp";
 import Base from "../layouts/Base.astro";
-import { BEST_TIERS, devices, models, pairPath, seoPairs, updatedLabel } from "../lib/catalog";
+import { BEST_TIERS, devices, modelPath, models, pairPath, seoPairs, updatedLabel } from "../lib/catalog";
 import { websiteJsonLd } from "../lib/seo";
 
 const examples = seoPairs().filter((_, index) => index % 37 === 0).slice(0, 6);
@@ -35,5 +35,13 @@ const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech
         <a href="/new/">New models</a>
       </p>
     </section>
+    <details class="catalog-index">
+      <summary>Every model in the catalog</summary>
+      <ul>
+        {models.map((model) => (
+          <li><a href={modelPath(model)}>{model.name}</a></li>
+        ))}
+      </ul>
+    </details>
   </div>
 </Base>
