@@ -15,7 +15,7 @@ const description = "Confirm a GPUfit alert signup.";
   if (!token) {
     if (result) result.textContent = "This page needs a confirmation token.";
   } else {
-    fetch(`/api/alerts/confirm?token=${encodeURIComponent(token)}`)
+    fetch(`/api/alerts/confirm/?token=${encodeURIComponent(token)}`)
       .then((response) => response.json())
       .then((body: { message?: string }) => {
         if (result) result.textContent = body.message || "Done.";

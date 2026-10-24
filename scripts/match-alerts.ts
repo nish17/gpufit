@@ -200,7 +200,7 @@ for (const mail of mails) {
     },
     secret,
   );
-  const unsubscribeUrl = `${origin}/alerts/unsubscribe?token=${encodeURIComponent(token)}`;
+  const unsubscribeUrl = `${origin}/alerts/unsubscribe/?token=${encodeURIComponent(token)}`;
   const rendered = renderFitMail(mail, origin, unsubscribeUrl);
   const idempotencyKey = createHash("sha256")
     .update(`${mail.subscriber.id}:${mail.hits.map((hit) => hit.model.id).sort().join(",")}`)

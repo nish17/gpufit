@@ -1,7 +1,12 @@
 import type { APIRoute } from "astro";
-import { loadAlertEnv, requestAlert, validateSignup } from "../../lib/alerts/server";
+import { handleAlertSignup, loadAlertEnv } from "../../lib/alerts/server";
 
 export const prerender = false;
+
+export const GET: APIRoute = async () => {
+  const env = await loadAlertEnv();
+  return Response.json({ turnstileSiteKey: env.TURNSTILE_SITE_KEY?.trim() || null });
+};
 
 export const POST: APIRoute = async ({ request }) => {
   let body: unknown;
@@ -10,10 +15,8 @@ export const POST: APIRoute = async ({ request }) => {
   } catch {
     return Response.json({ ok: false, message: "Expected JSON." }, { status: 400 });
   }
-  const parsed = validateSignup((body ?? {}) as Record<string, unknown>);
-  if (typeof parsed === "string") {
-    return Response.json({ ok: false, message: parsed }, { status: 400 });
-  }
-  const result = await requestAlert(parsed, await loadAlertEnv(), new URL(request.url).origin);
-  return Response.json(result, { status: result.ok ? 200 : 503 });
+  const outcome = await handleAlertSignup((body ?? {}) as Record<string, unknown>, await loadAlertEnv(), {
+    devLinkOrigin: new URL(request.url).origin,
+  });
+  return Response.json(outcome.result, { status: outcome.status });
 };

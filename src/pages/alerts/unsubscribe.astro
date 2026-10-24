@@ -15,7 +15,7 @@ const description = "Unsubscribe from GPUfit alerts.";
   if (!token) {
     if (result) result.textContent = "This page needs an unsubscribe token.";
   } else {
-    fetch(`/api/alerts/unsubscribe?token=${encodeURIComponent(token)}`)
+    fetch(`/api/alerts/unsubscribe/?token=${encodeURIComponent(token)}`)
       .then((response) => response.json())
       .then((body: { message?: string }) => {
         if (result) result.textContent = body.message || "Done.";
