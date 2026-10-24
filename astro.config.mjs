@@ -24,11 +24,17 @@ function skipReactProbe() {
 export default defineConfig({
   site: process.env.SITE_URL || "https://gpufit.tech",
   output: "static",
+  trailingSlash: "always",
   session: false,
   adapter: cloudflare({
     prerenderEnvironment: "node",
   }),
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !page.includes("/alerts/confirm") && !page.includes("/alerts/unsubscribe"),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss(), skipReactProbe()],
     resolve: {

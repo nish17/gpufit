@@ -2,7 +2,8 @@
 import Commands from "../../../../components/Commands.astro";
 import Base from "../../../../layouts/Base.astro";
 import { formatContext, formatGB, formatTokRange } from "../../../../lib/estimator";
-import { alternatives, devicePath, fitDevice, modelPath, pairPath, seoPairs, updatedLabel } from "../../../../lib/catalog";
+import { alternatives, devicePath, fitDevice, modelPath, pairLink, pairPath, seoPairs, updatedLabel } from "../../../../lib/catalog";
+import { ESTIMATE_NOTE, breadcrumbJsonLd, pairPageDescription } from "../../../../lib/seo";
 
 export function getStaticPaths() {
   return seoPairs().map(({ model, device }) => ({
@@ -14,10 +15,17 @@ const { model, device } = Astro.props;
 const fit = fitDevice(model, device);
 const others = alternatives(model, device, fit);
 const title = `Can I run ${model.name} on ${device.name}?`;
-const description = `${fit.summary} Estimate updated ${updatedLabel()}.`;
+const description = pairPageDescription(model, device, fit);
+const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech";
+const jsonLd = breadcrumbJsonLd(origin, [
+  { name: "GPUfit", path: "/" },
+  { name: model.name, path: modelPath(model) },
+  { name: device.name, path: devicePath(device) },
+  { name: title, path: pairPath(model, device) },
+]);
 ---
 
-<Base title={`${title} · GPUfit`} description={description} path={pairPath(model, device)}>
+<Base title={`${title} · GPUfit`} description={description} path={pairPath(model, device)} image={`/og/pairs/${model.slug}--${device.slug}.png`} imageAlt={`${model.name} on ${device.name}`} jsonLd={jsonLd}>
   <article class="wrap" style="padding:2rem 0 1rem;">
     <p class="kicker">Can I run it?</p>
     <h1 class="serif" style="font-size:clamp(2rem, 5vw, 3.4rem); line-height:1.05; margin:0.2rem 0 0.8rem;">{title}</h1>
@@ -27,7 +35,11 @@ const description = `${fit.summary} Estimate updated ${updatedLabel()}.`;
       <div class="stat"><span class="muted">Best quant</span><b>{fit.quant?.id ?? "—"}{fit.quant?.estimated ? " est." : ""}</b></div>
       <div class="stat"><span class="muted">Working context</span><b>{fit.context ? formatContext(fit.context) : "—"}</b></div>
       <div class="stat"><span class="muted">Max that fits</span><b>{fit.maxContext ? formatContext(fit.maxContext) : "—"}</b></div>
-      <div class="stat"><span class="muted">Speed</span><b>{fit.tokPerSec ? `${formatTokRange(fit.tokPerSec)} tok/s` : "—"}</b></div>
+      <div class="stat">
+        <span class="muted">Speed</span>
+        <b>{fit.tokPerSec ? `${formatTokRange(fit.tokPerSec)} tok/s` : "—"}</b>
+        <span class="muted">{ESTIMATE_NOTE} <a href="/how-it-works/">Method</a>.</span>
+      </div>
     </div>
     <div class="grid-stats" style="margin-top:0.7rem;">
       <div class="stat"><span class="muted">Weights</span><b>{formatGB(fit.weightBytes)}</b></div>
@@ -36,7 +48,7 @@ const description = `${fit.summary} Estimate updated ${updatedLabel()}.`;
       <div class="stat"><span class="muted">Usable</span><b>{formatGB(fit.usableBytes)}</b></div>
     </div>
     <p class="muted">
-      <a href={modelPath(model)}>{model.name} details</a> · <a href={devicePath(device)}>{device.name} page</a> · <a href="/how-it-works">How this estimate is made</a>
+      <a href={modelPath(model)}>{model.name} details</a> · <a href={devicePath(device)}>{device.name} page</a> · <a href="/how-it-works/">How this estimate is made</a>
     </p>
     <h2 class="serif">Run commands</h2>
     <Commands llamaCpp={fit.commands.llamaCpp} ollama={fit.commands.ollama} lmStudio={fit.commands.lmStudio} />
@@ -47,12 +59,15 @@ const description = `${fit.summary} Estimate updated ${updatedLabel()}.`;
     <h2 class="serif">{fit.bucket === "full" ? "Larger models that also fit" : "Models that fit this machine more comfortably"}</h2>
     {others.length === 0 ? <p class="muted">No close alternative in the current catalog.</p> : (
       <ul>
-        {others.map(({ model: other, fit: otherFit }) => (
-          <li>
-            <a href={pairPath(other, device)}>Can I run {other.name} on {device.name}?</a>
-            <span class="muted"> — {otherFit.label}, {otherFit.quant?.id}{otherFit.tokPerSec ? `, ${formatTokRange(otherFit.tokPerSec)} tok/s` : ""}</span>
-          </li>
-        ))}
+        {others.map(({ model: other, fit: otherFit }) => {
+          const href = pairLink(other, device);
+          return (
+            <li>
+              <a href={href ?? modelPath(other)}>{href ? `Can I run ${other.name} on ${device.name}?` : other.name}</a>
+              <span class="muted"> — {otherFit.label}, {otherFit.quant?.id}{otherFit.tokPerSec ? `, ${formatTokRange(otherFit.tokPerSec)} tok/s (estimate)` : ""}</span>
+            </li>
+          );
+        })}
       </ul>
     )}
     <p class="muted">Updated {updatedLabel()}. Profile on this page is the device default{device.kind === "gpu" ? " plus 32 GB of DDR5-5600 system RAM" : ""}.</p>

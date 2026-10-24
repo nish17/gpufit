@@ -10,10 +10,10 @@ const description = live
   : "The newest open models currently tracked by GPUfit.";
 ---
 
-<Base title="New models this week · GPUfit" description={description} path="/new">
+<Base title="New models · GPUfit" description={description} path="/new/">
   <article class="wrap prose" style="padding:2rem 0 1rem;">
     <p class="kicker">Fresh weights</p>
-    <h1>New this week</h1>
+    <h1>New models</h1>
     <p>
       {live
         ? "These repos were created in the last 14 days and passed the catalog filter."
@@ -23,7 +23,7 @@ const description = live
     <ul>
       {recent.map((model) => (
         <li>
-          <a href={`/models/${model.slug}`}>{model.name}</a>
+          <a href={`/models/${model.slug}/`}>{model.name}</a>
           <span class="muted"> — {formatParams(model.paramsB)}, {model.author}, {(model.createdAt || "").slice(0, 10)}. {model.description}</span>
         </li>
       ))}

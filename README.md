@@ -49,7 +49,7 @@ npx wrangler deploy
 
 `npm run build` prerenders the HTML with Node (so the build does not need a live D1 database). The worker only has to serve those assets and the `/api/alerts` routes.
 
-The public site is `https://gpufit.tech`. `npm run build` uses that origin unless `SITE_URL` is set:
+The public site is `https://gpufit.tech`. `npm run build` uses that origin for canonical URLs, the sitemap, and `public/robots.txt` unless `SITE_URL` is set:
 
 ```bash
 SITE_URL=https://gpufit.tech npm run build
@@ -76,10 +76,11 @@ The site builds and the estimator runs with no accounts. Real alert email needs 
 | `HF_TOKEN` | Optional | Hugging Face read token. The fetcher works anonymously. GitHub Actions secret for the catalog job. |
 | `RESEND_API_KEY` | Alert email | [Resend](https://resend.com). Worker secret for confirmations, and a GitHub Actions secret for new-model mail. Verify `gpufit.tech` (DKIM, SPF, and a DMARC record) before sending from it. |
 | `ALERT_FROM` | Alert email | `GPUfit <alerts@gpufit.tech>`, after that domain is verified in Resend. Set it on the Worker and on the GitHub Action. |
-| `ALERT_TOKEN_SECRET` | Alert links | Long random string. Signs confirm and unsubscribe links. The same value has to be on the Worker and the GitHub Action. The dev default `dev-only-change-me` must not be used in production. |
+| `ALERT_TOKEN_SECRET` | Alert links | Long random string. Signs confirm and unsubscribe links. The same value has to be on the Worker and the GitHub Action. Outside local dev the worker refuses to sign or accept tokens when this is missing or still `dev-only-change-me`. |
+| `TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` | Signup check | Optional Cloudflare Turnstile keys. The site key is public and is read at request time. The secret is a Worker secret. If the secret is unset, `POST /api/alerts` still accepts signups and logs a warning. |
 | `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` | Fit mail and deploy | GitHub Actions only. The token needs D1 edit and Workers deploy. |
-| Cloudflare D1 database | Alert storage | Binding `DB` is already in `wrangler.jsonc`. Apply `schema/subscribers.sql` (subscribers and `alert_sends`) with `npx wrangler d1 execute gpufit --remote --file=schema/subscribers.sql`. |
-| `SITE_URL` | Canonical links | Build-time origin. Defaults to `https://gpufit.tech`. |
+| Cloudflare D1 database | Alert storage | Binding `DB` is already in `wrangler.jsonc`. Fresh database: `npx wrangler d1 execute gpufit --remote --file=schema/subscribers.sql`. A database created earlier also needs `npx wrangler d1 execute gpufit --remote --file=schema/migrate-2026-10-24-confirm-sent.sql` once, so confirmation mail can cool down for 10 minutes per address. |
+| `SITE_URL` | Canonical links and email links | Build-time origin, and the origin embedded in alert mail. Defaults to `https://gpufit.tech`. The request Host is not used for those links. |
 
 Copy `.env.example` to `.env` for local overrides. `.env` is gitignored.
 
@@ -96,9 +97,9 @@ D1 binding shape in `wrangler.jsonc` once the database exists:
 Real in this repo:
 
 - Curated hardware list (NVIDIA, AMD, Intel, Apple M1–M5, a Ryzen AI Max part, and CPU bandwidth classes) with a source note on each row.
-- About 130 open models with GGUF sizes and `config.json` fields fetched from the public Hugging Face API. Fine-tunes and duplicate quants of the same checkpoint are left out.
+- About 145 open models with GGUF sizes and `config.json` fields fetched from the public Hugging Face API. Fine-tunes and duplicate quants of the same checkpoint are left out. A quant file that is a partial shard, larger than the model’s BF16, or not a plausible size for its bit width is dropped before it can affect a verdict.
 - Unit-tested fit math: weights, GQA / sliding-window / MLA / linear-attention KV cache, llama.cpp overhead, the 75% unified-memory default, partial offload, and a tok/s range.
-- Static pages: home with a saved picker, per-model, per-device, “Can I run X on Y” for popular pairs, VRAM guides, “New this week”, RSS, and Atom.
+- Static pages: home with a saved picker, per-model, per-device, “Can I run X on Y” for popular pairs, VRAM guides, new models, RSS, and Atom.
 - Run commands for llama.cpp, plus Ollama when the library name matched, and an LM Studio `lms get` hint.
 
 Stubbed or local-only:
@@ -117,4 +118,7 @@ Stubbed or local-only:
 - `scripts/fetch_models.py` — Hugging Face pull
 - `scripts/hardware_catalog.py` — device table
 - `scripts/match-alerts.ts` — new-model alert mailer (dry run unless `--send`)
-- `schema/subscribers.sql` — D1 schema, including `alert_sends`
+- `schema/subscribers.sql` — D1 schema, including `alert_sends` and `confirm_sent_at`
+- `schema/migrate-2026-10-24-confirm-sent.sql` — one-time column add for an existing D1 database
+- `public/_headers` and `src/middleware.ts` — browser security headers
+- `SECURITY.md` — where to report a vulnerability

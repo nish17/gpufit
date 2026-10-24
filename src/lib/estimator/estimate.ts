@@ -2,20 +2,22 @@ import {
   GB,
   MBU_HIGH,
   MBU_LOW,
+  MOE_TOK_CAP,
   OFFLOAD_RAM_RESERVE_BYTES,
   UTIL_GREAT,
   UTIL_RUNS,
   UTIL_TIGHT,
 } from "./constants";
 import {
-  activeWeightBytes,
   bytesPerTokenKv,
   engineOverhead,
   kvBytes,
   memoryPool,
   moeResidentFraction,
+  speedWeightBytes,
   weightBytesFor,
 } from "./memory";
+import { isLowBitQuant, sanitizeQuants } from "./quants";
 import type {
   DeviceSpec,
   FitMode,
@@ -44,6 +46,13 @@ const LABELS: Record<VerdictId, string> = {
   cpu: "Runs on CPU",
   wont_fit: "Won't fit",
 };
+
+export function verdictLabel(verdict: VerdictId, quant: QuantSpec | null): string {
+  if (quant && isLowBitQuant(quant) && (verdict === "great" || verdict === "runs" || verdict === "tight" || verdict === "cpu")) {
+    return "Heavily degraded";
+  }
+  return LABELS[verdict];
+}
 
 function contextLadder(max: number): number[] {
   const base = [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 200000, 262144, 524288, 1048576];
@@ -75,6 +84,15 @@ function tokRange(bytesPerToken: number, bandwidthGBps: number): [number, number
   return [low, high];
 }
 
+/** Large small-active MoE models do not get a 300 tok/s headline from a consumer GPU. */
+export function capSpeedRange(model: ModelSpec, range: [number, number] | null): [number, number] | null {
+  if (!range || !model.moe || !model.activeParamsB || model.paramsB < 12) return range;
+  if (model.activeParamsB / model.paramsB > 0.25) return range;
+  const high = Math.min(range[1], MOE_TOK_CAP);
+  const low = Math.min(range[0], high * (MBU_LOW / MBU_HIGH));
+  return [low, Math.max(low, high)];
+}
+
 function splitTokRange(gpuBytes: number, gpuBw: number, cpuBytes: number, cpuBw: number): [number, number] | null {
   if (gpuBw <= 0 || cpuBw <= 0) return null;
   const time = (mbu: number) => gpuBytes / (gpuBw * GB * mbu) + cpuBytes / (cpuBw * GB * mbu);
@@ -99,7 +117,7 @@ function commands(model: ModelSpec, quant: QuantSpec, context: number, gpuLayers
 
 function assumptionsFor(parts: string[]): string[] {
   return [
-    "Estimate, not a benchmark. Decode speed uses a memory-bandwidth model at 55–75% of peak.",
+    "Estimate from memory bandwidth, not a benchmark. Decode speed uses 55–75% of peak bandwidth.",
     "KV cache is FP16. Engine overhead assumes llama.cpp (0.3 GB + 1% of the weights). Ollama is closer to 0.9 GB + 3%, LM Studio closer to 1 GB + 3%.",
     ...parts,
   ];
@@ -189,7 +207,7 @@ function considerFull(
   const utilization = usable > 0 ? total / usable : Number.POSITIVE_INFINITY;
   const band = verdictFromUtilization(utilization);
   if (band === "over") return null;
-  const active = activeWeightBytes(model, sized.bytes);
+  const active = speedWeightBytes(model, sized.bytes);
   const perToken = active + bytesPerTokenKv(model.arch) * context;
   const bandwidth = device.kind === "gpu" ? device.bandwidthGBps : device.bandwidthGBps;
   return {
@@ -207,7 +225,7 @@ function considerFull(
     verdict: mode === "cpu" ? "cpu" : band,
     gpuLayers: mode === "cpu" ? 0 : model.arch.layers,
     spillBytes: 0,
-    tok: tokRange(perToken, bandwidth),
+    tok: capSpeedRange(model, tokRange(perToken, bandwidth)),
     notes: [],
   };
 }
@@ -241,7 +259,7 @@ function considerOffload(
   const layers = model.arch.layers || 1;
   const gpuLayers = Math.max(0, Math.min(layers, Math.round((weightsOnGpu / sized.bytes) * layers)));
   if (gpuLayers <= 0) return null;
-  const active = activeWeightBytes(model, sized.bytes);
+  const active = speedWeightBytes(model, sized.bytes);
   const frac = weightsOnGpu / sized.bytes;
   const gpuBytes = active * frac + kvOnGpu;
   const cpuBytes = active * (1 - frac) + (kv - kvOnGpu);
@@ -261,7 +279,7 @@ function considerOffload(
     verdict: "offload",
     gpuLayers,
     spillBytes: spill,
-    tok: splitTokRange(gpuBytes, device.bandwidthGBps, cpuBytes, options.ramBandwidthGBps),
+    tok: capSpeedRange(model, splitTokRange(gpuBytes, device.bandwidthGBps, cpuBytes, options.ramBandwidthGBps)),
     notes: [`About ${gpuLayers} of ${layers} layers stay on the GPU. ${formatGB(spill)} is read from system RAM.`],
   };
 }
@@ -286,7 +304,7 @@ function considerMoe(
   const spill = sized.bytes - resident;
   const ramBudget = Math.max(0, options.systemRamGb * 1024 ** 3 - OFFLOAD_RAM_RESERVE_BYTES);
   if (spill > ramBudget) return null;
-  const active = activeWeightBytes(model, sized.bytes);
+  const active = speedWeightBytes(model, sized.bytes);
   const activeOnGpu = Math.min(resident, active);
   const activeOnRam = Math.max(0, active - activeOnGpu);
   return {
@@ -304,9 +322,9 @@ function considerMoe(
     verdict: "moe_offload",
     gpuLayers: null,
     spillBytes: spill,
-    tok: splitTokRange(activeOnGpu + kv, device.bandwidthGBps, activeOnRam, options.ramBandwidthGBps),
+    tok: capSpeedRange(model, splitTokRange(activeOnGpu + kv, device.bandwidthGBps, activeOnRam, options.ramBandwidthGBps)),
     notes: [
-      "Mixture-of-experts split is approximate: shared layers on the GPU, expert tensors in system RAM. Speed uses active parameters.",
+      "Mixture-of-experts split is approximate: shared layers on the GPU, expert tensors in system RAM. Speed reads more than the active-parameter slice, because shared layers stay on the bus.",
     ],
   };
 }
@@ -322,14 +340,9 @@ function q4ish(quants: QuantSpec[]): QuantSpec[] {
   return sorted;
 }
 
-/** Drop GGUF rows that are far too small to be a full quant of this checkpoint. */
+/** Drop partial files, files larger than BF16, and sizes that are not monotonic with bits-per-weight. */
 export function plausibleQuants(model: ModelSpec): QuantSpec[] {
-  const kept = model.quants.filter((quant) => {
-    if (quant.estimated || !quant.bpw || model.paramsB <= 0) return true;
-    const expected = (model.paramsB * 1e9 * quant.bpw) / 8;
-    return quant.bytes >= expected * 0.4;
-  });
-  return kept.length ? kept : model.quants;
+  return sanitizeQuants(model);
 }
 
 export function estimate(input: ModelSpec, device: DeviceSpec, options: RuntimeOptions): FitResult {
@@ -424,7 +437,7 @@ export function estimate(input: ModelSpec, device: DeviceSpec, options: RuntimeO
   } else if (chosen.verdict === "raise_limit") {
     summary = `Too big for the default ${Math.round((options.appleGpuFraction ?? 0.75) * 100)}% GPU budget on ${device.name} (${formatGB(usable)} usable). ${chosen.quant.id} fits if you raise the wired limit, using about ${formatGB(chosen.total)} of ${formatGB(chosen.usable)}.`;
   } else {
-    const label = chosen.mode === "cpu" ? "Runs on CPU" : LABELS[chosen.verdict];
+    const label = verdictLabel(chosen.verdict, chosen.quant);
     summary = summarizeFull({
       label,
       device,
@@ -450,6 +463,9 @@ export function estimate(input: ModelSpec, device: DeviceSpec, options: RuntimeO
         ? `Unified memory uses ${Math.round((options.appleGpuFraction ?? 0.75) * 100)}% for the GPU by default, and always leaves about 5 GB for the OS.`
         : "CPU runs keep about 4 GB plus a 10% cushion for the OS.",
     `Speed is quoted at ${formatContext(chosen.context)} context, not at the maximum context that still fits.`,
+    ...(isLowBitQuant(chosen.quant)
+      ? ["This quant is IQ1 or IQ2. It can load, but quality is heavily degraded, so it is left off best-fit lists."]
+      : []),
     ...chosen.notes,
   ];
 
@@ -464,7 +480,7 @@ export function estimate(input: ModelSpec, device: DeviceSpec, options: RuntimeO
 
   return {
     verdict: chosen.verdict,
-    label: LABELS[chosen.verdict],
+    label: verdictLabel(chosen.verdict, chosen.quant),
     bucket,
     summary,
     quant: chosen.quant,

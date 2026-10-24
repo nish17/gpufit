@@ -20,7 +20,7 @@ export const GET: APIRoute = ({ site, params }) => {
     const fit = fitDevice(model, device);
     return {
       title: `${model.name} on ${device.name}: ${fit.label}`,
-      link: `${origin}/models/${model.slug}`,
+      link: `${origin}/models/${model.slug}/`,
       date: model.createdAt,
       description: `${fit.summary} ${fit.tokPerSec ? formatTokRange(fit.tokPerSec) + " tok/s." : ""}`.trim(),
     };
@@ -28,7 +28,7 @@ export const GET: APIRoute = ({ site, params }) => {
   return new Response(
     rssDocument({
       title: `GPUfit — ${device.name}`,
-      link: `${origin}/${params.kind}/${device.slug}`,
+      link: `${origin}/${params.kind}/${device.slug}/`,
       description: `New catalog models scored against ${device.name}.`,
       items,
     }),

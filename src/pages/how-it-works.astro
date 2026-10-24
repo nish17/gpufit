@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 const description = "A short picture of how GPUfit decides whether a model fits, and how fast it might run.";
 ---
 
-<Base title="How GPUfit estimates fit and speed" description={description} path="/how-it-works">
+<Base title="How GPUfit estimates fit and speed" description={description} path="/how-it-works/">
   <article class="wrap" style="padding:2rem 0 1rem; max-width:52rem;">
     <p class="kicker">Method</p>
     <h1 class="serif" style="font-size:clamp(2.4rem, 5vw, 3.6rem); margin-bottom:0.4rem;">How it works</h1>
@@ -52,7 +52,7 @@ const description = "A short picture of how GPUfit decides whether a model fits,
           </section>
         </div>
         <div class="prose">
-          <p>Total memory is weights + KV cache + engine overhead. Real GGUF file sizes win. A file smaller than about 40% of parameters × bits-per-weight / 8 is treated as a stray shard and ignored. Q4_K_M is about 4.85 bits per weight.</p>
+          <p>Total memory is weights + KV cache + engine overhead. Real GGUF file sizes win. A split file counts only when every part is present, and two files that only share a quant name are not added together. A measured file is dropped when it is under about 45% of parameters × bits-per-weight / 8, over about 3.5× that estimate, or more than about 5% larger than the model’s BF16. A higher-bit file that barely grows past a plausible lower one is dropped too, so a Q8 cannot sit next to a Q4 at the same size. Q4_K_M is about 4.85 bits per weight. The build fails if a committed row breaks these rules.</p>
           <p>Ordinary KV cache, in FP16, is <code>2 × layers × KV heads × head dim × 2 × context</code>. Sliding-window layers only keep the window. DeepSeek-style MLA stores a short latent. Linear and Mamba layers keep a fixed state.</p>
           <p>llama.cpp overhead is 0.3 GB plus 1% of the weights. A discrete GPU that drives a monitor loses 0.5 GB, then 5% more. Apple unified memory, and parts like Ryzen AI Max, budget 75% of RAM for the GPU and always leave about 5 GB for the OS. CPU-only runs keep 4 GB plus 10%.</p>
         </div>
@@ -74,7 +74,7 @@ const description = "A short picture of how GPUfit decides whether a model fits,
           </svg>
         </section>
         <div class="prose">
-          <p>We pick the best quant that still leaves room for a normal chat. Runs great is at or under 60% of the usable pool, Runs is 85%, and Tight fit is 98%. If the whole file will not fit, some layers can sit in system RAM. That is slower, and the page says so.</p>
+          <p>We pick the best quant that still leaves room for a normal chat. Runs great is at or under 60% of the usable pool, Runs is 85%, and Tight fit is 98%. IQ1 and IQ2 can load, but the label is Heavily degraded and those quants are left off the best-fit lists. If the whole file will not fit, some layers can sit in system RAM. That is slower, and the page says so.</p>
           <p>The home page leads with models that fit fully at about 10 tokens per second or faster, largest first, with a discount when the only quant that fits is well below Q4. The three cards are the best general-chat, coding, and reasoning matches.</p>
         </div>
       </details>
@@ -92,7 +92,7 @@ const description = "A short picture of how GPUfit decides whether a model fits,
           </svg>
         </section>
         <div class="prose">
-          <p>Each token rereads the weights. A wider memory bus finishes that read sooner. The range is 55–75% of the card’s peak, not a benchmark. Treat “20–30 tok/s” as a ceiling, not a promise. Prefill, speculative decoding, KV-cache quantization, and multi-GPU are not modeled.</p>
+          <p>Each token rereads the weights. A wider memory bus finishes that read sooner. The range is 55–75% of the card’s peak. This is an estimate from memory bandwidth, not a benchmark. A mixture-of-experts model still stores the whole file. The speed read uses max(active / total, 0.22) × 1.85 of that file, and the high end is capped at 160 tok/s when the model is at least 12B and the active share is 25% or less. Treat the range as a ceiling, not a promise. Prefill, speculative decoding, KV-cache quantization, and multi-GPU are not modeled.</p>
         </div>
       </details>
 

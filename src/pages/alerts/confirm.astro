@@ -3,7 +3,7 @@ import Base from "../../layouts/Base.astro";
 const description = "Confirm a GPUfit alert signup.";
 ---
 
-<Base title="Confirm alerts · GPUfit" description={description} path="/alerts/confirm">
+<Base title="Confirm alerts · GPUfit" description={description} path="/alerts/confirm/" robots="noindex, follow">
   <article class="wrap prose" style="padding:2.5rem 0;">
     <h1>Confirm alerts</h1>
     <p id="result">Checking this link…</p>
@@ -15,7 +15,7 @@ const description = "Confirm a GPUfit alert signup.";
   if (!token) {
     if (result) result.textContent = "This page needs a confirmation token.";
   } else {
-    fetch(`/api/alerts/confirm?token=${encodeURIComponent(token)}`)
+    fetch(`/api/alerts/confirm/?token=${encodeURIComponent(token)}`)
       .then((response) => response.json())
       .then((body: { message?: string }) => {
         if (result) result.textContent = body.message || "Done.";

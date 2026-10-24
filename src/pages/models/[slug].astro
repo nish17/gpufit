@@ -2,7 +2,8 @@
 import Commands from "../../components/Commands.astro";
 import Base from "../../layouts/Base.astro";
 import { formatContext, formatGB, formatParams, formatTokRange } from "../../lib/estimator";
-import { devicePath, fitDevice, getDevice, models, pairPath, smallestFits, updatedLabel, isSeoPair } from "../../lib/catalog";
+import { devicePath, fitDevice, getDevice, modelPath, modelRunLinks, models, pairLink, smallestFits, updatedLabel } from "../../lib/catalog";
+import { ESTIMATE_NOTE, breadcrumbJsonLd, modelPageDescription } from "../../lib/seo";
 
 export function getStaticPaths() {
   return models.map((model) => ({ params: { slug: model.slug }, props: { model } }));
@@ -12,12 +13,22 @@ const references = ["rtx-4060-ti-8gb", "rtx-3060-12gb", "rtx-4060-ti-16gb", "rtx
   .map((slug) => getDevice(slug))
   .filter((device) => device != null)
   .map((device) => ({ device, fit: fitDevice(model, device) }));
+const reference = references.find((row) => row.device.slug === "rtx-4060-ti-16gb") ?? references[0];
 const small = smallestFits(model);
-const title = `${model.name} VRAM and memory requirements`;
-const description = `${model.description || title} Updated ${updatedLabel()}.`;
+const runOn = modelRunLinks(model);
+const title = model.name.length > 48 ? model.name : `${model.name} VRAM`;
+const description = reference
+  ? modelPageDescription(model, reference.fit, reference.device.name)
+  : `${model.name} VRAM requirements. ${ESTIMATE_NOTE}`.slice(0, 160);
+const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech";
+const jsonLd = breadcrumbJsonLd(origin, [
+  { name: "GPUfit", path: "/" },
+  { name: "Models", path: "/new/" },
+  { name: model.name, path: modelPath(model) },
+]);
 ---
 
-<Base title={`${title} · GPUfit`} description={description} path={`/models/${model.slug}`}>
+<Base title={`${title} · GPUfit`} description={description} path={modelPath(model)} image={`/og/models/${model.slug}.png`} imageAlt={`${model.name} on GPUfit`} jsonLd={jsonLd}>
   <article class="wrap prose" style="padding:2rem 0 1rem;">
     <p class="kicker">{model.author}</p>
     <h1 style="font-size:clamp(2.2rem, 5vw, 3.5rem); margin-bottom:0.4rem;">{model.name}</h1>
@@ -55,19 +66,22 @@ const description = `${model.description || title} Updated ${updatedLabel()}.`;
         {references.map(({ device, fit }) => (
           <tr>
             <td><a href={devicePath(device)}>{device.name}</a></td>
-            <td>{isSeoPair(model.slug, device.slug) ? <a href={pairPath(model, device)}>{fit.label}</a> : fit.label}</td>
+            <td>{pairLink(model, device) ? <a href={pairLink(model, device)}>{fit.label}</a> : fit.label}</td>
             <td>{fit.quant?.id ?? "—"}</td>
             <td>{fit.tokPerSec ? formatTokRange(fit.tokPerSec) : "—"}</td>
           </tr>
         ))}
       </tbody>
     </table>
+    <p class="muted">{ESTIMATE_NOTE} <a href="/how-it-works/">How the tok/s range is made</a>.</p>
     <h2>Smallest devices that fit it fully</h2>
     {small.length === 0 ? <p>No GPU or Mac in the catalog fits this model inside the default memory budget. A partial offload or a larger machine is required.</p> : (
       <ul>
         {small.map(({ device, fit }) => (
           <li>
-            <a href={devicePath(device)}>{device.name}</a> — {fit.label}, {fit.quant?.id}, {fit.tokPerSec ? formatTokRange(fit.tokPerSec) : "speed n/a"} tok/s
+            <a href={devicePath(device)}>{device.name}</a>
+            {pairLink(model, device) ? <> · <a href={pairLink(model, device)}>full check</a></> : null}
+            {" "}— {fit.label}, {fit.quant?.id}, {fit.tokPerSec ? formatTokRange(fit.tokPerSec) : "speed n/a"} tok/s
           </li>
         ))}
       </ul>
@@ -77,6 +91,16 @@ const description = `${model.description || title} Updated ${updatedLabel()}.`;
         <h2>Run it</h2>
         <p class="muted">Commands for the {references[2].device.name} estimate ({references[2].fit.quant?.id ?? "no quant"}).</p>
         <Commands llamaCpp={references[2].fit.commands.llamaCpp} ollama={references[2].fit.commands.ollama} lmStudio={references[2].fit.commands.lmStudio} />
+      </>
+    ) : null}
+    {runOn.length > 0 ? (
+      <>
+        <h2>Run this on</h2>
+        <ul>
+          {runOn.map((device) => (
+            <li><a href={pairLink(model, device)}>{device.name}</a></li>
+          ))}
+        </ul>
       </>
     ) : null}
   </article>

@@ -2,6 +2,7 @@ import hardwareJson from "../data/hardware.json";
 import modelsJson from "../data/models.json";
 import reportJson from "../data/fetch-report.json";
 import { estimate } from "./estimator";
+import { sanitizeQuants } from "./estimator/quants";
 import type { DeviceSpec, FitResult, ModelSpec } from "./estimator/types";
 import { defaultProfile, toOptions } from "./profile";
 import { selectCatalog } from "./select-models";
@@ -14,7 +15,7 @@ export const models = selectCatalog(
   (modelsJson as ModelSpec[])
     .filter((model) => !BLOCK.test(`${model.name} ${model.architecture} ${model.id}`))
     .filter((model) => !BLOCK_ARCH.has(String(model.architecture).toLowerCase())),
-);
+).map((model) => ({ ...model, quants: sanitizeQuants(model) }));
 
 export const report = reportJson as {
   generatedAt: string;
@@ -42,16 +43,25 @@ export function deviceKindPath(device: DeviceSpec): "gpu" | "mac" | "cpu" {
   return "cpu";
 }
 
+function slash(path: string): string {
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 export function devicePath(device: DeviceSpec): string {
-  return `/${deviceKindPath(device)}/${device.slug}`;
+  return slash(`/${deviceKindPath(device)}/${device.slug}`);
 }
 
 export function modelPath(model: ModelSpec): string {
-  return `/models/${model.slug}`;
+  return slash(`/models/${model.slug}`);
 }
 
 export function pairPath(model: ModelSpec, device: DeviceSpec): string {
-  return `/can-i-run/${model.slug}/on/${device.slug}`;
+  return slash(`/can-i-run/${model.slug}/on/${device.slug}`);
+}
+
+/** Null when that pair has no generated page, so templates cannot link a 404. */
+export function pairLink(model: ModelSpec, device: DeviceSpec): string | null {
+  return isSeoPair(model.slug, device.slug) ? pairPath(model, device) : null;
 }
 
 const POPULAR_DEVICE_CAP = 34;
@@ -76,6 +86,16 @@ export function isSeoPair(modelSlug: string, deviceSlug: string): boolean {
     pairKeys = new Set(seoPairs().map((pair) => `${pair.model.slug}::${pair.device.slug}`));
   }
   return pairKeys.has(`${modelSlug}::${deviceSlug}`);
+}
+
+/** Devices that have a generated can-i-run page for this model. */
+export function modelRunLinks(model: ModelSpec): DeviceSpec[] {
+  return seoDevices().filter((device) => isSeoPair(model.slug, device.slug));
+}
+
+/** Models that have a generated can-i-run page for this device. */
+export function deviceRunLinks(device: DeviceSpec): ModelSpec[] {
+  return seoModels().filter((model) => isSeoPair(model.slug, device.slug));
 }
 
 export function fitDevice(model: ModelSpec, device: DeviceSpec, memoryGb = device.defaultMemoryGb): FitResult {

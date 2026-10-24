@@ -6,6 +6,8 @@ import {
   KV_BYTES_PER_ELEMENT,
   LLAMA_CPP_FIXED_BYTES,
   LLAMA_CPP_PERCENT,
+  MOE_READ_FLOOR,
+  MOE_READ_SCALE,
   UNIFIED_GPU_FRACTION,
   UNIFIED_OS_RESERVE_BYTES,
   quantBpw,
@@ -87,6 +89,19 @@ export function activeWeightBytes(model: ModelSpec, weightBytes: number): number
     return weightBytes * (model.activeParamsB / model.paramsB);
   }
   return weightBytes;
+}
+
+/**
+ * Bytes moved per token for the bandwidth estimate.
+ * Dense models read the whole file. MoE models read more than the active-parameter
+ * slice: shared layers stay on the bus, and expert gathers are not a contiguous read.
+ */
+export function speedWeightBytes(model: ModelSpec, weightBytes: number): number {
+  if (!model.moe || !model.activeParamsB || model.paramsB <= 0) return weightBytes;
+  if (model.activeParamsB >= model.paramsB * 0.85) return weightBytes;
+  const ratio = model.activeParamsB / model.paramsB;
+  const fraction = Math.min(1, Math.max(ratio, MOE_READ_FLOOR) * MOE_READ_SCALE);
+  return weightBytes * fraction;
 }
 
 /** Share of the file that must stay on the GPU when experts are offloaded. Approximate. */

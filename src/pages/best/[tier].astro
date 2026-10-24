@@ -1,9 +1,10 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { formatParams, formatTokRange } from "../../lib/estimator";
-import { compareForMachine } from "../../lib/ranking";
-import { BEST_TIERS, fitDevice, getDevice, isSeoPair, pairPath, updatedLabel } from "../../lib/catalog";
+import { bestList } from "../../lib/ranking";
+import { BEST_TIERS, fitDevice, getDevice, pairLink, updatedLabel } from "../../lib/catalog";
 import { models } from "../../lib/catalog";
+import { ESTIMATE_NOTE, breadcrumbJsonLd } from "../../lib/seo";
 
 export function getStaticPaths() {
   return BEST_TIERS.map((tier) => ({ params: { tier: tier.slug }, props: { tier } }));
@@ -11,28 +12,36 @@ export function getStaticPaths() {
 const { tier } = Astro.props;
 const device = getDevice(tier.device);
 if (!device) throw new Error(`Missing device ${tier.device}`);
-const rows = models
-  .map((model) => ({ model, fit: fitDevice(model, device) }))
-  .filter((row) => row.fit.bucket === "full")
-  .sort(compareForMachine);
+const rows = bestList(models.map((model) => ({ model, fit: fitDevice(model, device) })));
 const description = `${tier.blurb} Ranked for ${device.name} at ${device.defaultMemoryGb} GB. Updated ${updatedLabel()}.`;
+const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech";
+const jsonLd = breadcrumbJsonLd(origin, [
+  { name: "GPUfit", path: "/" },
+  { name: "Best fits", path: "/best/16gb/" },
+  { name: tier.label, path: `/best/${tier.slug}/` },
+]);
 ---
 
-<Base title={`${tier.title} · GPUfit`} description={description} path={`/best/${tier.slug}`}>
+<Base title={`${tier.title} · GPUfit`} description={description} path={`/best/${tier.slug}/`} image={`/og/best/${tier.slug}.png`} imageAlt={tier.title} jsonLd={jsonLd}>
   <article class="wrap prose" style="padding:2rem 0 1rem;">
     <p class="kicker">VRAM guide</p>
     <h1>{tier.title}</h1>
-    <p>{description} These are estimates for llama.cpp with FP16 KV cache, not measured benchmarks. <a href="/how-it-works">Method</a>.</p>
+    <p>{description} {ESTIMATE_NOTE} <a href="/how-it-works/">Method</a>. IQ1 and IQ2 quants are left off this list.</p>
+    <p class="muted">
+      {BEST_TIERS.map((item) => (
+        <a href={`/best/${item.slug}/`} style="margin-right:0.8rem;">{item.label}</a>
+      ))}
+    </p>
     <table class="data">
       <thead><tr><th>Model</th><th>Size</th><th>Verdict</th><th>Quant</th><th>tok/s</th></tr></thead>
       <tbody>
         {rows.slice(0, 30).map(({ model, fit }) => (
           <tr>
-            <td>{isSeoPair(model.slug, device.slug) ? <a href={pairPath(model, device)}>{model.name}</a> : <a href={`/models/${model.slug}`}>{model.name}</a>}</td>
+            <td>{pairLink(model, device) ? <a href={pairLink(model, device)}>{model.name}</a> : <a href={`/models/${model.slug}/`}>{model.name}</a>}</td>
             <td>{formatParams(model.paramsB)}</td>
             <td>{fit.label}</td>
             <td>{fit.quant?.id}</td>
-            <td>{fit.tokPerSec ? formatTokRange(fit.tokPerSec) : "—"}</td>
+            <td>{fit.tokPerSec ? `${formatTokRange(fit.tokPerSec)} est.` : "—"}</td>
           </tr>
         ))}
       </tbody>

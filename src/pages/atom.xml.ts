@@ -12,7 +12,7 @@ export function GET({ site }: Parameters<APIRoute>[0]) {
     date: model.createdAt,
     description: `${formatParams(model.paramsB)} ${model.architecture}. ${model.description || ""}`,
   }));
-  return new Response(atomDocument({ title: "GPUfit — new models", link: `${origin}/new`, description: "Newly tracked open models.", items }), {
+  return new Response(atomDocument({ title: "GPUfit — new models", link: `${origin}/new/`, description: "Newly tracked open models.", items }), {
     headers: { "Content-Type": "application/atom+xml; charset=utf-8" },
   });
 }

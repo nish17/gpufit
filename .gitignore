@@ -1,5 +1,7 @@
 # build output
 dist/
+# social cards are rasterized during `npm run build`
+/public/og/
 # generated types
 .astro/
 

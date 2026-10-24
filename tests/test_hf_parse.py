@@ -14,6 +14,8 @@ from hf_parse import (  # noqa: E402
     keep_model,
     parse_architecture,
     quant_id_from_path,
+    quant_issues,
+    sanitize_quants,
     should_skip_repo,
 )
 
@@ -144,6 +146,101 @@ class ParseTests(unittest.TestCase):
             {"name": "Ornith 1.0 9B", "id": "unsloth/Ornith-1.0-9B-GGUF", "author": "unsloth", "downloads": 300_000, "likes": 60},
         ])
         self.assertEqual([row["name"] for row in rows], ["gemma 4 12b it"])
+
+    def test_incomplete_shard_is_dropped_and_loose_files_are_not_summed(self):
+        files = [
+            {"path": "DeepSeek-V4.1-Flash-1017-Q8_0-00001-of-00008.gguf", "size": int(7.43e9)},
+            {"path": "DeepSeek-V4.1-Flash-1017-UD-Q8_K_XL.gguf", "size": int(473.5e9)},
+            {"path": "extra-Q6_K.gguf", "size": int(40e9)},
+            {"path": "model-Q6_K.gguf", "size": int(20e9)},
+        ]
+        # No parameter count: incomplete Q8 shard disappears, and the two Q6 files are not added.
+        quants = {q["id"]: q for q in aggregate_quant_files(files)}
+        self.assertNotIn("Q8_0", quants)
+        self.assertEqual(quants["UD-Q8_K_XL"]["bytes"], int(473.5e9))
+        self.assertEqual(quants["Q6_K"]["bytes"], int(40e9))
+
+    def test_flash_1017_q8_that_matches_q4_is_dropped(self):
+        """UD-Q8_K_XL was 473 GiB beside a 466 GiB UD-Q4_K_XL. The Q8 is not a Q8."""
+        params = 748.495
+        quants = sanitize_quants(
+            [
+                {"id": "UD-Q8_K_XL", "bytes": 508_380_000_000, "bpw": 8.5, "quality": 86, "estimated": False},
+                {"id": "UD-Q4_K_XL", "bytes": 500_710_000_000, "bpw": 4.95, "quality": 55, "estimated": False},
+                {"id": "UD-Q2_K_XL", "bytes": 334_790_000_000, "bpw": 3.35, "quality": 22, "estimated": False},
+                {"id": "Q8_0", "bytes": 7_980_000_000, "bpw": 8.5, "quality": 84, "estimated": False},
+            ],
+            params,
+        )
+        ids = {quant["id"] for quant in quants}
+        self.assertNotIn("UD-Q8_K_XL", ids)
+        self.assertNotIn("Q8_0", ids)
+        self.assertIn("UD-Q4_K_XL", ids)
+        self.assertIn("UD-Q2_K_XL", ids)
+
+    def test_small_model_q8_above_its_estimate_is_kept(self):
+        """Vocab overhead makes a 2B UD-Q8 larger than the table. That is not a bad file."""
+        quants = sanitize_quants(
+            [
+                {"id": "UD-Q8_K_XL", "bytes": int(2.83e9), "bpw": 8.5, "quality": 86, "estimated": False},
+                {"id": "Q8_0", "bytes": int(2.01e9), "bpw": 8.5, "quality": 84, "estimated": False},
+                {"id": "Q4_K_M", "bytes": int(1.28e9), "bpw": 4.85, "quality": 52, "estimated": False},
+                {"id": "BF16", "bytes": int(3.78e9), "bpw": 16, "quality": 98, "estimated": False},
+            ],
+            1.882,
+        )
+        ids = {quant["id"] for quant in quants}
+        self.assertIn("UD-Q8_K_XL", ids)
+        self.assertIn("Q8_0", ids)
+        self.assertIn("Q4_K_M", ids)
+        self.assertIn("BF16", ids)
+
+    def test_deepseek_v4_1_flash_1017_drops_partial_q8(self):
+        params = 473.5 * 8 / 8.5
+        files = [
+            {"path": "DeepSeek-V4.1-Flash-1017-Q8_0-00001-of-00008.gguf", "size": int(7.43e9)},
+            {"path": "DeepSeek-V4.1-Flash-1017-UD-Q8_K_XL.gguf", "size": int(473.5e9)},
+        ]
+        quants = {q["id"]: q for q in aggregate_quant_files(files, params)}
+        self.assertNotIn("Q8_0", quants)
+        self.assertEqual(quants["UD-Q8_K_XL"]["bytes"], int(473.5e9))
+
+    def test_nemotron_bolt_e4b_drops_tiny_q8(self):
+        files = [
+            {"path": "Nemotron-3.5-Bolt-E4B-Q8_0.gguf", "size": int(0.37e9)},
+            {"path": "Nemotron-3.5-Bolt-E4B-Q4_K_M.gguf", "size": int(2.4e9)},
+        ]
+        ids = {q["id"] for q in aggregate_quant_files(files, 4.0)}
+        self.assertNotIn("Q8_0", ids)
+        self.assertIn("Q4_K_M", ids)
+
+    def test_thinkingcap_q6_cannot_exceed_bf16(self):
+        files = [
+            {"path": "ThinkingCap-gemma-4-26B-A4B-Q6_K.gguf", "size": int(66.5e9)},
+            {"path": "ThinkingCap-gemma-4-26B-A4B-BF16.gguf", "size": int(47.0e9)},
+            {"path": "ThinkingCap-gemma-4-26B-A4B-Q4_K_M.gguf", "size": int(15.5e9)},
+        ]
+        quants = {q["id"]: q for q in aggregate_quant_files(files, 26.0)}
+        self.assertNotIn("Q6_K", quants)
+        self.assertIn("BF16", quants)
+        self.assertIn("Q4_K_M", quants)
+        issues = quant_issues(
+            {
+                "name": "ThinkingCap gemma 4 26B A4B",
+                "paramsB": 26,
+                "quants": [
+                    {"id": "Q6_K", "bytes": int(66.5e9), "estimated": False, "bpw": 6.56, "quality": 72},
+                    {"id": "BF16", "bytes": int(47.0e9), "estimated": False, "bpw": 16, "quality": 98},
+                ],
+            }
+        )
+        self.assertTrue(any("Q6_K" in issue for issue in issues))
+
+    def test_committed_catalog_passes_quant_sanity(self):
+        root = Path(__file__).resolve().parents[1]
+        rows = json.loads((root / "src" / "data" / "models.json").read_text())
+        problems = [issue for row in rows for issue in quant_issues(row)]
+        self.assertEqual(problems, [])
 
 
 if __name__ == "__main__":

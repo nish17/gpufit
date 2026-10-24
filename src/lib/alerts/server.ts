@@ -1,7 +1,18 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { DEFAULT_SITE } from "../site";
 import { renderConfirmMail } from "./email";
 import { readAlert, signAlert, type AlertPayload } from "./token";
+
+/** Public fallback. Production must not sign or accept tokens with this value. */
+export const DEV_TOKEN_SECRET = "dev-only-change-me";
+/** Do not send another confirmation to the same address inside this window. */
+export const CONFIRM_COOLDOWN_MS = 10 * 60 * 1000;
+export const CONFIRM_PENDING_MESSAGE = "Check your email to confirm. Nothing is sent until you click the link.";
+export const CONFIRMED_MESSAGE = "You're confirmed. Fit alerts for that machine are on.";
+export const UNSUBSCRIBED_MESSAGE = "You're unsubscribed. No further alerts will be sent for that machine.";
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const HONEYPOT_FIELD = "company_website";
 
 export interface AlertSignup {
   email: string;
@@ -24,7 +35,18 @@ export interface AlertEnv {
   ALERT_FROM?: string;
   ALERT_TOKEN_SECRET?: string;
   SITE_URL?: string;
+  TURNSTILE_SITE_KEY?: string;
+  TURNSTILE_SECRET_KEY?: string;
   DB?: D1Like;
+}
+
+export interface AlertCallOptions {
+  /** Defaults to Astro's DEV flag. Tests pass false to exercise the production path. */
+  dev?: boolean;
+  now?: number;
+  fetch?: typeof fetch;
+  /** Browser-only dev link. Outbound email never uses this. */
+  devLinkOrigin?: string;
 }
 
 interface D1Like {
@@ -51,8 +73,72 @@ function memoryRows(): StoredAlert[] {
   return host[MEMORY_KEY];
 }
 
-function secretOf(env: AlertEnv): string {
-  return env.ALERT_TOKEN_SECRET || "dev-only-change-me";
+let turnstileWarningLogged = false;
+
+/** HMAC secret. Outside DEV, a missing or fallback secret fails closed (returns null). */
+export function resolveTokenSecret(env: AlertEnv, dev = import.meta.env.DEV): string | null {
+  const secret = env.ALERT_TOKEN_SECRET?.trim() ?? "";
+  if (dev) return secret && secret !== DEV_TOKEN_SECRET ? secret : DEV_TOKEN_SECRET;
+  if (!secret || secret === DEV_TOKEN_SECRET) return null;
+  return secret;
+}
+
+/** Email links always use SITE_URL, never the Host header of the incoming request. */
+export function alertOrigin(env: AlertEnv): string {
+  const configured = (env.SITE_URL || DEFAULT_SITE).trim();
+  try {
+    const url = new URL(configured);
+    if (url.protocol !== "https:" && url.protocol !== "http:") return DEFAULT_SITE;
+    return url.origin;
+  } catch {
+    return DEFAULT_SITE;
+  }
+}
+
+function alertLink(origin: string, purpose: "confirm" | "unsubscribe", token: string): string {
+  return `${origin}/alerts/${purpose}/?token=${encodeURIComponent(token)}`;
+}
+
+function devConfirmLink(options: AlertCallOptions, emailConfirmUrl: string): string {
+  const raw = options.devLinkOrigin?.trim();
+  if (!raw) return emailConfirmUrl;
+  try {
+    const url = new URL(emailConfirmUrl);
+    const token = url.searchParams.get("token") || "";
+    return alertLink(new URL(raw).origin, "confirm", token);
+  } catch {
+    return emailConfirmUrl;
+  }
+}
+
+function logSecretRefusal(): void {
+  console.error("ALERT_TOKEN_SECRET is missing or still the dev fallback. Refusing to sign or accept alert tokens.");
+}
+
+function logTurnstileUnset(): void {
+  if (turnstileWarningLogged) return;
+  turnstileWarningLogged = true;
+  console.warn("TURNSTILE_SECRET_KEY is not set. POST /api/alerts is accepting signups without a Turnstile check.");
+}
+
+export function honeypotFilled(body: Record<string, unknown>): boolean {
+  return String(body[HONEYPOT_FIELD] ?? "").trim().length > 0;
+}
+
+export async function verifyTurnstileToken(token: string, secret: string, fetchImpl: typeof fetch = fetch): Promise<boolean> {
+  if (!token || !secret) return false;
+  try {
+    const response = await fetchImpl(TURNSTILE_VERIFY_URL, {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: token }),
+    });
+    if (!response.ok) return false;
+    const data = (await response.json()) as { success?: boolean };
+    return data.success === true;
+  } catch {
+    return false;
+  }
 }
 
 function idFor(email: string, deviceId: string): string {
@@ -108,12 +194,19 @@ export function validateSignup(input: {
   };
 }
 
-async function confirmationEmail(env: AlertEnv, signup: AlertSignup, confirmUrl: string, unsubUrl: string, origin: string) {
+async function confirmationEmail(
+  env: AlertEnv,
+  signup: AlertSignup,
+  confirmUrl: string,
+  unsubUrl: string,
+  origin: string,
+  fetchImpl: typeof fetch,
+) {
   const from = env.ALERT_FROM || "GPUfit <alerts@gpufit.tech>";
   const apiKey = env.RESEND_API_KEY;
   if (!apiKey) return;
   const rendered = renderConfirmMail({ origin, confirmUrl, unsubscribeUrl: unsubUrl });
-  const response = await fetch("https://api.resend.com/emails", {
+  const response = await fetchImpl("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -133,32 +226,74 @@ async function confirmationEmail(env: AlertEnv, signup: AlertSignup, confirmUrl:
   }
 }
 
-export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: string) {
-  const payload: AlertPayload = {
-    ...signup,
-    purpose: "confirm",
-    exp: Date.now() + 7 * 86_400_000,
-  };
-  const token = await signAlert(payload, secretOf(env));
-  const confirmUrl = `${origin}/alerts/confirm?token=${encodeURIComponent(token)}`;
-  const unsubUrl = `${origin}/alerts/unsubscribe?token=${encodeURIComponent(token)}`;
+async function confirmationCoolingDown(env: AlertEnv, email: string, now: number): Promise<boolean> {
+  if (!env.DB) return false;
+  const row = await env.DB.prepare(
+    `SELECT confirm_sent_at FROM subscribers WHERE email = ? AND confirm_sent_at IS NOT NULL ORDER BY confirm_sent_at DESC LIMIT 1`,
+  )
+    .bind(email)
+    .first<{ confirm_sent_at: string }>();
+  if (!row?.confirm_sent_at) return false;
+  const sentAt = Date.parse(row.confirm_sent_at);
+  return Number.isFinite(sentAt) && now - sentAt < CONFIRM_COOLDOWN_MS;
+}
+
+export async function requestAlert(signup: AlertSignup, env: AlertEnv, options: AlertCallOptions = {}) {
+  const dev = options.dev ?? import.meta.env.DEV;
+  const now = options.now ?? Date.now();
+  const fetchImpl = options.fetch ?? fetch;
+  const secret = resolveTokenSecret(env, dev);
+  if (!secret) {
+    logSecretRefusal();
+    return {
+      ok: false as const,
+      provider: "unconfigured" as const,
+      message: "Email alerts are not switched on for this site yet.",
+    };
+  }
+  const origin = alertOrigin(env);
+  const confirmPayload: AlertPayload = { ...signup, purpose: "confirm", exp: now + 7 * 86_400_000 };
+  const unsubPayload: AlertPayload = { ...signup, purpose: "unsubscribe", exp: now + 400 * 86_400_000 };
+  const confirmToken = await signAlert(confirmPayload, secret);
+  const unsubToken = await signAlert(unsubPayload, secret);
+  const confirmUrl = alertLink(origin, "confirm", confirmToken);
+  const unsubUrl = alertLink(origin, "unsubscribe", unsubToken);
+  const sentAt = new Date(now).toISOString();
   const row: StoredAlert = {
     ...signup,
     id: idFor(signup.email, signup.deviceId),
     confirmed: false,
-    createdAt: new Date().toISOString(),
+    createdAt: sentAt,
   };
 
   if (env.DB && env.RESEND_API_KEY) {
+    let cooling = false;
+    try {
+      cooling = await confirmationCoolingDown(env, signup.email, now);
+    } catch (error) {
+      console.error(
+        "Alert cooldown query failed. If D1 is missing confirm_sent_at, apply schema/migrate-2026-10-24-confirm-sent.sql.",
+        error,
+      );
+      return {
+        ok: false as const,
+        provider: "unconfigured" as const,
+        message: "Email alerts are not switched on for this site yet.",
+      };
+    }
+    if (cooling) {
+      return { ok: true as const, provider: "resend" as const, message: CONFIRM_PENDING_MESSAGE };
+    }
     await env.DB.prepare(
-      `INSERT INTO subscribers (id, email, device_id, memory_gb, system_ram_gb, drives_display, ram_bandwidth_gbps, weekly_digest, confirmed, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0, ?)
+      `INSERT INTO subscribers (id, email, device_id, memory_gb, system_ram_gb, drives_display, ram_bandwidth_gbps, weekly_digest, confirmed, created_at, confirm_sent_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?)
        ON CONFLICT(id) DO UPDATE SET
          memory_gb = excluded.memory_gb,
          system_ram_gb = excluded.system_ram_gb,
          drives_display = excluded.drives_display,
          ram_bandwidth_gbps = excluded.ram_bandwidth_gbps,
-         weekly_digest = excluded.weekly_digest`,
+         weekly_digest = excluded.weekly_digest,
+         confirm_sent_at = excluded.confirm_sent_at`,
     )
       .bind(
         row.id,
@@ -170,17 +305,18 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
         row.ramBandwidthGBps,
         row.weeklyDigest ? 1 : 0,
         row.createdAt,
+        sentAt,
       )
       .run();
-    await confirmationEmail(env, signup, confirmUrl, unsubUrl, origin);
+    await confirmationEmail(env, signup, confirmUrl, unsubUrl, origin, fetchImpl);
     return {
       ok: true as const,
       provider: "resend" as const,
-      message: "Check your email to confirm. Nothing is sent until you click the link.",
+      message: CONFIRM_PENDING_MESSAGE,
     };
   }
 
-  if (import.meta.env.DEV) {
+  if (dev) {
     // `astro dev` runs this route in workerd. That filesystem does not keep
     // writes across requests, so the browser holds the signup instead.
     if (workerSandbox()) {
@@ -188,7 +324,7 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
         ok: true as const,
         provider: "browser" as const,
         message: "Saved in this browser. Email is not switched on for this site yet, so nothing was sent.",
-        devConfirmUrl: confirmUrl,
+        devConfirmUrl: devConfirmLink(options, confirmUrl),
       };
     }
     const { rows } = await readDevStore();
@@ -202,7 +338,7 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
         backend === "file"
           ? "Saved on this computer. No email was sent."
           : "Saved for this session. No email was sent, and a restart clears it.",
-      devConfirmUrl: confirmUrl,
+      devConfirmUrl: devConfirmLink(options, confirmUrl),
     };
   }
 
@@ -213,43 +349,106 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, origin: s
   };
 }
 
-export async function confirmAlert(token: string, env: AlertEnv) {
-  const payload = await readAlert(token, secretOf(env));
-  if (!payload) return { ok: false as const, message: "This confirmation link is invalid or expired." };
-  if (env.DB) {
-    const result = await env.DB.prepare(`UPDATE subscribers SET confirmed = 1 WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
-    void result;
-    return { ok: true as const, message: `Alerts confirmed for ${payload.email}.` };
+async function payloadFor(
+  token: string,
+  env: AlertEnv,
+  purpose: AlertPayload["purpose"],
+  dev: boolean,
+): Promise<AlertPayload | null> {
+  const secret = resolveTokenSecret(env, dev);
+  if (!secret) {
+    logSecretRefusal();
+    return null;
   }
-  if (!import.meta.env.DEV) {
-    return { ok: false as const, message: "Email alerts are not switched on for this site yet." };
+  const payload = await readAlert(token, secret);
+  if (!payload || payload.purpose !== purpose) return null;
+  return payload;
+}
+
+const LOCAL_CONFIRM_MESSAGE = "You're confirmed. This local session does not keep the signup on the server.";
+const STORE_UNAVAILABLE = "Email alerts are not switched on for this site yet.";
+
+function mailConfigured(env: AlertEnv): env is AlertEnv & { DB: NonNullable<AlertEnv["DB"]> } {
+  return Boolean(env.DB && env.RESEND_API_KEY);
+}
+
+export async function confirmAlert(token: string, env: AlertEnv, options: AlertCallOptions = {}) {
+  const dev = options.dev ?? import.meta.env.DEV;
+  const payload = await payloadFor(token, env, "confirm", dev);
+  if (!payload) return { ok: false as const, message: "This confirmation link is invalid or expired." };
+  if (mailConfigured(env)) {
+    try {
+      await env.DB.prepare(`UPDATE subscribers SET confirmed = 1 WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
+      return { ok: true as const, message: CONFIRMED_MESSAGE };
+    } catch (error) {
+      console.error("Alert confirm failed.", error);
+      if (!dev) return { ok: false as const, message: STORE_UNAVAILABLE };
+    }
+  }
+  if (!dev) {
+    return { ok: false as const, message: STORE_UNAVAILABLE };
   }
   const { rows } = await readDevStore();
   const row = rows.find((item) => item.id === idFor(payload.email, payload.deviceId));
   if (!row) {
-    return {
-      ok: true as const,
-      message: `Link verified for ${payload.email}. Local dev keeps the signup in this browser, so nothing was written on the server.`,
-    };
+    return { ok: true as const, message: LOCAL_CONFIRM_MESSAGE };
   }
   row.confirmed = true;
   await writeDevStore(rows);
-  return { ok: true as const, message: `Alerts confirmed for ${payload.email}.` };
+  return { ok: true as const, message: CONFIRMED_MESSAGE };
 }
 
-export async function unsubscribeAlert(token: string, env: AlertEnv) {
-  const payload = await readAlert(token, secretOf(env));
+export async function unsubscribeAlert(token: string, env: AlertEnv, options: AlertCallOptions = {}) {
+  const dev = options.dev ?? import.meta.env.DEV;
+  const payload = await payloadFor(token, env, "unsubscribe", dev);
   if (!payload) return { ok: false as const, message: "This unsubscribe link is invalid or expired." };
-  if (env.DB) {
-    await env.DB.prepare(`DELETE FROM subscribers WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
-    return { ok: true as const, message: `${payload.email} will not get further alerts for that machine.` };
+  if (mailConfigured(env)) {
+    try {
+      await env.DB.prepare(`DELETE FROM subscribers WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
+      return { ok: true as const, message: UNSUBSCRIBED_MESSAGE };
+    } catch (error) {
+      console.error("Alert unsubscribe failed.", error);
+      if (!dev) return { ok: false as const, message: STORE_UNAVAILABLE };
+    }
   }
-  if (!import.meta.env.DEV) {
-    return { ok: false as const, message: "Email alerts are not switched on for this site yet." };
+  if (!dev) {
+    return { ok: false as const, message: STORE_UNAVAILABLE };
   }
   const { rows } = await readDevStore();
   await writeDevStore(rows.filter((item) => item.id !== idFor(payload.email, payload.deviceId)));
-  return { ok: true as const, message: `${payload.email} will not get further alerts for that machine.` };
+  return { ok: true as const, message: UNSUBSCRIBED_MESSAGE };
+}
+
+export interface AlertSignupResult {
+  ok: boolean;
+  message: string;
+  provider?: string;
+  devConfirmUrl?: string;
+}
+
+/** Honeypot, Turnstile, then the signup. Email links ignore the request host. */
+export async function handleAlertSignup(
+  body: Record<string, unknown>,
+  env: AlertEnv,
+  options: AlertCallOptions = {},
+): Promise<{ status: number; result: AlertSignupResult }> {
+  if (honeypotFilled(body)) {
+    return { status: 200, result: { ok: true, message: CONFIRM_PENDING_MESSAGE } };
+  }
+  const turnstileSecret = env.TURNSTILE_SECRET_KEY?.trim() ?? "";
+  if (!turnstileSecret) {
+    logTurnstileUnset();
+  } else {
+    const token = String(body.turnstileToken ?? "");
+    const passed = await verifyTurnstileToken(token, turnstileSecret, options.fetch ?? fetch);
+    if (!passed) {
+      return { status: 400, result: { ok: false, message: "Complete the human check and try again." } };
+    }
+  }
+  const parsed = validateSignup(body);
+  if (typeof parsed === "string") return { status: 400, result: { ok: false, message: parsed } };
+  const result = await requestAlert(parsed, env, options);
+  return { status: result.ok ? 200 : 503, result };
 }
 
 export function envFrom(source: Record<string, unknown> | undefined): AlertEnv {
@@ -262,6 +461,8 @@ export function envFrom(source: Record<string, unknown> | undefined): AlertEnv {
     ALERT_FROM: read("ALERT_FROM"),
     ALERT_TOKEN_SECRET: read("ALERT_TOKEN_SECRET"),
     SITE_URL: read("SITE_URL"),
+    TURNSTILE_SITE_KEY: read("TURNSTILE_SITE_KEY"),
+    TURNSTILE_SECRET_KEY: read("TURNSTILE_SECRET_KEY"),
     DB: source?.DB as D1Like | undefined,
   };
 }
