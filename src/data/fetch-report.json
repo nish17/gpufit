@@ -1,12 +1,14 @@
 {
-  "generatedAt": "2026-10-25T11:43:39.779400+00:00",
-  "modelCount": 135,
-  "withRealQuants": 133,
+  "generatedAt": "2026-10-25T16:36:38.678494+00:00",
+  "modelCount": 139,
+  "withRealQuants": 137,
   "attempts": 380,
   "candidateCount": 527,
   "newRepoIds": [
-    "unsloth/Qwen3-235B-A22B-GGUF",
-    "unsloth/NVIDIA-Nemotron-3-Nano-4B-GGUF"
+    "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
