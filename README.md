@@ -123,3 +123,7 @@ Stubbed or local-only:
 - `schema/migrate-2026-10-24-confirm-sent.sql` — one-time column add for an existing D1 database
 - `public/_headers` and `src/middleware.ts` — browser security headers
 - `SECURITY.md` — where to report a vulnerability
+
+## License
+
+GPUfit is released under the [MIT License](LICENSE). Copyright 2026 Nimesh and GPUfit contributors.
