@@ -63,7 +63,7 @@ const description = "What GPUfit stores: a hardware profile in your browser, and
               <text x="205" y="64" text-anchor="middle" fill="var(--accent-ink)" font-size="13" font-family="Outfit, sans-serif">machine</text>
             </svg>
             <h2 class="serif">What we store</h2>
-            <p class="muted">The address, the hardware profile, and whether you want a weekly digest. Only after you confirm.</p>
+            <p class="muted">The address, the hardware profile, and whether you want a weekly digest. The row is saved when you submit the form, before you confirm.</p>
           </section>
           <section class="figure-card">
             <svg viewBox="0 0 280 120" role="img" aria-label="A link labeled unsubscribe">
@@ -71,18 +71,13 @@ const description = "What GPUfit stores: a hardware profile in your browser, and
               <text x="140" y="65" text-anchor="middle" fill="var(--ink)" font-size="14" font-family="Outfit, sans-serif">Unsubscribe</text>
             </svg>
             <h2 class="serif">How you leave</h2>
-            <p class="muted">Every message has its own unsubscribe link. There is no password.</p>
+            <p class="muted">Every message has an unsubscribe link. You can also email nimesh3536@gmail.com to ask for a copy or for deletion. There is no password.</p>
           </section>
         </div>
         <div class="prose">
-          <p>Alert signup is separate. If you submit the form on a configured deployment, we store the email, the hardware profile, and whether you want a weekly digest. A confirmation link has to be clicked before mail is sent. Every future message needs its own unsubscribe link. There is no password.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Before email is configured</summary>
-        <div class="prose">
-          <p>Until Resend and Cloudflare D1 are configured, the dev server writes signups to a local <code>data/subscribers.json</code> file, and a production build without those secrets refuses to store the address. The form then keeps the signup in this browser so you can see the flow.</p>
+          <p>Alert signup is separate from the hardware picker. Submitting the form stores the email, the hardware profile (machine, memory, system RAM, memory bandwidth, and whether it drives a display), and the weekly-digest choice. That row is written before you confirm, so we can send one confirmation message and avoid sending another to the same address for about 10 minutes. Fit alerts are sent only after you open the confirmation link.</p>
+          <p>An unconfirmed signup is deleted automatically 7 days after the latest confirmation request. A confirmed signup is kept until you unsubscribe or until a deletion request is handled. Unsubscribing deletes the address, the hardware profile, and the record of which models were already mailed for that signup.</p>
+          <p>Resend sends the confirmation and fit emails. Cloudflare D1 stores the signup. Cloudflare Turnstile checks that the form was submitted by a person. For access or deletion, email <a href="mailto:nimesh3536@gmail.com">nimesh3536@gmail.com</a>.</p>
         </div>
       </details>
     </div>

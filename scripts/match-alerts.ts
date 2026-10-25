@@ -1,7 +1,8 @@
 /**
  * Match confirmed subscribers to newly tracked models that fit their machine.
  *
- * Dry run (default) reads data/subscribers.json and prints the mail. Nothing is sent.
+ * Dry run (default) reads data/subscribers.json and prints counts plus a short
+ * subscriber id. Addresses are not logged.
  *
  *   npm run alerts:match
  *   npm run alerts:match -- --send
@@ -12,15 +13,18 @@
  *
  * Required for --send: RESEND_API_KEY, ALERT_FROM, ALERT_TOKEN_SECRET.
  */
-import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { listUnsubscribeHeaders, oneClickUnsubscribeUrl } from "../src/lib/alerts/email.ts";
+import { deliveryFailureLine, deliveryLogLine, dryRunSubscriberLine } from "../src/lib/alerts/log-id.ts";
 import { planAlertMails, renderFitMail, type AlertSubscriber, type SentAlert } from "../src/lib/alerts/match.ts";
+import { redactLogText } from "../src/lib/alerts/redact.ts";
 import { signAlert } from "../src/lib/alerts/token.ts";
 import { DEFAULT_SITE } from "../src/lib/site.ts";
 import type { DeviceSpec, ModelSpec } from "../src/lib/estimator/types.ts";
+import { d1Execute } from "./d1.ts";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const subscribersPath = path.join(root, "data", "subscribers.json");
@@ -35,27 +39,8 @@ function sqlString(value: string): string {
   return `'${value.replaceAll("'", "''")}'`;
 }
 
-function parseD1(stdout: string): Record<string, unknown>[] {
-  const trimmed = stdout.trim();
-  const start = Math.min(
-    ...["[", "{"].map((char) => {
-      const index = trimmed.indexOf(char);
-      return index === -1 ? Number.POSITIVE_INFINITY : index;
-    }),
-  );
-  if (!Number.isFinite(start)) throw new Error("D1 did not return JSON.");
-  const parsed = JSON.parse(trimmed.slice(start)) as { results?: Record<string, unknown>[] } | { results?: Record<string, unknown>[] }[];
-  const blocks = Array.isArray(parsed) ? parsed : [parsed];
-  return blocks.flatMap((block) => (Array.isArray(block.results) ? block.results : []));
-}
-
 function d1(sql: string): Record<string, unknown>[] {
-  const stdout = execFileSync("npx", ["wrangler", "d1", "execute", "gpufit", "--remote", "--json", "--command", sql], {
-    cwd: root,
-    encoding: "utf8",
-    stdio: ["ignore", "pipe", "inherit"],
-  });
-  return parseD1(stdout);
+  return d1Execute(root, sql).rows;
 }
 
 function fromRow(row: Record<string, unknown>): AlertSubscriber {
@@ -120,7 +105,7 @@ async function postResend(input: {
   subject: string;
   text: string;
   html: string;
-  unsubscribeUrl: string;
+  headers: Record<string, string>;
   idempotencyKey: string;
 }) {
   const response = await fetch("https://api.resend.com/emails", {
@@ -134,14 +119,14 @@ async function postResend(input: {
       from: input.from,
       to: [input.to],
       subject: input.subject,
-      headers: { "List-Unsubscribe": `<${input.unsubscribeUrl}>` },
+      headers: input.headers,
       text: input.text,
       html: input.html,
     }),
   });
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`Resend returned ${response.status}: ${body.slice(0, 300)}`);
+    throw new Error(redactLogText(`Resend returned ${response.status}: ${body.slice(0, 180)}`));
   }
 }
 
@@ -167,12 +152,12 @@ const origin = (process.env.SITE_URL || DEFAULT_SITE).replace(/\/$/, "");
 
 if (!send) {
   for (const mail of mails) {
-    console.log(`\n${mail.subscriber.email} · ${mail.deviceName}`);
+    console.log(`\n${dryRunSubscriberLine(mail.subscriber.email, mail.deviceName)}`);
     for (const hit of mail.hits) {
       console.log(`  would mention ${hit.model.name}: ${hit.label} (${hit.quantId ?? "no quant"})`);
     }
   }
-  console.log("\nDry run. Pass --send to deliver, once RESEND_API_KEY, ALERT_FROM, and ALERT_TOKEN_SECRET are set.");
+  console.log(`\nDry run. ${mails.length} message(s). Pass --send to deliver, once RESEND_API_KEY, ALERT_FROM, and ALERT_TOKEN_SECRET are set.`);
   process.exit(0);
 }
 
@@ -213,18 +198,20 @@ for (const mail of mails) {
       subject: rendered.subject,
       text: rendered.text,
       html: rendered.html,
-      unsubscribeUrl,
+      headers: listUnsubscribeHeaders(oneClickUnsubscribeUrl(origin, token)),
       idempotencyKey,
     });
   } catch (error) {
     failed += 1;
-    console.error(`${mail.subscriber.email}: ${error instanceof Error ? error.message : "send failed"}`);
+    console.error(deliveryFailureLine(mail.subscriber.email, error instanceof Error ? error.message : "send failed"));
     continue;
   }
   const rows = mail.hits.map((hit) => ({ subscriberId: mail.subscriber.id, modelId: hit.model.id }));
   if (remote) recordRemote(rows);
   else recordLocal(rows);
-  console.log(`Sent ${mail.hits.length} model${mail.hits.length === 1 ? "" : "s"} to ${mail.subscriber.email}`);
+  console.log(deliveryLogLine(mail.hits.length, mail.subscriber.email));
 }
+
+console.log(`Delivered ${mails.length - failed} message(s); ${failed} failed.`);
 
 if (failed) process.exit(1);

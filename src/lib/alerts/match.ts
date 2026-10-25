@@ -1,6 +1,6 @@
 import { estimate } from "../estimator/estimate";
 import type { DeviceSpec, ModelSpec, VerdictId } from "../estimator/types";
-import { emailShell, fitRowsHtml } from "./email";
+import { alertTextFooter, emailShell, fitRowsHtml } from "./email";
 
 const DAY_MS = 86_400_000;
 
@@ -121,8 +121,7 @@ export function renderFitMail(mail: PlannedMail, origin: string, unsubscribeUrl:
     "",
     "This is an estimate for llama.cpp, not a benchmark.",
     "",
-    `Unsubscribe:\n${unsubscribeUrl}`,
-    "",
+    alertTextFooter(unsubscribeUrl),
   ].join("\n");
   const headline = count === 1 ? `A new model fits your ${mail.deviceName}` : `${count} new models fit your ${mail.deviceName}`;
   const html = emailShell({

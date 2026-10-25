@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { renderConfirmMail } from "./email";
+import { ALERT_SENDER_LINE, listUnsubscribeHeaders, oneClickUnsubscribeUrl, renderConfirmMail } from "./email";
 
 describe("renderConfirmMail", () => {
   it("uses the site palette, a table layout, and a plain-text link", () => {
@@ -19,5 +19,19 @@ describe("renderConfirmMail", () => {
     expect(mail.html).toContain("<table");
     expect(mail.html).not.toContain("display:flex");
     expect(mail.html).not.toContain("rgba(");
+    expect(mail.text).toContain(ALERT_SENDER_LINE);
+    expect(mail.html).toContain("Ahmedabad, Gujarat, India");
+    expect(mail.html).toContain("nimesh3536@gmail.com");
+    expect(mail.html).toContain("Unsubscribe");
+    expect(mail.text).toContain("https://gpufit.tech/alerts/unsubscribe?token=abc");
+  });
+
+  it("builds RFC 8058 headers aimed at the POST unsubscribe route", () => {
+    const url = oneClickUnsubscribeUrl("https://gpufit.tech", "tok/en");
+    expect(url).toBe("https://gpufit.tech/api/alerts/unsubscribe/?token=tok%2Fen");
+    expect(listUnsubscribeHeaders(url)).toEqual({
+      "List-Unsubscribe": `<${url}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    });
   });
 });
