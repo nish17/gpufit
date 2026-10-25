@@ -5,13 +5,19 @@ import {
   CONFIRM_PENDING_MESSAGE,
   CONFIRMED_MESSAGE,
   DEV_TOKEN_SECRET,
+  GENERIC_ALERT_ERROR,
+  MAX_ALERT_BODY_BYTES,
+  MAX_DEVICE_ID_LENGTH,
   UNSUBSCRIBED_MESSAGE,
   alertOrigin,
   confirmAlert,
   handleAlertSignup,
+  readLimitedText,
+  readSignupBody,
   requestAlert,
   resolveTokenSecret,
   unsubscribeAlert,
+  validateSignup,
   type AlertEnv,
   type AlertSignup,
 } from "./server";
@@ -93,7 +99,7 @@ describe("alert signup mail", () => {
       bodies.push(String(init?.body ?? ""));
       return jsonResponse({ id: "email" });
     });
-    const { db } = mockDb();
+    const { db, writes } = mockDb();
     const env: AlertEnv = {
       DB: db,
       RESEND_API_KEY: "re_test",
@@ -104,9 +110,17 @@ describe("alert signup mail", () => {
     expect(result.ok).toBe(true);
     expect(result.message).toBe(CONFIRM_PENDING_MESSAGE);
     expect(result.message).not.toContain(signup.email);
-    const mailed = JSON.parse(bodies[0]) as { html: string; text: string };
+    const mailed = JSON.parse(bodies[0]) as {
+      html: string;
+      text: string;
+      headers: Record<string, string>;
+    };
     expect(mailed.html).toContain("https://gpufit.tech/alerts/confirm/?token=");
     expect(mailed.html).toContain("https://gpufit.tech/alerts/unsubscribe/?token=");
+    expect(mailed.html).toContain("Ahmedabad, Gujarat, India");
+    expect(mailed.text).toContain("nimesh3536@gmail.com");
+    expect(mailed.headers["List-Unsubscribe"]).toMatch(/^<https:\/\/gpufit\.tech\/api\/alerts\/unsubscribe\/\?token=[^>]+>$/);
+    expect(mailed.headers["List-Unsubscribe-Post"]).toBe("List-Unsubscribe=One-Click");
     expect(mailed.html).not.toContain("evil.example");
     const confirmToken = decodeURIComponent(mailed.html.split("/alerts/confirm/?token=")[1].split('"')[0]);
     const unsubToken = decodeURIComponent(mailed.html.split("/alerts/unsubscribe/?token=")[1].split("&")[0].split('"')[0]);
@@ -122,6 +136,8 @@ describe("alert signup mail", () => {
     });
     const removed = await unsubscribeAlert(unsubToken, env, { dev: false });
     expect(removed).toEqual({ ok: true, message: UNSUBSCRIBED_MESSAGE });
+    expect(writes.some((sql) => sql.includes("DELETE FROM alert_sends"))).toBe(true);
+    expect(writes.some((sql) => sql.includes("DELETE FROM subscribers"))).toBe(true);
     expect(removed.message).not.toContain(signup.email);
     expect(await confirmAlert(unsubToken, env, { dev: false })).toEqual({
       ok: false,
@@ -188,7 +204,7 @@ describe("alert signup mail", () => {
     expect(broken.message).not.toContain(signup.email);
   });
 
-  it("drops a filled honeypot and requires Turnstile only when the secret is set", async () => {
+  it("drops a filled honeypot, checks Turnstile, and fails closed in production when the secret is missing", async () => {
     const fetchImpl = vi.fn(async (url: string) => {
       if (String(url).includes("siteverify")) return jsonResponse({ success: true });
       return jsonResponse({ id: "email" });
@@ -217,13 +233,77 @@ describe("alert signup mail", () => {
     });
     expect(passed.status).toBe(200);
     expect(fetchImpl).toHaveBeenCalled();
-    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
-    const open = await handleAlertSignup({ ...signup }, { ...env, TURNSTILE_SECRET_KEY: undefined, DB: mockDb().db }, {
-      dev: false,
-      fetch: fetchImpl as typeof fetch,
-    });
-    expect(open.status).toBe(200);
-    expect(warn).toHaveBeenCalledWith(expect.stringContaining("TURNSTILE_SECRET_KEY is not set"));
-    warn.mockRestore();
+    const logged = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { db: closedDb, writes: closedWrites } = mockDb();
+    const open = await handleAlertSignup(
+      { ...signup },
+      { ...env, TURNSTILE_SECRET_KEY: "   ", DB: closedDb, RESEND_API_KEY: "re_test" },
+      { dev: false, fetch: fetchImpl as typeof fetch },
+    );
+    expect(open.status).toBe(503);
+    expect(open.result.ok).toBe(false);
+    expect(closedWrites).toEqual([]);
+    expect(JSON.stringify(open.result)).not.toContain("TURNSTILE");
+    expect(JSON.stringify(open.result)).not.toContain(signup.email);
+    expect(logged).toHaveBeenCalledWith(
+      "TURNSTILE_SECRET_KEY is not set. Refusing POST /api/alerts until the Worker secret is configured.",
+    );
+    logged.mockRestore();
+
+    const devChecked = await handleAlertSignup({ ...signup }, env, { dev: true, fetch: fetchImpl as typeof fetch });
+    expect(devChecked.status).toBe(400);
+
+    const devSignup = await handleAlertSignup({ ...signup }, { ALERT_TOKEN_SECRET: "production-secret" }, { dev: true });
+    expect(devSignup.status).toBe(200);
+    expect(devSignup.result.ok).toBe(true);
+  });
+});
+
+describe("alert input limits", () => {
+  it("caps the device id and numeric ranges without echoing the submitted values", () => {
+    const hugeId = `rtx-${"a".repeat(MAX_DEVICE_ID_LENGTH)}`;
+    const longId = validateSignup({ ...signup, deviceId: hugeId });
+    expect(longId).toBe("Pick a machine before signing up.");
+    expect(longId).not.toContain(hugeId);
+
+    expect(validateSignup({ ...signup, deviceId: "rtx/4060" })).toBe("Pick a machine before signing up.");
+    expect(validateSignup({ ...signup, deviceId: "RTX-4060" })).toBe("Pick a machine before signing up.");
+    expect(validateSignup({ ...signup, memoryGb: 999999 })).toBe(GENERIC_ALERT_ERROR);
+    expect(validateSignup({ ...signup, memoryGb: 0 })).toBe(GENERIC_ALERT_ERROR);
+    expect(validateSignup({ ...signup, memoryGb: Number.POSITIVE_INFINITY })).toBe(GENERIC_ALERT_ERROR);
+    expect(validateSignup({ ...signup, systemRamGb: -4 })).toBe(GENERIC_ALERT_ERROR);
+    expect(validateSignup({ ...signup, ramBandwidthGBps: 1e12 })).toBe(GENERIC_ALERT_ERROR);
+    expect(validateSignup({ ...signup, memoryGb: true })).toBe(GENERIC_ALERT_ERROR);
+    expect(JSON.stringify(validateSignup({ ...signup, memoryGb: 999999 }))).not.toContain("999999");
+
+    const edge = validateSignup({ ...signup, memoryGb: "1024", systemRamGb: 1, ramBandwidthGBps: 20000 });
+    expect(typeof edge).not.toBe("string");
+    if (typeof edge !== "string") {
+      expect(edge.memoryGb).toBe(1024);
+      expect(edge.systemRamGb).toBe(1);
+      expect(edge.ramBandwidthGBps).toBe(20000);
+    }
+  });
+
+  it("stops reading a body once it passes the cap", async () => {
+    const small = await readLimitedText(new Request("https://gpufit.tech/api/alerts/", { method: "POST", body: "{\"ok\":true}" }), 100);
+    expect(small).toBe('{"ok":true}');
+    const big = await readLimitedText(
+      new Request("https://gpufit.tech/api/alerts/", { method: "POST", body: "x".repeat(MAX_ALERT_BODY_BYTES + 20) }),
+      MAX_ALERT_BODY_BYTES,
+    );
+    expect(big).toBeNull();
+  });
+
+  it("rejects an oversized or non-object body with a generic message", () => {
+    const junk = "not-json <script>ada@example.com";
+    expect(readSignupBody(junk)).toBe(GENERIC_ALERT_ERROR);
+    expect(readSignupBody("[]")).toBe(GENERIC_ALERT_ERROR);
+    expect(readSignupBody("null")).toBe(GENERIC_ALERT_ERROR);
+    const oversized = readSignupBody(`{"email":"${"a".repeat(MAX_ALERT_BODY_BYTES)}"}`);
+    expect(oversized).toBe(GENERIC_ALERT_ERROR);
+    expect(oversized).not.toContain("ada@example.com");
+    const ok = readSignupBody(JSON.stringify(signup));
+    expect(typeof ok).toBe("object");
   });
 });

@@ -23,6 +23,26 @@ const TONE: Record<VerdictId, { color: string; bg: string }> = {
   wont_fit: { color: "#8d2f2f", bg: "#fde8e6" },
 };
 
+/** City, state, and country only. Shown in the text and HTML footer of every alert. */
+export const ALERT_SENDER_LINE = "GPUfit, Ahmedabad, Gujarat, India. Contact nimesh3536@gmail.com.";
+
+/** Mail-client one-click target. The visible unsubscribe link stays on the HTML page. */
+export function oneClickUnsubscribeUrl(origin: string, token: string): string {
+  return `${origin.replace(/\/$/, "")}/api/alerts/unsubscribe/?token=${encodeURIComponent(token)}`;
+}
+
+/** RFC 8058. POST List-Unsubscribe=One-Click to the HTTPS URI. */
+export function listUnsubscribeHeaders(unsubscribeUrl: string): Record<string, string> {
+  return {
+    "List-Unsubscribe": `<${unsubscribeUrl}>`,
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+  };
+}
+
+export function alertTextFooter(unsubscribeUrl: string): string {
+  return [ALERT_SENDER_LINE, "", "Unsubscribe:", unsubscribeUrl, ""].join("\n");
+}
+
 export function escapeHtml(value: string): string {
   return value
     .replaceAll("&", "&amp;")
@@ -105,6 +125,7 @@ ${input.bodyHtml}
 <tr>
 <td style="padding:18px 8px 0;font-family:${SANS};font-size:13px;line-height:20px;color:${MUTED};">
 GPUfit estimates local LLM fit. It is not a benchmark.<br>
+${escapeHtml(ALERT_SENDER_LINE)}<br>
 <a href="${unsubscribe}" style="color:${MUTED};">Unsubscribe</a>
 &nbsp;&middot;&nbsp;
 <a href="${privacy}" style="color:${MUTED};">Privacy</a>
@@ -131,9 +152,7 @@ export function renderConfirmMail(input: { origin: string; confirmUrl: string; u
     "",
     "Nothing is mailed until you open that link.",
     "",
-    "Unsubscribe:",
-    input.unsubscribeUrl,
-    "",
+    alertTextFooter(input.unsubscribeUrl),
   ].join("\n");
   const html = emailShell({
     origin: input.origin,

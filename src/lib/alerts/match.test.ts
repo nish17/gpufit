@@ -145,6 +145,8 @@ describe("renderFitMail", () => {
     expect(rendered.html).toContain("Model 7B");
     expect(rendered.html).toContain("https://gpufit.tech/models/model-7b");
     expect(rendered.html).toContain("https://gpufit.tech/alerts/unsubscribe?token=abc");
+    expect(rendered.html).toContain("Ahmedabad, Gujarat, India");
+    expect(rendered.text).toContain("nimesh3536@gmail.com");
     expect(rendered.html).not.toContain("display:flex");
   });
 

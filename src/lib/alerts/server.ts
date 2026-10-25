@@ -1,7 +1,8 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { DEFAULT_SITE } from "../site";
-import { renderConfirmMail } from "./email";
+import { listUnsubscribeHeaders, oneClickUnsubscribeUrl, renderConfirmMail } from "./email";
+import { redactLogText } from "./redact";
 import { readAlert, signAlert, type AlertPayload } from "./token";
 
 /** Public fallback. Production must not sign or accept tokens with this value. */
@@ -13,6 +14,14 @@ export const CONFIRMED_MESSAGE = "You're confirmed. Fit alerts for that machine 
 export const UNSUBSCRIBED_MESSAGE = "You're unsubscribed. No further alerts will be sent for that machine.";
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const HONEYPOT_FIELD = "company_website";
+export const GENERIC_ALERT_ERROR = "Check the form and try again.";
+export const MAX_ALERT_BODY_BYTES = 16 * 1024;
+export const MAX_DEVICE_ID_LENGTH = 64;
+const MIN_ALERT_GB = 1;
+const MAX_ALERT_GB = 1024;
+const MIN_ALERT_BANDWIDTH_GBPS = 1;
+const MAX_ALERT_BANDWIDTH_GBPS = 20_000;
+const DEVICE_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export interface AlertSignup {
   email: string;
@@ -118,7 +127,12 @@ function logSecretRefusal(): void {
 function logTurnstileUnset(): void {
   if (turnstileWarningLogged) return;
   turnstileWarningLogged = true;
-  console.warn("TURNSTILE_SECRET_KEY is not set. POST /api/alerts is accepting signups without a Turnstile check.");
+  console.error("TURNSTILE_SECRET_KEY is not set. Refusing POST /api/alerts until the Worker secret is configured.");
+}
+
+function logFailure(message: string, error?: unknown): void {
+  const detail = error instanceof Error ? error.message : typeof error === "string" ? error : "";
+  console.error(detail ? `${message} ${redactLogText(detail)}` : message);
 }
 
 export function honeypotFilled(body: Record<string, unknown>): boolean {
@@ -167,6 +181,59 @@ async function writeDevStore(rows: StoredAlert[]): Promise<"file" | "memory"> {
   }
 }
 
+function readRange(value: unknown, min: number, max: number): number | null {
+  if (typeof value !== "number" && typeof value !== "string") return null;
+  if (typeof value === "string" && value.trim() === "") return null;
+  const number = typeof value === "number" ? value : Number(value);
+  if (!Number.isFinite(number) || number < min || number > max) return null;
+  return number;
+}
+
+/** Stop reading once the cap is passed so a large body is not parsed or logged. */
+export async function readLimitedText(request: Request, maxBytes: number): Promise<string | null> {
+  const declared = request.headers.get("content-length");
+  if (declared !== null && (!Number.isFinite(Number(declared)) || Number(declared) > maxBytes)) return null;
+  const body = request.body;
+  if (!body) return "";
+  const reader = body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (!value?.byteLength) continue;
+      total += value.byteLength;
+      if (total > maxBytes) {
+        await reader.cancel();
+        return null;
+      }
+      chunks.push(value);
+    }
+  } catch {
+    return null;
+  }
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
+}
+
+export function readSignupBody(raw: string): Record<string, unknown> | string {
+  if (new TextEncoder().encode(raw).byteLength > MAX_ALERT_BODY_BYTES) return GENERIC_ALERT_ERROR;
+  let body: unknown;
+  try {
+    body = JSON.parse(raw);
+  } catch {
+    return GENERIC_ALERT_ERROR;
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) return GENERIC_ALERT_ERROR;
+  return body as Record<string, unknown>;
+}
+
 export function validateSignup(input: {
   email?: unknown;
   deviceId?: unknown;
@@ -178,17 +245,19 @@ export function validateSignup(input: {
 }): AlertSignup | string {
   const email = String(input.email || "").trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 200) return "Enter a valid email address.";
-  if (!input.deviceId || typeof input.deviceId !== "string") return "Pick a machine before signing up.";
-  const memoryGb = Number(input.memoryGb);
-  const systemRamGb = Number(input.systemRamGb);
-  const ramBandwidthGBps = Number(input.ramBandwidthGBps);
-  if (!Number.isFinite(memoryGb) || memoryGb <= 0) return "Memory size is missing.";
+  if (typeof input.deviceId !== "string") return "Pick a machine before signing up.";
+  const deviceId = input.deviceId.trim();
+  if (!deviceId || deviceId.length > MAX_DEVICE_ID_LENGTH || !DEVICE_ID_PATTERN.test(deviceId)) return "Pick a machine before signing up.";
+  const memoryGb = readRange(input.memoryGb, MIN_ALERT_GB, MAX_ALERT_GB);
+  const systemRamGb = readRange(input.systemRamGb, MIN_ALERT_GB, MAX_ALERT_GB);
+  const ramBandwidthGBps = readRange(input.ramBandwidthGBps, MIN_ALERT_BANDWIDTH_GBPS, MAX_ALERT_BANDWIDTH_GBPS);
+  if (memoryGb === null || systemRamGb === null || ramBandwidthGBps === null) return GENERIC_ALERT_ERROR;
   return {
     email,
-    deviceId: input.deviceId,
+    deviceId,
     memoryGb,
-    systemRamGb: Number.isFinite(systemRamGb) ? systemRamGb : memoryGb,
-    ramBandwidthGBps: Number.isFinite(ramBandwidthGBps) ? ramBandwidthGBps : 89.6,
+    systemRamGb,
+    ramBandwidthGBps,
     drivesDisplay: Boolean(input.drivesDisplay),
     weeklyDigest: input.weeklyDigest !== false,
   };
@@ -199,6 +268,7 @@ async function confirmationEmail(
   signup: AlertSignup,
   confirmUrl: string,
   unsubUrl: string,
+  oneClickUrl: string,
   origin: string,
   fetchImpl: typeof fetch,
 ) {
@@ -216,7 +286,7 @@ async function confirmationEmail(
       from,
       to: [signup.email],
       subject: rendered.subject,
-      headers: { "List-Unsubscribe": `<${unsubUrl}>` },
+      headers: listUnsubscribeHeaders(oneClickUrl),
       text: rendered.text,
       html: rendered.html,
     }),
@@ -271,7 +341,7 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, options: 
     try {
       cooling = await confirmationCoolingDown(env, signup.email, now);
     } catch (error) {
-      console.error(
+      logFailure(
         "Alert cooldown query failed. If D1 is missing confirm_sent_at, apply schema/migrate-2026-10-24-confirm-sent.sql.",
         error,
       );
@@ -293,7 +363,8 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, options: 
          drives_display = excluded.drives_display,
          ram_bandwidth_gbps = excluded.ram_bandwidth_gbps,
          weekly_digest = excluded.weekly_digest,
-         confirm_sent_at = excluded.confirm_sent_at`,
+         confirm_sent_at = excluded.confirm_sent_at,
+         created_at = CASE WHEN subscribers.confirmed = 0 THEN excluded.created_at ELSE subscribers.created_at END`,
     )
       .bind(
         row.id,
@@ -308,7 +379,7 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, options: 
         sentAt,
       )
       .run();
-    await confirmationEmail(env, signup, confirmUrl, unsubUrl, origin, fetchImpl);
+    await confirmationEmail(env, signup, confirmUrl, unsubUrl, oneClickUnsubscribeUrl(origin, unsubToken), origin, fetchImpl);
     return {
       ok: true as const,
       provider: "resend" as const,
@@ -381,7 +452,7 @@ export async function confirmAlert(token: string, env: AlertEnv, options: AlertC
       await env.DB.prepare(`UPDATE subscribers SET confirmed = 1 WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
       return { ok: true as const, message: CONFIRMED_MESSAGE };
     } catch (error) {
-      console.error("Alert confirm failed.", error);
+      logFailure("Alert confirm failed.", error);
       if (!dev) return { ok: false as const, message: STORE_UNAVAILABLE };
     }
   }
@@ -403,11 +474,17 @@ export async function unsubscribeAlert(token: string, env: AlertEnv, options: Al
   const payload = await payloadFor(token, env, "unsubscribe", dev);
   if (!payload) return { ok: false as const, message: "This unsubscribe link is invalid or expired." };
   if (mailConfigured(env)) {
+    const id = idFor(payload.email, payload.deviceId);
     try {
-      await env.DB.prepare(`DELETE FROM subscribers WHERE id = ?`).bind(idFor(payload.email, payload.deviceId)).run();
+      await env.DB.prepare(`DELETE FROM alert_sends WHERE subscriber_id = ?`).bind(id).run();
+    } catch (error) {
+      logFailure("Alert send-log delete failed.", error);
+    }
+    try {
+      await env.DB.prepare(`DELETE FROM subscribers WHERE id = ?`).bind(id).run();
       return { ok: true as const, message: UNSUBSCRIBED_MESSAGE };
     } catch (error) {
-      console.error("Alert unsubscribe failed.", error);
+      logFailure("Alert unsubscribe failed.", error);
       if (!dev) return { ok: false as const, message: STORE_UNAVAILABLE };
     }
   }
@@ -432,12 +509,19 @@ export async function handleAlertSignup(
   env: AlertEnv,
   options: AlertCallOptions = {},
 ): Promise<{ status: number; result: AlertSignupResult }> {
+  const dev = options.dev ?? import.meta.env.DEV;
   if (honeypotFilled(body)) {
     return { status: 200, result: { ok: true, message: CONFIRM_PENDING_MESSAGE } };
   }
   const turnstileSecret = env.TURNSTILE_SECRET_KEY?.trim() ?? "";
   if (!turnstileSecret) {
-    logTurnstileUnset();
+    if (!dev) {
+      logTurnstileUnset();
+      return {
+        status: 503,
+        result: { ok: false, message: "Email alerts are not switched on for this site yet." },
+      };
+    }
   } else {
     const token = String(body.turnstileToken ?? "");
     const passed = await verifyTurnstileToken(token, turnstileSecret, options.fetch ?? fetch);
@@ -447,7 +531,7 @@ export async function handleAlertSignup(
   }
   const parsed = validateSignup(body);
   if (typeof parsed === "string") return { status: 400, result: { ok: false, message: parsed } };
-  const result = await requestAlert(parsed, env, options);
+  const result = await requestAlert(parsed, env, { ...options, dev });
   return { status: result.ok ? 200 : 503, result };
 }
 

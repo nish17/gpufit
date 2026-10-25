@@ -20,6 +20,10 @@ CREATE TABLE IF NOT EXISTS subscribers (
 
 CREATE INDEX IF NOT EXISTS subscribers_confirmed ON subscribers (confirmed);
 
+-- scripts/purge-unconfirmed.ts deletes confirmed = 0 rows whose latest
+-- confirmation attempt (confirm_sent_at, else created_at) is older than 7 days.
+-- The model watcher runs that script. It also deletes matching alert_sends rows.
+
 -- One row per subscriber and model after a fit email is accepted.
 -- The matcher uses this to avoid sending the same model twice.
 CREATE TABLE IF NOT EXISTS alert_sends (
