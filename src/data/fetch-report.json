@@ -1,14 +1,12 @@
 {
-  "generatedAt": "2026-10-25T16:36:38.678494+00:00",
-  "modelCount": 139,
-  "withRealQuants": 137,
+  "generatedAt": "2026-10-25T21:07:14.388596+00:00",
+  "modelCount": 141,
+  "withRealQuants": 139,
   "attempts": 380,
-  "candidateCount": 527,
+  "candidateCount": 511,
   "newRepoIds": [
-    "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
-    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
-    "tencent/Hy-MT2-1.8B-GGUF"
+    "ibm-granite/granite-4.2-3b-GGUF",
+    "ibm-granite/granite-4.2-8b-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
