@@ -5,9 +5,19 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 type TurnstileApi = {
-  render: (el: HTMLElement, options: { sitekey: string; callback: (token: string) => void; "expired-callback": () => void }) => string;
+  render: (
+    el: HTMLElement,
+    options: {
+      sitekey: string;
+      callback: (token: string) => void;
+      "expired-callback": () => void;
+      "error-callback": () => void;
+    },
+  ) => string;
   remove: (id: string) => void;
 };
+
+const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 
 export default function AlertForm({ profile, deviceName }: { profile: Profile; deviceName: string }) {
   const [email, setEmail] = useState("");
@@ -18,6 +28,7 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
   const [devUrl, setDevUrl] = useState<string | null>(null);
   const [siteKey, setSiteKey] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [humanCheckKey, setHumanCheckKey] = useState(0);
   const [mailed, setMailed] = useState(false);
   const [alreadySubscribed, setAlreadySubscribed] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
@@ -44,29 +55,53 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
     noticeRef.current?.focus();
   }, [status]);
 
+  const formVisible = status !== "done";
+
+  // A Turnstile token is spent on the first submit. Mount a new widget whenever the form is on screen.
   useEffect(() => {
-    if (!siteKey || !widgetRef.current) return;
+    if (!formVisible || !siteKey) return;
     const host = widgetRef.current;
+    if (!host) return;
+    const win = window as Window & { turnstile?: TurnstileApi };
     let widgetId = "";
-    const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-    script.async = true;
-    script.onload = () => {
-      const turnstile = (window as Window & { turnstile?: TurnstileApi }).turnstile;
-      if (!turnstile || !host.isConnected) return;
+    let cancelled = false;
+
+    const mount = () => {
+      const turnstile = win.turnstile;
+      if (cancelled || !turnstile || !host.isConnected) return;
+      if (widgetId) turnstile.remove(widgetId);
       widgetId = turnstile.render(host, {
         sitekey: siteKey,
         callback: (token) => setTurnstileToken(token),
         "expired-callback": () => setTurnstileToken(""),
+        "error-callback": () => setTurnstileToken(""),
       });
     };
-    document.head.appendChild(script);
-    return () => {
-      script.remove();
-      const turnstile = (window as Window & { turnstile?: TurnstileApi }).turnstile;
-      if (widgetId && turnstile) turnstile.remove(widgetId);
+
+    const removeWidget = () => {
+      cancelled = true;
+      if (widgetId && win.turnstile) win.turnstile.remove(widgetId);
     };
-  }, [siteKey]);
+
+    if (win.turnstile) {
+      mount();
+      return removeWidget;
+    }
+
+    let script = document.querySelector<HTMLScriptElement>("script[data-gpufit-turnstile]");
+    if (!script) {
+      script = document.createElement("script");
+      script.src = TURNSTILE_SCRIPT;
+      script.async = true;
+      script.dataset.gpufitTurnstile = "true";
+      document.head.appendChild(script);
+    }
+    script.addEventListener("load", mount);
+    return () => {
+      script?.removeEventListener("load", mount);
+      removeWidget();
+    };
+  }, [formVisible, humanCheckKey, siteKey]);
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -107,10 +142,13 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
       }
       if (!response.ok || body.ok === false) {
         setMailed(false);
+        setTurnstileToken("");
+        setHumanCheckKey((key) => key + 1);
         setStatus("error");
         setMessage(body.message || "Could not save that signup.");
         return;
       }
+      setTurnstileToken("");
       if (body.alreadySubscribed) {
         setMailed(false);
         setAlreadySubscribed(true);
@@ -124,6 +162,8 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
       setDevUrl(body.devConfirmUrl || null);
     } catch {
       setMailed(false);
+      setTurnstileToken("");
+      setHumanCheckKey((key) => key + 1);
       setStatus("error");
       setMessage("The alerts endpoint did not respond.");
     }
@@ -133,6 +173,8 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
     setStatus("idle");
     setMailed(false);
     setAlreadySubscribed(false);
+    setTurnstileToken("");
+    setHumanCheckKey((key) => key + 1);
     setMessage("");
     setDevUrl(null);
     requestAnimationFrame(() => emailRef.current?.focus());
