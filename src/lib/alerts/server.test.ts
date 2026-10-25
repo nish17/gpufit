@@ -118,7 +118,10 @@ describe("alert signup mail", () => {
     expect(mailed.html).toContain("https://gpufit.tech/alerts/confirm/?token=");
     expect(mailed.html).toContain("https://gpufit.tech/alerts/unsubscribe/?token=");
     expect(mailed.html).toContain("Ahmedabad, Gujarat, India");
-    expect(mailed.text).toContain("nimesh3536@gmail.com");
+    expect(mailed.text).toContain("hi@gpufit.tech");
+    expect(mailed.text).toContain("Confirm alerts for your GeForce RTX 4060 Ti 16GB");
+    expect(mailed.text).toContain("gpufit.tech will send alerts for your GeForce RTX 4060 Ti 16GB.");
+    expect(mailed.text).not.toContain("nimesh3536@gmail.com");
     expect(mailed.headers["List-Unsubscribe"]).toMatch(/^<https:\/\/gpufit\.tech\/api\/alerts\/unsubscribe\/\?token=[^>]+>$/);
     expect(mailed.headers["List-Unsubscribe-Post"]).toBe("List-Unsubscribe=One-Click");
     expect(mailed.html).not.toContain("evil.example");

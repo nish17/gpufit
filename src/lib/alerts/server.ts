@@ -1,7 +1,12 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import hardwareJson from "../../data/hardware.json";
 import { DEFAULT_SITE } from "../site";
 import { listUnsubscribeHeaders, oneClickUnsubscribeUrl, renderConfirmMail } from "./email";
+
+const deviceNameBySlug = new Map(
+  (hardwareJson as { slug: string; name: string }[]).map((device) => [device.slug, device.name]),
+);
 import { redactLogText } from "./redact";
 import { readAlert, signAlert, type AlertPayload } from "./token";
 
@@ -275,7 +280,12 @@ async function confirmationEmail(
   const from = env.ALERT_FROM || "GPUfit <alerts@gpufit.tech>";
   const apiKey = env.RESEND_API_KEY;
   if (!apiKey) return;
-  const rendered = renderConfirmMail({ origin, confirmUrl, unsubscribeUrl: unsubUrl });
+  const rendered = renderConfirmMail({
+    origin,
+    confirmUrl,
+    unsubscribeUrl: unsubUrl,
+    deviceName: deviceNameBySlug.get(signup.deviceId) ?? "this machine",
+  });
   const response = await fetchImpl("https://api.resend.com/emails", {
     method: "POST",
     headers: {

@@ -1,4 +1,5 @@
 import type { VerdictId } from "../estimator/types";
+import { CONTACT_EMAIL } from "../site";
 
 /** Six-digit hex only. Email clients drop rgba() and CSS variables. */
 const PAPER = "#f4f1ea";
@@ -24,7 +25,18 @@ const TONE: Record<VerdictId, { color: string; bg: string }> = {
 };
 
 /** City, state, and country only. Shown in the text and HTML footer of every alert. */
-export const ALERT_SENDER_LINE = "GPUfit, Ahmedabad, Gujarat, India. Contact nimesh3536@gmail.com.";
+export const ALERT_SENDER_LINE = `GPUfit, Ahmedabad, Gujarat, India. Contact ${CONTACT_EMAIL}.`;
+
+/** "your GeForce RTX 4060 Ti 16GB", or "this machine" when the name is missing. */
+export function confirmMachinePhrase(deviceName: string): string {
+  const name = deviceName.replace(/[\r\n]+/g, " ").trim();
+  if (!name || name === "this machine") return "this machine";
+  return `your ${name}`;
+}
+
+export function confirmHeadline(deviceName: string): string {
+  return `Confirm alerts for ${confirmMachinePhrase(deviceName)}`;
+}
 
 /** Mail-client one-click target. The visible unsubscribe link stays on the HTML page. */
 export function oneClickUnsubscribeUrl(origin: string, token: string): string {
@@ -140,25 +152,33 @@ ${escapeHtml(ALERT_SENDER_LINE)}<br>
 </html>`;
 }
 
-export function renderConfirmMail(input: { origin: string; confirmUrl: string; unsubscribeUrl: string }): {
+export function renderConfirmMail(input: {
+  origin: string;
+  confirmUrl: string;
+  unsubscribeUrl: string;
+  deviceName: string;
+}): {
   subject: string;
   text: string;
   html: string;
 } {
-  const subject = "Confirm GPUfit alerts";
+  const machine = confirmMachinePhrase(input.deviceName);
+  const headline = confirmHeadline(input.deviceName);
+  const promise = `gpufit.tech will send alerts for ${machine}. Nothing is mailed until you confirm.`;
+  const subject = headline;
   const text = [
-    "Confirm alerts for this machine:",
+    `${headline}:`,
     input.confirmUrl,
     "",
-    "Nothing is mailed until you open that link.",
+    promise,
     "",
     alertTextFooter(input.unsubscribeUrl),
   ].join("\n");
   const html = emailShell({
     origin: input.origin,
-    preheader: "Confirm alerts for this machine. Nothing is mailed until you do.",
-    headline: "Confirm alerts for this machine",
-    intro: "Nothing is mailed until you confirm. After that, a note arrives when a newly tracked model fits.",
+    preheader: promise,
+    headline,
+    intro: promise,
     bodyHtml: `<div style="height:22px;line-height:22px;font-size:22px;">&nbsp;</div>
 ${button(input.confirmUrl, "Confirm alerts")}
 <p style="margin:16px 0 0;font-family:${SANS};font-size:13px;line-height:20px;color:${MUTED};">Or open this link:<br><a href="${escapeHtml(input.confirmUrl)}" style="color:${ACCENT};word-break:break-all;">${escapeHtml(input.confirmUrl)}</a></p>`,

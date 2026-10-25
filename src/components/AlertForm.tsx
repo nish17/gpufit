@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { confirmHeadline } from "../lib/alerts/email";
 import type { Profile } from "../lib/profile";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -17,7 +18,10 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
   const [devUrl, setDevUrl] = useState<string | null>(null);
   const [siteKey, setSiteKey] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [mailed, setMailed] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const noticeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancel = false;
@@ -33,6 +37,11 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
       cancel = true;
     };
   }, []);
+
+  useEffect(() => {
+    if (status === "idle") return;
+    noticeRef.current?.focus();
+  }, [status]);
 
   useEffect(() => {
     if (!siteKey || !widgetRef.current) return;
@@ -61,6 +70,7 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
   async function submit(event: React.FormEvent) {
     event.preventDefault();
     setStatus("saving");
+    setMailed(false);
     setDevUrl(null);
     try {
       const response = await fetch("/api/alerts/", {
@@ -80,23 +90,82 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
         local.push({ email, profile, weekly, provider: body.provider, at: new Date().toISOString() });
         localStorage.setItem("gpufit.alert-mock", JSON.stringify(local));
       }
+      const keptLocal = body.provider === "unconfigured" || body.provider === "browser" || body.provider === "memory" || body.provider === "file";
       if (body.provider === "unconfigured") {
+        setMailed(false);
         setStatus("done");
         setMessage("Saved in this browser. Email alerts are not switched on for this site yet, so nothing will be sent.");
         return;
       }
       if (!response.ok || body.ok === false) {
+        setMailed(false);
         setStatus("error");
         setMessage(body.message || "Could not save that signup.");
         return;
       }
+      setMailed(!keptLocal);
       setStatus("done");
       setMessage(body.message || "Signup received.");
       setDevUrl(body.devConfirmUrl || null);
     } catch {
+      setMailed(false);
       setStatus("error");
       setMessage("The alerts endpoint did not respond.");
     }
+  }
+
+  function editAddress() {
+    setStatus("idle");
+    setMailed(false);
+    setMessage("");
+    setDevUrl(null);
+    requestAnimationFrame(() => emailRef.current?.focus());
+  }
+
+  if (status === "done" && mailed) {
+    const headline = confirmHeadline(deviceName);
+    return (
+      <div ref={noticeRef} tabIndex={-1} role="status" className="grid gap-2 rounded-xl bg-[var(--great-bg)] px-4 py-4 outline-none">
+        <p className="kicker m-0">Confirm to start</p>
+        <h2 className="serif m-0 text-[1.7rem] leading-tight text-[var(--ink)]">Check your email</h2>
+        <p className="m-0 text-[0.98rem] leading-6 text-[var(--ink)]">
+          A confirmation was sent to <strong>{email}</strong>. Open it, and gpufit.tech will send alerts for your <strong>{deviceName}</strong>. Nothing else goes out until you do.
+        </p>
+        <p className="m-0 text-sm leading-5 text-[var(--muted)]">
+          The message is from GPUfit, titled "{headline}". If it is not in your inbox in a minute, check spam.
+        </p>
+        {devUrl ? (
+          <p className="m-0 text-sm">
+            <a href={devUrl}>Open the local confirmation link</a>
+          </p>
+        ) : null}
+        <div>
+          <Button type="button" variant="outline" onClick={editAddress}>
+            Use a different address
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (status === "done") {
+    return (
+      <div ref={noticeRef} tabIndex={-1} role="status" className="grid gap-2 rounded-xl bg-[var(--tight-bg)] px-4 py-4 outline-none">
+        <p className="kicker m-0">Saved here</p>
+        <h2 className="serif m-0 text-[1.7rem] leading-tight text-[var(--ink)]">Nothing was emailed</h2>
+        <p className="m-0 text-[0.98rem] leading-6 text-[var(--ink)]">{message}</p>
+        {devUrl ? (
+          <p className="m-0 text-sm">
+            <a href={devUrl}>Open the local confirmation link</a>
+          </p>
+        ) : null}
+        <div>
+          <Button type="button" variant="outline" onClick={editAddress}>
+            Back to the form
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -110,6 +179,7 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
           required
           autoComplete="email"
           placeholder="you@example.com"
+          ref={emailRef}
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           aria-label="Email"
@@ -135,8 +205,8 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
         Also send a weekly digest
       </label>
       {siteKey ? <div ref={widgetRef} className="min-h-16" /> : null}
-      {message ? (
-        <p className={`m-0 text-sm ${status === "error" ? "text-[var(--bad)]" : "text-[var(--muted)]"}`} role="status">
+      {status === "error" ? (
+        <p ref={noticeRef} tabIndex={-1} role="alert" className="m-0 rounded-xl bg-[var(--bad-bg)] px-3 py-2 text-sm leading-5 text-[var(--ink)] outline-none">
           {message}
         </p>
       ) : null}

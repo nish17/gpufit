@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { ALERT_SENDER_LINE, listUnsubscribeHeaders, oneClickUnsubscribeUrl, renderConfirmMail } from "./email";
+import { CONTACT_EMAIL } from "../site";
+import { ALERT_SENDER_LINE, confirmHeadline, listUnsubscribeHeaders, oneClickUnsubscribeUrl, renderConfirmMail } from "./email";
 
 describe("renderConfirmMail", () => {
   it("uses the site palette, a table layout, and a plain-text link", () => {
@@ -7,8 +8,12 @@ describe("renderConfirmMail", () => {
       origin: "https://gpufit.tech",
       confirmUrl: "https://gpufit.tech/alerts/confirm?token=abc",
       unsubscribeUrl: "https://gpufit.tech/alerts/unsubscribe?token=abc",
+      deviceName: "GeForce RTX 4060 Ti 16GB",
     });
-    expect(mail.subject).toBe("Confirm GPUfit alerts");
+    expect(mail.subject).toBe("Confirm alerts for your GeForce RTX 4060 Ti 16GB");
+    expect(mail.subject).toBe(confirmHeadline("GeForce RTX 4060 Ti 16GB"));
+    expect(mail.text).toContain("gpufit.tech will send alerts for your GeForce RTX 4060 Ti 16GB.");
+    expect(mail.html).toContain("Confirm alerts for your GeForce RTX 4060 Ti 16GB");
     expect(mail.text).toContain("https://gpufit.tech/alerts/confirm?token=abc");
     expect(mail.html).toContain("#f4f1ea");
     expect(mail.html).toContain("#fffcf7");
@@ -21,9 +26,12 @@ describe("renderConfirmMail", () => {
     expect(mail.html).not.toContain("rgba(");
     expect(mail.text).toContain(ALERT_SENDER_LINE);
     expect(mail.html).toContain("Ahmedabad, Gujarat, India");
-    expect(mail.html).toContain("nimesh3536@gmail.com");
+    expect(mail.html).toContain(CONTACT_EMAIL);
+    expect(mail.html).not.toContain("nimesh3536@gmail.com");
     expect(mail.html).toContain("Unsubscribe");
     expect(mail.text).toContain("https://gpufit.tech/alerts/unsubscribe?token=abc");
+    expect(confirmHeadline("this machine")).toBe("Confirm alerts for this machine");
+    expect(confirmHeadline("  ")).toBe("Confirm alerts for this machine");
   });
 
   it("builds RFC 8058 headers aimed at the POST unsubscribe route", () => {
