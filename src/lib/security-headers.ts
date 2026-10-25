@@ -11,19 +11,19 @@ export const CONTENT_SECURITY_POLICY = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self' https://challenges.cloudflare.com",
+  "connect-src 'self' https://challenges.cloudflare.com https://cloudflareinsights.com",
   "frame-src https://challenges.cloudflare.com",
   "worker-src 'self'",
 ].join("; ");
 
 /** Report-only twin that drops script 'unsafe-inline', so the console shows what a hash-only policy would block. */
 export const CONTENT_SECURITY_POLICY_REPORT_ONLY = CONTENT_SECURITY_POLICY.replace(
-  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
-  "script-src 'self' https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+  "script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
 );
 
 export const SECURITY_HEADERS: Record<string, string> = {

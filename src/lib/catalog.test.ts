@@ -6,7 +6,7 @@ import { quantIssues } from "./estimator/quants";
 import type { ModelSpec } from "./estimator/types";
 import { defaultProfile, toOptions } from "./profile";
 import { bestList, bestPicks, compareForMachine } from "./ranking";
-import { modelPageDescription, pairPageDescription } from "./seo";
+import { modelPageDescription, pairPageDescription, pairPageTitle } from "./seo";
 import { familyKey } from "./select-models";
 
 describe("catalog", () => {
@@ -97,6 +97,8 @@ describe("catalog", () => {
     expect(rows.length).toBeGreaterThan(5);
     expect(rows.every((row) => (row.fit.quant?.quality ?? 0) >= 20)).toBe(true);
     expect(rows.every((row) => !/IQ[12]_/i.test(row.fit.quant?.id ?? ""))).toBe(true);
+    expect(rows.some((row) => /cyber tiel|qwythos/i.test(row.model.name))).toBe(false);
+    expect(models.some((model) => /cyber tiel|qwythos/i.test(model.name))).toBe(true);
 
     const card = devices.find((device) => device.slug === "rtx-3080-10gb");
     const lfm = models.find((model) => model.slug === "lfm2-5-24b-a2b");
@@ -118,7 +120,25 @@ describe("catalog", () => {
     expect(descriptions.every((text) => text.length <= 160 && text.length >= 40)).toBe(true);
 
     const pairText = seoPairs().map((pair) => pairPageDescription(pair.model, pair.device, fitDevice(pair.model, pair.device)));
+    const pairTitles = seoPairs().map((pair) => pairPageTitle(pair.model, pair.device));
+    expect(pairTitles.every((text) => text.length <= 60 && text.endsWith("· GPUfit"))).toBe(true);
     expect(new Set(pairText).size).toBe(pairText.length);
     expect(pairText.every((text) => text.length <= 160 && text.length >= 40)).toBe(true);
+  });
+
+  it("uses published active-parameter counts for DeepSeek V3 and R1", () => {
+    for (const slug of ["deepseek-r1", "deepseek-v3-1", "deepseek-v3-2"]) {
+      const model = models.find((item) => item.slug === slug);
+      expect(model?.paramsB).toBeGreaterThan(600);
+      expect(model?.activeParamsB).toBe(37);
+      expect(model?.description).toContain("37.0B parameters active");
+      expect(model?.description).not.toContain("121.6B");
+    }
+    const scout = models.find((model) => /llama 4 scout/i.test(model.name));
+    const maverick = models.find((model) => /llama 4 maverick/i.test(model.name));
+    const oss = models.find((model) => /gpt oss 120b/i.test(model.name));
+    expect(scout?.activeParamsB).toBe(17);
+    expect(maverick?.activeParamsB).toBe(17);
+    expect(oss?.activeParamsB).toBe(5.1);
   });
 });

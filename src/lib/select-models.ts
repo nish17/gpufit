@@ -39,6 +39,12 @@ export function isSpamModel(model: Pick<ModelSpec, "name" | "id">): boolean {
   return SPAM.test(`${model.name} ${model.id}`);
 }
 
+/** /best pages only rank checkpoints from labs and quantizers we already trust. */
+export function isBestListModel(model: Pick<ModelSpec, "author" | "id">): boolean {
+  const author = (model.author || model.id.split("/")[0] || "").toLowerCase();
+  return TRUSTED.has(author);
+}
+
 export function isNotableModel(model: Pick<ModelSpec, "name" | "id" | "author" | "downloads" | "likes">): boolean {
   const blob = `${model.name} ${model.id}`;
   if (SPAM.test(blob)) return false;

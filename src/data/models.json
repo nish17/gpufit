@@ -616,8 +616,8 @@
     "baseModel": "deepseek-ai/DeepSeek-V4.1-Flash",
     "dedupeKey": "deepseek-ai/deepseek-v4.1-flash",
     "paramsB": 754.639,
-    "activeParamsB": 124.987,
-    "activeParamsEstimated": true,
+    "activeParamsB": 16,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek41",
     "license": "mit",
@@ -692,7 +692,7 @@
       }
     ],
     "ollama": "deepseek-v4.1-flash",
-    "description": "deepseek v4.1 flash is a 754.6B mixture-of-experts deepseek41 model from antirez, with about 125.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "deepseek v4.1 flash is a 754.6B mixture-of-experts deepseek41 model from antirez, with about 16.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/antirez/deepseek-v4.1-flash-gguf",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
@@ -1211,8 +1211,8 @@
     "baseModel": "Qwen/Qwen3.8-Flash-Next",
     "dedupeKey": "qwen/qwen3.8-flash-next",
     "paramsB": 176.944,
-    "activeParamsB": 29.998,
-    "activeParamsEstimated": true,
+    "activeParamsB": 6,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "qwen4exp",
     "license": "other",
@@ -1322,7 +1322,7 @@
       }
     ],
     "ollama": "qwen3.8-flash-next",
-    "description": "Qwen3.8 Flash Next is a 176.9B mixture-of-experts qwen4exp model from unsloth, with about 30.0B parameters active per token. Configured context length is 262,144 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "Qwen3.8 Flash Next is a 176.9B mixture-of-experts qwen4exp model from unsloth, with about 6.0B parameters active per token. Configured context length is 262,144 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
@@ -2134,8 +2134,8 @@
     "baseModel": "zai-org/GLM-5.3-Flash",
     "dedupeKey": "zai-org/glm-5.3-flash",
     "paramsB": 320.759,
-    "activeParamsB": 57.024,
-    "activeParamsEstimated": true,
+    "activeParamsB": 18,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "glm5-next",
     "license": "mit",
@@ -2252,7 +2252,7 @@
       }
     ],
     "ollama": "glm-5.3-flash",
-    "description": "GLM 5.3 Flash is a 320.8B mixture-of-experts glm5-next model from unsloth, with about 57.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "GLM 5.3 Flash is a 320.8B mixture-of-experts glm5-next model from unsloth, with about 18.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-5.3-Flash"
@@ -2504,8 +2504,8 @@
     "baseModel": "openai/gpt-oss-20b",
     "dedupeKey": "openai/gpt-oss-20b",
     "paramsB": 20.915,
-    "activeParamsB": 5.752,
-    "activeParamsEstimated": true,
+    "activeParamsB": 3.6,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "gpt-oss",
     "license": "apache-2.0",
@@ -2607,7 +2607,7 @@
       }
     ],
     "ollama": null,
-    "description": "gpt oss 20b is a 20.9B mixture-of-experts gpt-oss model from unsloth, with about 5.8B parameters active per token. Configured context length is 131,072 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "gpt oss 20b is a 20.9B mixture-of-experts gpt-oss model from unsloth, with about 3.6B parameters active per token. Configured context length is 131,072 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/gpt-oss-20b-GGUF",
       "config": "https://huggingface.co/openai/gpt-oss-20b"
@@ -4561,8 +4561,8 @@
     "baseModel": "zai-org/GLM-5.3",
     "dedupeKey": "zai-org/glm-5.3",
     "paramsB": 753.864,
-    "activeParamsB": 136.638,
-    "activeParamsEstimated": true,
+    "activeParamsB": 40,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "glm-dsa",
     "license": "other",
@@ -4671,7 +4671,7 @@
       }
     ],
     "ollama": "glm-5.3",
-    "description": "GLM 5.3 is a 753.9B mixture-of-experts glm-dsa model from unsloth, with about 136.6B parameters active per token. Configured context length is 1,048,576 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "GLM 5.3 is a 753.9B mixture-of-experts glm-dsa model from unsloth, with about 40.0B parameters active per token. Configured context length is 1,048,576 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/GLM-5.3-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-5.3"
@@ -5581,8 +5581,8 @@
     "baseModel": "Kwaipilot/KAT-Coder-V2.5-Dev",
     "dedupeKey": "kwaipilot/kat-coder-v2.5-dev",
     "paramsB": 34.661,
-    "activeParamsB": 6.282,
-    "activeParamsEstimated": true,
+    "activeParamsB": 3,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "qwen35moe",
     "license": "apache-2.0",
@@ -5748,7 +5748,7 @@
       }
     ],
     "ollama": null,
-    "description": "Kwaipilot KAT Coder V2.5 Dev is a 34.7B mixture-of-experts qwen35moe model from bartowski, with about 6.3B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "Kwaipilot KAT Coder V2.5 Dev is a 34.7B mixture-of-experts qwen35moe model from bartowski, with about 3.0B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/bartowski/Kwaipilot_KAT-Coder-V2.5-Dev-GGUF",
       "config": "https://huggingface.co/Kwaipilot/KAT-Coder-V2.5-Dev"
@@ -5763,8 +5763,8 @@
     "baseModel": "zai-org/GLM-4.7-Flash",
     "dedupeKey": "zai-org/glm-4.7-flash",
     "paramsB": 29.943,
-    "activeParamsB": 6.363,
-    "activeParamsEstimated": true,
+    "activeParamsB": 3,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek2",
     "license": "mit",
@@ -5964,7 +5964,7 @@
       }
     ],
     "ollama": "glm-4.7-flash",
-    "description": "GLM 4.7 Flash is a 29.9B mixture-of-experts deepseek2 model from unsloth, with about 6.4B parameters active per token. Configured context length is 202,752 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "GLM 4.7 Flash is a 29.9B mixture-of-experts deepseek2 model from unsloth, with about 3.0B parameters active per token. Configured context length is 202,752 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/GLM-4.7-Flash-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.7-Flash"
@@ -6922,7 +6922,7 @@
     "baseModel": "Qwen/Qwen3-Coder-Next",
     "dedupeKey": "qwen/qwen3-coder-next",
     "paramsB": 79.674,
-    "activeParamsB": 13.507,
+    "activeParamsB": 3.468,
     "activeParamsEstimated": true,
     "moe": true,
     "architecture": "qwen3next",
@@ -7172,7 +7172,7 @@
       }
     ],
     "ollama": "qwen3-coder-next",
-    "description": "Qwen3 Coder Next is a 79.7B mixture-of-experts qwen3next model from unsloth, with about 13.5B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "Qwen3 Coder Next is a 79.7B mixture-of-experts qwen3next model from unsloth, with about 3.5B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-Coder-Next"
@@ -8103,8 +8103,8 @@
     "baseModel": "deepseek-ai/DeepSeek-V4-Flash-0731",
     "dedupeKey": "deepseek-ai/deepseek-v4-flash-0731",
     "paramsB": 284.335,
-    "activeParamsB": 49.314,
-    "activeParamsEstimated": true,
+    "activeParamsB": 13,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek4",
     "license": "mit",
@@ -8213,7 +8213,7 @@
       }
     ],
     "ollama": null,
-    "description": "DeepSeek V4 Flash 0731 is a 284.3B mixture-of-experts deepseek4 model from unsloth, with about 49.3B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "DeepSeek V4 Flash 0731 is a 284.3B mixture-of-experts deepseek4 model from unsloth, with about 13.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V4-Flash-0731-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"
@@ -9383,8 +9383,8 @@
     "baseModel": "openai/gpt-oss-120b",
     "dedupeKey": "openai/gpt-oss-120b",
     "paramsB": 116.829,
-    "activeParamsB": 21.175,
-    "activeParamsEstimated": true,
+    "activeParamsB": 5.1,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "gpt-oss",
     "license": "apache-2.0",
@@ -9479,7 +9479,7 @@
       }
     ],
     "ollama": null,
-    "description": "gpt oss 120b is a 116.8B mixture-of-experts gpt-oss model from unsloth, with about 21.2B parameters active per token. Configured context length is 131,072 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "gpt oss 120b is a 116.8B mixture-of-experts gpt-oss model from unsloth, with about 5.1B parameters active per token. Configured context length is 131,072 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/gpt-oss-120b-GGUF",
       "config": "https://huggingface.co/openai/gpt-oss-120b"
@@ -10491,8 +10491,8 @@
     "baseModel": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
     "dedupeKey": "deepseek-ai/deepseek-v4.1-flash-1017",
     "paramsB": 748.495,
-    "activeParamsB": 123.969,
-    "activeParamsEstimated": true,
+    "activeParamsB": 16,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek41",
     "license": "mit",
@@ -10581,7 +10581,7 @@
       }
     ],
     "ollama": null,
-    "description": "DeepSeek V4.1 Flash 1017 is a 748.5B mixture-of-experts deepseek41 model from unsloth, with about 124.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "DeepSeek V4.1 Flash 1017 is a 748.5B mixture-of-experts deepseek41 model from unsloth, with about 16.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -12405,8 +12405,8 @@
     "baseModel": "zai-org/GLM-4.5-Air",
     "dedupeKey": "zai-org/glm-4.5-air",
     "paramsB": 110.469,
-    "activeParamsB": 23.475,
-    "activeParamsEstimated": true,
+    "activeParamsB": 12,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "glm4moe",
     "license": "mit",
@@ -12606,7 +12606,7 @@
       }
     ],
     "ollama": null,
-    "description": "GLM 4.5 Air is a 110.5B mixture-of-experts glm4moe model from unsloth, with about 23.5B parameters active per token. Configured context length is 131,072 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "GLM 4.5 Air is a 110.5B mixture-of-experts glm4moe model from unsloth, with about 12.0B parameters active per token. Configured context length is 131,072 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/GLM-4.5-Air-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.5-Air"
@@ -12873,8 +12873,8 @@
     "baseModel": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
     "dedupeKey": "meta-llama/llama-4-scout-17b-16e-instruct",
     "paramsB": 107.77,
-    "activeParamsB": 22.901,
-    "activeParamsEstimated": true,
+    "activeParamsB": 17,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "llama4",
     "license": "other",
@@ -13075,7 +13075,7 @@
       }
     ],
     "ollama": null,
-    "description": "Llama 4 Scout 17B 16E Instruct is a 107.8B mixture-of-experts llama4 model from unsloth, with about 22.9B parameters active per token. Configured context length is 10,485,760 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "Llama 4 Scout 17B 16E Instruct is a 107.8B mixture-of-experts llama4 model from unsloth, with about 17.0B parameters active per token. Configured context length is 10,485,760 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF"
@@ -13851,8 +13851,8 @@
     "baseModel": "XiaomiMiMo/MiMo-V2-Flash",
     "dedupeKey": "xiaomimimo/mimo-v2-flash",
     "paramsB": 308.779,
-    "activeParamsB": 55.966,
-    "activeParamsEstimated": true,
+    "activeParamsB": 15,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "mimo2",
     "license": "mit",
@@ -14052,7 +14052,7 @@
       }
     ],
     "ollama": null,
-    "description": "MiMo V2 Flash is a 308.8B mixture-of-experts mimo2 model from unsloth, with about 56.0B parameters active per token. Configured context length is 262,144 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "MiMo V2 Flash is a 308.8B mixture-of-experts mimo2 model from unsloth, with about 15.0B parameters active per token. Configured context length is 262,144 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/MiMo-V2-Flash-GGUF",
       "config": "https://huggingface.co/XiaomiMiMo/MiMo-V2-Flash"
@@ -14822,8 +14822,8 @@
     "baseModel": "deepseek-ai/DeepSeek-R1",
     "dedupeKey": "deepseek-ai/deepseek-r1",
     "paramsB": 671.026,
-    "activeParamsB": 121.624,
-    "activeParamsEstimated": true,
+    "activeParamsB": 37,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek2",
     "license": "mit",
@@ -14932,7 +14932,7 @@
       }
     ],
     "ollama": "deepseek-r1",
-    "description": "DeepSeek R1 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 121.6B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "DeepSeek R1 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 37.0B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
@@ -17389,8 +17389,8 @@
     "baseModel": "mistralai/Mistral-Small-4-119B-2603",
     "dedupeKey": "mistralai/mistral-small-4-119b-2603",
     "paramsB": 118.973,
-    "activeParamsB": 21.564,
-    "activeParamsEstimated": true,
+    "activeParamsB": 6.5,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "mistral4",
     "license": "apache-2.0",
@@ -17570,7 +17570,7 @@
       }
     ],
     "ollama": "mistral",
-    "description": "Mistral Small 4 119B 2603 is a 119.0B mixture-of-experts mistral4 model from unsloth, with about 21.6B parameters active per token. Configured context length is 1,048,576 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "Mistral Small 4 119B 2603 is a 119.0B mixture-of-experts mistral4 model from unsloth, with about 6.5B parameters active per token. Configured context length is 1,048,576 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Mistral-Small-4-119B-2603-GGUF",
       "config": "https://huggingface.co/mistralai/Mistral-Small-4-119B-2603"
@@ -17585,8 +17585,8 @@
     "baseModel": "zai-org/GLM-4.6V",
     "dedupeKey": "zai-org/glm-4.6v",
     "paramsB": 106.852,
-    "activeParamsB": 22.706,
-    "activeParamsEstimated": true,
+    "activeParamsB": 12,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "glm4moe",
     "license": "mit",
@@ -17787,7 +17787,7 @@
       }
     ],
     "ollama": null,
-    "description": "GLM 4.6V is a 106.9B mixture-of-experts glm4moe model from unsloth, with about 22.7B parameters active per token. Configured context length is 131,072 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "GLM 4.6V is a 106.9B mixture-of-experts glm4moe model from unsloth, with about 12.0B parameters active per token. Configured context length is 131,072 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/GLM-4.6V-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.6V"
@@ -17802,8 +17802,8 @@
     "baseModel": "zai-org/GLM-4.7",
     "dedupeKey": "zai-org/glm-4.7",
     "paramsB": 358.338,
-    "activeParamsB": 71.668,
-    "activeParamsEstimated": true,
+    "activeParamsB": 32,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "glm4moe",
     "license": "mit",
@@ -18003,7 +18003,7 @@
       }
     ],
     "ollama": null,
-    "description": "GLM 4.7 is a 358.3B mixture-of-experts glm4moe model from unsloth, with about 71.7B parameters active per token. Configured context length is 202,752 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "GLM 4.7 is a 358.3B mixture-of-experts glm4moe model from unsloth, with about 32.0B parameters active per token. Configured context length is 202,752 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/GLM-4.7-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.7"
@@ -19040,8 +19040,8 @@
     "baseModel": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
     "dedupeKey": "meta-llama/llama-4-maverick-17b-128e-instruct",
     "paramsB": 400.712,
-    "activeParamsB": 63.237,
-    "activeParamsEstimated": true,
+    "activeParamsB": 17,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "llama4",
     "license": "other",
@@ -19242,7 +19242,7 @@
       }
     ],
     "ollama": null,
-    "description": "Llama 4 Maverick 17B 128E Instruct is a 400.7B mixture-of-experts llama4 model from unsloth, with about 63.2B parameters active per token. Configured context length is 1,048,576 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "Llama 4 Maverick 17B 128E Instruct is a 400.7B mixture-of-experts llama4 model from unsloth, with about 17.0B parameters active per token. Configured context length is 1,048,576 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF"
@@ -19474,8 +19474,8 @@
     "baseModel": "deepseek-ai/DeepSeek-V3.1",
     "dedupeKey": "deepseek-ai/deepseek-v3.1",
     "paramsB": 671.026,
-    "activeParamsB": 121.624,
-    "activeParamsEstimated": true,
+    "activeParamsB": 37,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek2",
     "license": "mit",
@@ -19675,7 +19675,7 @@
       }
     ],
     "ollama": "deepseek-v3.1",
-    "description": "DeepSeek V3.1 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 121.6B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "DeepSeek V3.1 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 37.0B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V3.1-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
@@ -19690,8 +19690,8 @@
     "baseModel": "zai-org/GLM-4.6",
     "dedupeKey": "zai-org/glm-4.6",
     "paramsB": 356.786,
-    "activeParamsB": 71.357,
-    "activeParamsEstimated": true,
+    "activeParamsB": 32,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "glm4moe",
     "license": "mit",
@@ -19891,7 +19891,7 @@
       }
     ],
     "ollama": null,
-    "description": "GLM 4.6 is a 356.8B mixture-of-experts glm4moe model from unsloth, with about 71.4B parameters active per token. Configured context length is 202,752 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "GLM 4.6 is a 356.8B mixture-of-experts glm4moe model from unsloth, with about 32.0B parameters active per token. Configured context length is 202,752 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/GLM-4.6-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.6"
@@ -19906,7 +19906,7 @@
     "baseModel": "stepfun-ai/Step-3.7-Flash",
     "dedupeKey": "stepfun-ai/step-3.7-flash",
     "paramsB": 196.956,
-    "activeParamsB": 35.014,
+    "activeParamsB": 10.198,
     "activeParamsEstimated": true,
     "moe": true,
     "architecture": "step35",
@@ -20080,7 +20080,7 @@
       }
     ],
     "ollama": null,
-    "description": "Step 3.7 Flash is a 197.0B mixture-of-experts step35 model from unsloth, with about 35.0B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "Step 3.7 Flash is a 197.0B mixture-of-experts step35 model from unsloth, with about 10.2B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Step-3.7-Flash-GGUF",
       "config": "https://huggingface.co/stepfun-ai/Step-3.7-Flash"
@@ -22992,8 +22992,8 @@
     "baseModel": "MiniMaxAI/MiniMax-M2",
     "dedupeKey": "minimaxai/minimax-m2",
     "paramsB": 228.69,
-    "activeParamsB": 41.45,
-    "activeParamsEstimated": true,
+    "activeParamsB": 10,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "minimax-m2",
     "license": "mit",
@@ -23193,7 +23193,7 @@
       }
     ],
     "ollama": null,
-    "description": "MiniMax M2 is a 228.7B mixture-of-experts minimax-m2 model from unsloth, with about 41.5B parameters active per token. Configured context length is 196,608 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "MiniMax M2 is a 228.7B mixture-of-experts minimax-m2 model from unsloth, with about 10.0B parameters active per token. Configured context length is 196,608 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/MiniMax-M2-GGUF",
       "config": "https://huggingface.co/MiniMaxAI/MiniMax-M2"
@@ -23521,8 +23521,8 @@
     "baseModel": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
     "dedupeKey": "deepseek-ai/deepseek-v4-flash-vision-exp",
     "paramsB": 284.335,
-    "activeParamsB": 49.314,
-    "activeParamsEstimated": true,
+    "activeParamsB": 13,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek4",
     "license": "mit",
@@ -23618,7 +23618,7 @@
       }
     ],
     "ollama": null,
-    "description": "DeepSeek V4 Flash Vision Exp is a 284.3B mixture-of-experts deepseek4 model from unsloth, with about 49.3B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "DeepSeek V4 Flash Vision Exp is a 284.3B mixture-of-experts deepseek4 model from unsloth, with about 13.0B parameters active per token. Configured context length is 1,048,576 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V4-Flash-Vision-Exp-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
@@ -24697,8 +24697,8 @@
     "baseModel": "deepseek-ai/DeepSeek-V3.2",
     "dedupeKey": "deepseek-ai/deepseek-v3.2",
     "paramsB": 671.026,
-    "activeParamsB": 121.624,
-    "activeParamsEstimated": true,
+    "activeParamsB": 37,
+    "activeParamsEstimated": false,
     "moe": true,
     "architecture": "deepseek2",
     "license": "mit",
@@ -24898,7 +24898,7 @@
       }
     ],
     "ollama": null,
-    "description": "DeepSeek V3.2 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 121.6B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "description": "DeepSeek V3.2 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 37.0B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
     "sources": {
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V3.2-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"

@@ -3,7 +3,7 @@ import Commands from "../../../../components/Commands.astro";
 import Base from "../../../../layouts/Base.astro";
 import { formatContext, formatGB, formatTokRange } from "../../../../lib/estimator";
 import { alternatives, devicePath, fitDevice, modelPath, pairLink, pairPath, seoPairs, updatedLabel } from "../../../../lib/catalog";
-import { ESTIMATE_NOTE, breadcrumbJsonLd, pairPageDescription } from "../../../../lib/seo";
+import { ESTIMATE_NOTE, breadcrumbJsonLd, pairPageDescription, pairPageTitle } from "../../../../lib/seo";
 
 export function getStaticPaths() {
   return seoPairs().map(({ model, device }) => ({
@@ -15,6 +15,7 @@ const { model, device } = Astro.props;
 const fit = fitDevice(model, device);
 const others = alternatives(model, device, fit);
 const title = `Can I run ${model.name} on ${device.name}?`;
+const documentTitle = pairPageTitle(model, device);
 const description = pairPageDescription(model, device, fit);
 const origin = Astro.site?.toString().replace(/\/$/, "") || "https://gpufit.tech";
 const jsonLd = breadcrumbJsonLd(origin, [
@@ -25,7 +26,7 @@ const jsonLd = breadcrumbJsonLd(origin, [
 ]);
 ---
 
-<Base title={`${title} · GPUfit`} description={description} path={pairPath(model, device)} image={`/og/pairs/${model.slug}--${device.slug}.png`} imageAlt={`${model.name} on ${device.name}`} jsonLd={jsonLd}>
+<Base title={documentTitle} description={description} path={pairPath(model, device)} image={`/og/pairs/${model.slug}--${device.slug}.png`} imageAlt={`${model.name} on ${device.name}`} jsonLd={jsonLd}>
   <article class="wrap" style="padding:2rem 0 1rem;">
     <p class="kicker">Can I run it?</p>
     <h1 class="serif" style="font-size:clamp(2rem, 5vw, 3.4rem); line-height:1.05; margin:0.2rem 0 0.8rem;">{title}</h1>

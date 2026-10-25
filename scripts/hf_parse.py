@@ -572,16 +572,54 @@ def estimated_quants(params_b: float) -> list[dict]:
 
 _ACTIVE = re.compile(r"(\d+(?:\.\d+)?)B[-_]?A(\d+(?:\.\d+)?)B", re.IGNORECASE)
 
+# Official activated-parameter counts, checked before the expert-ratio estimate.
+# Each row is (name pattern, minimum total, maximum total, active billions).
+# Ranges keep a 7B distill from inheriting the 671B model's figure.
+_PUBLISHED_ACTIVE: tuple[tuple[re.Pattern[str], float, float, float], ...] = (
+    (re.compile(r"deepseek.*(?:\br1\b|\bv3(?:[.\s]|$|\d))", re.IGNORECASE), 600, 720, 37),
+    (re.compile(r"deepseek.*v4\.1.*flash", re.IGNORECASE), 500, 900, 16),
+    (re.compile(r"deepseek.*v4(?!\.1).*flash", re.IGNORECASE), 200, 450, 13),
+    (re.compile(r"llama 4 scout", re.IGNORECASE), 80, 150, 17),
+    (re.compile(r"llama 4 maverick", re.IGNORECASE), 300, 480, 17),
+    (re.compile(r"gpt[- ]?oss[- ]?20", re.IGNORECASE), 15, 30, 3.6),
+    (re.compile(r"gpt[- ]?oss[- ]?120", re.IGNORECASE), 90, 150, 5.1),
+    (re.compile(r"glm 4\.7 flash", re.IGNORECASE), 20, 45, 3),
+    (re.compile(r"glm 4\.5 air|glm 4\.6v", re.IGNORECASE), 80, 150, 12),
+    (re.compile(r"glm 4\.[567](?!\s*flash)", re.IGNORECASE), 280, 420, 32),
+    (re.compile(r"glm 5\.3 flash", re.IGNORECASE), 250, 400, 18),
+    (re.compile(r"glm 5\.3(?!\s*flash)", re.IGNORECASE), 650, 850, 40),
+    (re.compile(r"minimax[- ]?m2", re.IGNORECASE), 180, 280, 10),
+    (re.compile(r"mimo[- ]?v2 flash", re.IGNORECASE), 250, 380, 15),
+    (re.compile(r"mistral small 4", re.IGNORECASE), 90, 150, 6.5),
+    (re.compile(r"kat[- ]?coder", re.IGNORECASE), 25, 50, 3),
+    (re.compile(r"qwen3\.8 flash next", re.IGNORECASE), 140, 220, 6),
+)
+
+# Share of the expanded total that stays on for attention, embeddings, and a shared expert.
+# 15% of the expanded file counted DeepSeek-V3 as ~122B active. 2.4% plus the routed
+# experts is 37B, which is the published figure (8 of 256 experts on a 671B model).
+MOE_DENSE_SHARE = 0.024
+
+
+def _published_active(name: str, params_b: float) -> float | None:
+    for pattern, low, high, active in _PUBLISHED_ACTIVE:
+        if low <= params_b <= high and pattern.search(name):
+            return active
+    return None
+
 
 def guess_active_params(name: str, params_b: float, arch: dict) -> tuple[float | None, bool]:
     match = _ACTIVE.search(name.replace(" ", ""))
     if match:
         return float(match.group(2)), False
+    published = _published_active(name, params_b)
+    if published is not None:
+        return published, False
     experts = arch.get("experts") or 0
     per = arch.get("expertsPerTok") or 0
     if experts > 1 and per > 0 and params_b > 0:
         ratio = per / experts
-        return round(params_b * min(0.9, ratio + 0.15), 3), True
+        return round(params_b * min(0.9, ratio + MOE_DENSE_SHARE), 3), True
     return None, False
 
 

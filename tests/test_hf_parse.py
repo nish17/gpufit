@@ -126,6 +126,35 @@ class ParseTests(unittest.TestCase):
         self.assertEqual(active, 3.0)
         self.assertFalse(estimated)
 
+    def test_deepseek_v3_active_params_are_the_published_37b(self):
+        arch = {"experts": 256, "expertsPerTok": 8}
+        for name in ("DeepSeek R1", "DeepSeek V3.1", "DeepSeek V3.2"):
+            active, estimated = guess_active_params(name, 671.026, arch)
+            self.assertEqual(active, 37)
+            self.assertFalse(estimated)
+        # The same expert shape without a published name stays near 37B, not ~122B.
+        guessed, estimated = guess_active_params("Some MoE", 671.026, arch)
+        self.assertAlmostEqual(guessed, 37.074, places=3)
+        self.assertTrue(estimated)
+        self.assertLess(guessed, 40)
+
+    def test_other_published_moe_active_counts(self):
+        cases = [
+            ("Llama 4 Scout 17B 16E Instruct", 107.8, {"experts": 16, "expertsPerTok": 1}, 17),
+            ("Llama 4 Maverick 17B 128E Instruct", 400.7, {"experts": 128, "expertsPerTok": 1}, 17),
+            ("gpt oss 20b", 20.9, {"experts": 32, "expertsPerTok": 4}, 3.6),
+            ("gpt oss 120b", 116.8, {"experts": 128, "expertsPerTok": 4}, 5.1),
+            ("DeepSeek V4 Flash", 284.3, {"experts": 256, "expertsPerTok": 6}, 13),
+            ("DeepSeek V4.1 Flash", 748.5, {"experts": 384, "expertsPerTok": 6}, 16),
+            ("GLM 4.5 Air", 110.5, {"experts": 128, "expertsPerTok": 8}, 12),
+            ("MiniMax M2", 228.7, {"experts": 256, "expertsPerTok": 8}, 10),
+            ("MiMo V2 Flash", 308.8, {"experts": 256, "expertsPerTok": 8}, 15),
+        ]
+        for name, params, arch, expected in cases:
+            active, estimated = guess_active_params(name, params, arch)
+            self.assertEqual(active, expected, name)
+            self.assertFalse(estimated, name)
+
     def test_skip_noise(self):
         self.assertTrue(should_skip_repo("foo/whisper-large-gguf", "automatic-speech-recognition"))
         self.assertTrue(should_skip_repo("foo/bge-m3-gguf", "feature-extraction"))

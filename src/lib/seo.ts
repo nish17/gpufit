@@ -3,6 +3,22 @@ import type { DeviceSpec, FitResult, ModelSpec } from "./estimator/types";
 
 export const ESTIMATE_NOTE = "Estimate from memory bandwidth, not a benchmark.";
 
+const TITLE_SUFFIX = " · GPUfit";
+
+/** Document title, kept to 60 characters when the core phrase is longer. */
+export function pageTitle(core: string, max = 60): string {
+  const clean = core.replace(/\s+/g, " ").trim();
+  if (`${clean}${TITLE_SUFFIX}`.length <= max) return `${clean}${TITLE_SUFFIX}`;
+  const room = Math.max(1, max - TITLE_SUFFIX.length - 1);
+  return `${clean.slice(0, room).trimEnd()}…${TITLE_SUFFIX}`;
+}
+
+export function pairPageTitle(model: Pick<ModelSpec, "name">, device: Pick<DeviceSpec, "name">): string {
+  const question = `Can I run ${model.name} on ${device.name}?`;
+  const compact = `${model.name} on ${device.name}`;
+  return pageTitle(`${question}${TITLE_SUFFIX}`.length <= 60 ? question : compact);
+}
+
 function clip(text: string, max = 160): string {
   const clean = text.replace(/\s+/g, " ").trim();
   if (clean.length <= max) return clean;
