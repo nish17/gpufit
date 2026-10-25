@@ -15,6 +15,7 @@ export const DEV_TOKEN_SECRET = "dev-only-change-me";
 /** Do not send another confirmation to the same address inside this window. */
 export const CONFIRM_COOLDOWN_MS = 10 * 60 * 1000;
 export const CONFIRM_PENDING_MESSAGE = "Check your email to confirm. Nothing is sent until you click the link.";
+export const ALREADY_SUBSCRIBED_MESSAGE = "You're already subscribed. Fit alerts for that machine are on.";
 export const CONFIRMED_MESSAGE = "You're confirmed. Fit alerts for that machine are on.";
 export const UNSUBSCRIBED_MESSAGE = "You're unsubscribed. No further alerts will be sent for that machine.";
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
@@ -306,6 +307,47 @@ async function confirmationEmail(
   }
 }
 
+/** Confirmed email+machine: keep the latest hardware and digest choices, and do not mail again. */
+async function alreadySubscribed(
+  env: AlertEnv & { DB: NonNullable<AlertEnv["DB"]> },
+  row: StoredAlert,
+): Promise<boolean | "lookup-failed"> {
+  let existing: { confirmed: number } | null;
+  try {
+    existing = await env.DB.prepare(`SELECT confirmed FROM subscribers WHERE id = ?`)
+      .bind(row.id)
+      .first<{ confirmed: number }>();
+  } catch (error) {
+    logFailure("Alert subscriber lookup failed.", error);
+    return "lookup-failed";
+  }
+  if (Number(existing?.confirmed) !== 1) return false;
+  try {
+    await env.DB.prepare(
+      `UPDATE subscribers SET
+         memory_gb = ?,
+         system_ram_gb = ?,
+         drives_display = ?,
+         ram_bandwidth_gbps = ?,
+         weekly_digest = ?
+       WHERE id = ?`,
+    )
+      .bind(
+        row.memoryGb,
+        row.systemRamGb,
+        row.drivesDisplay ? 1 : 0,
+        row.ramBandwidthGBps,
+        row.weeklyDigest ? 1 : 0,
+        row.id,
+      )
+      .run();
+  } catch (error) {
+    logFailure("Alert subscriber update failed.", error);
+    return "lookup-failed";
+  }
+  return true;
+}
+
 async function confirmationCoolingDown(env: AlertEnv, email: string, now: number): Promise<boolean> {
   if (!env.DB) return false;
   const row = await env.DB.prepare(
@@ -347,6 +389,22 @@ export async function requestAlert(signup: AlertSignup, env: AlertEnv, options: 
   };
 
   if (env.DB && env.RESEND_API_KEY) {
+    const subscribed = await alreadySubscribed({ ...env, DB: env.DB }, row);
+    if (subscribed === "lookup-failed") {
+      return {
+        ok: false as const,
+        provider: "unconfigured" as const,
+        message: "Email alerts are not switched on for this site yet.",
+      };
+    }
+    if (subscribed) {
+      return {
+        ok: true as const,
+        provider: "resend" as const,
+        message: ALREADY_SUBSCRIBED_MESSAGE,
+        alreadySubscribed: true as const,
+      };
+    }
     let cooling = false;
     try {
       cooling = await confirmationCoolingDown(env, signup.email, now);
@@ -511,6 +569,8 @@ export interface AlertSignupResult {
   message: string;
   provider?: string;
   devConfirmUrl?: string;
+  /** True when this email is already confirmed for the submitted machine. */
+  alreadySubscribed?: boolean;
 }
 
 /** Honeypot, Turnstile, then the signup. Email links ignore the request host. */

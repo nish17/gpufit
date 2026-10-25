@@ -19,6 +19,7 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
   const [siteKey, setSiteKey] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [mailed, setMailed] = useState(false);
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const noticeRef = useRef<HTMLDivElement>(null);
@@ -71,6 +72,7 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
     event.preventDefault();
     setStatus("saving");
     setMailed(false);
+    setAlreadySubscribed(false);
     setDevUrl(null);
     try {
       const response = await fetch("/api/alerts/", {
@@ -84,7 +86,13 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
           ...profile,
         }),
       });
-      const body = (await response.json()) as { ok?: boolean; message?: string; devConfirmUrl?: string; provider?: string };
+      const body = (await response.json()) as {
+        ok?: boolean;
+        message?: string;
+        devConfirmUrl?: string;
+        provider?: string;
+        alreadySubscribed?: boolean;
+      };
       if (body.provider === "unconfigured" || body.provider === "browser" || body.provider === "memory" || body.provider === "file") {
         const local = JSON.parse(localStorage.getItem("gpufit.alert-mock") || "[]");
         local.push({ email, profile, weekly, provider: body.provider, at: new Date().toISOString() });
@@ -103,6 +111,13 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
         setMessage(body.message || "Could not save that signup.");
         return;
       }
+      if (body.alreadySubscribed) {
+        setMailed(false);
+        setAlreadySubscribed(true);
+        setStatus("done");
+        setMessage(body.message || "You're already subscribed. Fit alerts for that machine are on.");
+        return;
+      }
       setMailed(!keptLocal);
       setStatus("done");
       setMessage(body.message || "Signup received.");
@@ -117,9 +132,27 @@ export default function AlertForm({ profile, deviceName }: { profile: Profile; d
   function editAddress() {
     setStatus("idle");
     setMailed(false);
+    setAlreadySubscribed(false);
     setMessage("");
     setDevUrl(null);
     requestAnimationFrame(() => emailRef.current?.focus());
+  }
+
+  if (status === "done" && alreadySubscribed) {
+    return (
+      <div ref={noticeRef} tabIndex={-1} role="status" className="grid gap-2 rounded-xl bg-[var(--great-bg)] px-4 py-4 outline-none">
+        <p className="kicker m-0">Already on</p>
+        <h2 className="serif m-0 text-[1.7rem] leading-tight text-[var(--ink)]">You're already subscribed for {deviceName}</h2>
+        <p className="m-0 text-[0.98rem] leading-6 text-[var(--ink)]">
+          Fit alerts for <strong>{email}</strong> are already on. No new confirmation was sent.
+        </p>
+        <div>
+          <Button type="button" variant="outline" onClick={editAddress}>
+            Use a different address
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   if (status === "done" && mailed) {

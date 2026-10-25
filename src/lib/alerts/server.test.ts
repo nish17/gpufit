@@ -32,7 +32,8 @@ const signup: AlertSignup = {
   weeklyDigest: true,
 };
 
-function mockDb() {
+function mockDb(options?: { confirmedIds?: string[] }) {
+  const confirmedIds = new Set(options?.confirmedIds ?? []);
   let confirmSentAt: string | null = null;
   const writes: string[] = [];
   const db = {
@@ -41,6 +42,10 @@ function mockDb() {
         bind(...values: unknown[]) {
           return {
             async first<T>() {
+              if (sql.includes("SELECT") && sql.includes("WHERE id")) {
+                const id = String(values[0] ?? "");
+                return (confirmedIds.has(id) ? { confirmed: 1 } : null) as T | null;
+              }
               if (sql.includes("SELECT") && sql.includes("confirm_sent_at")) {
                 return (confirmSentAt ? { confirm_sent_at: confirmSentAt } : null) as T | null;
               }
@@ -171,6 +176,39 @@ describe("alert signup mail", () => {
     const third = await requestAlert(signup, env, { dev: false, now: now + CONFIRM_COOLDOWN_MS, fetch: fetchImpl as typeof fetch });
     expect(third.ok).toBe(true);
     expect(fetchImpl).toHaveBeenCalledTimes(2);
+  });
+
+  it("tells a confirmed subscriber they are already subscribed and does not send mail", async () => {
+    const fetchImpl = vi.fn(async () => jsonResponse({ id: "email" }));
+    const id = `${signup.email}::${signup.deviceId}`;
+    const { db, writes } = mockDb({ confirmedIds: [id] });
+    const env: AlertEnv = { DB: db, RESEND_API_KEY: "re_test", ALERT_TOKEN_SECRET: "production-secret" };
+    const result = await requestAlert({ ...signup, weeklyDigest: false }, env, {
+      dev: false,
+      now: Date.now(),
+      fetch: fetchImpl as typeof fetch,
+    });
+    expect(result).toEqual({
+      ok: true,
+      provider: "resend",
+      message: "You're already subscribed. Fit alerts for that machine are on.",
+      alreadySubscribed: true,
+    });
+    expect(result.message).not.toContain(signup.email);
+    expect(fetchImpl).not.toHaveBeenCalled();
+    expect(writes.some((sql) => sql.includes("INSERT"))).toBe(false);
+    expect(writes.some((sql) => sql.includes("UPDATE") && sql.includes("weekly_digest"))).toBe(true);
+  });
+
+  it("still asks a confirmed address to confirm a different machine", async () => {
+    const fetchImpl = vi.fn(async () => jsonResponse({ id: "email" }));
+    const { db } = mockDb({ confirmedIds: [`${signup.email}::other-gpu`] });
+    const env: AlertEnv = { DB: db, RESEND_API_KEY: "re_test", ALERT_TOKEN_SECRET: "production-secret" };
+    const result = await requestAlert(signup, env, { dev: false, now: Date.now(), fetch: fetchImpl as typeof fetch });
+    expect(result.ok).toBe(true);
+    expect(result.message).toBe(CONFIRM_PENDING_MESSAGE);
+    expect("alreadySubscribed" in result && result.alreadySubscribed).toBeFalsy();
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
   });
 
   it("confirms a local link without touching an unconfigured D1 binding", async () => {
