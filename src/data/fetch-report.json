@@ -1,10 +1,12 @@
 {
-  "generatedAt": "2026-10-26T05:00:48.746515+00:00",
-  "modelCount": 141,
-  "withRealQuants": 139,
+  "generatedAt": "2026-10-26T13:20:29.579864+00:00",
+  "modelCount": 137,
+  "withRealQuants": 135,
   "attempts": 380,
-  "candidateCount": 507,
-  "newRepoIds": [],
+  "candidateCount": 525,
+  "newRepoIds": [
+    "unsloth/Devstral-2-123B-Instruct-2512-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
