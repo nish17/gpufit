@@ -1,11 +1,13 @@
 {
-  "generatedAt": "2026-10-26T13:20:29.579864+00:00",
-  "modelCount": 137,
-  "withRealQuants": 135,
+  "generatedAt": "2026-10-26T22:55:32.379778+00:00",
+  "modelCount": 140,
+  "withRealQuants": 138,
   "attempts": 380,
-  "candidateCount": 525,
+  "candidateCount": 526,
   "newRepoIds": [
-    "unsloth/Devstral-2-123B-Instruct-2512-GGUF"
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
