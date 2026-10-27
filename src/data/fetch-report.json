@@ -1,13 +1,12 @@
 {
-  "generatedAt": "2026-10-27T05:21:53.491841+00:00",
-  "modelCount": 143,
-  "withRealQuants": 141,
+  "generatedAt": "2026-10-27T12:29:16.482587+00:00",
+  "modelCount": 135,
+  "withRealQuants": 133,
   "attempts": 380,
-  "candidateCount": 520,
+  "candidateCount": 506,
   "newRepoIds": [
-    "ibm-granite/granite-4.2-3b-GGUF",
-    "defog/sqlcoder-7b-2",
-    "ibm-granite/granite-4.2-8b-GGUF"
+    "unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
+    "unsloth/Phi-4-reasoning-plus-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
