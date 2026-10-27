@@ -1,17 +1,22 @@
 {
-  "generatedAt": "2026-10-27T12:29:16.482587+00:00",
-  "modelCount": 135,
-  "withRealQuants": 133,
+  "generatedAt": "2026-10-27T18:18:44.978744+00:00",
+  "modelCount": 141,
+  "withRealQuants": 139,
   "attempts": 380,
-  "candidateCount": 506,
+  "candidateCount": 520,
   "newRepoIds": [
-    "unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
-    "unsloth/Phi-4-reasoning-plus-GGUF"
+    "unsloth/Qwen3.6-35B-A3B-GGUF",
+    "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "defog/sqlcoder-7b-2",
+    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 260,
+  "ollamaLibraryCount": 264,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
