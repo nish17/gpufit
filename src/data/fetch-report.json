@@ -1,14 +1,11 @@
 {
-  "generatedAt": "2026-10-27T22:26:29.282180+00:00",
+  "generatedAt": "2026-10-28T05:57:06.642782+00:00",
   "modelCount": 144,
   "withRealQuants": 142,
   "attempts": 380,
-  "candidateCount": 518,
+  "candidateCount": 522,
   "newRepoIds": [
-    "unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
-    "ibm-granite/granite-4.2-3b-GGUF",
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "ibm-granite/granite-4.2-8b-GGUF"
+    "unsloth/Qwen3.6-35B-A3B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],

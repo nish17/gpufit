@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 6009562,
-    "likes": 5377,
+    "likes": 5387,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -609,6 +609,202 @@
     "downloadRank": 3
   },
   {
+    "id": "unsloth/Qwen3.6-35B-A3B-GGUF",
+    "slug": "qwen3-6-35b-a3b",
+    "name": "Qwen3.6 35B A3B",
+    "author": "unsloth",
+    "baseModel": "Qwen/Qwen3.6-35B-A3B",
+    "dedupeKey": "qwen/qwen3.6-35b-a3b",
+    "paramsB": 34.661,
+    "activeParamsB": 3.0,
+    "activeParamsEstimated": false,
+    "moe": true,
+    "architecture": "qwen35moe",
+    "license": "apache-2.0",
+    "contextLength": 262144,
+    "vision": true,
+    "useCases": [
+      "vision",
+      "chat"
+    ],
+    "createdAt": "2026-04-16T04:31:31.000Z",
+    "firstSeen": "2026-10-28",
+    "downloads": 1295226,
+    "likes": 1731,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 40,
+      "kvHeads": 2,
+      "headDim": 256,
+      "fullAttentionLayers": 10,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 30,
+      "linearStateBytes": 31457280,
+      "linearStateApproximate": false,
+      "attention": "hybrid",
+      "mlaBytesPerLayer": null,
+      "experts": 256,
+      "expertsPerTok": 8
+    },
+    "quants": [
+      {
+        "id": "BF16",
+        "bytes": 69376638176,
+        "estimated": false,
+        "quality": 98,
+        "bpw": 16.0
+      },
+      {
+        "id": "UD-Q8_K_XL",
+        "bytes": 38451182560,
+        "estimated": false,
+        "quality": 86,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 36903140320,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "UD-Q6_K_XL",
+        "bytes": 31843777504,
+        "estimated": false,
+        "quality": 77,
+        "bpw": 6.8
+      },
+      {
+        "id": "UD-Q6_K",
+        "bytes": 29308320736,
+        "estimated": false,
+        "quality": 74,
+        "bpw": 6.56
+      },
+      {
+        "id": "UD-Q5_K_XL",
+        "bytes": 26592508896,
+        "estimated": false,
+        "quality": 67,
+        "bpw": 5.8
+      },
+      {
+        "id": "UD-Q5_K_M",
+        "bytes": 26456194016,
+        "estimated": false,
+        "quality": 66,
+        "bpw": 5.7
+      },
+      {
+        "id": "UD-Q5_K_S",
+        "bytes": 24942050272,
+        "estimated": false,
+        "quality": 62,
+        "bpw": 5.5
+      },
+      {
+        "id": "UD-Q4_K_XL",
+        "bytes": 22360456160,
+        "estimated": false,
+        "quality": 55,
+        "bpw": 4.95
+      },
+      {
+        "id": "UD-Q4_K_M",
+        "bytes": 22134528992,
+        "estimated": false,
+        "quality": 54,
+        "bpw": 4.85
+      },
+      {
+        "id": "UD-Q4_K_S",
+        "bytes": 20893015008,
+        "estimated": false,
+        "quality": 49,
+        "bpw": 4.6
+      },
+      {
+        "id": "UD-IQ4_XS",
+        "bytes": 17730509792,
+        "estimated": false,
+        "quality": 46,
+        "bpw": 4.25
+      },
+      {
+        "id": "IQ4_NL",
+        "bytes": 19500506080,
+        "estimated": false,
+        "quality": 46,
+        "bpw": 4.5
+      },
+      {
+        "id": "UD-Q3_K_XL",
+        "bytes": 16845511648,
+        "estimated": false,
+        "quality": 36,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 16600710112,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "UD-IQ3_S",
+        "bytes": 13676723168,
+        "estimated": false,
+        "quality": 32,
+        "bpw": 3.5
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 15359196128,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "UD-IQ3_XXS",
+        "bytes": 13211155424,
+        "estimated": false,
+        "quality": 26,
+        "bpw": 3.2
+      },
+      {
+        "id": "UD-Q2_K_XL",
+        "bytes": 12290628576,
+        "estimated": false,
+        "quality": 22,
+        "bpw": 3.35
+      },
+      {
+        "id": "UD-IQ2_XXS",
+        "bytes": 10756586464,
+        "estimated": false,
+        "quality": 13,
+        "bpw": 2.2
+      },
+      {
+        "id": "UD-IQ1_M",
+        "bytes": 10047749088,
+        "estimated": false,
+        "quality": 10,
+        "bpw": 2.0
+      }
+    ],
+    "ollama": "qwen3.6",
+    "description": "Qwen3.6 35B A3B is a 34.7B mixture-of-experts qwen35moe model from unsloth, with about 3.0B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF",
+      "config": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"
+    },
+    "downloadRank": 4
+  },
+  {
     "id": "antirez/deepseek-v4.1-flash-gguf",
     "slug": "deepseek-v4-1-flash",
     "name": "deepseek v4.1 flash",
@@ -696,195 +892,6 @@
     "sources": {
       "gguf": "https://huggingface.co/antirez/deepseek-v4.1-flash-gguf",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
-    },
-    "downloadRank": 4
-  },
-  {
-    "id": "unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
-    "slug": "qwen3-6-35b-a3b-mtp",
-    "name": "Qwen3.6 35B A3B MTP",
-    "author": "unsloth",
-    "baseModel": "Qwen/Qwen3.6-35B-A3B",
-    "dedupeKey": "qwen/qwen3.6-35b-a3b",
-    "paramsB": 35.505,
-    "activeParamsB": 3.0,
-    "activeParamsEstimated": false,
-    "moe": true,
-    "architecture": "qwen35moe",
-    "license": "apache-2.0",
-    "contextLength": 262144,
-    "vision": true,
-    "useCases": [
-      "vision",
-      "chat"
-    ],
-    "createdAt": "2026-05-11T12:57:12.000Z",
-    "firstSeen": "2026-10-27",
-    "downloads": 1251077,
-    "likes": 1022,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 40,
-      "kvHeads": 2,
-      "headDim": 256,
-      "fullAttentionLayers": 10,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 30,
-      "linearStateBytes": 31457280,
-      "linearStateApproximate": false,
-      "attention": "hybrid",
-      "mlaBytesPerLayer": null,
-      "experts": 256,
-      "expertsPerTok": 8
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 71065942560,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 39099447584,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 37801097504,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "UD-Q6_K_XL",
-        "bytes": 32611711264,
-        "estimated": false,
-        "quality": 77,
-        "bpw": 6.8
-      },
-      {
-        "id": "UD-Q6_K",
-        "bytes": 30011242784,
-        "estimated": false,
-        "quality": 74,
-        "bpw": 6.56
-      },
-      {
-        "id": "UD-Q5_K_XL",
-        "bytes": 27159116064,
-        "estimated": false,
-        "quality": 67,
-        "bpw": 5.8
-      },
-      {
-        "id": "UD-Q5_K_M",
-        "bytes": 27087812896,
-        "estimated": false,
-        "quality": 66,
-        "bpw": 5.7
-      },
-      {
-        "id": "UD-Q5_K_S",
-        "bytes": 25538017568,
-        "estimated": false,
-        "quality": 62,
-        "bpw": 5.5
-      },
-      {
-        "id": "UD-Q4_K_XL",
-        "bytes": 22853663008,
-        "estimated": false,
-        "quality": 55,
-        "bpw": 4.95
-      },
-      {
-        "id": "UD-Q4_K_M",
-        "bytes": 22663387424,
-        "estimated": false,
-        "quality": 54,
-        "bpw": 4.85
-      },
-      {
-        "id": "UD-Q4_K_S",
-        "bytes": 21388319008,
-        "estimated": false,
-        "quality": 49,
-        "bpw": 4.6
-      },
-      {
-        "id": "UD-IQ4_XS",
-        "bytes": 18209036576,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.25
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 18536192288,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "UD-Q3_K_XL",
-        "bytes": 17227569440,
-        "estimated": false,
-        "quality": 36,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 17104402720,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "UD-IQ3_S",
-        "bytes": 15346432288,
-        "estimated": false,
-        "quality": 32,
-        "bpw": 3.5
-      },
-      {
-        "id": "UD-IQ3_XXS",
-        "bytes": 14069266720,
-        "estimated": false,
-        "quality": 26,
-        "bpw": 3.2
-      },
-      {
-        "id": "UD-Q2_K_XL",
-        "bytes": 12574128416,
-        "estimated": false,
-        "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "UD-IQ2_XXS",
-        "bytes": 11819399456,
-        "estimated": false,
-        "quality": 13,
-        "bpw": 2.2
-      },
-      {
-        "id": "UD-IQ1_M",
-        "bytes": 11366414624,
-        "estimated": false,
-        "quality": 10,
-        "bpw": 2.0
-      }
-    ],
-    "ollama": "qwen3.6",
-    "description": "Qwen3.6 35B A3B MTP is a 35.5B mixture-of-experts qwen35moe model from unsloth, with about 3.0B parameters active per token. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
-      "config": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B"
     },
     "downloadRank": 5
   },
@@ -1106,7 +1113,7 @@
     "createdAt": "2026-09-16T18:58:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1224773,
-    "likes": 241,
+    "likes": 242,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1400,7 +1407,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1064465,
-    "likes": 1276,
+    "likes": 1278,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -2050,7 +2057,7 @@
     "createdAt": "2026-08-31T23:57:36.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 898706,
-    "likes": 291,
+    "likes": 293,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -2273,7 +2280,7 @@
     "createdAt": "2026-09-03T23:54:02.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 820641,
-    "likes": 148,
+    "likes": 149,
     "weightsEstimated": false,
     "arch": {
       "layers": 36,
@@ -2811,7 +2818,7 @@
     "createdAt": "2026-08-15T18:08:44.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 531848,
-    "likes": 322,
+    "likes": 323,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -3384,7 +3391,7 @@
     "createdAt": "2025-07-31T10:27:38.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 466321,
-    "likes": 1181,
+    "likes": 1183,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -3601,7 +3608,7 @@
     "createdAt": "2026-04-01T14:40:57.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 460401,
-    "likes": 344,
+    "likes": 345,
     "weightsEstimated": false,
     "arch": {
       "layers": 35,
@@ -4483,7 +4490,7 @@
     "createdAt": "2026-08-28T04:05:14.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 359660,
-    "likes": 111,
+    "likes": 113,
     "weightsEstimated": false,
     "arch": {
       "layers": 78,
@@ -4609,7 +4616,7 @@
     "createdAt": "2026-06-19T14:32:14.000Z",
     "firstSeen": "2026-10-27",
     "downloads": 345965,
-    "likes": 2913,
+    "likes": 2914,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -4692,7 +4699,7 @@
     "createdAt": "2025-07-29T10:05:12.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 337797,
-    "likes": 325,
+    "likes": 326,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -5432,7 +5439,7 @@
     "createdAt": "2026-04-01T14:40:18.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 270457,
-    "likes": 657,
+    "likes": 658,
     "weightsEstimated": false,
     "arch": {
       "layers": 60,
@@ -5628,7 +5635,7 @@
     "createdAt": "2026-10-07T18:43:52.000Z",
     "firstSeen": "2026-10-27",
     "downloads": 268399,
-    "likes": 152,
+    "likes": 154,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -9134,7 +9141,7 @@
     "createdAt": "2026-10-13T14:19:48.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 117121,
-    "likes": 114,
+    "likes": 115,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -10080,7 +10087,7 @@
     "createdAt": "2025-09-03T01:31:14.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 82030,
-    "likes": 62,
+    "likes": 63,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -11595,7 +11602,7 @@
     "createdAt": "2026-10-23T09:47:55.000Z",
     "firstSeen": "2026-10-23",
     "downloads": 65011,
-    "likes": 133,
+    "likes": 135,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
