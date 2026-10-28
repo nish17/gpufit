@@ -1,11 +1,13 @@
 {
-  "generatedAt": "2026-10-28T05:57:06.642782+00:00",
-  "modelCount": 144,
-  "withRealQuants": 142,
+  "generatedAt": "2026-10-28T13:08:37.170004+00:00",
+  "modelCount": 140,
+  "withRealQuants": 138,
   "attempts": 380,
-  "candidateCount": 522,
+  "candidateCount": 502,
   "newRepoIds": [
-    "unsloth/Qwen3.6-35B-A3B-GGUF"
+    "unsloth/MiniMax-M3.1-Flash-GGUF",
+    "unsloth/MiniMax-M3-GGUF",
+    "ggml-org/LFM3-Omni-2B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
