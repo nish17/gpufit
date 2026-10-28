@@ -1,13 +1,18 @@
 {
-  "generatedAt": "2026-10-28T13:08:37.170004+00:00",
-  "modelCount": 140,
-  "withRealQuants": 138,
+  "generatedAt": "2026-10-28T22:50:33.322838+00:00",
+  "modelCount": 147,
+  "withRealQuants": 145,
   "attempts": 380,
-  "candidateCount": 502,
+  "candidateCount": 519,
   "newRepoIds": [
-    "unsloth/MiniMax-M3.1-Flash-GGUF",
-    "unsloth/MiniMax-M3-GGUF",
-    "ggml-org/LFM3-Omni-2B-GGUF"
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
+    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "ibm-granite/granite-4.2-3b-GGUF",
+    "ibm-granite/granite-4.2-8b-GGUF",
+    "bartowski/LFM3-1.7B-GGUF",
+    "bartowski/LFM3-VL-2B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
