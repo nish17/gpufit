@@ -1,10 +1,13 @@
 {
-  "generatedAt": "2026-10-29T06:02:17.308863+00:00",
-  "modelCount": 145,
-  "withRealQuants": 143,
+  "generatedAt": "2026-10-29T13:18:20.011521+00:00",
+  "modelCount": 136,
+  "withRealQuants": 134,
   "attempts": 380,
-  "candidateCount": 513,
-  "newRepoIds": [],
+  "candidateCount": 521,
+  "newRepoIds": [
+    "unsloth/Qwen3.6-35B-A3B-MTP-GGUF",
+    "unsloth/flint-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
