@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 6042413,
-    "likes": 5397,
+    "likes": 5401,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -434,7 +434,7 @@
     "createdAt": "2026-02-28T14:04:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1492661,
-    "likes": 1042,
+    "likes": 1043,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -826,7 +826,7 @@
     "createdAt": "2026-03-02T05:46:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1263826,
-    "likes": 523,
+    "likes": 522,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -1225,7 +1225,7 @@
     "createdAt": "2026-04-01T14:42:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1156822,
-    "likes": 1256,
+    "likes": 1257,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -1407,7 +1407,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1072676,
-    "likes": 1282,
+    "likes": 1283,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -2057,7 +2057,7 @@
     "createdAt": "2026-08-31T23:57:36.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 906637,
-    "likes": 299,
+    "likes": 303,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -2148,7 +2148,7 @@
     "createdAt": "2026-08-26T14:21:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 837516,
-    "likes": 511,
+    "likes": 512,
     "weightsEstimated": false,
     "arch": {
       "layers": 45,
@@ -2336,7 +2336,7 @@
     "createdAt": "2026-08-15T18:08:45.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 574562,
-    "likes": 189,
+    "likes": 190,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -2538,7 +2538,7 @@
     "createdAt": "2026-09-11T14:58:56.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 543159,
-    "likes": 470,
+    "likes": 471,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -2993,7 +2993,7 @@
     "createdAt": "2026-08-01T22:42:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 523994,
-    "likes": 396,
+    "likes": 395,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -3580,7 +3580,7 @@
     "createdAt": "2025-07-31T10:27:38.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 466565,
-    "likes": 1186,
+    "likes": 1187,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -4748,7 +4748,7 @@
     "createdAt": "2026-07-09T23:19:33.000Z",
     "firstSeen": "2026-10-24",
     "downloads": 355164,
-    "likes": 317,
+    "likes": 318,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -4832,7 +4832,7 @@
     "createdAt": "2026-06-19T14:32:14.000Z",
     "firstSeen": "2026-10-27",
     "downloads": 336619,
-    "likes": 2919,
+    "likes": 2920,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -4916,7 +4916,7 @@
     "createdAt": "2026-05-20T06:21:18.000Z",
     "firstSeen": "2026-10-27",
     "downloads": 310694,
-    "likes": 250,
+    "likes": 251,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -5334,7 +5334,7 @@
     "createdAt": "2026-07-23T17:06:03.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 279213,
-    "likes": 144,
+    "likes": 145,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -7376,7 +7376,7 @@
     "createdAt": "2026-10-17T20:36:06.000Z",
     "firstSeen": "2026-10-20",
     "downloads": 196719,
-    "likes": 154,
+    "likes": 155,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -9716,7 +9716,7 @@
     "createdAt": "2025-01-20T13:47:45.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 92503,
-    "likes": 166,
+    "likes": 167,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -11100,7 +11100,7 @@
     "createdAt": "2026-10-23T09:47:55.000Z",
     "firstSeen": "2026-10-23",
     "downloads": 71929,
-    "likes": 140,
+    "likes": 143,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -17582,7 +17582,7 @@
     "createdAt": "2026-05-29T09:11:04.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 20901,
-    "likes": 127,
+    "likes": 128,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -22457,7 +22457,7 @@
     "createdAt": "2026-10-23T04:20:27.000Z",
     "firstSeen": "2026-10-28",
     "downloads": 9496,
-    "likes": 41,
+    "likes": 42,
     "weightsEstimated": false,
     "arch": {
       "layers": 60,
@@ -23168,7 +23168,7 @@
     "createdAt": "2025-05-01T02:04:54.000Z",
     "firstSeen": "2026-10-27",
     "downloads": 9260,
-    "likes": 97,
+    "likes": 98,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -25555,342 +25555,5 @@
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
     },
     "downloadRank": 145
-  },
-  {
-    "id": "bartowski/LFM3-1.7B-GGUF",
-    "slug": "lfm3-1-7b",
-    "name": "LFM3 1.7B",
-    "author": "bartowski",
-    "baseModel": "LiquidAI/LFM3-1.7B",
-    "dedupeKey": "liquidai/lfm3-1.7b",
-    "paramsB": 1.729,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "lfm3",
-    "license": "other",
-    "contextLength": 262144,
-    "vision": false,
-    "useCases": [
-      "small",
-      "chat"
-    ],
-    "createdAt": "2026-10-28T19:33:13.000Z",
-    "firstSeen": "2026-10-28",
-    "downloads": 0,
-    "likes": 1,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 24,
-      "kvHeads": 4,
-      "headDim": 128,
-      "fullAttentionLayers": 19,
-      "slidingLayers": 5,
-      "slidingWindow": 256,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "hybrid",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 3466626336,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 1846238784,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 1456719424,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 1352451648,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 1268172352,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 1115637312,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 1053787712,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 1115637312,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 997303872,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_1",
-        "bytes": 1145353792,
-        "estimated": false,
-        "quality": 42,
-        "bpw": 5.0
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 1057971776,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 887580224,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 847300160,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 925533760,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 811501120,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "IQ3_XXS",
-        "bytes": 780871232,
-        "estimated": false,
-        "quality": 24,
-        "bpw": 3.3
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 701310528,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": "lfm3",
-    "description": "LFM3 1.7B is a 1.73B dense lfm3 model from bartowski. Configured context length is 262,144 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/LFM3-1.7B-GGUF",
-      "config": "https://huggingface.co/LiquidAI/LFM3-1.7B"
-    },
-    "downloadRank": 146
-  },
-  {
-    "id": "bartowski/LFM3-VL-2B-GGUF",
-    "slug": "lfm3-vl-2b",
-    "name": "LFM3 VL 2B",
-    "author": "bartowski",
-    "baseModel": "LiquidAI/LFM3-VL-2B",
-    "dedupeKey": "liquidai/lfm3-vl-2b",
-    "paramsB": 1.729,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "lfm3",
-    "license": "other",
-    "contextLength": 128000,
-    "vision": true,
-    "useCases": [
-      "vision",
-      "small",
-      "chat"
-    ],
-    "createdAt": "2026-10-28T19:37:57.000Z",
-    "firstSeen": "2026-10-28",
-    "downloads": 0,
-    "likes": 0,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 24,
-      "kvHeads": 4,
-      "headDim": 128,
-      "fullAttentionLayers": 19,
-      "slidingLayers": 5,
-      "slidingWindow": 256,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "hybrid",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 3466626432,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 1846238880,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 1456719520,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 1352451744,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 1268172448,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 1115637408,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 1053787808,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 1115637408,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 997303968,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_1",
-        "bytes": 1145353888,
-        "estimated": false,
-        "quality": 42,
-        "bpw": 5.0
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 1057971872,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 887580320,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 847300256,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 925533856,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 811501216,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "IQ3_XXS",
-        "bytes": 780871328,
-        "estimated": false,
-        "quality": 24,
-        "bpw": 3.3
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 701310624,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": "lfm3",
-    "description": "LFM3 VL 2B is a 1.73B dense lfm3 model from bartowski. Configured context length is 128,000 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/LFM3-VL-2B-GGUF",
-      "config": "https://huggingface.co/LiquidAI/LFM3-VL-2B"
-    },
-    "downloadRank": 147
   }
 ]
