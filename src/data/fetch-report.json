@@ -1,17 +1,14 @@
 {
-  "generatedAt": "2026-10-30T13:09:16.095935+00:00",
+  "generatedAt": "2026-10-30T22:33:49.335209+00:00",
   "modelCount": 142,
   "withRealQuants": 140,
   "attempts": 380,
-  "candidateCount": 506,
-  "newRepoIds": [
-    "bartowski/Mistral-Nemo-Instruct-2407-GGUF",
-    "unsloth/DeepSeek-V3.2-GGUF"
-  ],
+  "candidateCount": 504,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 264,
+  "ollamaLibraryCount": 266,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
