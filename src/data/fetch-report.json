@@ -1,10 +1,13 @@
 {
-  "generatedAt": "2026-10-30T06:03:44.425120+00:00",
-  "modelCount": 145,
-  "withRealQuants": 143,
+  "generatedAt": "2026-10-30T13:09:16.095935+00:00",
+  "modelCount": 142,
+  "withRealQuants": 140,
   "attempts": 380,
-  "candidateCount": 505,
-  "newRepoIds": [],
+  "candidateCount": 506,
+  "newRepoIds": [
+    "bartowski/Mistral-Nemo-Instruct-2407-GGUF",
+    "unsloth/DeepSeek-V3.2-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
