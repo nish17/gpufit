@@ -1,13 +1,12 @@
 {
-  "generatedAt": "2026-10-31T05:57:09.856233+00:00",
-  "modelCount": 144,
-  "withRealQuants": 142,
+  "generatedAt": "2026-10-31T12:46:18.906092+00:00",
+  "modelCount": 141,
+  "withRealQuants": 139,
   "attempts": 380,
   "candidateCount": 498,
   "newRepoIds": [
-    "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
-    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
-    "unsloth/Qwen2.5-Coder-7B-Instruct-GGUF"
+    "unsloth/Qwen3-4B-Instruct-2507-GGUF",
+    "unsloth/Devstral-2-123B-Instruct-2512-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
