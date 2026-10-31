@@ -1,12 +1,11 @@
 {
-  "generatedAt": "2026-10-31T12:46:18.906092+00:00",
-  "modelCount": 141,
-  "withRealQuants": 139,
+  "generatedAt": "2026-10-31T21:48:50.293091+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 498,
+  "candidateCount": 508,
   "newRepoIds": [
-    "unsloth/Qwen3-4B-Instruct-2507-GGUF",
-    "unsloth/Devstral-2-123B-Instruct-2512-GGUF"
+    "bartowski/Logics-MLLM_Logics-SWE-Qwen3.6-35B-A3B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
