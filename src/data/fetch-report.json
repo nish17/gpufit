@@ -1,11 +1,14 @@
 {
-  "generatedAt": "2026-10-31T21:48:50.293091+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-11-01T06:21:26.280498+00:00",
+  "modelCount": 141,
+  "withRealQuants": 139,
   "attempts": 380,
-  "candidateCount": 508,
+  "candidateCount": 516,
   "newRepoIds": [
-    "bartowski/Logics-MLLM_Logics-SWE-Qwen3.6-35B-A3B-GGUF"
+    "empero-ai/Qwythos-9B-v2-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF",
+    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
