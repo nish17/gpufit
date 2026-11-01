@@ -1,14 +1,11 @@
 {
-  "generatedAt": "2026-11-01T06:21:26.280498+00:00",
-  "modelCount": 141,
-  "withRealQuants": 139,
+  "generatedAt": "2026-11-01T13:39:23.646162+00:00",
+  "modelCount": 137,
+  "withRealQuants": 135,
   "attempts": 380,
-  "candidateCount": 516,
+  "candidateCount": 499,
   "newRepoIds": [
-    "empero-ai/Qwythos-9B-v2-GGUF",
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
+    "unsloth/Qwen3-235B-A22B-Instruct-2507-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
