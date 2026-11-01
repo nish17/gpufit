@@ -1,11 +1,19 @@
 {
-  "generatedAt": "2026-11-01T13:39:23.646162+00:00",
-  "modelCount": 137,
-  "withRealQuants": 135,
+  "generatedAt": "2026-11-01T22:18:41.381441+00:00",
+  "modelCount": 146,
+  "withRealQuants": 144,
   "attempts": 380,
-  "candidateCount": 499,
+  "candidateCount": 465,
   "newRepoIds": [
-    "unsloth/Qwen3-235B-A22B-Instruct-2507-GGUF"
+    "tencent/Hy-MT2-1.8B-GGUF",
+    "empero-ai/Qwythos-9B-v2-GGUF",
+    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "XHToken/Spark-X2.6-4B-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "ibm-granite/granite-4.2-3b-GGUF",
+    "ibm-granite/granite-4.2-8b-GGUF",
+    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF",
+    "jialinyyzz/humanizer"
   ],
   "errorCount": 0,
   "errors": [],
