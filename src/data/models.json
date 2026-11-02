@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 6272560,
-    "likes": 5453,
+    "likes": 5456,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -1288,7 +1288,7 @@
     "createdAt": "2026-09-16T18:58:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1268674,
-    "likes": 255,
+    "likes": 256,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1400,7 +1400,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1149929,
-    "likes": 1303,
+    "likes": 1305,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -1526,7 +1526,7 @@
     "createdAt": "2026-09-21T22:09:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 974177,
-    "likes": 175,
+    "likes": 176,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -3125,7 +3125,7 @@
     "createdAt": "2026-08-15T18:08:44.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 532267,
-    "likes": 333,
+    "likes": 335,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -3608,7 +3608,7 @@
     "createdAt": "2026-08-15T18:08:46.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 491921,
-    "likes": 173,
+    "likes": 174,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -3908,7 +3908,7 @@
     "createdAt": "2026-10-17T20:36:06.000Z",
     "firstSeen": "2026-10-20",
     "downloads": 429751,
-    "likes": 284,
+    "likes": 289,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -4014,7 +4014,7 @@
     "createdAt": "2026-02-28T14:04:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 426284,
-    "likes": 167,
+    "likes": 168,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -4580,7 +4580,7 @@
     "createdAt": "2026-10-07T18:43:52.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 356543,
-    "likes": 167,
+    "likes": 166,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -5048,7 +5048,7 @@
     "createdAt": "2026-07-09T23:19:33.000Z",
     "firstSeen": "2026-11-01",
     "downloads": 323534,
-    "likes": 321,
+    "likes": 323,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -5132,7 +5132,7 @@
     "createdAt": "2026-10-06T18:05:14.000Z",
     "firstSeen": "2026-11-01",
     "downloads": 318881,
-    "likes": 458,
+    "likes": 459,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -5278,7 +5278,7 @@
     "createdAt": "2026-10-19T09:49:37.000Z",
     "firstSeen": "2026-11-01",
     "downloads": 317709,
-    "likes": 264,
+    "likes": 267,
     "weightsEstimated": false,
     "arch": {
       "layers": 36,
@@ -5341,7 +5341,7 @@
     "createdAt": "2026-04-01T14:40:18.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 310231,
-    "likes": 662,
+    "likes": 663,
     "weightsEstimated": false,
     "arch": {
       "layers": 60,
@@ -5663,7 +5663,7 @@
     "createdAt": "2026-07-23T17:06:03.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 285365,
-    "likes": 144,
+    "likes": 145,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -6544,7 +6544,7 @@
     "createdAt": "2026-09-11T05:00:16.000Z",
     "firstSeen": "2026-11-01",
     "downloads": 264723,
-    "likes": 2220,
+    "likes": 2222,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -6766,7 +6766,7 @@
     "createdAt": "2026-01-20T00:14:42.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 248346,
-    "likes": 739,
+    "likes": 740,
     "weightsEstimated": false,
     "arch": {
       "layers": 47,
@@ -7527,7 +7527,7 @@
     "createdAt": "2026-10-20T03:26:14.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 239139,
-    "likes": 352,
+    "likes": 353,
     "weightsEstimated": false,
     "arch": {
       "layers": 49,
@@ -25259,7 +25259,7 @@
     "createdAt": "2025-05-01T11:26:16.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 8630,
-    "likes": 14,
+    "likes": 15,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
