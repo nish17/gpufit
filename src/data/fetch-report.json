@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-02T06:19:23.517560+00:00",
-  "modelCount": 146,
-  "withRealQuants": 144,
+  "generatedAt": "2026-11-02T16:08:33.581125+00:00",
+  "modelCount": 140,
+  "withRealQuants": 138,
   "attempts": 380,
-  "candidateCount": 503,
+  "candidateCount": 507,
   "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
