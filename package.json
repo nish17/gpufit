@@ -18,18 +18,18 @@
     "alerts:match": "tsx scripts/match-alerts.ts"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^14.4.2",
-    "@astrojs/react": "^7.0.1",
+    "@astrojs/cloudflare": "^14.4.3",
+    "@astrojs/react": "^7.1.2",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource/fraunces": "^5.3.0",
     "@fontsource/outfit": "^5.3.0",
     "@radix-ui/react-dialog": "^1.3.1",
     "@radix-ui/react-slot": "^1.5.0",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.4.0",
+    "astro": "^7.4.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.59.0",
+    "lucide-react": "^1.65.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "tailwind-merge": "^3.7.0",
@@ -42,7 +42,7 @@
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
     "vitest": "^5.0.5",
-    "wrangler": "^4.152.0"
+    "wrangler": "^4.156.0"
   },
   "overrides": {
     "miniflare": {
