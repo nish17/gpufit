@@ -1,15 +1,12 @@
 {
-  "generatedAt": "2026-11-03T01:10:12.254938+00:00",
-  "modelCount": 145,
-  "withRealQuants": 143,
+  "generatedAt": "2026-11-03T14:32:48.630278+00:00",
+  "modelCount": 143,
+  "withRealQuants": 141,
   "attempts": 380,
-  "candidateCount": 510,
+  "candidateCount": 500,
   "newRepoIds": [
-    "empero-ai/Qwythos-9B-v2-GGUF",
-    "jialinyyzz/humanizer",
-    "ibm-granite/granite-4.2-8b-GGUF",
-    "ibm-granite/granite-4.2-3b-GGUF",
-    "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF"
+    "bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
+    "unsloth/Qwen3-VL-235B-A22B-Instruct-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
