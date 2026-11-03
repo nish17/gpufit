@@ -1,17 +1,14 @@
 {
-  "generatedAt": "2026-11-03T14:32:48.630278+00:00",
-  "modelCount": 143,
-  "withRealQuants": 141,
+  "generatedAt": "2026-11-03T23:38:36.019561+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 500,
-  "newRepoIds": [
-    "bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
-    "unsloth/Qwen3-VL-235B-A22B-Instruct-GGUF"
-  ],
+  "candidateCount": 496,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 266,
+  "ollamaLibraryCount": 268,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
