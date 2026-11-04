@@ -1,20 +1,17 @@
 {
-  "generatedAt": "2026-11-04T06:39:14.560203+00:00",
-  "modelCount": 143,
-  "withRealQuants": 141,
+  "generatedAt": "2026-11-04T20:01:42.179951+00:00",
+  "modelCount": 140,
+  "withRealQuants": 138,
   "attempts": 380,
-  "candidateCount": 500,
+  "candidateCount": 506,
   "newRepoIds": [
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "empero-ai/Qwythos-9B-v2-GGUF",
-    "jialinyyzz/humanizer"
+    "lmstudio-community/Ministral-3-3B-Instruct-2512-GGUF",
+    "unsloth/DeepSeek-V3.2-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 268,
+  "ollamaLibraryCount": 269,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
