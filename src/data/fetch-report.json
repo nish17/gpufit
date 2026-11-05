@@ -1,17 +1,14 @@
 {
-  "generatedAt": "2026-11-04T20:01:42.179951+00:00",
-  "modelCount": 140,
-  "withRealQuants": 138,
+  "generatedAt": "2026-11-05T07:02:57.290622+00:00",
+  "modelCount": 135,
+  "withRealQuants": 133,
   "attempts": 380,
-  "candidateCount": 506,
-  "newRepoIds": [
-    "lmstudio-community/Ministral-3-3B-Instruct-2512-GGUF",
-    "unsloth/DeepSeek-V3.2-GGUF"
-  ],
+  "candidateCount": 503,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 269,
+  "ollamaLibraryCount": 270,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
