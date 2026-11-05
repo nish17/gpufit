@@ -1,10 +1,15 @@
 {
-  "generatedAt": "2026-11-05T07:02:57.290622+00:00",
-  "modelCount": 135,
-  "withRealQuants": 133,
+  "generatedAt": "2026-11-05T20:10:34.908959+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 503,
-  "newRepoIds": [],
+  "candidateCount": 504,
+  "newRepoIds": [
+    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
+    "defog/sqlcoder-7b-2",
+    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "unsloth/Qwen3.5-122B-A10B-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
