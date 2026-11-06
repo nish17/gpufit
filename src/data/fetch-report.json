@@ -1,13 +1,10 @@
 {
-  "generatedAt": "2026-11-06T07:02:17.575659+00:00",
-  "modelCount": 140,
-  "withRealQuants": 138,
+  "generatedAt": "2026-11-06T19:40:39.165721+00:00",
+  "modelCount": 137,
+  "withRealQuants": 135,
   "attempts": 380,
-  "candidateCount": 512,
-  "newRepoIds": [
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
-    "tencent/Hy-MT2-1.8B-GGUF"
-  ],
+  "candidateCount": 504,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
