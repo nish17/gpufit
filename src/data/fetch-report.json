@@ -1,14 +1,12 @@
 {
-  "generatedAt": "2026-11-05T20:10:34.908959+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-11-06T07:02:17.575659+00:00",
+  "modelCount": 140,
+  "withRealQuants": 138,
   "attempts": 380,
-  "candidateCount": 504,
+  "candidateCount": 512,
   "newRepoIds": [
-    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
-    "defog/sqlcoder-7b-2",
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "unsloth/Qwen3.5-122B-A10B-GGUF"
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
