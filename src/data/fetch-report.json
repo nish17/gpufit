@@ -1,13 +1,12 @@
 {
-  "generatedAt": "2026-11-07T06:11:42.336913+00:00",
-  "modelCount": 140,
-  "withRealQuants": 138,
+  "generatedAt": "2026-11-07T13:15:13.744931+00:00",
+  "modelCount": 141,
+  "withRealQuants": 139,
   "attempts": 380,
-  "candidateCount": 498,
+  "candidateCount": 506,
   "newRepoIds": [
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
-    "jialinyyzz/humanizer"
+    "bartowski/HuggingFaceTB_SmolLM3-3B-GGUF",
+    "unsloth/Olmo-3-7B-Instruct-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
