@@ -1,13 +1,10 @@
 {
-  "generatedAt": "2026-11-07T13:15:13.744931+00:00",
-  "modelCount": 141,
-  "withRealQuants": 139,
+  "generatedAt": "2026-11-07T22:04:50.996148+00:00",
+  "modelCount": 140,
+  "withRealQuants": 138,
   "attempts": 380,
-  "candidateCount": 506,
-  "newRepoIds": [
-    "bartowski/HuggingFaceTB_SmolLM3-3B-GGUF",
-    "unsloth/Olmo-3-7B-Instruct-GGUF"
-  ],
+  "candidateCount": 517,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
