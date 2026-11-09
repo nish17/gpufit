@@ -1,17 +1,14 @@
 {
-  "generatedAt": "2026-11-09T06:45:46.542166+00:00",
+  "generatedAt": "2026-11-09T22:38:00.459502+00:00",
   "modelCount": 139,
   "withRealQuants": 137,
   "attempts": 380,
-  "candidateCount": 514,
-  "newRepoIds": [
-    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
-    "defog/sqlcoder-7b-2"
-  ],
+  "candidateCount": 499,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 270,
+  "ollamaLibraryCount": 268,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
