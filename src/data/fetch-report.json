@@ -1,13 +1,12 @@
 {
-  "generatedAt": "2026-11-10T07:34:38.487705+00:00",
-  "modelCount": 142,
-  "withRealQuants": 140,
+  "generatedAt": "2026-11-10T20:00:12.806597+00:00",
+  "modelCount": 137,
+  "withRealQuants": 135,
   "attempts": 380,
-  "candidateCount": 513,
+  "candidateCount": 515,
   "newRepoIds": [
-    "jialinyyzz/humanizer",
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
+    "lmstudio-community/Ministral-3-3B-Instruct-2512-GGUF",
+    "unsloth/granite-4.0-h-tiny-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
