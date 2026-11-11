@@ -1,16 +1,13 @@
 {
-  "generatedAt": "2026-11-11T06:37:19.483836+00:00",
-  "modelCount": 143,
-  "withRealQuants": 141,
+  "generatedAt": "2026-11-11T19:48:46.735610+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 502,
+  "candidateCount": 513,
   "newRepoIds": [
-    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
-    "defog/sqlcoder-7b-2",
-    "jialinyyzz/humanizer",
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
-    "LiquidAI/LFM3-Omni-2B-GGUF"
+    "bartowski/Qwen_Qwen2.5-VL-32B-Instruct-GGUF",
+    "bartowski/Codestral-22B-v0.1-GGUF",
+    "unsloth/medgemma-27b-text-it-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
