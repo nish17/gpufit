@@ -1,17 +1,19 @@
 {
-  "generatedAt": "2026-11-12T20:08:51.535627+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-11-13T06:59:15.884172+00:00",
+  "modelCount": 141,
+  "withRealQuants": 139,
   "attempts": 380,
-  "candidateCount": 487,
+  "candidateCount": 496,
   "newRepoIds": [
-    "unsloth/Qwen3-VL-4B-Thinking-GGUF",
-    "bartowski/Danielbrdz_Barcenas-LFM3-1.7B-GGUF"
+    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
+    "defog/sqlcoder-7b-2",
+    "jialinyyzz/humanizer",
+    "LiquidAI/LFM3-Omni-2B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 269,
+  "ollamaLibraryCount": 270,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
