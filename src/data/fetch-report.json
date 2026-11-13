@@ -1,14 +1,12 @@
 {
-  "generatedAt": "2026-11-13T06:59:15.884172+00:00",
-  "modelCount": 141,
-  "withRealQuants": 139,
+  "generatedAt": "2026-11-13T19:56:54.338634+00:00",
+  "modelCount": 137,
+  "withRealQuants": 135,
   "attempts": 380,
-  "candidateCount": 496,
+  "candidateCount": 510,
   "newRepoIds": [
-    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
-    "defog/sqlcoder-7b-2",
-    "jialinyyzz/humanizer",
-    "LiquidAI/LFM3-Omni-2B-GGUF"
+    "unsloth/Qwen3-VL-8B-Thinking-GGUF",
+    "bartowski/xtools-at_Qwensploit-V2-27B-CyberSecurity-Qwen3.8-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
