@@ -1,13 +1,11 @@
 {
-  "generatedAt": "2026-11-14T18:17:17.405816+00:00",
-  "modelCount": 142,
-  "withRealQuants": 140,
+  "generatedAt": "2026-11-14T22:36:55.361072+00:00",
+  "modelCount": 136,
+  "withRealQuants": 134,
   "attempts": 380,
-  "candidateCount": 518,
+  "candidateCount": 528,
   "newRepoIds": [
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF",
-    "LiquidAI/LFM3-1.7B-GGUF",
-    "unsloth/Qwen3-VL-4B-Thinking-GGUF"
+    "bartowski/xtools-at_Qwensploit-V2-9B-CyberSecurity-Qwen3.5-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
