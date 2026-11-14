@@ -1,12 +1,16 @@
 {
-  "generatedAt": "2026-11-13T19:56:54.338634+00:00",
-  "modelCount": 137,
-  "withRealQuants": 135,
+  "generatedAt": "2026-11-14T06:39:17.755744+00:00",
+  "modelCount": 142,
+  "withRealQuants": 140,
   "attempts": 380,
-  "candidateCount": 510,
+  "candidateCount": 518,
   "newRepoIds": [
-    "unsloth/Qwen3-VL-8B-Thinking-GGUF",
-    "bartowski/xtools-at_Qwensploit-V2-27B-CyberSecurity-Qwen3.8-GGUF"
+    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "LiquidAI/LFM3-Omni-2B-GGUF",
+    "defog/sqlcoder-7b-2",
+    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
+    "jialinyyzz/humanizer",
+    "tencent/Hy-MT2-1.8B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
