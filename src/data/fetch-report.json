@@ -1,15 +1,12 @@
 {
-  "generatedAt": "2026-11-15T06:49:49.367752+00:00",
-  "modelCount": 140,
-  "withRealQuants": 138,
+  "generatedAt": "2026-11-15T19:04:10.861853+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 521,
+  "candidateCount": 520,
   "newRepoIds": [
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "jialinyyzz/humanizer",
-    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
-    "defog/sqlcoder-7b-2",
-    "tencent/Hy-MT2-1.8B-GGUF"
+    "unsloth/DeepSeek-V3.2-GGUF",
+    "unsloth/MiniMax-M2.7-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
