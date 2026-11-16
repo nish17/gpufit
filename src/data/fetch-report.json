@@ -1,12 +1,11 @@
 {
-  "generatedAt": "2026-11-15T19:04:10.861853+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-11-16T06:44:39.540408+00:00",
+  "modelCount": 139,
+  "withRealQuants": 137,
   "attempts": 380,
-  "candidateCount": 520,
+  "candidateCount": 497,
   "newRepoIds": [
-    "unsloth/DeepSeek-V3.2-GGUF",
-    "unsloth/MiniMax-M2.7-GGUF"
+    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF"
   ],
   "errorCount": 0,
   "errors": [],

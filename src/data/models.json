@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 6566295,
-    "likes": 5990,
+    "likes": 6006,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -245,7 +245,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 2565253,
-    "likes": 1750,
+    "likes": 1756,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -560,7 +560,7 @@
     "createdAt": "2026-05-11T12:57:12.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 2455982,
-    "likes": 1061,
+    "likes": 1062,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -749,7 +749,7 @@
     "createdAt": "2026-02-28T14:04:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 2012840,
-    "likes": 1088,
+    "likes": 1091,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -945,7 +945,7 @@
     "createdAt": "2026-04-01T14:42:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1997192,
-    "likes": 1295,
+    "likes": 1297,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -1323,7 +1323,7 @@
     "createdAt": "2026-10-17T20:36:06.000Z",
     "firstSeen": "2026-10-20",
     "downloads": 1434063,
-    "likes": 404,
+    "likes": 408,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1540,7 +1540,7 @@
     "createdAt": "2026-08-31T23:57:36.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 979757,
-    "likes": 390,
+    "likes": 391,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -1853,7 +1853,7 @@
     "createdAt": "2025-08-06T19:21:40.000Z",
     "firstSeen": "2026-10-31",
     "downloads": 857207,
-    "likes": 226,
+    "likes": 227,
     "weightsEstimated": false,
     "arch": {
       "layers": 36,
@@ -2070,7 +2070,7 @@
     "createdAt": "2026-09-11T23:43:12.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 809564,
-    "likes": 94,
+    "likes": 93,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -2161,7 +2161,7 @@
     "createdAt": "2026-08-26T14:21:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 744606,
-    "likes": 537,
+    "likes": 539,
     "weightsEstimated": false,
     "arch": {
       "layers": 45,
@@ -2294,7 +2294,7 @@
     "createdAt": "2026-04-01T14:40:57.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 736149,
-    "likes": 357,
+    "likes": 358,
     "weightsEstimated": false,
     "arch": {
       "layers": 35,
@@ -2483,7 +2483,7 @@
     "createdAt": "2026-04-01T14:42:04.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 726020,
-    "likes": 694,
+    "likes": 697,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -2672,7 +2672,7 @@
     "createdAt": "2026-10-23T09:47:55.000Z",
     "firstSeen": "2026-10-23",
     "downloads": 643884,
-    "likes": 197,
+    "likes": 204,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -3720,7 +3720,7 @@
     "createdAt": "2026-10-13T14:19:48.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 500941,
-    "likes": 123,
+    "likes": 124,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -4049,7 +4049,7 @@
     "createdAt": "2026-10-27T00:29:25.000Z",
     "firstSeen": "2026-11-14",
     "downloads": 465008,
-    "likes": 179,
+    "likes": 180,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -4133,7 +4133,7 @@
     "createdAt": "2026-04-01T14:40:18.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 441085,
-    "likes": 683,
+    "likes": 684,
     "weightsEstimated": false,
     "arch": {
       "layers": 60,
@@ -4658,7 +4658,7 @@
     "createdAt": "2026-09-11T05:00:16.000Z",
     "firstSeen": "2026-11-15",
     "downloads": 403339,
-    "likes": 2273,
+    "likes": 2274,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -4782,6 +4782,83 @@
       "config": "https://huggingface.co/tencent/Hy-MT2-1.8B"
     },
     "downloadRank": 33
+  },
+  {
+    "id": "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
+    "slug": "mellum2-1-12b-a2-5b-thinking",
+    "name": "Mellum2.1 12B A2.5B Thinking",
+    "author": "jetbrains",
+    "baseModel": "JetBrains/Mellum2.1-12B-A2.5B-Thinking",
+    "dedupeKey": "jetbrains/mellum2.1-12b-a2.5b-thinking",
+    "paramsB": 12.15,
+    "activeParamsB": 2.5,
+    "activeParamsEstimated": false,
+    "moe": true,
+    "architecture": "mellum",
+    "license": "apache-2.0",
+    "contextLength": 131072,
+    "vision": false,
+    "useCases": [
+      "reasoning",
+      "chat"
+    ],
+    "createdAt": "2026-10-07T18:43:52.000Z",
+    "firstSeen": "2026-11-16",
+    "downloads": 376582,
+    "likes": 174,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 28,
+      "kvHeads": 4,
+      "headDim": 128,
+      "fullAttentionLayers": 7,
+      "slidingLayers": 21,
+      "slidingWindow": 1024,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "hybrid",
+      "mlaBytesPerLayer": null,
+      "experts": 64,
+      "expertsPerTok": 8
+    },
+    "quants": [
+      {
+        "id": "BF16",
+        "bytes": 24311970080,
+        "estimated": false,
+        "quality": 98,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 12925417760,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 10879834400,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 8071295264,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      }
+    ],
+    "ollama": null,
+    "description": "Mellum2.1 12B A2.5B Thinking is a 12.1B mixture-of-experts mellum model from jetbrains, with about 2.5B parameters active per token. Configured context length is 131,072 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
+      "config": "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking"
+    },
+    "downloadRank": 34
   },
   {
     "id": "unsloth/Qwen3.5-0.8B-GGUF",
@@ -4978,7 +5055,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.5-0.8B"
     },
-    "downloadRank": 34
+    "downloadRank": 35
   },
   {
     "id": "unsloth/GLM-5.3-GGUF",
@@ -5103,7 +5180,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-5.3-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-5.3"
     },
-    "downloadRank": 35
+    "downloadRank": 36
   },
   {
     "id": "unsloth/flint-GGUF",
@@ -5126,7 +5203,7 @@
     "createdAt": "2026-10-20T03:26:14.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 338677,
-    "likes": 383,
+    "likes": 385,
     "weightsEstimated": false,
     "arch": {
       "layers": 49,
@@ -5221,7 +5298,7 @@
       "gguf": "https://huggingface.co/unsloth/flint-GGUF",
       "config": "https://huggingface.co/RecursiveSI/flint"
     },
-    "downloadRank": 36
+    "downloadRank": 37
   },
   {
     "id": "unsloth/Qwen3.5-27B-GGUF",
@@ -5417,7 +5494,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3.5-27B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.5-27B"
     },
-    "downloadRank": 37
+    "downloadRank": 38
   },
   {
     "id": "unsloth/Qwen3.5-35B-A3B-GGUF",
@@ -5613,7 +5690,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3.5-35B-A3B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B"
     },
-    "downloadRank": 38
+    "downloadRank": 39
   },
   {
     "id": "unsloth/GLM-4.7-Flash-GGUF",
@@ -5829,7 +5906,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.7-Flash-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.7-Flash"
     },
-    "downloadRank": 39
+    "downloadRank": 40
   },
   {
     "id": "unsloth/Qwen3-VL-4B-Instruct-GGUF",
@@ -6046,7 +6123,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-4B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct"
     },
-    "downloadRank": 40
+    "downloadRank": 41
   },
   {
     "id": "bartowski/Qwen2.5-7B-Instruct-GGUF",
@@ -6069,7 +6146,7 @@
     "createdAt": "2024-09-16T14:13:33.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 295123,
-    "likes": 90,
+    "likes": 91,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -6192,7 +6269,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
     },
-    "downloadRank": 41
+    "downloadRank": 42
   },
   {
     "id": "unsloth/Qwen2.5-VL-7B-Instruct-GGUF",
@@ -6409,7 +6486,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen2.5-VL-7B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"
     },
-    "downloadRank": 42
+    "downloadRank": 43
   },
   {
     "id": "unsloth/Qwen3.6-27B-GGUF",
@@ -6433,7 +6510,7 @@
     "createdAt": "2026-04-22T05:43:37.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 237505,
-    "likes": 978,
+    "likes": 979,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -6605,7 +6682,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3.6-27B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.6-27B"
     },
-    "downloadRank": 43
+    "downloadRank": 44
   },
   {
     "id": "unsloth/Llama-3.2-3B-Instruct-GGUF",
@@ -6829,7 +6906,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF"
     },
-    "downloadRank": 44
+    "downloadRank": 45
   },
   {
     "id": "unsloth/Qwen3-1.7B-GGUF",
@@ -7046,7 +7123,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-1.7B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-1.7B"
     },
-    "downloadRank": 45
+    "downloadRank": 46
   },
   {
     "id": "bartowski/Kwaipilot_KAT-Coder-V2.5-Dev-GGUF",
@@ -7228,7 +7305,7 @@
       "gguf": "https://huggingface.co/bartowski/Kwaipilot_KAT-Coder-V2.5-Dev-GGUF",
       "config": "https://huggingface.co/Kwaipilot/KAT-Coder-V2.5-Dev"
     },
-    "downloadRank": 46
+    "downloadRank": 47
   },
   {
     "id": "unsloth/Qwen3-0.6B-GGUF",
@@ -7445,7 +7522,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-0.6B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-0.6B"
     },
-    "downloadRank": 47
+    "downloadRank": 48
   },
   {
     "id": "unsloth/Qwen3-VL-8B-Instruct-GGUF",
@@ -7662,7 +7739,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-8B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct"
     },
-    "downloadRank": 48
+    "downloadRank": 49
   },
   {
     "id": "unsloth/Qwen3-Coder-Next-GGUF",
@@ -7927,7 +8004,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-Coder-Next"
     },
-    "downloadRank": 49
+    "downloadRank": 50
   },
   {
     "id": "unsloth/Qwen3-8B-GGUF",
@@ -8136,7 +8213,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-8B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-8B"
     },
-    "downloadRank": 50
+    "downloadRank": 51
   },
   {
     "id": "unsloth/gemma-3-4b-it-GGUF",
@@ -8354,7 +8431,7 @@
       "gguf": "https://huggingface.co/unsloth/gemma-3-4b-it-GGUF",
       "config": "https://huggingface.co/unsloth/gemma-3-4b-it-GGUF"
     },
-    "downloadRank": 51
+    "downloadRank": 52
   },
   {
     "id": "unsloth/DeepSeek-R1-0528-Qwen3-8B-GGUF",
@@ -8377,7 +8454,7 @@
     "createdAt": "2025-05-29T14:17:25.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 153289,
-    "likes": 484,
+    "likes": 485,
     "weightsEstimated": false,
     "arch": {
       "layers": 36,
@@ -8570,7 +8647,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-0528-Qwen3-8B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
     },
-    "downloadRank": 52
+    "downloadRank": 53
   },
   {
     "id": "unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF",
@@ -8787,7 +8864,7 @@
       "gguf": "https://huggingface.co/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Devstral-Small-2-24B-Instruct-2512"
     },
-    "downloadRank": 53
+    "downloadRank": 54
   },
   {
     "id": "bartowski/Qwen2.5-14B-Instruct-GGUF",
@@ -8933,7 +9010,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-14B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-14B-Instruct"
     },
-    "downloadRank": 54
+    "downloadRank": 55
   },
   {
     "id": "unsloth/GLM-4.5-Air-GGUF",
@@ -9149,7 +9226,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.5-Air-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.5-Air"
     },
-    "downloadRank": 55
+    "downloadRank": 56
   },
   {
     "id": "unsloth/Mistral-Small-3.2-24B-Instruct-2506-GGUF",
@@ -9366,7 +9443,7 @@
       "gguf": "https://huggingface.co/unsloth/Mistral-Small-3.2-24B-Instruct-2506-GGUF",
       "config": "https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506"
     },
-    "downloadRank": 56
+    "downloadRank": 57
   },
   {
     "id": "unsloth/DeepSeek-V4-Flash-0731-GGUF",
@@ -9491,7 +9568,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V4-Flash-0731-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731"
     },
-    "downloadRank": 57
+    "downloadRank": 58
   },
   {
     "id": "unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF",
@@ -9707,7 +9784,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-Next-80B-A3B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"
     },
-    "downloadRank": 58
+    "downloadRank": 59
   },
   {
     "id": "unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF",
@@ -9861,7 +9938,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
     },
-    "downloadRank": 59
+    "downloadRank": 60
   },
   {
     "id": "unsloth/Phi-4-mini-instruct-GGUF",
@@ -9959,7 +10036,7 @@
       "gguf": "https://huggingface.co/unsloth/Phi-4-mini-instruct-GGUF",
       "config": "https://huggingface.co/microsoft/Phi-4-mini-instruct"
     },
-    "downloadRank": 60
+    "downloadRank": 61
   },
   {
     "id": "unsloth/Qwen3-VL-2B-Instruct-GGUF",
@@ -10177,7 +10254,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-2B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct"
     },
-    "downloadRank": 61
+    "downloadRank": 62
   },
   {
     "id": "unsloth/gemma-4-E4B-it-qat-GGUF",
@@ -10240,7 +10317,7 @@
       "gguf": "https://huggingface.co/unsloth/gemma-4-E4B-it-qat-GGUF",
       "config": "https://huggingface.co/google/gemma-4-E4B-it-qat-q4_0-unquantized"
     },
-    "downloadRank": 62
+    "downloadRank": 63
   },
   {
     "id": "unsloth/gpt-oss-120b-GGUF",
@@ -10351,7 +10428,7 @@
       "gguf": "https://huggingface.co/unsloth/gpt-oss-120b-GGUF",
       "config": "https://huggingface.co/openai/gpt-oss-120b"
     },
-    "downloadRank": 63
+    "downloadRank": 64
   },
   {
     "id": "unsloth/Qwen3.5-122B-A10B-GGUF",
@@ -10547,7 +10624,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3.5-122B-A10B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B"
     },
-    "downloadRank": 64
+    "downloadRank": 65
   },
   {
     "id": "bartowski/Qwen2.5-0.5B-Instruct-GGUF",
@@ -10694,7 +10771,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
     },
-    "downloadRank": 65
+    "downloadRank": 66
   },
   {
     "id": "unsloth/GLM-4.6V-Flash-GGUF",
@@ -10911,7 +10988,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.6V-Flash-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.6V-Flash"
     },
-    "downloadRank": 66
+    "downloadRank": 67
   },
   {
     "id": "unsloth/Qwen3-14B-GGUF",
@@ -11127,7 +11204,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-14B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-14B"
     },
-    "downloadRank": 67
+    "downloadRank": 68
   },
   {
     "id": "bartowski/Qwen2.5-3B-Instruct-GGUF",
@@ -11274,7 +11351,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct"
     },
-    "downloadRank": 68
+    "downloadRank": 69
   },
   {
     "id": "bartowski/HuggingFaceTB_SmolLM3-3B-GGUF",
@@ -11442,7 +11519,7 @@
       "gguf": "https://huggingface.co/bartowski/HuggingFaceTB_SmolLM3-3B-GGUF",
       "config": "https://huggingface.co/HuggingFaceTB/SmolLM3-3B"
     },
-    "downloadRank": 69
+    "downloadRank": 70
   },
   {
     "id": "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
@@ -11539,7 +11616,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
     },
-    "downloadRank": 70
+    "downloadRank": 71
   },
   {
     "id": "unsloth/Qwen3-32B-GGUF",
@@ -11755,7 +11832,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-32B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-32B"
     },
-    "downloadRank": 71
+    "downloadRank": 72
   },
   {
     "id": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
@@ -11902,7 +11979,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct"
     },
-    "downloadRank": 72
+    "downloadRank": 73
   },
   {
     "id": "unsloth/DeepSeek-R1-Distill-Qwen-14B-GGUF",
@@ -11999,7 +12076,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-14B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
     },
-    "downloadRank": 73
+    "downloadRank": 74
   },
   {
     "id": "unsloth/gemma-3-1b-it-GGUF",
@@ -12216,7 +12293,7 @@
       "gguf": "https://huggingface.co/unsloth/gemma-3-1b-it-GGUF",
       "config": "https://huggingface.co/unsloth/gemma-3-1b-it-GGUF"
     },
-    "downloadRank": 74
+    "downloadRank": 75
   },
   {
     "id": "unsloth/DeepSeek-R1-Distill-Qwen-32B-GGUF",
@@ -12313,7 +12390,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-32B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
     },
-    "downloadRank": 75
+    "downloadRank": 76
   },
   {
     "id": "bartowski/Qwen_Qwen2.5-VL-32B-Instruct-GGUF",
@@ -12495,7 +12572,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen_Qwen2.5-VL-32B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct"
     },
-    "downloadRank": 76
+    "downloadRank": 77
   },
   {
     "id": "bartowski/Qwen2.5-72B-Instruct-GGUF",
@@ -12641,7 +12718,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-72B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct"
     },
-    "downloadRank": 77
+    "downloadRank": 78
   },
   {
     "id": "unsloth/Llama-3.2-1B-Instruct-GGUF",
@@ -12865,7 +12942,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF"
     },
-    "downloadRank": 78
+    "downloadRank": 79
   },
   {
     "id": "unsloth/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF",
@@ -12888,7 +12965,7 @@
     "createdAt": "2026-08-12T13:25:37.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 56712,
-    "likes": 124,
+    "likes": 125,
     "weightsEstimated": false,
     "arch": {
       "layers": 52,
@@ -13025,7 +13102,7 @@
       "gguf": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF",
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"
     },
-    "downloadRank": 79
+    "downloadRank": 80
   },
   {
     "id": "bartowski/NousResearch_Hermes-4-14B-GGUF",
@@ -13199,7 +13276,7 @@
       "gguf": "https://huggingface.co/bartowski/NousResearch_Hermes-4-14B-GGUF",
       "config": "https://huggingface.co/NousResearch/Hermes-4-14B"
     },
-    "downloadRank": 80
+    "downloadRank": 81
   },
   {
     "id": "unsloth/DeepSeek-R1-Distill-Llama-8B-GGUF",
@@ -13422,7 +13499,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Llama-8B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
     },
-    "downloadRank": 81
+    "downloadRank": 82
   },
   {
     "id": "unsloth/DeepSeek-R1-GGUF",
@@ -13547,7 +13624,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
     },
-    "downloadRank": 82
+    "downloadRank": 83
   },
   {
     "id": "bartowski/Codestral-22B-v0.1-GGUF",
@@ -13693,7 +13770,7 @@
       "gguf": "https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF",
       "config": "https://huggingface.co/mistralai/Codestral-22B-v0.1"
     },
-    "downloadRank": 83
+    "downloadRank": 84
   },
   {
     "id": "unsloth/gemma-3-27b-it-GGUF",
@@ -13910,7 +13987,7 @@
       "gguf": "https://huggingface.co/unsloth/gemma-3-27b-it-GGUF",
       "config": "https://huggingface.co/unsloth/gemma-3-27b-it-GGUF"
     },
-    "downloadRank": 84
+    "downloadRank": 85
   },
   {
     "id": "bartowski/Mistral-Nemo-Instruct-2407-GGUF",
@@ -14056,7 +14133,7 @@
       "gguf": "https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF",
       "config": "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407"
     },
-    "downloadRank": 85
+    "downloadRank": 86
   },
   {
     "id": "unsloth/Qwen2.5-VL-3B-Instruct-GGUF",
@@ -14274,7 +14351,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen2.5-VL-3B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"
     },
-    "downloadRank": 86
+    "downloadRank": 87
   },
   {
     "id": "unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF",
@@ -14497,7 +14574,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
     },
-    "downloadRank": 87
+    "downloadRank": 88
   },
   {
     "id": "bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
@@ -14664,7 +14741,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct"
     },
-    "downloadRank": 88
+    "downloadRank": 89
   },
   {
     "id": "unsloth/Llama-3.3-70B-Instruct-GGUF",
@@ -14887,7 +14964,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-3.3-70B-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-3.3-70B-Instruct-GGUF"
     },
-    "downloadRank": 89
+    "downloadRank": 90
   },
   {
     "id": "unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF",
@@ -15104,7 +15181,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF"
     },
-    "downloadRank": 90
+    "downloadRank": 91
   },
   {
     "id": "unsloth/Nemotron-3-Nano-30B-A3B-GGUF",
@@ -15306,7 +15383,7 @@
       "gguf": "https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF",
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16"
     },
-    "downloadRank": 91
+    "downloadRank": 92
   },
   {
     "id": "unsloth/LFM2.5-1.2B-Instruct-GGUF",
@@ -15481,7 +15558,7 @@
       "gguf": "https://huggingface.co/unsloth/LFM2.5-1.2B-Instruct-GGUF",
       "config": "https://huggingface.co/LiquidAI/LFM2.5-1.2B-Instruct"
     },
-    "downloadRank": 92
+    "downloadRank": 93
   },
   {
     "id": "unsloth/medgemma-4b-it-GGUF",
@@ -15699,7 +15776,7 @@
       "gguf": "https://huggingface.co/unsloth/medgemma-4b-it-GGUF",
       "config": "https://huggingface.co/unsloth/medgemma-4b-it-GGUF"
     },
-    "downloadRank": 93
+    "downloadRank": 94
   },
   {
     "id": "unsloth/MiniMax-M3.1-Flash-GGUF",
@@ -15723,7 +15800,7 @@
     "createdAt": "2026-10-23T04:20:27.000Z",
     "firstSeen": "2026-10-28",
     "downloads": 31072,
-    "likes": 59,
+    "likes": 60,
     "weightsEstimated": false,
     "arch": {
       "layers": 60,
@@ -15797,7 +15874,7 @@
       "gguf": "https://huggingface.co/unsloth/MiniMax-M3.1-Flash-GGUF",
       "config": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
     },
-    "downloadRank": 94
+    "downloadRank": 95
   },
   {
     "id": "unsloth/Ministral-3-14B-Instruct-2512-GGUF",
@@ -16014,7 +16091,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-14B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"
     },
-    "downloadRank": 95
+    "downloadRank": 96
   },
   {
     "id": "unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
@@ -16231,7 +16308,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF"
     },
-    "downloadRank": 96
+    "downloadRank": 97
   },
   {
     "id": "unsloth/Qwen3-Next-80B-A3B-Thinking-GGUF",
@@ -16448,7 +16525,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-Next-80B-A3B-Thinking-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
     },
-    "downloadRank": 97
+    "downloadRank": 98
   },
   {
     "id": "unsloth/GLM-4.6V-GGUF",
@@ -16665,7 +16742,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.6V-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.6V"
     },
-    "downloadRank": 98
+    "downloadRank": 99
   },
   {
     "id": "lmstudio-community/Ministral-3-3B-Instruct-2512-GGUF",
@@ -16736,7 +16813,7 @@
       "gguf": "https://huggingface.co/lmstudio-community/Ministral-3-3B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-BF16"
     },
-    "downloadRank": 99
+    "downloadRank": 100
   },
   {
     "id": "unsloth/Qwen3.5-397B-A17B-GGUF",
@@ -16960,7 +17037,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3.5-397B-A17B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
     },
-    "downloadRank": 100
+    "downloadRank": 101
   },
   {
     "id": "unsloth/Mistral-Small-4-119B-2603-GGUF",
@@ -17156,7 +17233,7 @@
       "gguf": "https://huggingface.co/unsloth/Mistral-Small-4-119B-2603-GGUF",
       "config": "https://huggingface.co/mistralai/Mistral-Small-4-119B-2603"
     },
-    "downloadRank": 101
+    "downloadRank": 102
   },
   {
     "id": "unsloth/Devstral-2-123B-Instruct-2512-GGUF",
@@ -17372,7 +17449,7 @@
       "gguf": "https://huggingface.co/unsloth/Devstral-2-123B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512"
     },
-    "downloadRank": 102
+    "downloadRank": 103
   },
   {
     "id": "unsloth/GLM-4.7-Flash-REAP-23B-A3B-GGUF",
@@ -17588,7 +17665,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.7-Flash-REAP-23B-A3B-GGUF",
       "config": "https://huggingface.co/cerebras/GLM-4.7-Flash-REAP-23B-A3B"
     },
-    "downloadRank": 103
+    "downloadRank": 104
   },
   {
     "id": "unsloth/LFM2.5-8B-A1B-GGUF",
@@ -17776,7 +17853,7 @@
       "gguf": "https://huggingface.co/unsloth/LFM2.5-8B-A1B-GGUF",
       "config": "https://huggingface.co/LiquidAI/LFM2.5-8B-A1B"
     },
-    "downloadRank": 104
+    "downloadRank": 105
   },
   {
     "id": "unsloth/Qwen3-VL-32B-Instruct-GGUF",
@@ -17993,7 +18070,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-32B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-32B-Instruct"
     },
-    "downloadRank": 105
+    "downloadRank": 106
   },
   {
     "id": "unsloth/Qwen3-VL-30B-A3B-Instruct-GGUF",
@@ -18210,7 +18287,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-30B-A3B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct"
     },
-    "downloadRank": 106
+    "downloadRank": 107
   },
   {
     "id": "unsloth/NVIDIA-Nemotron-3-Nano-Omni-30B-A3B-Reasoning-GGUF",
@@ -18386,7 +18463,7 @@
       "gguf": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Nano-Omni-30B-A3B-Reasoning-GGUF",
       "config": "https://huggingface.co/nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16"
     },
-    "downloadRank": 107
+    "downloadRank": 108
   },
   {
     "id": "unsloth/GLM-4.7-GGUF",
@@ -18602,7 +18679,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.7-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.7"
     },
-    "downloadRank": 108
+    "downloadRank": 109
   },
   {
     "id": "unsloth/Ministral-3-8B-Instruct-2512-GGUF",
@@ -18819,7 +18896,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-8B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"
     },
-    "downloadRank": 109
+    "downloadRank": 110
   },
   {
     "id": "unsloth/Qwen3-235B-A22B-Instruct-2507-GGUF",
@@ -19000,7 +19077,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-235B-A22B-Instruct-2507-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"
     },
-    "downloadRank": 110
+    "downloadRank": 111
   },
   {
     "id": "unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF",
@@ -19217,7 +19294,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"
     },
-    "downloadRank": 111
+    "downloadRank": 112
   },
   {
     "id": "unsloth/MiMo-V2-Flash-GGUF",
@@ -19433,7 +19510,7 @@
       "gguf": "https://huggingface.co/unsloth/MiMo-V2-Flash-GGUF",
       "config": "https://huggingface.co/XiaomiMiMo/MiMo-V2-Flash"
     },
-    "downloadRank": 112
+    "downloadRank": 113
   },
   {
     "id": "unsloth/Llama-3.1-8B-Instruct-GGUF",
@@ -19642,7 +19719,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-3.1-8B-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-3.1-8B-Instruct-GGUF"
     },
-    "downloadRank": 113
+    "downloadRank": 114
   },
   {
     "id": "unsloth/Qwen3-4B-Thinking-2507-GGUF",
@@ -19859,7 +19936,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-4B-Thinking-2507-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507"
     },
-    "downloadRank": 114
+    "downloadRank": 115
   },
   {
     "id": "unsloth/Ministral-3-3B-Reasoning-2512-GGUF",
@@ -20078,7 +20155,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-3B-Reasoning-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-3B-Reasoning-2512"
     },
-    "downloadRank": 115
+    "downloadRank": 116
   },
   {
     "id": "unsloth/NVIDIA-Nemotron-3-Nano-4B-GGUF",
@@ -20274,7 +20351,7 @@
       "gguf": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Nano-4B-GGUF",
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16"
     },
-    "downloadRank": 116
+    "downloadRank": 117
   },
   {
     "id": "unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
@@ -20371,7 +20448,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct"
     },
-    "downloadRank": 117
+    "downloadRank": 118
   },
   {
     "id": "unsloth/DeepSeek-V3.2-GGUF",
@@ -20587,7 +20664,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V3.2-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"
     },
-    "downloadRank": 118
+    "downloadRank": 119
   },
   {
     "id": "unsloth/Ministral-3-8B-Reasoning-2512-GGUF",
@@ -20805,7 +20882,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-8B-Reasoning-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-8B-Reasoning-2512"
     },
-    "downloadRank": 119
+    "downloadRank": 120
   },
   {
     "id": "unsloth/GLM-4-9B-0414-GGUF",
@@ -21021,7 +21098,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4-9B-0414-GGUF",
       "config": "https://huggingface.co/THUDM/GLM-4-9B-0414"
     },
-    "downloadRank": 120
+    "downloadRank": 121
   },
   {
     "id": "unsloth/Phi-4-mini-reasoning-GGUF",
@@ -21225,7 +21302,7 @@
       "gguf": "https://huggingface.co/unsloth/Phi-4-mini-reasoning-GGUF",
       "config": "https://huggingface.co/microsoft/Phi-4-mini-reasoning"
     },
-    "downloadRank": 121
+    "downloadRank": 122
   },
   {
     "id": "unsloth/Phi-4-reasoning-plus-GGUF",
@@ -21428,7 +21505,7 @@
       "gguf": "https://huggingface.co/unsloth/Phi-4-reasoning-plus-GGUF",
       "config": "https://huggingface.co/microsoft/Phi-4-reasoning-plus"
     },
-    "downloadRank": 122
+    "downloadRank": 123
   },
   {
     "id": "unsloth/Ministral-3-14B-Reasoning-2512-GGUF",
@@ -21646,7 +21723,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-14B-Reasoning-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512"
     },
-    "downloadRank": 123
+    "downloadRank": 124
   },
   {
     "id": "unsloth/MiniMax-M3-GGUF",
@@ -21835,7 +21912,7 @@
       "gguf": "https://huggingface.co/unsloth/MiniMax-M3-GGUF",
       "config": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
     },
-    "downloadRank": 124
+    "downloadRank": 125
   },
   {
     "id": "unsloth/Mistral-Medium-3.5-128B-GGUF",
@@ -22038,7 +22115,7 @@
       "gguf": "https://huggingface.co/unsloth/Mistral-Medium-3.5-128B-GGUF",
       "config": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
     },
-    "downloadRank": 125
+    "downloadRank": 126
   },
   {
     "id": "unsloth/GLM-4-32B-0414-GGUF",
@@ -22254,7 +22331,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4-32B-0414-GGUF",
       "config": "https://huggingface.co/unsloth/GLM-4-32B-0414-GGUF"
     },
-    "downloadRank": 126
+    "downloadRank": 127
   },
   {
     "id": "unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF",
@@ -22449,7 +22526,7 @@
       "gguf": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF",
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16"
     },
-    "downloadRank": 127
+    "downloadRank": 128
   },
   {
     "id": "unsloth/granite-4.0-h-tiny-GGUF",
@@ -22665,7 +22742,7 @@
       "gguf": "https://huggingface.co/unsloth/granite-4.0-h-tiny-GGUF",
       "config": "https://huggingface.co/ibm-granite/granite-4.0-h-tiny"
     },
-    "downloadRank": 128
+    "downloadRank": 129
   },
   {
     "id": "unsloth/Magistral-Small-2509-GGUF",
@@ -22868,7 +22945,7 @@
       "gguf": "https://huggingface.co/unsloth/Magistral-Small-2509-GGUF",
       "config": "https://huggingface.co/mistralai/Magistral-Small-2509"
     },
-    "downloadRank": 129
+    "downloadRank": 130
   },
   {
     "id": "unsloth/Hermes-4-70B-GGUF",
@@ -23084,7 +23161,7 @@
       "gguf": "https://huggingface.co/unsloth/Hermes-4-70B-GGUF",
       "config": "https://huggingface.co/NousResearch/Hermes-4-70B"
     },
-    "downloadRank": 130
+    "downloadRank": 131
   },
   {
     "id": "unsloth/Qwen3-VL-2B-Thinking-GGUF",
@@ -23303,7 +23380,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-2B-Thinking-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-2B-Thinking"
     },
-    "downloadRank": 131
+    "downloadRank": 132
   },
   {
     "id": "unsloth/Olmo-3-7B-Instruct-GGUF",
@@ -23519,7 +23596,7 @@
       "gguf": "https://huggingface.co/unsloth/Olmo-3-7B-Instruct-GGUF",
       "config": "https://huggingface.co/allenai/Olmo-3-7B-Instruct"
     },
-    "downloadRank": 132
+    "downloadRank": 133
   },
   {
     "id": "unsloth/Step-3.7-Flash-GGUF",
@@ -23708,7 +23785,7 @@
       "gguf": "https://huggingface.co/unsloth/Step-3.7-Flash-GGUF",
       "config": "https://huggingface.co/stepfun-ai/Step-3.7-Flash"
     },
-    "downloadRank": 133
+    "downloadRank": 134
   },
   {
     "id": "unsloth/DeepSeek-V3.1-GGUF",
@@ -23924,7 +24001,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V3.1-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1"
     },
-    "downloadRank": 134
+    "downloadRank": 135
   },
   {
     "id": "unsloth/GLM-4.6-GGUF",
@@ -24140,7 +24217,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.6-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.6"
     },
-    "downloadRank": 135
+    "downloadRank": 136
   },
   {
     "id": "unsloth/medgemma-27b-text-it-GGUF",
@@ -24349,7 +24426,7 @@
       "gguf": "https://huggingface.co/unsloth/medgemma-27b-text-it-GGUF",
       "config": "https://huggingface.co/unsloth/medgemma-27b-text-it-GGUF"
     },
-    "downloadRank": 136
+    "downloadRank": 137
   },
   {
     "id": "unsloth/Qwen2.5-Coder-14B-Instruct-128K-GGUF",
@@ -24446,7 +24523,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen2.5-Coder-14B-Instruct-128K-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct"
     },
-    "downloadRank": 137
+    "downloadRank": 138
   },
   {
     "id": "unsloth/MiniMax-M2.7-GGUF",
@@ -24641,6 +24718,6 @@
       "gguf": "https://huggingface.co/unsloth/MiniMax-M2.7-GGUF",
       "config": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7"
     },
-    "downloadRank": 138
+    "downloadRank": 139
   }
 ]
