@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-16T06:44:39.540408+00:00",
-  "modelCount": 139,
-  "withRealQuants": 137,
+  "generatedAt": "2026-11-16T22:16:53.734550+00:00",
+  "modelCount": 135,
+  "withRealQuants": 133,
   "attempts": 380,
-  "candidateCount": 497,
+  "candidateCount": 507,
   "newRepoIds": [
-    "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF"
+    "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
