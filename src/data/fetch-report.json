@@ -1,10 +1,12 @@
 {
-  "generatedAt": "2026-11-18T07:41:38.956779+00:00",
-  "modelCount": 134,
-  "withRealQuants": 132,
+  "generatedAt": "2026-11-18T20:48:17.780427+00:00",
+  "modelCount": 135,
+  "withRealQuants": 133,
   "attempts": 380,
-  "candidateCount": 510,
-  "newRepoIds": [],
+  "candidateCount": 517,
+  "newRepoIds": [
+    "ggml-org/LFM3-1.7B-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
