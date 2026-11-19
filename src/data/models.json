@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 6998076,
-    "likes": 6181,
+    "likes": 6200,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -245,7 +245,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 2902027,
-    "likes": 1865,
+    "likes": 1881,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -371,7 +371,7 @@
     "createdAt": "2026-05-11T12:57:12.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 2591644,
-    "likes": 1069,
+    "likes": 1070,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -749,7 +749,7 @@
     "createdAt": "2026-04-01T14:42:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 2272747,
-    "likes": 1312,
+    "likes": 1313,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -931,7 +931,7 @@
     "createdAt": "2026-02-28T14:04:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 2001947,
-    "likes": 1104,
+    "likes": 1107,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -1127,7 +1127,7 @@
     "createdAt": "2026-03-02T05:46:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1633531,
-    "likes": 576,
+    "likes": 578,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -1323,7 +1323,7 @@
     "createdAt": "2026-10-17T20:36:06.000Z",
     "firstSeen": "2026-10-20",
     "downloads": 1547662,
-    "likes": 421,
+    "likes": 422,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1540,7 +1540,7 @@
     "createdAt": "2026-08-31T23:57:36.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 972053,
-    "likes": 396,
+    "likes": 398,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -2672,7 +2672,7 @@
     "createdAt": "2026-10-23T09:47:55.000Z",
     "firstSeen": "2026-10-23",
     "downloads": 700987,
-    "likes": 212,
+    "likes": 214,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -3466,7 +3466,7 @@
     "createdAt": "2026-08-15T18:08:44.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 530411,
-    "likes": 360,
+    "likes": 361,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -3916,7 +3916,7 @@
     "createdAt": "2025-07-31T10:27:38.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 490750,
-    "likes": 1229,
+    "likes": 1230,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -4524,7 +4524,7 @@
     "createdAt": "2026-10-20T03:26:14.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 348377,
-    "likes": 389,
+    "likes": 391,
     "weightsEstimated": false,
     "arch": {
       "layers": 49,
@@ -12795,7 +12795,7 @@
     "createdAt": "2024-09-16T18:20:45.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 51729,
-    "likes": 49,
+    "likes": 50,
     "weightsEstimated": false,
     "arch": {
       "layers": 80,
@@ -19482,7 +19482,7 @@
     "createdAt": "2026-03-16T13:59:13.000Z",
     "firstSeen": "2026-10-25",
     "downloads": 15571,
-    "likes": 85,
+    "likes": 86,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -20548,7 +20548,7 @@
     "createdAt": "2025-05-01T01:39:08.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 12305,
-    "likes": 86,
+    "likes": 87,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -24249,75 +24249,5 @@
       "config": "https://huggingface.co/unsloth/medgemma-27b-text-it-GGUF"
     },
     "downloadRank": 134
-  },
-  {
-    "id": "ggml-org/LFM3-1.7B-GGUF",
-    "slug": "lfm3-1-7b",
-    "name": "LFM3 1.7B",
-    "author": "ggml-org",
-    "baseModel": "LiquidAI/LFM3-1.7B",
-    "dedupeKey": "liquidai/lfm3-1.7b",
-    "paramsB": 1.729,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "lfm3",
-    "license": "other",
-    "contextLength": 262144,
-    "vision": false,
-    "useCases": [
-      "small",
-      "chat"
-    ],
-    "createdAt": "2026-11-18T15:27:44.000Z",
-    "firstSeen": "2026-11-18",
-    "downloads": 0,
-    "likes": 1,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 24,
-      "kvHeads": 4,
-      "headDim": 128,
-      "fullAttentionLayers": 19,
-      "slidingLayers": 5,
-      "slidingWindow": 256,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "hybrid",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 3466626304,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 1846238464,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 1099627776,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      }
-    ],
-    "ollama": "lfm3",
-    "description": "LFM3 1.7B is a 1.73B dense lfm3 model from ggml-org. Configured context length is 262,144 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/ggml-org/LFM3-1.7B-GGUF",
-      "config": "https://huggingface.co/LiquidAI/LFM3-1.7B"
-    },
-    "downloadRank": 135
   }
 ]
