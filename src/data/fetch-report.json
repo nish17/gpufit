@@ -1,10 +1,18 @@
 {
-  "generatedAt": "2026-11-20T07:31:00.895901+00:00",
-  "modelCount": 135,
-  "withRealQuants": 133,
+  "generatedAt": "2026-11-20T20:37:23.463443+00:00",
+  "modelCount": 142,
+  "withRealQuants": 140,
   "attempts": 380,
   "candidateCount": 525,
-  "newRepoIds": [],
+  "newRepoIds": [
+    "XHToken/Spark-X2.6-4B-GGUF",
+    "jialinyyzz/humanizer",
+    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "LiquidAI/LFM3-1.7B-GGUF",
+    "ukisai/Swift-Qwen3.8-27B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF",
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
