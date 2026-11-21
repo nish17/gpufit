@@ -1,22 +1,16 @@
 {
-  "generatedAt": "2026-11-20T20:37:23.463443+00:00",
-  "modelCount": 142,
-  "withRealQuants": 140,
+  "generatedAt": "2026-11-21T07:22:36.058226+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 525,
+  "candidateCount": 505,
   "newRepoIds": [
-    "XHToken/Spark-X2.6-4B-GGUF",
-    "jialinyyzz/humanizer",
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "LiquidAI/LFM3-1.7B-GGUF",
-    "ukisai/Swift-Qwen3.8-27B-GGUF",
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
+    "bartowski/haruuuuu-1256_aoi-gemma-4-E4B-it-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
-  "ollamaLibraryCount": 270,
+  "ollamaLibraryCount": 271,
   "sources": [
     "https://huggingface.co/docs/hub/api",
     "https://ollama.com/library"
