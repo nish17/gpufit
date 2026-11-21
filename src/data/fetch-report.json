@@ -1,12 +1,10 @@
 {
-  "generatedAt": "2026-11-21T07:22:36.058226+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-11-21T19:31:01.265551+00:00",
+  "modelCount": 136,
+  "withRealQuants": 134,
   "attempts": 380,
-  "candidateCount": 505,
-  "newRepoIds": [
-    "bartowski/haruuuuu-1256_aoi-gemma-4-E4B-it-GGUF"
-  ],
+  "candidateCount": 502,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
