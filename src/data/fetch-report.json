@@ -1,13 +1,11 @@
 {
-  "generatedAt": "2026-11-22T07:05:28.012812+00:00",
+  "generatedAt": "2026-11-22T19:53:59.643733+00:00",
   "modelCount": 139,
   "withRealQuants": 137,
   "attempts": 380,
-  "candidateCount": 494,
+  "candidateCount": 507,
   "newRepoIds": [
-    "LiquidAI/LFM3-1.7B-GGUF",
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "ukisai/Swift-Qwen3.8-27B-GGUF"
+    "tencent/Hy-MT2-1.8B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
