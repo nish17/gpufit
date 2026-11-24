@@ -1,12 +1,18 @@
 {
-  "generatedAt": "2026-11-24T10:08:28.970415+00:00",
-  "modelCount": 130,
-  "withRealQuants": 128,
+  "generatedAt": "2026-11-24T22:39:46.139298+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 511,
+  "candidateCount": 505,
   "newRepoIds": [
-    "mradermacher/Qwen3.8-27B-Fable-5-Coding-Distilled-GGUF",
-    "unsloth/Ministral-3-3B-Instruct-2512-GGUF"
+    "empero-ai/Qwen3.8-9B-Distill-GGUF",
+    "empero-ai/Qwen3.8-2B-Distill-GGUF",
+    "jialinyyzz/humanizer",
+    "LiquidAI/LFM3-1.7B-GGUF",
+    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
+    "ukisai/Swift-Qwen3.8-27B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF",
+    "lmstudio-community/LFM3-VL-2B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
