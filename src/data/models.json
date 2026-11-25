@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 8019028,
-    "likes": 7081,
+    "likes": 7084,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -245,7 +245,7 @@
     "createdAt": "2026-04-01T14:42:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 4172902,
-    "likes": 1334,
+    "likes": 1335,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -427,7 +427,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 3803170,
-    "likes": 1966,
+    "likes": 1970,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -553,7 +553,7 @@
     "createdAt": "2026-05-11T12:57:12.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 2970984,
-    "likes": 1084,
+    "likes": 1086,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1127,7 +1127,7 @@
     "createdAt": "2026-03-02T05:46:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1699894,
-    "likes": 590,
+    "likes": 591,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -1818,7 +1818,7 @@
     "createdAt": "2026-08-31T23:57:36.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 992362,
-    "likes": 417,
+    "likes": 419,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -2258,7 +2258,7 @@
     "createdAt": "2026-04-01T14:40:57.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 888467,
-    "likes": 367,
+    "likes": 368,
     "weightsEstimated": false,
     "arch": {
       "layers": 35,
@@ -2741,7 +2741,7 @@
     "createdAt": "2026-08-26T14:21:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 735845,
-    "likes": 549,
+    "likes": 550,
     "weightsEstimated": false,
     "arch": {
       "layers": 45,
@@ -2964,7 +2964,7 @@
     "createdAt": "2026-10-13T14:19:48.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 645920,
-    "likes": 129,
+    "likes": 130,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -3192,7 +3192,7 @@
     ],
     "createdAt": "2024-09-17T16:03:26.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 590624,
+    "downloads": 590972,
     "likes": 94,
     "weightsEstimated": false,
     "arch": {
@@ -3355,7 +3355,7 @@
     "createdAt": "2026-10-27T00:29:25.000Z",
     "firstSeen": "2026-11-14",
     "downloads": 566642,
-    "likes": 203,
+    "likes": 204,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -3439,7 +3439,7 @@
     "createdAt": "2026-08-15T18:08:45.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 566346,
-    "likes": 213,
+    "likes": 214,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -4162,7 +4162,7 @@
     "createdAt": "2026-10-24T00:46:40.000Z",
     "firstSeen": "2026-11-24",
     "downloads": 469445,
-    "likes": 346,
+    "likes": 348,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -6237,7 +6237,7 @@
     ],
     "createdAt": "2024-09-16T14:13:33.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 296263,
+    "downloads": 290440,
     "likes": 92,
     "weightsEstimated": false,
     "arch": {
@@ -6601,7 +6601,7 @@
     "createdAt": "2025-04-28T10:24:13.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 255932,
-    "likes": 147,
+    "likes": 148,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -7013,7 +7013,7 @@
     "createdAt": "2026-10-20T03:26:14.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 220575,
-    "likes": 399,
+    "likes": 400,
     "weightsEstimated": false,
     "arch": {
       "layers": 49,
@@ -8020,230 +8020,6 @@
     "downloadRank": 51
   },
   {
-    "id": "unsloth/Llama-3.2-3B-Instruct-GGUF",
-    "slug": "llama-3-2-3b-instruct",
-    "name": "Llama 3.2 3B Instruct",
-    "author": "unsloth",
-    "baseModel": "meta-llama/Llama-3.2-3B-Instruct",
-    "dedupeKey": "meta-llama/llama-3.2-3b-instruct",
-    "paramsB": 3.213,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "llama",
-    "license": "llama3.2",
-    "contextLength": 131072,
-    "vision": false,
-    "useCases": [
-      "small",
-      "chat"
-    ],
-    "createdAt": "2024-09-25T19:47:33.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 170754,
-    "likes": 93,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 28,
-      "kvHeads": 8,
-      "headDim": 128,
-      "fullAttentionLayers": 28,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 6433687744,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "F16",
-        "bytes": 6433687616,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 4204153280,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 3421898816,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "UD-Q6_K_XL",
-        "bytes": 2967833024,
-        "estimated": false,
-        "quality": 77,
-        "bpw": 6.8
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 2643853760,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "UD-Q5_K_XL",
-        "bytes": 2327781824,
-        "estimated": false,
-        "quality": 67,
-        "bpw": 5.8
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 2322153920,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 2269512128,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "UD-Q4_K_XL",
-        "bytes": 2060886464,
-        "estimated": false,
-        "quality": 55,
-        "bpw": 4.95
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 2019377600,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 1928200640,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 1917190592,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 1829110208,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_1",
-        "bytes": 2093351360,
-        "estimated": false,
-        "quality": 42,
-        "bpw": 5.0
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 1921909184,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "UD-Q3_K_XL",
-        "bytes": 1742430656,
-        "estimated": false,
-        "quality": 36,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 1687159232,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 1542848960,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "UD-IQ3_XXS",
-        "bytes": 1370147264,
-        "estimated": false,
-        "quality": 26,
-        "bpw": 3.2
-      },
-      {
-        "id": "UD-Q2_K_XL",
-        "bytes": 1403380160,
-        "estimated": false,
-        "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 1363935680,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
-        "id": "UD-IQ2_XXS",
-        "bytes": 1046579648,
-        "estimated": false,
-        "quality": 13,
-        "bpw": 2.2
-      },
-      {
-        "id": "UD-IQ1_M",
-        "bytes": 960416192,
-        "estimated": false,
-        "quality": 10,
-        "bpw": 2.0
-      },
-      {
-        "id": "UD-IQ1_S",
-        "bytes": 912345536,
-        "estimated": false,
-        "quality": 8,
-        "bpw": 1.7
-      }
-    ],
-    "ollama": null,
-    "description": "Llama 3.2 3B Instruct is a 3.21B dense llama model from unsloth. Configured context length is 131,072 tokens. License: llama3.2. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF",
-      "config": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF"
-    },
-    "downloadRank": 52
-  },
-  {
     "id": "unsloth/Qwen3-VL-8B-Instruct-GGUF",
     "slug": "qwen3-vl-8b-instruct",
     "name": "Qwen3 VL 8B Instruct",
@@ -8457,6 +8233,230 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-8B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct"
+    },
+    "downloadRank": 52
+  },
+  {
+    "id": "unsloth/Llama-3.2-3B-Instruct-GGUF",
+    "slug": "llama-3-2-3b-instruct",
+    "name": "Llama 3.2 3B Instruct",
+    "author": "unsloth",
+    "baseModel": "meta-llama/Llama-3.2-3B-Instruct",
+    "dedupeKey": "meta-llama/llama-3.2-3b-instruct",
+    "paramsB": 3.213,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "llama",
+    "license": "llama3.2",
+    "contextLength": 131072,
+    "vision": false,
+    "useCases": [
+      "small",
+      "chat"
+    ],
+    "createdAt": "2024-09-25T19:47:33.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 165306,
+    "likes": 93,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 28,
+      "kvHeads": 8,
+      "headDim": 128,
+      "fullAttentionLayers": 28,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "BF16",
+        "bytes": 6433687744,
+        "estimated": false,
+        "quality": 98,
+        "bpw": 16.0
+      },
+      {
+        "id": "F16",
+        "bytes": 6433687616,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "UD-Q8_K_XL",
+        "bytes": 4204153280,
+        "estimated": false,
+        "quality": 86,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 3421898816,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "UD-Q6_K_XL",
+        "bytes": 2967833024,
+        "estimated": false,
+        "quality": 77,
+        "bpw": 6.8
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 2643853760,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "UD-Q5_K_XL",
+        "bytes": 2327781824,
+        "estimated": false,
+        "quality": 67,
+        "bpw": 5.8
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 2322153920,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 2269512128,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "UD-Q4_K_XL",
+        "bytes": 2060886464,
+        "estimated": false,
+        "quality": 55,
+        "bpw": 4.95
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 2019377600,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 1928200640,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_NL",
+        "bytes": 1917190592,
+        "estimated": false,
+        "quality": 46,
+        "bpw": 4.5
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 1829110208,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_1",
+        "bytes": 2093351360,
+        "estimated": false,
+        "quality": 42,
+        "bpw": 5.0
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 1921909184,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "UD-Q3_K_XL",
+        "bytes": 1742430656,
+        "estimated": false,
+        "quality": 36,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 1687159232,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 1542848960,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "UD-IQ3_XXS",
+        "bytes": 1370147264,
+        "estimated": false,
+        "quality": 26,
+        "bpw": 3.2
+      },
+      {
+        "id": "UD-Q2_K_XL",
+        "bytes": 1403380160,
+        "estimated": false,
+        "quality": 22,
+        "bpw": 3.35
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 1363935680,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      },
+      {
+        "id": "UD-IQ2_XXS",
+        "bytes": 1046579648,
+        "estimated": false,
+        "quality": 13,
+        "bpw": 2.2
+      },
+      {
+        "id": "UD-IQ1_M",
+        "bytes": 960416192,
+        "estimated": false,
+        "quality": 10,
+        "bpw": 2.0
+      },
+      {
+        "id": "UD-IQ1_S",
+        "bytes": 912345536,
+        "estimated": false,
+        "quality": 8,
+        "bpw": 1.7
+      }
+    ],
+    "ollama": null,
+    "description": "Llama 3.2 3B Instruct is a 3.21B dense llama model from unsloth. Configured context length is 131,072 tokens. License: llama3.2. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF",
+      "config": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF"
     },
     "downloadRank": 53
   },
@@ -8696,7 +8696,7 @@
     ],
     "createdAt": "2024-09-17T19:29:04.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 155991,
+    "downloads": 157692,
     "likes": 76,
     "weightsEstimated": false,
     "arch": {
@@ -10890,7 +10890,7 @@
     ],
     "createdAt": "2024-09-17T19:30:40.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 82435,
+    "downloads": 84244,
     "likes": 21,
     "weightsEstimated": false,
     "arch": {
@@ -11296,166 +11296,6 @@
     "downloadRank": 70
   },
   {
-    "id": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
-    "slug": "qwen2-5-coder-14b-instruct",
-    "name": "Qwen2.5 Coder 14B Instruct",
-    "author": "bartowski",
-    "baseModel": "Qwen/Qwen2.5-Coder-14B-Instruct",
-    "dedupeKey": "qwen/qwen2.5-coder-14b-instruct",
-    "paramsB": 14.77,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "qwen2",
-    "license": "apache-2.0",
-    "contextLength": 32768,
-    "vision": false,
-    "useCases": [
-      "coding"
-    ],
-    "createdAt": "2024-11-06T20:55:11.000Z",
-    "firstSeen": "2026-11-16",
-    "downloads": 68389,
-    "likes": 75,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 48,
-      "kvHeads": 8,
-      "headDim": 128,
-      "fullAttentionLayers": 48,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "F16",
-        "bytes": 29547716544,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 15701598432,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 12124684512,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 10508873952,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 10266554592,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 8988111072,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 8573432032,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 8549183712,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 8119840992,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 8517726432,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 7924768992,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 7339204832,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 6916538592,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 6659596512,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 6530818272,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
-        "id": "IQ2_S",
-        "bytes": 5003727072,
-        "estimated": false,
-        "quality": 14,
-        "bpw": 2.6
-      }
-    ],
-    "ollama": "qwen2.5",
-    "description": "Qwen2.5 Coder 14B Instruct is a 14.8B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
-      "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct"
-    },
-    "downloadRank": 71
-  },
-  {
     "id": "unsloth/Qwen3-32B-GGUF",
     "slug": "qwen3-32b",
     "name": "Qwen3 32B",
@@ -11668,6 +11508,166 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Qwen3-32B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-32B"
+    },
+    "downloadRank": 71
+  },
+  {
+    "id": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
+    "slug": "qwen2-5-coder-14b-instruct",
+    "name": "Qwen2.5 Coder 14B Instruct",
+    "author": "bartowski",
+    "baseModel": "Qwen/Qwen2.5-Coder-14B-Instruct",
+    "dedupeKey": "qwen/qwen2.5-coder-14b-instruct",
+    "paramsB": 14.77,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "qwen2",
+    "license": "apache-2.0",
+    "contextLength": 32768,
+    "vision": false,
+    "useCases": [
+      "coding"
+    ],
+    "createdAt": "2024-11-06T20:55:11.000Z",
+    "firstSeen": "2026-11-16",
+    "downloads": 66834,
+    "likes": 75,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 48,
+      "kvHeads": 8,
+      "headDim": 128,
+      "fullAttentionLayers": 48,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "F16",
+        "bytes": 29547716544,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 15701598432,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 12124684512,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 10508873952,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 10266554592,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 8988111072,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 8573432032,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_NL",
+        "bytes": 8549183712,
+        "estimated": false,
+        "quality": 46,
+        "bpw": 4.5
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 8119840992,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 8517726432,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "Q3_K_L",
+        "bytes": 7924768992,
+        "estimated": false,
+        "quality": 38,
+        "bpw": 4.27
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 7339204832,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "IQ3_M",
+        "bytes": 6916538592,
+        "estimated": false,
+        "quality": 33,
+        "bpw": 3.7
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 6659596512,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 6530818272,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      },
+      {
+        "id": "IQ2_S",
+        "bytes": 5003727072,
+        "estimated": false,
+        "quality": 14,
+        "bpw": 2.6
+      }
+    ],
+    "ollama": "qwen2.5",
+    "description": "Qwen2.5 Coder 14B Instruct is a 14.8B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
+      "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct"
     },
     "downloadRank": 72
   },
@@ -11889,153 +11889,6 @@
     "downloadRank": 73
   },
   {
-    "id": "bartowski/Qwen2.5-3B-Instruct-GGUF",
-    "slug": "qwen2-5-3b-instruct",
-    "name": "Qwen2.5 3B Instruct",
-    "author": "bartowski",
-    "baseModel": "Qwen/Qwen2.5-3B-Instruct",
-    "dedupeKey": "qwen/qwen2.5-3b-instruct",
-    "paramsB": 3.086,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "qwen2",
-    "license": "other",
-    "contextLength": 32768,
-    "vision": false,
-    "useCases": [
-      "small",
-      "chat"
-    ],
-    "createdAt": "2024-09-16T14:07:42.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 63411,
-    "likes": 37,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 36,
-      "kvHeads": 2,
-      "headDim": 128,
-      "fullAttentionLayers": 36,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "F16",
-        "bytes": 6178317216,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 3285476512,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 2538159264,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 2224815264,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 2169666720,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 1929903264,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 1834384544,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 1739095200,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 1822850208,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 1707392160,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 1590475936,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 1488895136,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 1454357664,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 1274756256,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": "qwen2.5",
-    "description": "Qwen2.5 3B Instruct is a 3.09B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF",
-      "config": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct"
-    },
-    "downloadRank": 74
-  },
-  {
     "id": "unsloth/Llama-3.2-1B-Instruct-GGUF",
     "slug": "llama-3-2-1b-instruct",
     "name": "Llama 3.2 1B Instruct",
@@ -12056,7 +11909,7 @@
     ],
     "createdAt": "2024-09-25T19:32:39.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 62947,
+    "downloads": 63233,
     "likes": 86,
     "weightsEstimated": false,
     "arch": {
@@ -12256,6 +12109,153 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF"
+    },
+    "downloadRank": 74
+  },
+  {
+    "id": "bartowski/Qwen2.5-3B-Instruct-GGUF",
+    "slug": "qwen2-5-3b-instruct",
+    "name": "Qwen2.5 3B Instruct",
+    "author": "bartowski",
+    "baseModel": "Qwen/Qwen2.5-3B-Instruct",
+    "dedupeKey": "qwen/qwen2.5-3b-instruct",
+    "paramsB": 3.086,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "qwen2",
+    "license": "other",
+    "contextLength": 32768,
+    "vision": false,
+    "useCases": [
+      "small",
+      "chat"
+    ],
+    "createdAt": "2024-09-16T14:07:42.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 62360,
+    "likes": 37,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 36,
+      "kvHeads": 2,
+      "headDim": 128,
+      "fullAttentionLayers": 36,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "F16",
+        "bytes": 6178317216,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 3285476512,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 2538159264,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 2224815264,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 2169666720,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 1929903264,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 1834384544,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 1739095200,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 1822850208,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "Q3_K_L",
+        "bytes": 1707392160,
+        "estimated": false,
+        "quality": 38,
+        "bpw": 4.27
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 1590475936,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "IQ3_M",
+        "bytes": 1488895136,
+        "estimated": false,
+        "quality": 33,
+        "bpw": 3.7
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 1454357664,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 1274756256,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      }
+    ],
+    "ollama": "qwen2.5",
+    "description": "Qwen2.5 3B Instruct is a 3.09B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF",
+      "config": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct"
     },
     "downloadRank": 75
   },
@@ -12536,7 +12536,7 @@
     ],
     "createdAt": "2024-09-16T18:20:45.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 57846,
+    "downloads": 58835,
     "likes": 50,
     "weightsEstimated": false,
     "arch": {
@@ -13097,6 +13097,103 @@
     "downloadRank": 80
   },
   {
+    "id": "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
+    "slug": "deepseek-r1-distill-qwen-7b",
+    "name": "DeepSeek R1 Distill Qwen 7B",
+    "author": "unsloth",
+    "baseModel": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+    "dedupeKey": "deepseek-ai/deepseek-r1-distill-qwen-7b",
+    "paramsB": 7.616,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "qwen2",
+    "license": "apache-2.0",
+    "contextLength": 131072,
+    "vision": false,
+    "useCases": [
+      "chat"
+    ],
+    "createdAt": "2025-01-20T14:21:41.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 54681,
+    "likes": 113,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 28,
+      "kvHeads": 4,
+      "headDim": 128,
+      "fullAttentionLayers": 28,
+      "slidingLayers": 0,
+      "slidingWindow": 4096,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "F16",
+        "bytes": 15237852896,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 8098524896,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 6254198496,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 5444830944,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 4683073248,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 3808390880,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 3143673568,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      }
+    ],
+    "ollama": null,
+    "description": "DeepSeek R1 Distill Qwen 7B is a 7.62B dense qwen2 model from unsloth. Configured context length is 131,072 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
+      "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+    },
+    "downloadRank": 81
+  },
+  {
     "id": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
     "slug": "qwen2-5-1-5b-instruct",
     "name": "Qwen2.5 1.5B Instruct",
@@ -13117,7 +13214,7 @@
     ],
     "createdAt": "2024-09-17T19:30:25.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 54948,
+    "downloads": 54674,
     "likes": 25,
     "weightsEstimated": false,
     "arch": {
@@ -13240,103 +13337,6 @@
     "sources": {
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct"
-    },
-    "downloadRank": 81
-  },
-  {
-    "id": "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
-    "slug": "deepseek-r1-distill-qwen-7b",
-    "name": "DeepSeek R1 Distill Qwen 7B",
-    "author": "unsloth",
-    "baseModel": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
-    "dedupeKey": "deepseek-ai/deepseek-r1-distill-qwen-7b",
-    "paramsB": 7.616,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "qwen2",
-    "license": "apache-2.0",
-    "contextLength": 131072,
-    "vision": false,
-    "useCases": [
-      "chat"
-    ],
-    "createdAt": "2025-01-20T14:21:41.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 54681,
-    "likes": 113,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 28,
-      "kvHeads": 4,
-      "headDim": 128,
-      "fullAttentionLayers": 28,
-      "slidingLayers": 0,
-      "slidingWindow": 4096,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "F16",
-        "bytes": 15237852896,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 8098524896,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 6254198496,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 5444830944,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 4683073248,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 3808390880,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 3143673568,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": null,
-    "description": "DeepSeek R1 Distill Qwen 7B is a 7.62B dense qwen2 model from unsloth. Configured context length is 131,072 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
-      "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
     },
     "downloadRank": 82
   },
@@ -13534,7 +13534,7 @@
     ],
     "createdAt": "2024-12-06T21:10:26.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 48432,
+    "downloads": 48562,
     "likes": 133,
     "weightsEstimated": false,
     "arch": {
@@ -13919,6 +13919,131 @@
     "downloadRank": 85
   },
   {
+    "id": "unsloth/DeepSeek-R1-GGUF",
+    "slug": "deepseek-r1",
+    "name": "DeepSeek R1",
+    "author": "unsloth",
+    "baseModel": "deepseek-ai/DeepSeek-R1",
+    "dedupeKey": "deepseek-ai/deepseek-r1",
+    "paramsB": 671.026,
+    "activeParamsB": 37,
+    "activeParamsEstimated": false,
+    "moe": true,
+    "architecture": "deepseek2",
+    "license": "mit",
+    "contextLength": 163840,
+    "vision": false,
+    "useCases": [
+      "chat"
+    ],
+    "createdAt": "2025-01-20T13:09:42.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 46682,
+    "likes": 1128,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 61,
+      "kvHeads": 128,
+      "headDim": 56,
+      "fullAttentionLayers": 61,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "mla",
+      "mlaBytesPerLayer": 1152,
+      "experts": 256,
+      "expertsPerTok": 8
+    },
+    "quants": [
+      {
+        "id": "BF16",
+        "bytes": 1342273048096,
+        "estimated": false,
+        "quality": 98,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 713286514368,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 550798326880,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 475396558144,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 404430187616,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 319198395744,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "UD-Q2_K_XL",
+        "bytes": 226601595040,
+        "estimated": false,
+        "quality": 22,
+        "bpw": 3.35
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 244245534336,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      },
+      {
+        "id": "UD-IQ2_XXS",
+        "bytes": 196162482432,
+        "estimated": false,
+        "quality": 13,
+        "bpw": 2.2
+      },
+      {
+        "id": "UD-IQ1_M",
+        "bytes": 168916283648,
+        "estimated": false,
+        "quality": 10,
+        "bpw": 2.0
+      },
+      {
+        "id": "UD-IQ1_S",
+        "bytes": 140231438464,
+        "estimated": false,
+        "quality": 8,
+        "bpw": 1.7
+      }
+    ],
+    "ollama": "deepseek-r1",
+    "description": "DeepSeek R1 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 37.0B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-GGUF",
+      "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
+    },
+    "downloadRank": 86
+  },
+  {
     "id": "bartowski/Codestral-22B-v0.1-GGUF",
     "slug": "codestral-22b-v0-1",
     "name": "Codestral 22B v0.1",
@@ -13938,7 +14063,7 @@
     ],
     "createdAt": "2024-05-29T17:52:02.000Z",
     "firstSeen": "2026-11-11",
-    "downloads": 46716,
+    "downloads": 46610,
     "likes": 205,
     "weightsEstimated": false,
     "arch": {
@@ -14061,131 +14186,6 @@
     "sources": {
       "gguf": "https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF",
       "config": "https://huggingface.co/mistralai/Codestral-22B-v0.1"
-    },
-    "downloadRank": 86
-  },
-  {
-    "id": "unsloth/DeepSeek-R1-GGUF",
-    "slug": "deepseek-r1",
-    "name": "DeepSeek R1",
-    "author": "unsloth",
-    "baseModel": "deepseek-ai/DeepSeek-R1",
-    "dedupeKey": "deepseek-ai/deepseek-r1",
-    "paramsB": 671.026,
-    "activeParamsB": 37,
-    "activeParamsEstimated": false,
-    "moe": true,
-    "architecture": "deepseek2",
-    "license": "mit",
-    "contextLength": 163840,
-    "vision": false,
-    "useCases": [
-      "chat"
-    ],
-    "createdAt": "2025-01-20T13:09:42.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 46682,
-    "likes": 1128,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 61,
-      "kvHeads": 128,
-      "headDim": 56,
-      "fullAttentionLayers": 61,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "mla",
-      "mlaBytesPerLayer": 1152,
-      "experts": 256,
-      "expertsPerTok": 8
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 1342273048096,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 713286514368,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 550798326880,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 475396558144,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 404430187616,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 319198395744,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "UD-Q2_K_XL",
-        "bytes": 226601595040,
-        "estimated": false,
-        "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 244245534336,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
-        "id": "UD-IQ2_XXS",
-        "bytes": 196162482432,
-        "estimated": false,
-        "quality": 13,
-        "bpw": 2.2
-      },
-      {
-        "id": "UD-IQ1_M",
-        "bytes": 168916283648,
-        "estimated": false,
-        "quality": 10,
-        "bpw": 2.0
-      },
-      {
-        "id": "UD-IQ1_S",
-        "bytes": 140231438464,
-        "estimated": false,
-        "quality": 8,
-        "bpw": 1.7
-      }
-    ],
-    "ollama": "deepseek-r1",
-    "description": "DeepSeek R1 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 37.0B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-GGUF",
-      "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1"
     },
     "downloadRank": 87
   },
@@ -14650,7 +14650,7 @@
     ],
     "createdAt": "2024-07-18T15:18:30.000Z",
     "firstSeen": "2026-10-30",
-    "downloads": 39843,
+    "downloads": 38133,
     "likes": 139,
     "weightsEstimated": false,
     "arch": {
@@ -15755,7 +15755,7 @@
     "createdAt": "2026-01-06T05:18:51.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 31842,
-    "likes": 46,
+    "likes": 47,
     "weightsEstimated": false,
     "arch": {
       "layers": 16,
@@ -18281,7 +18281,7 @@
     "createdAt": "2026-05-29T09:11:04.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 21623,
-    "likes": 132,
+    "likes": 133,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -19983,6 +19983,103 @@
     "downloadRank": 116
   },
   {
+    "id": "unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
+    "slug": "qwen2-5-coder-7b-instruct",
+    "name": "Qwen2.5 Coder 7B Instruct",
+    "author": "unsloth",
+    "baseModel": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "dedupeKey": "qwen/qwen2.5-coder-7b-instruct",
+    "paramsB": 7.616,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "qwen2",
+    "license": "apache-2.0",
+    "contextLength": 32768,
+    "vision": false,
+    "useCases": [
+      "coding"
+    ],
+    "createdAt": "2024-11-12T07:21:08.000Z",
+    "firstSeen": "2026-10-31",
+    "downloads": 18094,
+    "likes": 28,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 28,
+      "kvHeads": 4,
+      "headDim": 128,
+      "fullAttentionLayers": 28,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "F16",
+        "bytes": 15237853152,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 8098525152,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 6254198752,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 5444831200,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 4683073504,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 3808391136,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 3015940064,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      }
+    ],
+    "ollama": "qwen2.5",
+    "description": "Qwen2.5 Coder 7B Instruct is a 7.62B dense qwen2 model from unsloth. Configured context length is 32,768 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
+      "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct"
+    },
+    "downloadRank": 117
+  },
+  {
     "id": "unsloth/Llama-3.1-8B-Instruct-GGUF",
     "slug": "llama-3-1-8b-instruct",
     "name": "Llama 3.1 8B Instruct",
@@ -20188,103 +20285,6 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Llama-3.1-8B-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-3.1-8B-Instruct-GGUF"
-    },
-    "downloadRank": 117
-  },
-  {
-    "id": "unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
-    "slug": "qwen2-5-coder-7b-instruct",
-    "name": "Qwen2.5 Coder 7B Instruct",
-    "author": "unsloth",
-    "baseModel": "Qwen/Qwen2.5-Coder-7B-Instruct",
-    "dedupeKey": "qwen/qwen2.5-coder-7b-instruct",
-    "paramsB": 7.616,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "qwen2",
-    "license": "apache-2.0",
-    "contextLength": 32768,
-    "vision": false,
-    "useCases": [
-      "coding"
-    ],
-    "createdAt": "2024-11-12T07:21:08.000Z",
-    "firstSeen": "2026-10-31",
-    "downloads": 17346,
-    "likes": 28,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 28,
-      "kvHeads": 4,
-      "headDim": 128,
-      "fullAttentionLayers": 28,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "F16",
-        "bytes": 15237853152,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 8098525152,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 6254198752,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 5444831200,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 4683073504,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 3808391136,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 3015940064,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": "qwen2.5",
-    "description": "Qwen2.5 Coder 7B Instruct is a 7.62B dense qwen2 model from unsloth. Configured context length is 32,768 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
-      "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct"
     },
     "downloadRank": 118
   },

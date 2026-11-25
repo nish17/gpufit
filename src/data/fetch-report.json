@@ -1,19 +1,10 @@
 {
-  "generatedAt": "2026-11-24T22:39:46.139298+00:00",
+  "generatedAt": "2026-11-25T08:52:09.505107+00:00",
   "modelCount": 138,
   "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 505,
-  "newRepoIds": [
-    "empero-ai/Qwen3.8-9B-Distill-GGUF",
-    "empero-ai/Qwen3.8-2B-Distill-GGUF",
-    "jialinyyzz/humanizer",
-    "LiquidAI/LFM3-1.7B-GGUF",
-    "openbmb/MiniCPM-V-4.7-35B-A3B-gguf",
-    "ukisai/Swift-Qwen3.8-27B-GGUF",
-    "tencent/Hy-MT2-1.8B-GGUF",
-    "lmstudio-community/LFM3-VL-2B-GGUF"
-  ],
+  "candidateCount": 498,
+  "newRepoIds": [],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
