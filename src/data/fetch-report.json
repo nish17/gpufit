@@ -1,10 +1,12 @@
 {
-  "generatedAt": "2026-11-26T08:35:27.304896+00:00",
-  "modelCount": 138,
-  "withRealQuants": 136,
+  "generatedAt": "2026-11-26T21:46:50.077462+00:00",
+  "modelCount": 139,
+  "withRealQuants": 137,
   "attempts": 380,
-  "candidateCount": 513,
-  "newRepoIds": [],
+  "candidateCount": 515,
+  "newRepoIds": [
+    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
+  ],
   "errorCount": 0,
   "errors": [],
   "hfTokenUsed": false,
