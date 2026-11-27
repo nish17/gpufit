@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-26T21:46:50.077462+00:00",
-  "modelCount": 139,
-  "withRealQuants": 137,
+  "generatedAt": "2026-11-27T08:48:56.607704+00:00",
+  "modelCount": 138,
+  "withRealQuants": 136,
   "attempts": 380,
-  "candidateCount": 515,
+  "candidateCount": 512,
   "newRepoIds": [
-    "peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF"
+    "unsloth/DeepSeek-V3-GGUF"
   ],
   "errorCount": 0,
   "errors": [],

@@ -21,7 +21,7 @@
     "createdAt": "2026-08-13T08:28:40.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 8181570,
-    "likes": 7149,
+    "likes": 7157,
     "weightsEstimated": false,
     "arch": {
       "layers": 64,
@@ -245,7 +245,7 @@
     "createdAt": "2026-04-01T14:42:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 4342670,
-    "likes": 1340,
+    "likes": 1343,
     "weightsEstimated": false,
     "arch": {
       "layers": 30,
@@ -427,7 +427,7 @@
     "createdAt": "2026-08-26T12:29:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 4051762,
-    "likes": 1988,
+    "likes": 1989,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -553,7 +553,7 @@
     "createdAt": "2026-05-11T12:57:12.000Z",
     "firstSeen": "2026-10-29",
     "downloads": 3049815,
-    "likes": 1087,
+    "likes": 1088,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -742,7 +742,7 @@
     "createdAt": "2026-02-28T14:04:29.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 2562267,
-    "likes": 1155,
+    "likes": 1157,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -938,7 +938,7 @@
     "createdAt": "2026-05-29T11:25:59.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 2510138,
-    "likes": 996,
+    "likes": 997,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -1127,7 +1127,7 @@
     "createdAt": "2026-03-02T05:46:32.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 1720453,
-    "likes": 597,
+    "likes": 600,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -1323,7 +1323,7 @@
     "createdAt": "2026-10-17T20:36:06.000Z",
     "firstSeen": "2026-10-20",
     "downloads": 1595364,
-    "likes": 448,
+    "likes": 449,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -1818,7 +1818,7 @@
     "createdAt": "2026-08-31T23:57:36.000Z",
     "firstSeen": "2026-10-18",
     "downloads": 1002349,
-    "likes": 424,
+    "likes": 425,
     "weightsEstimated": true,
     "arch": {
       "layers": 40,
@@ -2258,7 +2258,7 @@
     "createdAt": "2026-04-01T14:40:57.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 898842,
-    "likes": 369,
+    "likes": 370,
     "weightsEstimated": false,
     "arch": {
       "layers": 35,
@@ -2741,7 +2741,7 @@
     "createdAt": "2026-08-26T14:21:15.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 738989,
-    "likes": 550,
+    "likes": 551,
     "weightsEstimated": false,
     "arch": {
       "layers": 45,
@@ -3075,7 +3075,7 @@
     "createdAt": "2025-08-05T17:12:17.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 588493,
-    "likes": 925,
+    "likes": 927,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -3192,7 +3192,7 @@
     ],
     "createdAt": "2024-09-17T16:03:26.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 585137,
+    "downloads": 583563,
     "likes": 95,
     "weightsEstimated": false,
     "arch": {
@@ -3552,7 +3552,7 @@
     "createdAt": "2026-10-27T00:29:25.000Z",
     "firstSeen": "2026-11-14",
     "downloads": 574520,
-    "likes": 207,
+    "likes": 208,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -4162,7 +4162,7 @@
     "createdAt": "2026-10-24T00:46:40.000Z",
     "firstSeen": "2026-11-24",
     "downloads": 481802,
-    "likes": 357,
+    "likes": 358,
     "weightsEstimated": false,
     "arch": {
       "layers": 24,
@@ -4259,7 +4259,7 @@
     "createdAt": "2025-07-31T10:27:38.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 463988,
-    "likes": 1241,
+    "likes": 1242,
     "weightsEstimated": false,
     "arch": {
       "layers": 48,
@@ -4476,7 +4476,7 @@
     "createdAt": "2026-10-06T18:05:14.000Z",
     "firstSeen": "2026-11-24",
     "downloads": 437992,
-    "likes": 474,
+    "likes": 475,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -5197,7 +5197,7 @@
     "createdAt": "2026-05-20T06:21:18.000Z",
     "firstSeen": "2026-11-24",
     "downloads": 410739,
-    "likes": 261,
+    "likes": 262,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -6127,6 +6127,152 @@
     "downloadRank": 42
   },
   {
+    "id": "bartowski/Qwen2.5-7B-Instruct-GGUF",
+    "slug": "qwen2-5-7b-instruct",
+    "name": "Qwen2.5 7B Instruct",
+    "author": "bartowski",
+    "baseModel": "Qwen/Qwen2.5-7B-Instruct",
+    "dedupeKey": "qwen/qwen2.5-7b-instruct",
+    "paramsB": 7.616,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "qwen2",
+    "license": "apache-2.0",
+    "contextLength": 32768,
+    "vision": false,
+    "useCases": [
+      "chat"
+    ],
+    "createdAt": "2024-09-16T14:13:33.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 299448,
+    "likes": 93,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 28,
+      "kvHeads": 4,
+      "headDim": 128,
+      "fullAttentionLayers": 28,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "F16",
+        "bytes": 15237853600,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 8098525888,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 6254199488,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 5444831936,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 5315177152,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 4683074240,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 4457769664,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 4218473152,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 4431391424,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "Q3_K_L",
+        "bytes": 4088459968,
+        "estimated": false,
+        "quality": 38,
+        "bpw": 4.27
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 3808391872,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "IQ3_M",
+        "bytes": 3574012608,
+        "estimated": false,
+        "quality": 33,
+        "bpw": 3.7
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 3492369088,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 3015940800,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      }
+    ],
+    "ollama": "qwen2.5",
+    "description": "Qwen2.5 7B Instruct is a 7.62B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF",
+      "config": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
+    },
+    "downloadRank": 43
+  },
+  {
     "id": "unsloth/Qwen2.5-VL-7B-Instruct-GGUF",
     "slug": "qwen2-5-vl-7b-instruct",
     "name": "Qwen2.5 VL 7B Instruct",
@@ -6340,152 +6486,6 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Qwen2.5-VL-7B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"
-    },
-    "downloadRank": 43
-  },
-  {
-    "id": "bartowski/Qwen2.5-7B-Instruct-GGUF",
-    "slug": "qwen2-5-7b-instruct",
-    "name": "Qwen2.5 7B Instruct",
-    "author": "bartowski",
-    "baseModel": "Qwen/Qwen2.5-7B-Instruct",
-    "dedupeKey": "qwen/qwen2.5-7b-instruct",
-    "paramsB": 7.616,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "qwen2",
-    "license": "apache-2.0",
-    "contextLength": 32768,
-    "vision": false,
-    "useCases": [
-      "chat"
-    ],
-    "createdAt": "2024-09-16T14:13:33.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 296830,
-    "likes": 93,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 28,
-      "kvHeads": 4,
-      "headDim": 128,
-      "fullAttentionLayers": 28,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "F16",
-        "bytes": 15237853600,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 8098525888,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 6254199488,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 5444831936,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 5315177152,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 4683074240,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 4457769664,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 4218473152,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 4431391424,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 4088459968,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 3808391872,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 3574012608,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 3492369088,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 3015940800,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": "qwen2.5",
-    "description": "Qwen2.5 7B Instruct is a 7.62B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF",
-      "config": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
     },
     "downloadRank": 44
   },
@@ -8381,7 +8381,7 @@
     ],
     "createdAt": "2024-09-17T19:29:04.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 163428,
+    "downloads": 168031,
     "likes": 76,
     "weightsEstimated": false,
     "arch": {
@@ -8529,7 +8529,7 @@
     "createdAt": "2025-01-20T13:47:45.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 161068,
-    "likes": 173,
+    "likes": 174,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -8660,230 +8660,6 @@
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
     },
     "downloadRank": 55
-  },
-  {
-    "id": "unsloth/Llama-3.2-3B-Instruct-GGUF",
-    "slug": "llama-3-2-3b-instruct",
-    "name": "Llama 3.2 3B Instruct",
-    "author": "unsloth",
-    "baseModel": "meta-llama/Llama-3.2-3B-Instruct",
-    "dedupeKey": "meta-llama/llama-3.2-3b-instruct",
-    "paramsB": 3.213,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "llama",
-    "license": "llama3.2",
-    "contextLength": 131072,
-    "vision": false,
-    "useCases": [
-      "small",
-      "chat"
-    ],
-    "createdAt": "2024-09-25T19:47:33.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 159329,
-    "likes": 93,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 28,
-      "kvHeads": 8,
-      "headDim": 128,
-      "fullAttentionLayers": 28,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 6433687744,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "F16",
-        "bytes": 6433687616,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 4204153280,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 3421898816,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "UD-Q6_K_XL",
-        "bytes": 2967833024,
-        "estimated": false,
-        "quality": 77,
-        "bpw": 6.8
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 2643853760,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "UD-Q5_K_XL",
-        "bytes": 2327781824,
-        "estimated": false,
-        "quality": 67,
-        "bpw": 5.8
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 2322153920,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 2269512128,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "UD-Q4_K_XL",
-        "bytes": 2060886464,
-        "estimated": false,
-        "quality": 55,
-        "bpw": 4.95
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 2019377600,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 1928200640,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 1917190592,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 1829110208,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_1",
-        "bytes": 2093351360,
-        "estimated": false,
-        "quality": 42,
-        "bpw": 5.0
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 1921909184,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "UD-Q3_K_XL",
-        "bytes": 1742430656,
-        "estimated": false,
-        "quality": 36,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 1687159232,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 1542848960,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "UD-IQ3_XXS",
-        "bytes": 1370147264,
-        "estimated": false,
-        "quality": 26,
-        "bpw": 3.2
-      },
-      {
-        "id": "UD-Q2_K_XL",
-        "bytes": 1403380160,
-        "estimated": false,
-        "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 1363935680,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
-        "id": "UD-IQ2_XXS",
-        "bytes": 1046579648,
-        "estimated": false,
-        "quality": 13,
-        "bpw": 2.2
-      },
-      {
-        "id": "UD-IQ1_M",
-        "bytes": 960416192,
-        "estimated": false,
-        "quality": 10,
-        "bpw": 2.0
-      },
-      {
-        "id": "UD-IQ1_S",
-        "bytes": 912345536,
-        "estimated": false,
-        "quality": 8,
-        "bpw": 1.7
-      }
-    ],
-    "ollama": null,
-    "description": "Llama 3.2 3B Instruct is a 3.21B dense llama model from unsloth. Configured context length is 131,072 tokens. License: llama3.2. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF",
-      "config": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF"
-    },
-    "downloadRank": 56
   },
   {
     "id": "unsloth/Qwen3-VL-8B-Instruct-GGUF",
@@ -9099,6 +8875,230 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-8B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct"
+    },
+    "downloadRank": 56
+  },
+  {
+    "id": "unsloth/Llama-3.2-3B-Instruct-GGUF",
+    "slug": "llama-3-2-3b-instruct",
+    "name": "Llama 3.2 3B Instruct",
+    "author": "unsloth",
+    "baseModel": "meta-llama/Llama-3.2-3B-Instruct",
+    "dedupeKey": "meta-llama/llama-3.2-3b-instruct",
+    "paramsB": 3.213,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "llama",
+    "license": "llama3.2",
+    "contextLength": 131072,
+    "vision": false,
+    "useCases": [
+      "small",
+      "chat"
+    ],
+    "createdAt": "2024-09-25T19:47:33.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 156269,
+    "likes": 93,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 28,
+      "kvHeads": 8,
+      "headDim": 128,
+      "fullAttentionLayers": 28,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "BF16",
+        "bytes": 6433687744,
+        "estimated": false,
+        "quality": 98,
+        "bpw": 16.0
+      },
+      {
+        "id": "F16",
+        "bytes": 6433687616,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "UD-Q8_K_XL",
+        "bytes": 4204153280,
+        "estimated": false,
+        "quality": 86,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 3421898816,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "UD-Q6_K_XL",
+        "bytes": 2967833024,
+        "estimated": false,
+        "quality": 77,
+        "bpw": 6.8
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 2643853760,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "UD-Q5_K_XL",
+        "bytes": 2327781824,
+        "estimated": false,
+        "quality": 67,
+        "bpw": 5.8
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 2322153920,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 2269512128,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "UD-Q4_K_XL",
+        "bytes": 2060886464,
+        "estimated": false,
+        "quality": 55,
+        "bpw": 4.95
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 2019377600,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 1928200640,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_NL",
+        "bytes": 1917190592,
+        "estimated": false,
+        "quality": 46,
+        "bpw": 4.5
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 1829110208,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_1",
+        "bytes": 2093351360,
+        "estimated": false,
+        "quality": 42,
+        "bpw": 5.0
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 1921909184,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "UD-Q3_K_XL",
+        "bytes": 1742430656,
+        "estimated": false,
+        "quality": 36,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 1687159232,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 1542848960,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "UD-IQ3_XXS",
+        "bytes": 1370147264,
+        "estimated": false,
+        "quality": 26,
+        "bpw": 3.2
+      },
+      {
+        "id": "UD-Q2_K_XL",
+        "bytes": 1403380160,
+        "estimated": false,
+        "quality": 22,
+        "bpw": 3.35
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 1363935680,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      },
+      {
+        "id": "UD-IQ2_XXS",
+        "bytes": 1046579648,
+        "estimated": false,
+        "quality": 13,
+        "bpw": 2.2
+      },
+      {
+        "id": "UD-IQ1_M",
+        "bytes": 960416192,
+        "estimated": false,
+        "quality": 10,
+        "bpw": 2.0
+      },
+      {
+        "id": "UD-IQ1_S",
+        "bytes": 912345536,
+        "estimated": false,
+        "quality": 8,
+        "bpw": 1.7
+      }
+    ],
+    "ollama": null,
+    "description": "Llama 3.2 3B Instruct is a 3.21B dense llama model from unsloth. Configured context length is 131,072 tokens. License: llama3.2. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF",
+      "config": "https://huggingface.co/unsloth/Llama-3.2-3B-Instruct-GGUF"
     },
     "downloadRank": 57
   },
@@ -10226,7 +10226,7 @@
     "createdAt": "2025-02-28T22:22:06.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 113892,
-    "likes": 164,
+    "likes": 165,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -10521,7 +10521,7 @@
     "createdAt": "2025-10-30T14:03:46.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 100539,
-    "likes": 48,
+    "likes": 49,
     "weightsEstimated": false,
     "arch": {
       "layers": 28,
@@ -10738,7 +10738,7 @@
     "createdAt": "2026-06-05T10:35:41.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 98699,
-    "likes": 237,
+    "likes": 238,
     "weightsEstimated": false,
     "arch": {
       "layers": 42,
@@ -10800,7 +10800,7 @@
     "createdAt": "2025-04-28T10:01:12.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 93328,
-    "likes": 150,
+    "likes": 151,
     "weightsEstimated": false,
     "arch": {
       "layers": 40,
@@ -11016,7 +11016,7 @@
     ],
     "createdAt": "2024-09-17T19:30:40.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 85132,
+    "downloads": 85353,
     "likes": 21,
     "weightsEstimated": false,
     "arch": {
@@ -11422,6 +11422,230 @@
     "downloadRank": 71
   },
   {
+    "id": "unsloth/Llama-3.2-1B-Instruct-GGUF",
+    "slug": "llama-3-2-1b-instruct",
+    "name": "Llama 3.2 1B Instruct",
+    "author": "unsloth",
+    "baseModel": "meta-llama/Llama-3.2-1B-Instruct",
+    "dedupeKey": "meta-llama/llama-3.2-1b-instruct",
+    "paramsB": 1.236,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "llama",
+    "license": "llama3.2",
+    "contextLength": 131072,
+    "vision": false,
+    "useCases": [
+      "small",
+      "chat"
+    ],
+    "createdAt": "2024-09-25T19:32:39.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 68141,
+    "likes": 86,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 16,
+      "kvHeads": 8,
+      "headDim": 64,
+      "fullAttentionLayers": 16,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "BF16",
+        "bytes": 2479595264,
+        "estimated": false,
+        "quality": 98,
+        "bpw": 16.0
+      },
+      {
+        "id": "F16",
+        "bytes": 2479595168,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "UD-Q8_K_XL",
+        "bytes": 1843568672,
+        "estimated": false,
+        "quality": 86,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 1321082528,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "UD-Q6_K_XL",
+        "bytes": 1191059488,
+        "estimated": false,
+        "quality": 77,
+        "bpw": 6.8
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 1021800480,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "UD-Q5_K_XL",
+        "bytes": 920031264,
+        "estimated": false,
+        "quality": 67,
+        "bpw": 5.8
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 911503392,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 892563488,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "UD-Q4_K_XL",
+        "bytes": 834203680,
+        "estimated": false,
+        "quality": 55,
+        "bpw": 4.95
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 807694368,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 775647264,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_NL",
+        "bytes": 773025824,
+        "estimated": false,
+        "quality": 46,
+        "bpw": 4.5
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 743141408,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_1",
+        "bytes": 831746080,
+        "estimated": false,
+        "quality": 42,
+        "bpw": 5.0
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 773025824,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "UD-Q3_K_XL",
+        "bytes": 723996704,
+        "estimated": false,
+        "quality": 36,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 690843680,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 641691680,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "UD-IQ3_XXS",
+        "bytes": 575381536,
+        "estimated": false,
+        "quality": 26,
+        "bpw": 3.2
+      },
+      {
+        "id": "UD-Q2_K_XL",
+        "bytes": 605532192,
+        "estimated": false,
+        "quality": 22,
+        "bpw": 3.35
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 580874272,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      },
+      {
+        "id": "UD-IQ2_XXS",
+        "bytes": 464330784,
+        "estimated": false,
+        "quality": 13,
+        "bpw": 2.2
+      },
+      {
+        "id": "UD-IQ1_M",
+        "bytes": 439181344,
+        "estimated": false,
+        "quality": 10,
+        "bpw": 2.0
+      },
+      {
+        "id": "UD-IQ1_S",
+        "bytes": 421617696,
+        "estimated": false,
+        "quality": 8,
+        "bpw": 1.7
+      }
+    ],
+    "ollama": null,
+    "description": "Llama 3.2 1B Instruct is a 1.24B dense llama model from unsloth. Configured context length is 131,072 tokens. License: llama3.2. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF",
+      "config": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF"
+    },
+    "downloadRank": 72
+  },
+  {
     "id": "unsloth/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF",
     "slug": "nvidia-nemotron-3-5-lightning-30b-a3b",
     "name": "NVIDIA Nemotron 3.5 Lightning 30B A3B",
@@ -11579,7 +11803,7 @@
       "gguf": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF",
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16"
     },
-    "downloadRank": 72
+    "downloadRank": 73
   },
   {
     "id": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
@@ -11601,7 +11825,7 @@
     ],
     "createdAt": "2024-11-06T20:55:11.000Z",
     "firstSeen": "2026-11-16",
-    "downloads": 67255,
+    "downloads": 66544,
     "likes": 75,
     "weightsEstimated": false,
     "arch": {
@@ -11739,7 +11963,7 @@
       "gguf": "https://huggingface.co/bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct"
     },
-    "downloadRank": 73
+    "downloadRank": 74
   },
   {
     "id": "unsloth/gemma-3-1b-it-GGUF",
@@ -11956,7 +12180,7 @@
       "gguf": "https://huggingface.co/unsloth/gemma-3-1b-it-GGUF",
       "config": "https://huggingface.co/unsloth/gemma-3-1b-it-GGUF"
     },
-    "downloadRank": 74
+    "downloadRank": 75
   },
   {
     "id": "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
@@ -12053,7 +12277,154 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
     },
-    "downloadRank": 75
+    "downloadRank": 76
+  },
+  {
+    "id": "bartowski/Qwen2.5-3B-Instruct-GGUF",
+    "slug": "qwen2-5-3b-instruct",
+    "name": "Qwen2.5 3B Instruct",
+    "author": "bartowski",
+    "baseModel": "Qwen/Qwen2.5-3B-Instruct",
+    "dedupeKey": "qwen/qwen2.5-3b-instruct",
+    "paramsB": 3.086,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "qwen2",
+    "license": "other",
+    "contextLength": 32768,
+    "vision": false,
+    "useCases": [
+      "small",
+      "chat"
+    ],
+    "createdAt": "2024-09-16T14:07:42.000Z",
+    "firstSeen": "2026-10-17",
+    "downloads": 63333,
+    "likes": 37,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 36,
+      "kvHeads": 2,
+      "headDim": 128,
+      "fullAttentionLayers": 36,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "F16",
+        "bytes": 6178317216,
+        "estimated": false,
+        "quality": 96,
+        "bpw": 16.0
+      },
+      {
+        "id": "Q8_0",
+        "bytes": 3285476512,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 2538159264,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 2224815264,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 2169666720,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 1929903264,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 1834384544,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 1739095200,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q4_0",
+        "bytes": 1822850208,
+        "estimated": false,
+        "quality": 40,
+        "bpw": 4.5
+      },
+      {
+        "id": "Q3_K_L",
+        "bytes": 1707392160,
+        "estimated": false,
+        "quality": 38,
+        "bpw": 4.27
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 1590475936,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "IQ3_M",
+        "bytes": 1488895136,
+        "estimated": false,
+        "quality": 33,
+        "bpw": 3.7
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 1454357664,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 1274756256,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      }
+    ],
+    "ollama": "qwen2.5",
+    "description": "Qwen2.5 3B Instruct is a 3.09B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF",
+      "config": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct"
+    },
+    "downloadRank": 77
   },
   {
     "id": "unsloth/Qwen3-32B-GGUF",
@@ -12268,377 +12639,6 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/Qwen3-32B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-32B"
-    },
-    "downloadRank": 76
-  },
-  {
-    "id": "bartowski/Qwen2.5-3B-Instruct-GGUF",
-    "slug": "qwen2-5-3b-instruct",
-    "name": "Qwen2.5 3B Instruct",
-    "author": "bartowski",
-    "baseModel": "Qwen/Qwen2.5-3B-Instruct",
-    "dedupeKey": "qwen/qwen2.5-3b-instruct",
-    "paramsB": 3.086,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "qwen2",
-    "license": "other",
-    "contextLength": 32768,
-    "vision": false,
-    "useCases": [
-      "small",
-      "chat"
-    ],
-    "createdAt": "2024-09-16T14:07:42.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 63088,
-    "likes": 37,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 36,
-      "kvHeads": 2,
-      "headDim": 128,
-      "fullAttentionLayers": 36,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "F16",
-        "bytes": 6178317216,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 3285476512,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 2538159264,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 2224815264,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 2169666720,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 1929903264,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 1834384544,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 1739095200,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 1822850208,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 1707392160,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 1590475936,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 1488895136,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 1454357664,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 1274756256,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": "qwen2.5",
-    "description": "Qwen2.5 3B Instruct is a 3.09B dense qwen2 model from bartowski. Configured context length is 32,768 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/Qwen2.5-3B-Instruct-GGUF",
-      "config": "https://huggingface.co/Qwen/Qwen2.5-3B-Instruct"
-    },
-    "downloadRank": 77
-  },
-  {
-    "id": "unsloth/Llama-3.2-1B-Instruct-GGUF",
-    "slug": "llama-3-2-1b-instruct",
-    "name": "Llama 3.2 1B Instruct",
-    "author": "unsloth",
-    "baseModel": "meta-llama/Llama-3.2-1B-Instruct",
-    "dedupeKey": "meta-llama/llama-3.2-1b-instruct",
-    "paramsB": 1.236,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "llama",
-    "license": "llama3.2",
-    "contextLength": 131072,
-    "vision": false,
-    "useCases": [
-      "small",
-      "chat"
-    ],
-    "createdAt": "2024-09-25T19:32:39.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 62756,
-    "likes": 86,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 16,
-      "kvHeads": 8,
-      "headDim": 64,
-      "fullAttentionLayers": 16,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 2479595264,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "F16",
-        "bytes": 2479595168,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 1843568672,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 1321082528,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "UD-Q6_K_XL",
-        "bytes": 1191059488,
-        "estimated": false,
-        "quality": 77,
-        "bpw": 6.8
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 1021800480,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "UD-Q5_K_XL",
-        "bytes": 920031264,
-        "estimated": false,
-        "quality": 67,
-        "bpw": 5.8
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 911503392,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 892563488,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "UD-Q4_K_XL",
-        "bytes": 834203680,
-        "estimated": false,
-        "quality": 55,
-        "bpw": 4.95
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 807694368,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 775647264,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 773025824,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 743141408,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_1",
-        "bytes": 831746080,
-        "estimated": false,
-        "quality": 42,
-        "bpw": 5.0
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 773025824,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "UD-Q3_K_XL",
-        "bytes": 723996704,
-        "estimated": false,
-        "quality": 36,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 690843680,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 641691680,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "UD-IQ3_XXS",
-        "bytes": 575381536,
-        "estimated": false,
-        "quality": 26,
-        "bpw": 3.2
-      },
-      {
-        "id": "UD-Q2_K_XL",
-        "bytes": 605532192,
-        "estimated": false,
-        "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 580874272,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
-        "id": "UD-IQ2_XXS",
-        "bytes": 464330784,
-        "estimated": false,
-        "quality": 13,
-        "bpw": 2.2
-      },
-      {
-        "id": "UD-IQ1_M",
-        "bytes": 439181344,
-        "estimated": false,
-        "quality": 10,
-        "bpw": 2.0
-      },
-      {
-        "id": "UD-IQ1_S",
-        "bytes": 421617696,
-        "estimated": false,
-        "quality": 8,
-        "bpw": 1.7
-      }
-    ],
-    "ollama": null,
-    "description": "Llama 3.2 1B Instruct is a 1.24B dense llama model from unsloth. Configured context length is 131,072 tokens. License: llama3.2. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF",
-      "config": "https://huggingface.co/unsloth/Llama-3.2-1B-Instruct-GGUF"
     },
     "downloadRank": 78
   },
@@ -13194,7 +13194,7 @@
     ],
     "createdAt": "2024-09-17T19:30:25.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 55214,
+    "downloads": 55672,
     "likes": 25,
     "weightsEstimated": false,
     "arch": {
@@ -13340,7 +13340,7 @@
     ],
     "createdAt": "2024-09-16T18:20:45.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 52473,
+    "downloads": 52073,
     "likes": 50,
     "weightsEstimated": false,
     "arch": {
@@ -13486,7 +13486,7 @@
     ],
     "createdAt": "2024-12-06T21:10:26.000Z",
     "firstSeen": "2026-10-17",
-    "downloads": 48532,
+    "downloads": 48597,
     "likes": 133,
     "weightsEstimated": false,
     "arch": {
@@ -14219,152 +14219,6 @@
     "downloadRank": 87
   },
   {
-    "id": "bartowski/Codestral-22B-v0.1-GGUF",
-    "slug": "codestral-22b-v0-1",
-    "name": "Codestral 22B v0.1",
-    "author": "bartowski",
-    "baseModel": "mistralai/Codestral-22B-v0.1",
-    "dedupeKey": "mistralai/codestral-22b-v0.1",
-    "paramsB": 22.247,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "llama",
-    "license": "other",
-    "contextLength": 32768,
-    "vision": false,
-    "useCases": [
-      "coding"
-    ],
-    "createdAt": "2024-05-29T17:52:02.000Z",
-    "firstSeen": "2026-11-11",
-    "downloads": 45446,
-    "likes": 205,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 56,
-      "kvHeads": 8,
-      "headDim": 128,
-      "fullAttentionLayers": 56,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "Q8_0",
-        "bytes": 23640547680,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 18252702048,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 15722553696,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 15324815712,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 13341237600,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 12660384096,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 11935293792,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 11730428256,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 10756825440,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 10062405984,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 9641271648,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "IQ3_XXS",
-        "bytes": 8598856032,
-        "estimated": false,
-        "quality": 24,
-        "bpw": 3.3
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 8272093536,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
-        "id": "IQ2_S",
-        "bytes": 7035429216,
-        "estimated": false,
-        "quality": 14,
-        "bpw": 2.6
-      }
-    ],
-    "ollama": "codestral",
-    "description": "Codestral 22B v0.1 is a 22.2B dense llama model from bartowski. Configured context length is 32,768 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF",
-      "config": "https://huggingface.co/mistralai/Codestral-22B-v0.1"
-    },
-    "downloadRank": 88
-  },
-  {
     "id": "bartowski/NousResearch_Hermes-4-14B-GGUF",
     "slug": "nousresearch-hermes-4-14b",
     "name": "NousResearch Hermes 4 14B",
@@ -14535,6 +14389,152 @@
     "sources": {
       "gguf": "https://huggingface.co/bartowski/NousResearch_Hermes-4-14B-GGUF",
       "config": "https://huggingface.co/NousResearch/Hermes-4-14B"
+    },
+    "downloadRank": 88
+  },
+  {
+    "id": "bartowski/Codestral-22B-v0.1-GGUF",
+    "slug": "codestral-22b-v0-1",
+    "name": "Codestral 22B v0.1",
+    "author": "bartowski",
+    "baseModel": "mistralai/Codestral-22B-v0.1",
+    "dedupeKey": "mistralai/codestral-22b-v0.1",
+    "paramsB": 22.247,
+    "activeParamsB": null,
+    "activeParamsEstimated": false,
+    "moe": false,
+    "architecture": "llama",
+    "license": "other",
+    "contextLength": 32768,
+    "vision": false,
+    "useCases": [
+      "coding"
+    ],
+    "createdAt": "2024-05-29T17:52:02.000Z",
+    "firstSeen": "2026-11-11",
+    "downloads": 44133,
+    "likes": 205,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 56,
+      "kvHeads": 8,
+      "headDim": 128,
+      "fullAttentionLayers": 56,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "gqa",
+      "mlaBytesPerLayer": null,
+      "experts": null,
+      "expertsPerTok": null
+    },
+    "quants": [
+      {
+        "id": "Q8_0",
+        "bytes": 23640547680,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 18252702048,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 15722553696,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q5_K_S",
+        "bytes": 15324815712,
+        "estimated": false,
+        "quality": 60,
+        "bpw": 5.5
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 13341237600,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q4_K_S",
+        "bytes": 12660384096,
+        "estimated": false,
+        "quality": 47,
+        "bpw": 4.6
+      },
+      {
+        "id": "IQ4_XS",
+        "bytes": 11935293792,
+        "estimated": false,
+        "quality": 44,
+        "bpw": 4.25
+      },
+      {
+        "id": "Q3_K_L",
+        "bytes": 11730428256,
+        "estimated": false,
+        "quality": 38,
+        "bpw": 4.27
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 10756825440,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "IQ3_M",
+        "bytes": 10062405984,
+        "estimated": false,
+        "quality": 33,
+        "bpw": 3.7
+      },
+      {
+        "id": "Q3_K_S",
+        "bytes": 9641271648,
+        "estimated": false,
+        "quality": 28,
+        "bpw": 3.5
+      },
+      {
+        "id": "IQ3_XXS",
+        "bytes": 8598856032,
+        "estimated": false,
+        "quality": 24,
+        "bpw": 3.3
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 8272093536,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      },
+      {
+        "id": "IQ2_S",
+        "bytes": 7035429216,
+        "estimated": false,
+        "quality": 14,
+        "bpw": 2.6
+      }
+    ],
+    "ollama": "codestral",
+    "description": "Codestral 22B v0.1 is a 22.2B dense llama model from bartowski. Configured context length is 32,768 tokens. License: other. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/bartowski/Codestral-22B-v0.1-GGUF",
+      "config": "https://huggingface.co/mistralai/Codestral-22B-v0.1"
     },
     "downloadRank": 89
   },
@@ -14757,152 +14757,6 @@
     "downloadRank": 90
   },
   {
-    "id": "bartowski/Mistral-Nemo-Instruct-2407-GGUF",
-    "slug": "mistral-nemo-instruct-2407",
-    "name": "Mistral Nemo Instruct 2407",
-    "author": "bartowski",
-    "baseModel": "mistralai/Mistral-Nemo-Instruct-2407",
-    "dedupeKey": "mistralai/mistral-nemo-instruct-2407",
-    "paramsB": 12.248,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "llama",
-    "license": "apache-2.0",
-    "contextLength": 1024000,
-    "vision": false,
-    "useCases": [
-      "chat"
-    ],
-    "createdAt": "2024-07-18T15:18:30.000Z",
-    "firstSeen": "2026-10-30",
-    "downloads": 37891,
-    "likes": 140,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 40,
-      "kvHeads": 8,
-      "headDim": 128,
-      "fullAttentionLayers": 40,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "F16",
-        "bytes": 24504279872,
-        "estimated": false,
-        "quality": 96,
-        "bpw": 16.0
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 13022372992,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 10056213632,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 8727635072,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 8518739072,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 7477208192,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 7120200832,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 6742713472,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 7071704192,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "Q3_K_L",
-        "bytes": 6561506432,
-        "estimated": false,
-        "quality": 38,
-        "bpw": 4.27
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 6083093632,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "IQ3_M",
-        "bytes": 5722236032,
-        "estimated": false,
-        "quality": 33,
-        "bpw": 3.7
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 5534229632,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 5446411392,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      }
-    ],
-    "ollama": "mistral",
-    "description": "Mistral Nemo Instruct 2407 is a 12.2B dense llama model from bartowski. Configured context length is 1,024,000 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/bartowski/Mistral-Nemo-Instruct-2407-GGUF",
-      "config": "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407"
-    },
-    "downloadRank": 91
-  },
-  {
     "id": "unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF",
     "slug": "deepseek-r1-distill-llama-70b",
     "name": "DeepSeek R1 Distill Llama 70B",
@@ -15123,7 +14977,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
     },
-    "downloadRank": 92
+    "downloadRank": 91
   },
   {
     "id": "unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF",
@@ -15340,7 +15194,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF"
     },
-    "downloadRank": 93
+    "downloadRank": 92
   },
   {
     "id": "unsloth/MiniMax-M3.1-Flash-GGUF",
@@ -15438,7 +15292,7 @@
       "gguf": "https://huggingface.co/unsloth/MiniMax-M3.1-Flash-GGUF",
       "config": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
     },
-    "downloadRank": 94
+    "downloadRank": 93
   },
   {
     "id": "unsloth/Nemotron-3-Nano-30B-A3B-GGUF",
@@ -15640,7 +15494,7 @@
       "gguf": "https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF",
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16"
     },
-    "downloadRank": 95
+    "downloadRank": 94
   },
   {
     "id": "unsloth/Ministral-3-14B-Instruct-2512-GGUF",
@@ -15857,7 +15711,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-14B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-14B-Instruct-2512"
     },
-    "downloadRank": 96
+    "downloadRank": 95
   },
   {
     "id": "unsloth/LFM2.5-1.2B-Instruct-GGUF",
@@ -16032,7 +15886,7 @@
       "gguf": "https://huggingface.co/unsloth/LFM2.5-1.2B-Instruct-GGUF",
       "config": "https://huggingface.co/LiquidAI/LFM2.5-1.2B-Instruct"
     },
-    "downloadRank": 97
+    "downloadRank": 96
   },
   {
     "id": "unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
@@ -16249,7 +16103,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF"
     },
-    "downloadRank": 98
+    "downloadRank": 97
   },
   {
     "id": "unsloth/medgemma-4b-it-GGUF",
@@ -16467,7 +16321,7 @@
       "gguf": "https://huggingface.co/unsloth/medgemma-4b-it-GGUF",
       "config": "https://huggingface.co/unsloth/medgemma-4b-it-GGUF"
     },
-    "downloadRank": 99
+    "downloadRank": 98
   },
   {
     "id": "unsloth/Qwen3.5-397B-A17B-GGUF",
@@ -16691,7 +16545,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3.5-397B-A17B-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B"
     },
-    "downloadRank": 100
+    "downloadRank": 99
   },
   {
     "id": "unsloth/Ministral-3-3B-Instruct-2512-GGUF",
@@ -16909,7 +16763,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-3B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512"
     },
-    "downloadRank": 101
+    "downloadRank": 100
   },
   {
     "id": "unsloth/Qwen3-VL-30B-A3B-Instruct-GGUF",
@@ -17126,7 +16980,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-30B-A3B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct"
     },
-    "downloadRank": 102
+    "downloadRank": 101
   },
   {
     "id": "unsloth/NVIDIA-Nemotron-3-Nano-Omni-30B-A3B-Reasoning-GGUF",
@@ -17302,7 +17156,7 @@
       "gguf": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Nano-Omni-30B-A3B-Reasoning-GGUF",
       "config": "https://huggingface.co/nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16"
     },
-    "downloadRank": 103
+    "downloadRank": 102
   },
   {
     "id": "unsloth/GLM-4.7-Flash-REAP-23B-A3B-GGUF",
@@ -17518,7 +17372,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.7-Flash-REAP-23B-A3B-GGUF",
       "config": "https://huggingface.co/cerebras/GLM-4.7-Flash-REAP-23B-A3B"
     },
-    "downloadRank": 104
+    "downloadRank": 103
   },
   {
     "id": "unsloth/Devstral-2-123B-Instruct-2512-GGUF",
@@ -17734,7 +17588,7 @@
       "gguf": "https://huggingface.co/unsloth/Devstral-2-123B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512"
     },
-    "downloadRank": 105
+    "downloadRank": 104
   },
   {
     "id": "unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF",
@@ -17951,7 +17805,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507"
     },
-    "downloadRank": 106
+    "downloadRank": 105
   },
   {
     "id": "unsloth/DeepSeek-V3.2-GGUF",
@@ -18167,7 +18021,7 @@
       "gguf": "https://huggingface.co/unsloth/DeepSeek-V3.2-GGUF",
       "config": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2"
     },
-    "downloadRank": 107
+    "downloadRank": 106
   },
   {
     "id": "lmstudio-community/LFM3-VL-2B-GGUF",
@@ -18238,7 +18092,7 @@
       "gguf": "https://huggingface.co/lmstudio-community/LFM3-VL-2B-GGUF",
       "config": "https://huggingface.co/LiquidAI/LFM3-VL-2B"
     },
-    "downloadRank": 108
+    "downloadRank": 107
   },
   {
     "id": "unsloth/LFM2.5-8B-A1B-GGUF",
@@ -18426,7 +18280,7 @@
       "gguf": "https://huggingface.co/unsloth/LFM2.5-8B-A1B-GGUF",
       "config": "https://huggingface.co/LiquidAI/LFM2.5-8B-A1B"
     },
-    "downloadRank": 109
+    "downloadRank": 108
   },
   {
     "id": "unsloth/NVIDIA-Nemotron-3-Nano-4B-GGUF",
@@ -18622,7 +18476,7 @@
       "gguf": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Nano-4B-GGUF",
       "config": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-4B-BF16"
     },
-    "downloadRank": 110
+    "downloadRank": 109
   },
   {
     "id": "unsloth/Ministral-3-8B-Instruct-2512-GGUF",
@@ -18839,7 +18693,7 @@
       "gguf": "https://huggingface.co/unsloth/Ministral-3-8B-Instruct-2512-GGUF",
       "config": "https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512"
     },
-    "downloadRank": 111
+    "downloadRank": 110
   },
   {
     "id": "unsloth/GLM-4.7-GGUF",
@@ -19055,7 +18909,7 @@
       "gguf": "https://huggingface.co/unsloth/GLM-4.7-GGUF",
       "config": "https://huggingface.co/zai-org/GLM-4.7"
     },
-    "downloadRank": 112
+    "downloadRank": 111
   },
   {
     "id": "unsloth/Qwen3-VL-32B-Instruct-GGUF",
@@ -19272,7 +19126,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-VL-32B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-VL-32B-Instruct"
     },
-    "downloadRank": 113
+    "downloadRank": 112
   },
   {
     "id": "unsloth/Mistral-Small-4-119B-2603-GGUF",
@@ -19468,7 +19322,7 @@
       "gguf": "https://huggingface.co/unsloth/Mistral-Small-4-119B-2603-GGUF",
       "config": "https://huggingface.co/mistralai/Mistral-Small-4-119B-2603"
     },
-    "downloadRank": 114
+    "downloadRank": 113
   },
   {
     "id": "unsloth/Phi-4-mini-reasoning-GGUF",
@@ -19493,7 +19347,7 @@
     "createdAt": "2025-05-01T01:39:08.000Z",
     "firstSeen": "2026-10-17",
     "downloads": 20189,
-    "likes": 89,
+    "likes": 90,
     "weightsEstimated": false,
     "arch": {
       "layers": 32,
@@ -19672,7 +19526,7 @@
       "gguf": "https://huggingface.co/unsloth/Phi-4-mini-reasoning-GGUF",
       "config": "https://huggingface.co/microsoft/Phi-4-mini-reasoning"
     },
-    "downloadRank": 115
+    "downloadRank": 114
   },
   {
     "id": "unsloth/Qwen3-4B-Thinking-2507-GGUF",
@@ -19889,7 +19743,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-4B-Thinking-2507-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507"
     },
-    "downloadRank": 116
+    "downloadRank": 115
   },
   {
     "id": "unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
@@ -19911,7 +19765,7 @@
     ],
     "createdAt": "2024-11-12T07:21:08.000Z",
     "firstSeen": "2026-10-31",
-    "downloads": 18231,
+    "downloads": 19043,
     "likes": 29,
     "weightsEstimated": false,
     "arch": {
@@ -19986,7 +19840,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct"
     },
-    "downloadRank": 117
+    "downloadRank": 116
   },
   {
     "id": "unsloth/Llama-3.1-8B-Instruct-GGUF",
@@ -20195,7 +20049,7 @@
       "gguf": "https://huggingface.co/unsloth/Llama-3.1-8B-Instruct-GGUF",
       "config": "https://huggingface.co/unsloth/Llama-3.1-8B-Instruct-GGUF"
     },
-    "downloadRank": 118
+    "downloadRank": 117
   },
   {
     "id": "unsloth/Qwen3-Next-80B-A3B-Thinking-GGUF",
@@ -20412,7 +20266,7 @@
       "gguf": "https://huggingface.co/unsloth/Qwen3-Next-80B-A3B-Thinking-GGUF",
       "config": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking"
     },
-    "downloadRank": 119
+    "downloadRank": 118
   },
   {
     "id": "unsloth/medgemma-27b-text-it-GGUF",
@@ -20620,6 +20474,96 @@
     "sources": {
       "gguf": "https://huggingface.co/unsloth/medgemma-27b-text-it-GGUF",
       "config": "https://huggingface.co/unsloth/medgemma-27b-text-it-GGUF"
+    },
+    "downloadRank": 119
+  },
+  {
+    "id": "unsloth/DeepSeek-V3-GGUF",
+    "slug": "deepseek-v3",
+    "name": "DeepSeek V3",
+    "author": "unsloth",
+    "baseModel": "deepseek-ai/DeepSeek-V3",
+    "dedupeKey": "deepseek-ai/deepseek-v3",
+    "paramsB": 671.026,
+    "activeParamsB": 37,
+    "activeParamsEstimated": false,
+    "moe": true,
+    "architecture": "deepseek2",
+    "license": "mit",
+    "contextLength": 163840,
+    "vision": false,
+    "useCases": [
+      "chat"
+    ],
+    "createdAt": "2025-01-06T09:27:58.000Z",
+    "firstSeen": "2026-11-27",
+    "downloads": 14608,
+    "likes": 140,
+    "weightsEstimated": false,
+    "arch": {
+      "layers": 61,
+      "kvHeads": 128,
+      "headDim": 56,
+      "fullAttentionLayers": 61,
+      "slidingLayers": 0,
+      "slidingWindow": null,
+      "linearLayers": 0,
+      "linearStateBytes": 0,
+      "linearStateApproximate": false,
+      "attention": "mla",
+      "mlaBytesPerLayer": 1152,
+      "experts": 256,
+      "expertsPerTok": 8
+    },
+    "quants": [
+      {
+        "id": "Q8_0",
+        "bytes": 713286514080,
+        "estimated": false,
+        "quality": 84,
+        "bpw": 8.5
+      },
+      {
+        "id": "Q6_K",
+        "bytes": 550798326368,
+        "estimated": false,
+        "quality": 72,
+        "bpw": 6.56
+      },
+      {
+        "id": "Q5_K_M",
+        "bytes": 475396557600,
+        "estimated": false,
+        "quality": 64,
+        "bpw": 5.7
+      },
+      {
+        "id": "Q4_K_M",
+        "bytes": 404430187072,
+        "estimated": false,
+        "quality": 52,
+        "bpw": 4.85
+      },
+      {
+        "id": "Q3_K_M",
+        "bytes": 319198395296,
+        "estimated": false,
+        "quality": 34,
+        "bpw": 3.9
+      },
+      {
+        "id": "Q2_K",
+        "bytes": 244245533792,
+        "estimated": false,
+        "quality": 20,
+        "bpw": 3.35
+      }
+    ],
+    "ollama": "deepseek-v3",
+    "description": "DeepSeek V3 is a 671.0B mixture-of-experts deepseek2 model from unsloth, with about 37.0B parameters active per token. Configured context length is 163,840 tokens. License: mit. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
+    "sources": {
+      "gguf": "https://huggingface.co/unsloth/DeepSeek-V3-GGUF",
+      "config": "https://huggingface.co/deepseek-ai/DeepSeek-V3"
     },
     "downloadRank": 120
   },
@@ -24357,223 +24301,5 @@
       "config": "https://huggingface.co/stepfun-ai/Step-3.7-Flash"
     },
     "downloadRank": 138
-  },
-  {
-    "id": "unsloth/Ministral-3-8B-Reasoning-2512-GGUF",
-    "slug": "ministral-3-8b-reasoning-2512",
-    "name": "Ministral 3 8B Reasoning 2512",
-    "author": "unsloth",
-    "baseModel": "mistralai/Ministral-3-8B-Reasoning-2512",
-    "dedupeKey": "mistralai/ministral-3-8b-reasoning-2512",
-    "paramsB": 8.49,
-    "activeParamsB": null,
-    "activeParamsEstimated": false,
-    "moe": false,
-    "architecture": "mistral3",
-    "license": "apache-2.0",
-    "contextLength": 262144,
-    "vision": true,
-    "useCases": [
-      "reasoning",
-      "vision",
-      "chat"
-    ],
-    "createdAt": "2025-12-02T11:39:03.000Z",
-    "firstSeen": "2026-10-17",
-    "downloads": 9068,
-    "likes": 14,
-    "weightsEstimated": false,
-    "arch": {
-      "layers": 34,
-      "kvHeads": 8,
-      "headDim": 128,
-      "fullAttentionLayers": 34,
-      "slidingLayers": 0,
-      "slidingWindow": null,
-      "linearLayers": 0,
-      "linearStateBytes": 0,
-      "linearStateApproximate": false,
-      "attention": "gqa",
-      "mlaBytesPerLayer": null,
-      "experts": null,
-      "expertsPerTok": null
-    },
-    "quants": [
-      {
-        "id": "BF16",
-        "bytes": 16987557632,
-        "estimated": false,
-        "quality": 98,
-        "bpw": 16.0
-      },
-      {
-        "id": "UD-Q8_K_XL",
-        "bytes": 11093250080,
-        "estimated": false,
-        "quality": 86,
-        "bpw": 8.5
-      },
-      {
-        "id": "Q8_0",
-        "bytes": 9028866080,
-        "estimated": false,
-        "quality": 84,
-        "bpw": 8.5
-      },
-      {
-        "id": "UD-Q6_K_XL",
-        "bytes": 7724568608,
-        "estimated": false,
-        "quality": 77,
-        "bpw": 6.8
-      },
-      {
-        "id": "Q6_K",
-        "bytes": 6972870688,
-        "estimated": false,
-        "quality": 72,
-        "bpw": 6.56
-      },
-      {
-        "id": "UD-Q5_K_XL",
-        "bytes": 6072242208,
-        "estimated": false,
-        "quality": 67,
-        "bpw": 5.8
-      },
-      {
-        "id": "Q5_K_M",
-        "bytes": 6058741792,
-        "estimated": false,
-        "quality": 64,
-        "bpw": 5.7
-      },
-      {
-        "id": "Q5_K_S",
-        "bytes": 5916692512,
-        "estimated": false,
-        "quality": 60,
-        "bpw": 5.5
-      },
-      {
-        "id": "UD-Q4_K_XL",
-        "bytes": 5288071200,
-        "estimated": false,
-        "quality": 55,
-        "bpw": 4.95
-      },
-      {
-        "id": "Q4_K_M",
-        "bytes": 5198385184,
-        "estimated": false,
-        "quality": 52,
-        "bpw": 4.85
-      },
-      {
-        "id": "Q4_K_S",
-        "bytes": 4954099744,
-        "estimated": false,
-        "quality": 47,
-        "bpw": 4.6
-      },
-      {
-        "id": "IQ4_NL",
-        "bytes": 4940468256,
-        "estimated": false,
-        "quality": 46,
-        "bpw": 4.5
-      },
-      {
-        "id": "IQ4_XS",
-        "bytes": 4713189408,
-        "estimated": false,
-        "quality": 44,
-        "bpw": 4.25
-      },
-      {
-        "id": "Q4_1",
-        "bytes": 5419667488,
-        "estimated": false,
-        "quality": 42,
-        "bpw": 5.0
-      },
-      {
-        "id": "Q4_0",
-        "bytes": 4937322528,
-        "estimated": false,
-        "quality": 40,
-        "bpw": 4.5
-      },
-      {
-        "id": "UD-Q3_K_XL",
-        "bytes": 4425322528,
-        "estimated": false,
-        "quality": 36,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_M",
-        "bytes": 4242051104,
-        "estimated": false,
-        "quality": 34,
-        "bpw": 3.9
-      },
-      {
-        "id": "Q3_K_S",
-        "bytes": 3866464288,
-        "estimated": false,
-        "quality": 28,
-        "bpw": 3.5
-      },
-      {
-        "id": "UD-IQ3_XXS",
-        "bytes": 3502215200,
-        "estimated": false,
-        "quality": 26,
-        "bpw": 3.2
-      },
-      {
-        "id": "UD-Q2_K_XL",
-        "bytes": 3565260832,
-        "estimated": false,
-        "quality": 22,
-        "bpw": 3.35
-      },
-      {
-        "id": "Q2_K",
-        "bytes": 3478753312,
-        "estimated": false,
-        "quality": 20,
-        "bpw": 3.35
-      },
-      {
-        "id": "UD-IQ2_XXS",
-        "bytes": 2632880160,
-        "estimated": false,
-        "quality": 13,
-        "bpw": 2.2
-      },
-      {
-        "id": "UD-IQ1_M",
-        "bytes": 2404814880,
-        "estimated": false,
-        "quality": 10,
-        "bpw": 2.0
-      },
-      {
-        "id": "UD-IQ1_S",
-        "bytes": 2269024288,
-        "estimated": false,
-        "quality": 8,
-        "bpw": 1.7
-      }
-    ],
-    "ollama": null,
-    "description": "Ministral 3 8B Reasoning 2512 is a 8.49B dense mistral3 model from unsloth. Configured context length is 262,144 tokens. License: apache-2.0. Quant sizes are the GGUF file bytes published on Hugging Face when a file exists.",
-    "sources": {
-      "gguf": "https://huggingface.co/unsloth/Ministral-3-8B-Reasoning-2512-GGUF",
-      "config": "https://huggingface.co/mistralai/Ministral-3-8B-Reasoning-2512"
-    },
-    "downloadRank": 139
   }
 ]
