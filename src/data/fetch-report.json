@@ -1,11 +1,12 @@
 {
-  "generatedAt": "2026-11-27T21:32:59.210506+00:00",
-  "modelCount": 134,
-  "withRealQuants": 132,
+  "generatedAt": "2026-11-28T08:02:08.034806+00:00",
+  "modelCount": 136,
+  "withRealQuants": 134,
   "attempts": 380,
-  "candidateCount": 504,
+  "candidateCount": 505,
   "newRepoIds": [
-    "unsloth/Ministral-3-8B-Reasoning-2512-GGUF"
+    "ukisai/Swift-Qwen3.8-27B-GGUF",
+    "tencent/Hy-MT2-1.8B-GGUF"
   ],
   "errorCount": 0,
   "errors": [],
